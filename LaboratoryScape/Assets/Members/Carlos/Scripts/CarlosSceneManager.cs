@@ -14,7 +14,7 @@ public class CarlosSceneManager : MonoBehaviour
    [Header("--- ENEMY ---")]
    [Space(10)]
    [SerializeField] private EnemyController[] enemyController;
-   [SerializeField] private Transform closestEnemy;
+   [SerializeField] private EnemyController closestEnemy;
    private void Awake()
    {
       playerController = FindObjectOfType<PlayerController>();
@@ -45,28 +45,24 @@ public class CarlosSceneManager : MonoBehaviour
 
    #endregion
    
-   private Transform GetClosestEnemy(EnemyController enemies)
+   private void GetClosestEnemy(EnemyController[] enemies)
    {
-      Debug.Log(enemies);
-      
-      Transform bestTarget = null;
       float closestDistanceSqr = Mathf.Infinity;
       Vector3 currentPos = playerController.transform.position;
 
-      foreach (Transform potentialTarget in enemies.transform)
+      foreach (var potentialTarget in enemies)
       {
-         Vector3 directionToTarget = potentialTarget.position - currentPos;
+         
+         Vector3 directionToTarget = potentialTarget.transform.position - currentPos;
          float dSqrToTarget = directionToTarget.sqrMagnitude;
 
          if (dSqrToTarget < closestDistanceSqr)
          {
             closestDistanceSqr = dSqrToTarget;
-            bestTarget = potentialTarget;
+            closestEnemy = potentialTarget;
          }
       }
+      closestEnemy.GetComponent<Outlinable>().enabled = true;
       
-      bestTarget.parent.gameObject.GetComponent<Outlinable>().enabled = true;
-
-      return bestTarget;
    }
 }
