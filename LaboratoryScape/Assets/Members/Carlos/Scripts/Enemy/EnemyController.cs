@@ -91,6 +91,12 @@ public class EnemyController : MonoBehaviour
     
     #endregion
 
+    [Header("--- POSSESSION ---")] 
+    [Space(10)] 
+    [SerializeField] private bool canBePossess;
+
+    public bool CanBePossess => canBePossess;
+
     private void Awake()
     {
         enemyCamera = GetComponentInChildren<Camera>();
@@ -223,4 +229,20 @@ public class EnemyController : MonoBehaviour
     }
     
     #endregion
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canBePossess = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canBePossess = false;
+        }
+    }
 }

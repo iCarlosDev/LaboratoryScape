@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canPossess;
     [SerializeField] private bool imPossessing;
 
+    public bool CanPossess => canPossess;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
@@ -60,6 +62,22 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             imPossessing = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            canPossess = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            canPossess = false;
         }
     }
 }
