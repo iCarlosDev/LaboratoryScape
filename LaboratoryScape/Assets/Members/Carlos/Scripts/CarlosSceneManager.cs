@@ -52,17 +52,21 @@ public class CarlosSceneManager : MonoBehaviour
 
       foreach (var potentialTarget in enemies)
       {
-         
-         Vector3 directionToTarget = potentialTarget.transform.position - currentPos;
-         float dSqrToTarget = directionToTarget.sqrMagnitude;
-
-         if (dSqrToTarget < closestDistanceSqr)
+         if (potentialTarget.CanBePossess)
          {
-            closestDistanceSqr = dSqrToTarget;
-            closestEnemy = potentialTarget;
+            Vector3 directionToTarget = potentialTarget.transform.position - currentPos;
+            float dSqrToTarget = directionToTarget.sqrMagnitude;
+
+            if (dSqrToTarget < closestDistanceSqr)
+            {
+               closestDistanceSqr = dSqrToTarget;
+               closestEnemy = potentialTarget;
+            }
          }
+         
+         potentialTarget.GetComponent<Outlinable>().enabled = false;
       }
-      closestEnemy.GetComponent<Outlinable>().enabled = true;
       
+      closestEnemy.GetComponent<Outlinable>().enabled = true;
    }
 }

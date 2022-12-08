@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1734.1611, g: 1817.5879, b: 2638.9375, a: 1}
+  m_IndirectSpecularColor: {r: 1734.7783, g: 1818.2754, b: 2639.7344, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -608,7 +608,7 @@ Transform:
   - {fileID: 597384594}
   - {fileID: 925980857}
   m_Father: {fileID: 1770928497}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!143 &356474271
 CharacterController:
@@ -1192,6 +1192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   enemyController: []
+  closestEnemy: {fileID: 0}
 --- !u!4 &549117137
 Transform:
   m_ObjectHideFlags: 0
@@ -2092,7 +2093,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978361332}
-  m_LocalRotation: {x: 0.089545935, y: -0.00000011920929, z: 0.000000007450581, w: 0.99598277}
+  m_LocalRotation: {x: 0.08954594, y: -0.00000011920929, z: 0.000000011175871, w: 0.99598277}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2872,6 +2873,7 @@ MonoBehaviour:
   sprintBobAmount: 0.1
   crouchBobSpeed: 8
   crouchBobAmount: 0.025
+  canBePossess: 0
 --- !u!143 &1258414456
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3412,6 +3414,7 @@ MonoBehaviour:
   sprintBobAmount: 0.1
   crouchBobSpeed: 8
   crouchBobAmount: 0.025
+  canBePossess: 0
 --- !u!143 &1585925816
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3464,8 +3467,8 @@ Transform:
   - {fileID: 963584201}
   - {fileID: 467853992}
   - {fileID: 1823688467}
-  - {fileID: 2048191195}
   - {fileID: 356474270}
+  - {fileID: 2048191195}
   - {fileID: 1585925813}
   - {fileID: 1258414453}
   m_Father: {fileID: 0}
@@ -4194,7 +4197,7 @@ Transform:
   - {fileID: 735797188}
   - {fileID: 913052394}
   m_Father: {fileID: 1770928497}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2048191197
 MonoBehaviour:
@@ -4237,6 +4240,7 @@ MonoBehaviour:
   sprintBobAmount: 0.1
   crouchBobSpeed: 8
   crouchBobAmount: 0.025
+  canBePossess: 0
 --- !u!143 &2048191200
 CharacterController:
   m_ObjectHideFlags: 0
