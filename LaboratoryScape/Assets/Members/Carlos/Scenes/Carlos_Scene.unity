@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1734.0264, g: 1817.3535, b: 2638.621, a: 1}
+  m_IndirectSpecularColor: {r: 1734.0244, g: 1817.3535, b: 2638.621, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1442,7 +1442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2048191195}
-  - component: {fileID: 2048191196}
+  - component: {fileID: 2048191200}
   - component: {fileID: 2048191197}
   m_Layer: 0
   m_Name: Enemy_FP
@@ -1468,7 +1468,33 @@ Transform:
   m_Father: {fileID: 1770928497}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &2048191196
+--- !u!114 &2048191197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048191194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5c448f839911044994ddb6fe4fb99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterController: {fileID: 0}
+  speed: 3
+  groundCheck: {fileID: 1560009086}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  groundDistance: 0.3
+  jumpHeight: 1
+  isGrounded: 0
+  cameraFP: {fileID: 735797191}
+  fov: 60
+  isSprinting: 0
+  isCrouched: 0
+  isSliding: 0
+--- !u!143 &2048191200
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1486,24 +1512,3 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2048191197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2048191194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b5c448f839911044994ddb6fe4fb99d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characterController: {fileID: 0}
-  speed: 3
-  groundCheck: {fileID: 1560009086}
-  groundDistance: 0.4
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  isGrounded: 0
-  jumpHeight: 3
