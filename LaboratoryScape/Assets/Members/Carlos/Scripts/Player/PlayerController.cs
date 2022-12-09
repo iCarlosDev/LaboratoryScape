@@ -16,13 +16,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float turnSmoothTime;
     
     private float turnSmoothVelocity;
+    
+    //GETTERS & SETTERS//
+    public Transform PlayerCamera => playerCamera;
 
-    [Header("--- POSESSION ---")] 
-    [Space(10)] 
-    [SerializeField] private bool canPossess;
-    [SerializeField] private bool imPossessing;
-
-    public bool CanPossess => canPossess;
+    /////////////////////////////////////////
 
     private void Awake()
     {
@@ -33,11 +31,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Movement();
-
-        if (canPossess)
-        {
-            Possess();
-        }
     }
 
     private void Movement()
@@ -54,30 +47,6 @@ public class PlayerController : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             _characterController.Move(moveDir.normalized * speed * Time.deltaTime);
-        }
-    }
-
-    private void Possess()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            imPossessing = true;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            canPossess = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            canPossess = false;
         }
     }
 }

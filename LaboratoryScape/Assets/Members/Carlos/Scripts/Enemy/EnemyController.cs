@@ -95,7 +95,11 @@ public class EnemyController : MonoBehaviour
     [Space(10)] 
     [SerializeField] private bool canBePossess;
 
+    //GETTERS & SETTERS//
     public bool CanBePossess => canBePossess;
+    public Camera EnemyCamera => enemyCamera;
+
+    //////////////////////////////////////////
 
     private void Awake()
     {
