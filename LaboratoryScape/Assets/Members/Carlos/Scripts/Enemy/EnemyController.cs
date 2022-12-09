@@ -107,8 +107,6 @@ public class EnemyController : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         defaultYPos = enemyCamera.transform.localPosition.y;
         enemyCamera.gameObject.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     private void Update()

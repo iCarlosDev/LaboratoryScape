@@ -11,11 +11,6 @@ public class FPMouseLook : MonoBehaviour
 
     private float xRotation;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void Update()
     {
         MouseInput();

@@ -16,8 +16,7 @@ public class CarlosSceneManager : MonoBehaviour
    
    [Header("--- ENEMY ---")]
    [Space(10)]
-   [SerializeField] private EnemyController[] enemiesController;
-   [SerializeField] private EnemyDespossess[] enemiesDespossess;
+   [SerializeField] private List<EnemyController> enmiesList;
    [SerializeField] private EnemyController closestEnemy;
 
    private void Awake()
@@ -26,20 +25,18 @@ public class CarlosSceneManager : MonoBehaviour
       
       playerController = FindObjectOfType<PlayerController>();
       playerPossess = FindObjectOfType<PlayerPossess>();
-      enemiesController = FindObjectsOfType<EnemyController>();
-      enemiesDespossess = FindObjectsOfType<EnemyDespossess>();
    }
 
    private void Start()
    {
-      foreach (var enemies in enemiesController)
+      Cursor.lockState = CursorLockMode.Locked;
+      Cursor.visible = false;
+
+      foreach (var enemies in FindObjectsOfType<EnemyController>())
       {
          enemies.enabled = false;
-      }
-
-      foreach (var enemiesDespossess in enemiesDespossess)
-      {
-         enemiesDespossess.enabled = false;
+         enemies.GetComponent<EnemyDespossess>().enabled = false;
+         enmiesList.Add(enemies);
       }
    }
 
@@ -58,15 +55,20 @@ public class CarlosSceneManager : MonoBehaviour
 
    private void MarkPossession()
    {
-      if (playerPossess.CanPossess)
+      if (!playerPossess.HaveCooldown)
       {
-         GetClosestEnemy(enemiesController);
-      }
-      else
-      {
-         foreach (var enemy in enemiesController)
+         if (playerPossess.CanPossess)
          {
-            enemy.gameObject.GetComponent<Outlinable>().enabled = false;
+            GetClosestEnemy(enmiesList);
+         }
+         else
+         {
+            closestEnemy = null;
+            
+            foreach (var enemy in enmiesList)
+            {
+               enemy.gameObject.GetComponent<Outlinable>().enabled = false;
+            }
          }
       }
    }
@@ -92,7 +94,8 @@ public class CarlosSceneManager : MonoBehaviour
       if (closestEnemy.GetComponent<EnemyDespossess>().ShouldSuicide)
       {
          DespossessParameters();
-         closestEnemy.gameObject.SetActive(false);
+         enmiesList.Remove(closestEnemy);
+         Destroy(closestEnemy.gameObject);
       }
    }
 
@@ -101,11 +104,12 @@ public class CarlosSceneManager : MonoBehaviour
       playerController.gameObject.SetActive(true);
       playerController.PlayerCamera.gameObject.SetActive(true);
       playerPossess.ImPossessing = false;
+      playerPossess.HaveCooldown = true;
    }
 
    #endregion
    
-   private void GetClosestEnemy(EnemyController[] enemies)
+   private void GetClosestEnemy(List<EnemyController> enemies)
    {
       float closestDistanceSqr = Mathf.Infinity;
       Vector3 currentPos = playerController.transform.position;

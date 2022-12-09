@@ -8,6 +8,8 @@ public class PlayerPossess : MonoBehaviour
     [Header("--- POSESSION ---")]
     [SerializeField] private bool canPossess;
     [SerializeField] private bool imPossessing;
+    [SerializeField] private bool haveCooldown;
+    [SerializeField] private float possessCooldown;
     
     //GETTERS & SETTERS//
     public bool CanPossess
@@ -20,15 +22,27 @@ public class PlayerPossess : MonoBehaviour
         get => imPossessing;
         set => imPossessing = value;
     }
+    public bool HaveCooldown
+    {
+        get => haveCooldown;
+        set => haveCooldown = value;
+    }
 
     /////////////////////////////////////////
 
 
     private void Update()
     {
-        if (canPossess)
+        if (!haveCooldown)
         {
-            Possess();
+            if (canPossess)
+            {
+                Possess();
+            }
+        }
+        else
+        {
+            PossessCooldown();
         }
     }
     
@@ -36,7 +50,18 @@ public class PlayerPossess : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            possessCooldown = 5f;
             imPossessing = true;
+        }
+    }
+
+    private void PossessCooldown()
+    {
+        possessCooldown -= Time.deltaTime;
+
+        if (possessCooldown <= 0)
+        {
+            haveCooldown = false;
         }
     }
 
