@@ -63,7 +63,7 @@ public class CarlosSceneManager : MonoBehaviour
          }
          else
          {
-            closestEnemy = null;
+            //closestEnemy = null;
             
             foreach (var enemy in enmiesList)
             {
