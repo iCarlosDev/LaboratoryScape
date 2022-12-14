@@ -23,7 +23,7 @@ public class EnemyDespossess : MonoBehaviour
 
     private void Start()
     {
-        timeRemaining = 5f;
+        timeRemaining = 3000f;
     }
 
     private void Suicide()
