@@ -2497,7 +2497,7 @@ MonoBehaviour:
         speed: 0
         mass: 0
       scale: {x: 0, y: 0, z: 0}
-  fireMode: 1
+  fireMode: 0
   fireRate: 100
   burstAmount: 6
   poseName: Rifle Aiming Idle
@@ -3011,7 +3011,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3043,7 +3043,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   volumeAnchorOverride: {fileID: 0}
-  antialiasing: 3
+  antialiasing: 1
   SMAAQuality: 2
   dithering: 0
   stopNaNs: 0
@@ -3067,7 +3067,7 @@ MonoBehaviour:
   flipYMode: 0
   xrRendering: 1
   fullscreenPassthrough: 0
-  allowDynamicResolution: 0
+  allowDynamicResolution: 1
   customRenderingSettings: 0
   invertFaceCulling: 0
   probeLayerMask:
@@ -3318,7 +3318,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8945482519048782632}
-  m_LocalRotation: {x: -0, y: 0.000000029802319, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.014080333, y: -0.00109, z: -0.046125963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3383,6 +3383,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeRemaining: 3000
   shouldSuicide: 0
+  blendingLayer: {fileID: 0}
+  weaponSystem: {fileID: 0}
+  coreAnimComponent: {fileID: 0}
+  recoilAnimation: {fileID: 0}
 --- !u!114 &202792158181437680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3738,6 +3742,7 @@ MonoBehaviour:
   speed: 1
   animator: {fileID: 202792158181437701}
   canBePossess: 0
+  outlinable: {fileID: 0}
 --- !u!114 &202792158181437710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3831,8 +3836,6 @@ MonoBehaviour:
       maxAngle: {x: 24.5, y: 21.666666}
     - bone: {fileID: 4139912455299228907}
       maxAngle: {x: 24.5, y: 21.666666}
-    - bone: {fileID: 7890638169145033196}
-      maxAngle: {x: 16, y: 16}
     - bone: {fileID: 7798738017884727228}
       maxAngle: {x: 16, y: 16}
     indexOffset: 2
@@ -3865,7 +3868,6 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
-    - {x: 0, y: 0, z: 0, w: 1}
   cachedLocal:
     lookUp:
     - {x: 0, y: 0, z: 0, w: 1}
@@ -3873,10 +3875,8 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
-    - {x: 0, y: 0, z: 0, w: 1}
   cacheRef:
     lookUp:
-    - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
@@ -3935,7 +3935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAiming: 0
-  fireMode: 1
+  fireMode: 0
 --- !u!1 &8945482519645705738
 GameObject:
   m_ObjectHideFlags: 0

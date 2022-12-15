@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EPOOutline;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -245,6 +246,7 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             canBePossess = false;
+            
         }
     }
 }

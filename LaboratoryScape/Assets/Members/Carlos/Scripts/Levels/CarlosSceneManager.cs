@@ -20,7 +20,16 @@ public class CarlosSceneManager : MonoBehaviour
    [Header("--- ENEMY ---")]
    [Space(10)]
    [SerializeField] private List<FPSController> enmiesList;
+   [SerializeField] private List<FPSController> enemiesInRangeList;
    [SerializeField] private FPSController closestEnemy;
+   [SerializeField] private EnemyDespossess enemyDespossess;
+   [SerializeField] private bool alreadyPossessed;
+   
+   //GETTERS & SETTERS//
+   
+   public List<FPSController> EnemiesInRangeList => enemiesInRangeList;
+
+   ///////////////////////////////////////////
 
    private void Awake()
    {
@@ -34,17 +43,17 @@ public class CarlosSceneManager : MonoBehaviour
    {
       Cursor.lockState = CursorLockMode.Locked;
       Cursor.visible = false;
+      
+      FPSController[] enemiesArray = FindObjectsOfType<FPSController>();
 
-      foreach (var enemies in FindObjectsOfType<FPSController>())
+      foreach (var enemy in enemiesArray)
       {
-         enemies.enabled = false;
-         enemies.CameraBone.gameObject.SetActive(false);
-         enemies.GetComponent<EnemyDespossess>().enabled = false;
-         enemies.GetComponent<BlendingLayer>().enabled = false;
-         enemies.GetComponent<WeaponSystem>().enabled = false;
-         enemies.GetComponent<CoreAnimComponent>().enabled = false;
-         enemies.GetComponent<RecoilAnimation>().enabled = false;
-         enmiesList.Add(enemies);
+         enemyDespossess = enemy.GetComponent<EnemyDespossess>();
+         enemy.enabled = false;
+         enemyDespossess.DesactivateEnemy();
+         enemy.CameraBone.gameObject.SetActive(false);
+         
+         enmiesList.Add(enemy);
       }
    }
 
@@ -67,34 +76,30 @@ public class CarlosSceneManager : MonoBehaviour
       {
          if (playerPossess.CanPossess)
          {
-            GetClosestEnemy(enmiesList);
-         }
-         else
-         {
-            //closestEnemy = null;
-            
-            foreach (var enemy in enmiesList)
-            {
-               enemy.gameObject.GetComponent<Outlinable>().enabled = false;
-            }
+            GetClosestEnemy(enemiesInRangeList);
          }
       }
    }
 
    private void PossessParameters()
    {
-      playerPossess.CanPossess = false;
-      playerController.PlayerCamera.gameObject.SetActive(false);
-      playerController.gameObject.SetActive(false);
-      playerController.transform.position = closestEnemy.transform.position;
+      if (!alreadyPossessed)
+      {
+         playerPossess.CanPossess = false;
+         playerController.PlayerCamera.gameObject.SetActive(false);
+         playerController.gameObject.SetActive(false);
+
+         enemyDespossess = closestEnemy.GetComponent<EnemyDespossess>();
+         
+         closestEnemy.CameraBone.gameObject.SetActive(true);
+         closestEnemy.enabled = true;
+         enemyDespossess.enabled = true;
+         enemyDespossess.ActivateEnemy();
+
+         alreadyPossessed = true;
+      }
       
-      closestEnemy.CameraBone.gameObject.SetActive(true);
-      closestEnemy.enabled = true;
-      closestEnemy.GetComponent<EnemyDespossess>().enabled = true;
-      closestEnemy.GetComponent<BlendingLayer>().enabled = true;
-      closestEnemy.GetComponent<WeaponSystem>().enabled = true;
-      closestEnemy.GetComponent<CoreAnimComponent>().enabled = true;
-      closestEnemy.GetComponent<RecoilAnimation>().enabled = true;
+      playerController.transform.position = closestEnemy.transform.position;
    }
 
    #endregion
@@ -103,10 +108,11 @@ public class CarlosSceneManager : MonoBehaviour
 
    private void Despossess()
    {
-      if (closestEnemy.GetComponent<EnemyDespossess>().ShouldSuicide)
+      if (enemyDespossess.ShouldSuicide)
       {
          DespossessParameters();
          enmiesList.Remove(closestEnemy);
+         enemiesInRangeList.Remove(closestEnemy);
          Destroy(closestEnemy.gameObject);
       }
    }
@@ -117,6 +123,7 @@ public class CarlosSceneManager : MonoBehaviour
       playerController.PlayerCamera.gameObject.SetActive(true);
       playerPossess.ImPossessing = false;
       playerPossess.HaveCooldown = true;
+      alreadyPossessed = false;
    }
 
    #endregion
@@ -140,9 +147,9 @@ public class CarlosSceneManager : MonoBehaviour
             }
          }
          
-         potentialTarget.GetComponent<Outlinable>().enabled = false;
+         potentialTarget.Outlinable.enabled = false;
       }
       
-      closestEnemy.GetComponent<Outlinable>().enabled = true;
+      closestEnemy.Outlinable.enabled = true;
    }
 }

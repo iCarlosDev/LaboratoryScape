@@ -78,64 +78,6 @@ MonoBehaviour:
   m_DenoiserRadius:
     m_OverrideState: 1
     m_Value: 0.65
---- !u!114 &-7571683872479530278
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaa3b8214f75b354e9ba2caadd022259, type: 3}
-  m_Name: DepthOfField
-  m_EditorClassIdentifier: 
-  active: 0
-  quality:
-    m_OverrideState: 1
-    m_Value: 2
-  focusMode:
-    m_OverrideState: 1
-    m_Value: 1
-  focusDistance:
-    m_OverrideState: 0
-    m_Value: 10
-  focusDistanceMode:
-    m_OverrideState: 1
-    m_Value: 1
-  nearFocusStart:
-    m_OverrideState: 0
-    m_Value: 0
-  nearFocusEnd:
-    m_OverrideState: 0
-    m_Value: 4
-  farFocusStart:
-    m_OverrideState: 0
-    m_Value: 10
-  farFocusEnd:
-    m_OverrideState: 0
-    m_Value: 20
-  m_NearSampleCount:
-    m_OverrideState: 1
-    m_Value: 8
-  m_NearMaxBlur:
-    m_OverrideState: 1
-    m_Value: 7
-  m_FarSampleCount:
-    m_OverrideState: 1
-    m_Value: 14
-  m_FarMaxBlur:
-    m_OverrideState: 1
-    m_Value: 13
-  m_Resolution:
-    m_OverrideState: 1
-    m_Value: 1
-  m_HighQualityFiltering:
-    m_OverrideState: 1
-    m_Value: 1
-  m_PhysicallyBased:
-    m_OverrideState: 1
-    m_Value: 0
 --- !u!114 &-1837042447112721296
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -151,7 +93,7 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0
   threshold:
     m_OverrideState: 1
     m_Value: 0
@@ -175,13 +117,13 @@ MonoBehaviour:
     m_Value: 1
   m_Resolution:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 4
   m_HighQualityPrefiltering:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   m_HighQualityFiltering:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +143,6 @@ MonoBehaviour:
   - {fileID: -8944362866271314302}
   - {fileID: 4146333489387280878}
   - {fileID: 4733706724273979411}
-  - {fileID: -7571683872479530278}
   - {fileID: 6799798382755451467}
   - {fileID: -1837042447112721296}
   - {fileID: 4048757268313775583}
@@ -409,7 +350,7 @@ MonoBehaviour:
   active: 1
   quality:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0
   spectralLut:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -418,4 +359,4 @@ MonoBehaviour:
     m_Value: 0.01
   m_MaxSamples:
     m_OverrideState: 1
-    m_Value: 12
+    m_Value: 3
