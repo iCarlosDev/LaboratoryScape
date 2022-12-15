@@ -20,6 +20,15 @@ namespace Demo.Scripts
         [SerializeField] private Animator animator;
 
         private Vector2 smoothMoveInput;
+        
+        [Header("--- POSSESSION ---")] 
+        [Space(10)] 
+        [SerializeField] private bool canBePossess;
+        
+        //////////////////////////////////
+        public Transform CameraBone => cameraBone;
+
+        public bool CanBePossess => canBePossess;
 
         private void Start()
         {

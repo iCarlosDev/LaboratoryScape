@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Demo.Scripts;
 using EPOOutline;
 using UnityEngine;
 
@@ -16,8 +17,8 @@ public class CarlosSceneManager : MonoBehaviour
    
    [Header("--- ENEMY ---")]
    [Space(10)]
-   [SerializeField] private List<EnemyController> enmiesList;
-   [SerializeField] private EnemyController closestEnemy;
+   [SerializeField] private List<FPSController> enmiesList;
+   [SerializeField] private FPSController closestEnemy;
 
    private void Awake()
    {
@@ -32,7 +33,7 @@ public class CarlosSceneManager : MonoBehaviour
       Cursor.lockState = CursorLockMode.Locked;
       Cursor.visible = false;
 
-      foreach (var enemies in FindObjectsOfType<EnemyController>())
+      foreach (var enemies in FindObjectsOfType<FPSController>())
       {
          enemies.enabled = false;
          enemies.GetComponent<EnemyDespossess>().enabled = false;
@@ -80,7 +81,7 @@ public class CarlosSceneManager : MonoBehaviour
       playerController.gameObject.SetActive(false);
       playerController.transform.position = closestEnemy.transform.position;
       
-      closestEnemy.EnemyCamera.gameObject.SetActive(true);
+      closestEnemy.CameraBone.gameObject.SetActive(true);
       closestEnemy.enabled = true;
       closestEnemy.GetComponent<EnemyDespossess>().enabled = true;
    }
@@ -109,7 +110,7 @@ public class CarlosSceneManager : MonoBehaviour
 
    #endregion
    
-   private void GetClosestEnemy(List<EnemyController> enemies)
+   private void GetClosestEnemy(List<FPSController> enemies)
    {
       float closestDistanceSqr = Mathf.Infinity;
       Vector3 currentPos = playerController.transform.position;

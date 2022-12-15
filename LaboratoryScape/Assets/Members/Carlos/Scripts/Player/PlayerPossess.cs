@@ -48,7 +48,7 @@ public class PlayerPossess : MonoBehaviour
     
     private void Possess()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             possessCooldown = 5f;
             imPossessing = true;

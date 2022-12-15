@@ -30,7 +30,7 @@ public class EnemyDespossess : MonoBehaviour
     {
         timeRemaining -= Time.deltaTime;
         
-        if (Input.GetKeyDown(KeyCode.E) || timeRemaining <= 0)
+        if (Input.GetKeyDown(KeyCode.F) || timeRemaining <= 0)
         {
             shouldSuicide = true;
         }
