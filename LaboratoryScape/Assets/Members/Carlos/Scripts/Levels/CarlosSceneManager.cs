@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Demo.Scripts;
 using EPOOutline;
+using Kinemation.FPSFramework.Runtime.Core;
+using Kinemation.FPSFramework.Runtime.Layers;
 using UnityEngine;
 
 public class CarlosSceneManager : MonoBehaviour
@@ -36,7 +38,12 @@ public class CarlosSceneManager : MonoBehaviour
       foreach (var enemies in FindObjectsOfType<FPSController>())
       {
          enemies.enabled = false;
+         enemies.CameraBone.gameObject.SetActive(false);
          enemies.GetComponent<EnemyDespossess>().enabled = false;
+         enemies.GetComponent<BlendingLayer>().enabled = false;
+         enemies.GetComponent<WeaponSystem>().enabled = false;
+         enemies.GetComponent<CoreAnimComponent>().enabled = false;
+         enemies.GetComponent<RecoilAnimation>().enabled = false;
          enmiesList.Add(enemies);
       }
    }
@@ -84,6 +91,10 @@ public class CarlosSceneManager : MonoBehaviour
       closestEnemy.CameraBone.gameObject.SetActive(true);
       closestEnemy.enabled = true;
       closestEnemy.GetComponent<EnemyDespossess>().enabled = true;
+      closestEnemy.GetComponent<BlendingLayer>().enabled = true;
+      closestEnemy.GetComponent<WeaponSystem>().enabled = true;
+      closestEnemy.GetComponent<CoreAnimComponent>().enabled = true;
+      closestEnemy.GetComponent<RecoilAnimation>().enabled = true;
    }
 
    #endregion

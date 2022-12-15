@@ -88,8 +88,23 @@ namespace Demo.Scripts
         {
             _playerInput.x = Mathf.Clamp(_playerInput.x, -90f, 90f);
             _playerInput.y = Mathf.Clamp(_playerInput.y, -90f, 90f);
-            cameraBone.rotation =
-                rootBone.rotation * Quaternion.Euler(_playerInput.y, shouldMove ? 0f : _playerInput.x, 0f);
+            cameraBone.rotation = rootBone.rotation * Quaternion.Euler(_playerInput.y, shouldMove ? 0f : _playerInput.x, 0f);
+        }
+        
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                canBePossess = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                canBePossess = false;
+            }
         }
     }
 }
