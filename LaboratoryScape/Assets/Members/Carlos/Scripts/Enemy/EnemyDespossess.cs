@@ -45,14 +45,17 @@ public class EnemyDespossess : MonoBehaviour
 
     private void Suicide()
     {
+        //Nada más poseamos a un enemigo empezará una cuenta atrás;
         timeRemaining -= Time.deltaTime;
         
+        //Si presionamos "F" o la cuenta atrás llega a 0 el enemigo poseido morirá;
         if (Input.GetKeyDown(KeyCode.F) || timeRemaining <= 0)
         {
             shouldSuicide = true;
         }
     }
 
+    //Método para activar al enemigo cuando sea necesario;
     public void ActivateEnemy()
     {
         blendingLayer.enabled = true;
@@ -61,6 +64,7 @@ public class EnemyDespossess : MonoBehaviour
         recoilAnimation.enabled = true;
     }
 
+    //Método para desactivar al enemigo cuando sea necesario;
     public void DesactivateEnemy()
     {
         blendingLayer.enabled = false;

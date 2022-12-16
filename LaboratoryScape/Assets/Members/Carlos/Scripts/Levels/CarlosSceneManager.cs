@@ -46,6 +46,7 @@ public class CarlosSceneManager : MonoBehaviour
       
       FPSController[] enemiesArray = FindObjectsOfType<FPSController>();
 
+      //Recorremos cada enemigo para desactivarlo al empezar y añadimos a la lista "enmiesList" todos los enemigos de la escena;
       foreach (var enemy in enemiesArray)
       {
          enemyDespossess = enemy.GetComponent<EnemyDespossess>();
@@ -61,6 +62,7 @@ public class CarlosSceneManager : MonoBehaviour
    {
       MarkPossession();
 
+      //Si estamos poseiendo un enemigo...
       if (playerPossess.ImPossessing)
       {
          PossessParameters();
@@ -70,6 +72,9 @@ public class CarlosSceneManager : MonoBehaviour
 
    #region - PLAYER -
 
+   /// <summary>
+   /// Método para buscar al enemigo más cercano siempre y cuando no tengamos cooldown de posesión y esté dentro del rango de posesión del player;
+   /// </summary>
    private void MarkPossession()
    {
       if (!playerPossess.HaveCooldown)
@@ -81,8 +86,12 @@ public class CarlosSceneManager : MonoBehaviour
       }
    }
 
+   /// <summary>
+   /// Método para controlar que sucede cuando posees a un enemigo;
+   /// </summary>
    private void PossessParameters()
    {
+      //Comprobamos si hemos poseido, desactivamos al player y activamos al enemigo poseido;
       if (!alreadyPossessed)
       {
          playerPossess.CanPossess = false;
@@ -99,6 +108,7 @@ public class CarlosSceneManager : MonoBehaviour
          alreadyPossessed = true;
       }
       
+      //Actualizamos la posición del player(desactivado) para cuando desposeamos al enemigo aparecer en la misma posición donde ha sido desposeido;
       playerController.transform.position = closestEnemy.transform.position;
    }
 
@@ -106,8 +116,12 @@ public class CarlosSceneManager : MonoBehaviour
 
    #region - ENEMY -
 
+   /// <summary>
+   /// Método donde se modifican parametros al poseer un enemigo;
+   /// </summary>
    private void Despossess()
    {
+      //Si el enemigo debe suicidarse... lo desposeeremos, lo eliminaremos del la lista de enemigos y morirá;
       if (enemyDespossess.ShouldSuicide)
       {
          DespossessParameters();
@@ -117,6 +131,9 @@ public class CarlosSceneManager : MonoBehaviour
       }
    }
 
+   /// <summary>
+   /// Método donde se modifican parametros al desposeer un enemigo;
+   /// </summary>
    private void DespossessParameters()
    {
       playerController.gameObject.SetActive(true);
@@ -128,6 +145,10 @@ public class CarlosSceneManager : MonoBehaviour
 
    #endregion
    
+   /// <summary>
+   /// Método para calcular que enemigo está más cerca del player;
+   /// </summary>
+   /// <param name="enemies"></param>
    private void GetClosestEnemy(List<FPSController> enemies)
    {
       float closestDistanceSqr = Mathf.Infinity;

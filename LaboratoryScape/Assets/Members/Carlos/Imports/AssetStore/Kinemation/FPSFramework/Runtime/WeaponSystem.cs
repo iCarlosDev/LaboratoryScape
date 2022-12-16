@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Kinemation.FPSFramework.Runtime.Core;
 using Kinemation.FPSFramework.Runtime.Layers;
@@ -138,8 +139,20 @@ namespace Demo.Scripts
 
         private void Fire()
         {
-            GetGun().OnFire();
-            _recoilAnimation.Play();
+            if (GetGun().isShootgun)
+            {
+                if (GetGun().canShoot)
+                {
+                    GetGun().OnFire();
+                    _recoilAnimation.Play();
+                    StartCoroutine(waitToShoot());
+                }
+            }
+            else
+            {
+                GetGun().OnFire();
+                _recoilAnimation.Play();
+            }
         }
 
         private void CancelFire()
@@ -165,6 +178,13 @@ namespace Demo.Scripts
         
             _animator.Play(gun.poseName);
             gun.gameObject.SetActive(true);
+        }
+        
+        private IEnumerator waitToShoot()
+        {
+            GetGun().canShoot = false;
+            yield return new WaitForSeconds(1.5f);
+            GetGun().canShoot = true;
         }
     }
 }

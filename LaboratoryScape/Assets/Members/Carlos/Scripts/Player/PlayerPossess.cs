@@ -46,6 +46,9 @@ public class PlayerPossess : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Método para activar la posesión de un enemigo;
+    /// </summary>
     private void Possess()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -55,6 +58,9 @@ public class PlayerPossess : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Método para activar el cooldown de posesión cuando hemos poseido a un enemigo;
+    /// </summary>
     private void PossessCooldown()
     {
         possessCooldown -= Time.deltaTime;
@@ -65,6 +71,11 @@ public class PlayerPossess : MonoBehaviour
         }
     }
 
+   
+    /// <summary>
+    /// Si un enemigo entra en nuestro rango de posesión podremos poseerle; 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -73,6 +84,10 @@ public class PlayerPossess : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Si un enemigo sale de nuestro rango de posesión dejaremos de poder poseerle; 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Enemy"))
