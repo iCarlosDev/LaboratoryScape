@@ -36,7 +36,7 @@ public class CarlosSceneManager : MonoBehaviour
       instance = this;
       
       playerController = FindObjectOfType<PlayerController>();
-      playerPossess = FindObjectOfType<PlayerPossess>();
+      playerPossess = playerController.GetComponent<PlayerPossess>();
    }
 
    private void Start()
@@ -60,7 +60,13 @@ public class CarlosSceneManager : MonoBehaviour
 
    private void Update()
    {
-      MarkPossession();
+      if (!playerPossess.HaveCooldown)
+      {
+         if (playerPossess.CanPossess)
+         {
+            MarkPossession();
+         }
+      }
 
       //Si estamos poseiendo un enemigo...
       if (playerPossess.ImPossessing)
@@ -77,13 +83,7 @@ public class CarlosSceneManager : MonoBehaviour
    /// </summary>
    private void MarkPossession()
    {
-      if (!playerPossess.HaveCooldown)
-      {
-         if (playerPossess.CanPossess)
-         {
-            GetClosestEnemy(enemiesInRangeList);
-         }
-      }
+      GetClosestEnemy(enemiesInRangeList);
    }
 
    /// <summary>

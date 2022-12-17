@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [Header("--- MOVEMENT ---")]
     [Space(10)]
     [SerializeField] private Transform playerCamera;
+    [SerializeField] private float horizontal;
+    [SerializeField] private float vertical;
     [SerializeField] private float speed;
     [SerializeField] private float turnSmoothTime;
     
@@ -23,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Vector3 velocity;
     [SerializeField] private bool isGrounded;
-    [SerializeField] private float groundDistance;
+    [SerializeField] private float sphereRadius;
     [SerializeField] private float gravity;
     [SerializeField] private float jumpForce;
     
@@ -35,8 +37,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
-        playerCamera = GameObject.Find("MainCamera").GetComponent<Camera>().transform;
-        groundCheck = GameObject.Find("GroundCheck").transform;
+        playerCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().transform;
+        groundCheck = transform.GetChild(2);
     }
 
     private void Update()
@@ -48,8 +50,8 @@ public class PlayerController : MonoBehaviour
     private void Movement()
     {
         //Guardo en estas variables las teclas WASD;
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
         
         //Recogemos los valores WASD en positivo y los guardo como "direction";
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -60,22 +62,22 @@ public class PlayerController : MonoBehaviour
             //Recogemos el ángulo del input entre la dirección "X" y "Z" y la proyección del angulo entre esos 2 valores lo convertimos en grados para saber hacia donde mira nuestro player;
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + playerCamera.eulerAngles.y;
             //Smoothea la posición actual a la posición obtenida en "targetAngle";
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            float angle = Mathf.LerpAngle(transform.eulerAngles.y, targetAngle, turnSmoothTime);
             //rota el personaje en el eje "Y";
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             //guardamos donde rota en "Y" el player por su eje "Z" (dando así que siempre donde mire el player será al frente);
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //Movemos el player hacia el frente;
-            _characterController.Move(moveDir.normalized * speed * Time.deltaTime);
+            _characterController.SimpleMove(moveDir.normalized * speed);
         }
     }
 
     private void Jump()
     {
         //Seteamos el bool con una esfera invisible triggered;
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
+        isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
+        
         //si estamos en el suelo y no estamos cayendo el eje "Y" será "-2";
         if (isGrounded && velocity.y < 0)
         {
