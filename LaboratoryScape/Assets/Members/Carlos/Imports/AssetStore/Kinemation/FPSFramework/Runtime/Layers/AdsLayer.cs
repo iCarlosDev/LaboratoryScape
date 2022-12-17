@@ -21,6 +21,8 @@ namespace Kinemation.FPSFramework.Runtime.Layers
         private LocRot _smoothAimPoint;
         private LocRot _recoilAnim;
 
+        public Transform AimTarget => aimTarget;
+
         public override void OnAnimUpdate()
         {
             ApplyAiming();

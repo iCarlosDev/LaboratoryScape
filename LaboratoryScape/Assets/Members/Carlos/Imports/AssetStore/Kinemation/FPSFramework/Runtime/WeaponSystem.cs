@@ -23,7 +23,7 @@ namespace Demo.Scripts
         private int _bursts;
         private bool _aiming;
         private bool reloading;
-        
+
         [SerializeField] private bool bUseInput = true;
 
         private void Start()
@@ -139,6 +139,7 @@ namespace Demo.Scripts
 
         private void Fire()
         {
+            
             if (GetGun().isShootgun)
             {
                 if (GetGun().canShoot)

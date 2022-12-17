@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Kinemation.FPSFramework.Runtime.Core;
@@ -9,7 +10,7 @@ namespace Demo.Scripts
     {
         [SerializeField] private List<Transform> scopes;
         public Transform leftHandTarget;
-        [SerializeField] private Transform muzzle;
+        public Transform muzzle;
 
         public RecoilAnimData recoilData;
         public GunAimData gunAimData;
@@ -28,8 +29,6 @@ namespace Demo.Scripts
         private void Start()
         {
             _animator = GetComponent<Animator>();
-
-            
         }
 
         public Transform GetScope()
@@ -41,36 +40,8 @@ namespace Demo.Scripts
 
         public void OnFire()
         {
-            //Ray muzzleRay = new Ray(muzzle.position, muzzle.forward);
-            RaycastHit hitedObject = new RaycastHit();
-            //Physics.Raycast(muzzleRay, out hitedObject, 100);
-
-            bool didHit = Physics.Raycast(muzzle.localPosition, muzzle.forward, out hitedObject);
-
-            //Debug.Log(hitedObject.transform.name);
-            
-            Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4f);
+            Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4);
             PlayFireAnim();
-
-            if (didHit)
-            {
-                GameObject od = hitedObject.collider.gameObject;
-
-                foreach (Rigidbody rig in od.GetComponentsInChildren<Rigidbody>())
-                {
-                    rig.AddForce(muzzle.forward, ForceMode.Impulse);
-                }
-                
-                foreach (Rigidbody rig in od.GetComponentsInChildren<Rigidbody>())
-                {
-                    rig.AddForce(muzzle.forward, ForceMode.Impulse);   
-                }
-                
-                foreach (Rigidbody rig in od.GetComponentsInChildren<Rigidbody>())
-                {
-                    rig.AddForce(muzzle.forward, ForceMode.Impulse);   
-                }
-            }
         }
 
         private void PlayFireAnim()

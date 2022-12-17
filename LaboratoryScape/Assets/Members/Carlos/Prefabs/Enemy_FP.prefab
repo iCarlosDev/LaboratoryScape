@@ -43,9 +43,9 @@ GameObject:
   m_Layer: 0
   m_Name: Muzzle
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &501245611
 Transform:
@@ -54,8 +54,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501245610}
-  m_LocalRotation: {x: 0.00000016391272, y: -1, z: -0.00000026822082, w: 0}
-  m_LocalPosition: {x: 0, y: 0.0482, z: -0.4556}
+  m_LocalRotation: {x: 0.0000009536741, y: -1, z: 0.00000059604633, w: -0.0000013560053}
+  m_LocalPosition: {x: -0, y: 0.0479, z: -0.4561}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3475,17 +3475,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopes: []
   leftHandTarget: {fileID: 8623471409345359783}
-  muzzle: {fileID: 501245611}
   recoilData: {fileID: 11400000, guid: 7672a64d6700ec245b92b890f87be12a, type: 2}
   gunAimData:
     target: {fileID: 11400000, guid: 99a11200d902ef34aaa70526e4f10bc3, type: 2}
     pivotPoint: {fileID: 4183735322137739618}
     aimPoint: {fileID: 3461312134608646486}
     pointAimOffset:
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 0}
+      position: {x: -0.03, y: -0.01, z: 0.01}
+      rotation: {x: 0, y: 0, z: 0.38268346, w: 0.9238795}
     aimSpeed: 6
-  handsOffset: {x: 0.03, y: 0, z: 0}
+  handsOffset: {x: 0.03, y: 0, z: -0.06}
   springData:
     loc:
       x:
@@ -4258,16 +4257,16 @@ GameObject:
   - component: {fileID: 8945482519048782610}
   - component: {fileID: 1444347548815829327}
   - component: {fileID: 202792158181437680}
+  - component: {fileID: 3593421588413675498}
+  - component: {fileID: 4742054508523033390}
+  - component: {fileID: 1294857015509208342}
+  - component: {fileID: 9157881145059115385}
+  - component: {fileID: 1343115004530631095}
   - component: {fileID: 2048191200}
   - component: {fileID: 2048191201}
-  - component: {fileID: 9157881145059115385}
-  - component: {fileID: 1294857015509208342}
-  - component: {fileID: 1812890856045543477}
   - component: {fileID: 3459161749551752099}
+  - component: {fileID: 1812890856045543477}
   - component: {fileID: 8802079286049883296}
-  - component: {fileID: 1343115004530631095}
-  - component: {fileID: 4742054508523033390}
-  - component: {fileID: 3593421588413675498}
   m_Layer: 0
   m_Name: Enemy_FP
   m_TagString: Enemy
@@ -4602,6 +4601,131 @@ MonoBehaviour:
     fillPass:
       shader: {fileID: 0}
       serializedProperties: []
+--- !u!114 &3593421588413675498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945482519048782632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c075182a4ce984e828e4497b22d1c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runInEditor: 0
+  deltaInput: {x: 0, y: -0}
+  springData:
+    loc:
+      x:
+        stiffness: 0.6
+        criticalDamping: 0.4
+        speed: 4
+        mass: 1.3
+      y:
+        stiffness: 0.6
+        criticalDamping: 0.4
+        speed: 4
+        mass: 1.2
+      z:
+        stiffness: 0.6
+        criticalDamping: 0.4
+        speed: 5
+        mass: 1
+      scale: {x: 0.4, y: -0.4, z: 0}
+    rot:
+      x:
+        stiffness: 0.6
+        criticalDamping: 0.4
+        speed: 14
+        mass: 1
+      y:
+        stiffness: 0.6
+        criticalDamping: 0.4
+        speed: 12
+        mass: 1
+      z:
+        stiffness: 0.72
+        criticalDamping: 0.4
+        speed: 11
+        mass: 1
+      scale: {x: 35, y: 30, z: 45}
+--- !u!114 &4742054508523033390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945482519048782632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0bd2dd7f438a924f8b51e7ee7008c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runInEditor: 0
+  anim: {fileID: 7400000, guid: a419dadec5f8c974a9a680d5b738af2c, type: 2}
+  character: {fileID: 8945482519048782632}
+  rootBone: {fileID: 683935947}
+  spineRootBone: {fileID: 8346599987651952744}
+  spineBoneRotMS: {x: -0.09277493, y: 0.34116262, z: 0.022107769, w: 0.9351535}
+  layerEnabled: 1
+--- !u!114 &1294857015509208342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945482519048782632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30f4967c30fdf4241acf465b1660f017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runInEditor: 1
+  leftHandTarget: {fileID: 8623471409345359783}
+--- !u!114 &9157881145059115385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945482519048782632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d0c9cae953fca4ab9737e1caf87cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swayLayer: {fileID: 3593421588413675498}
+  lookAnimLayer: {fileID: 2048191201}
+  rootBone: {fileID: 683935947}
+  cameraBone: {fileID: 8945482518348104313}
+  sensitivity: 1
+  shouldMove: 1
+  controller: {fileID: 8945482519048782610}
+  speed: 1
+  animator: {fileID: 202792158181437701}
+  canBePossess: 0
+  outlinable: {fileID: 0}
+--- !u!114 &1343115004530631095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945482519048782632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1bc8596ee35af4bbff92b20df4b6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 371790988}
+  coreAnimComponent: {fileID: 2048191200}
+  swayLayer: {fileID: 3593421588413675498}
+  gunAnimLayer: {fileID: 1812890856045543477}
+  recoilAnimLayer: {fileID: 3459161749551752099}
+  leftHandLayer: {fileID: 1294857015509208342}
+  bUseInput: 1
 --- !u!114 &2048191200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4659,7 +4783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83556928d12f64b4584d66cec79d3b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runInEditor: 0
+  runInEditor: 1
   layerAlpha: 1
   layerInterpSpeed: 0
   handsLayerAlpha: 1
@@ -4668,28 +4792,30 @@ MonoBehaviour:
   lookUpOffset:
     bones:
     - bone: {fileID: 8628313734370833403}
-      maxAngle: {x: 25, y: 25}
+      maxAngle: {x: 7, y: 25}
     - bone: {fileID: 8346599987651952744}
-      maxAngle: {x: 16, y: 16}
+      maxAngle: {x: 16.6, y: 13}
     - bone: {fileID: 3227013871379928192}
-      maxAngle: {x: 16, y: 16}
+      maxAngle: {x: 16.6, y: 13}
     - bone: {fileID: 4139912455299228907}
-      maxAngle: {x: 16, y: 16}
+      maxAngle: {x: 16.6, y: 13}
     - bone: {fileID: 7353097974676187286}
-      maxAngle: {x: 16, y: 16}
+      maxAngle: {x: 16.6, y: 13}
+    - bone: {fileID: 7890638169145033196}
+      maxAngle: {x: 16.6, y: 13}
     - bone: {fileID: 7798738017884727228}
       maxAngle: {x: 25, y: 25}
     indexOffset: 2
   lookRightOffset:
     bones:
     - bone: {fileID: 8628313734370833403}
-      maxAngle: {x: 25, y: 25}
+      maxAngle: {x: 12, y: 12}
     - bone: {fileID: 8346599987651952744}
-      maxAngle: {x: 16, y: 16}
+      maxAngle: {x: 26, y: 26}
     - bone: {fileID: 3227013871379928192}
-      maxAngle: {x: 16, y: 16}
+      maxAngle: {x: 26, y: 26}
     - bone: {fileID: 4139912455299228907}
-      maxAngle: {x: 16, y: 16}
+      maxAngle: {x: 26, y: 26}
     indexOffset: 0
   enableAutoDistribution: 0
   enableManualSpineControl: 0
@@ -4708,8 +4834,10 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
+    - {x: 0, y: 0, z: 0, w: 1}
   cachedLocal:
     lookUp:
+    - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
@@ -4724,7 +4852,8 @@ MonoBehaviour:
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
     - {x: 0, y: 0, z: 0, w: 1}
---- !u!114 &9157881145059115385
+    - {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &3459161749551752099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4733,34 +4862,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8945482519048782632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d0c9cae953fca4ab9737e1caf87cd3, type: 3}
+  m_Script: {fileID: 11500000, guid: 582887a6e4af1a84ca5306edb9b6c478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swayLayer: {fileID: 3593421588413675498}
-  lookAnimLayer: {fileID: 2048191201}
-  rootBone: {fileID: 683935947}
-  cameraBone: {fileID: 8945482518348104313}
-  sensitivity: 1
-  shouldMove: 1
-  controller: {fileID: 8945482519048782610}
-  speed: 1
-  animator: {fileID: 202792158181437701}
-  canBePossess: 0
-  outlinable: {fileID: 0}
---- !u!114 &1294857015509208342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945482519048782632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f4967c30fdf4241acf465b1660f017, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runInEditor: 1
-  leftHandTarget: {fileID: 8623471409345359783}
+  runInEditor: 0
 --- !u!114 &1812890856045543477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4788,19 +4893,6 @@ MonoBehaviour:
   aimTarget: {fileID: 8945482518348104313}
   aiming: 0
   pointAiming: 0
---- !u!114 &3459161749551752099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945482519048782632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582887a6e4af1a84ca5306edb9b6c478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runInEditor: 0
 --- !u!114 &8802079286049883296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4814,95 +4906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAiming: 0
-  fireMode: 2
---- !u!114 &1343115004530631095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945482519048782632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1bc8596ee35af4bbff92b20df4b6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 371790988}
-  coreAnimComponent: {fileID: 2048191200}
-  swayLayer: {fileID: 3593421588413675498}
-  gunAnimLayer: {fileID: 1812890856045543477}
-  recoilAnimLayer: {fileID: 3459161749551752099}
-  leftHandLayer: {fileID: 1294857015509208342}
-  bUseInput: 1
---- !u!114 &4742054508523033390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945482519048782632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0bd2dd7f438a924f8b51e7ee7008c82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runInEditor: 0
-  anim: {fileID: -203655887218126122, guid: 74038889aceba994a937994939115419, type: 3}
-  character: {fileID: 8945482519048782632}
-  rootBone: {fileID: 683935947}
-  spineRootBone: {fileID: 8346599987651952744}
-  spineBoneRotMS: {x: -0.09277493, y: 0.34116262, z: 0.022107769, w: 0.9351535}
-  layerEnabled: 1
---- !u!114 &3593421588413675498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945482519048782632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c075182a4ce984e828e4497b22d1c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runInEditor: 0
-  deltaInput: {x: 0, y: -0}
-  springData:
-    loc:
-      x:
-        stiffness: 0.6
-        criticalDamping: 0.4
-        speed: 4
-        mass: 1.3
-      y:
-        stiffness: 0.6
-        criticalDamping: 0.4
-        speed: 4
-        mass: 1.2
-      z:
-        stiffness: 0.6
-        criticalDamping: 0.4
-        speed: 5
-        mass: 1
-      scale: {x: 0.4, y: -0.4, z: 0}
-    rot:
-      x:
-        stiffness: 0.6
-        criticalDamping: 0.4
-        speed: 14
-        mass: 1
-      y:
-        stiffness: 0.6
-        criticalDamping: 0.4
-        speed: 12
-        mass: 1
-      z:
-        stiffness: 0.72
-        criticalDamping: 0.4
-        speed: 11
-        mass: 1
-      scale: {x: 35, y: 30, z: 45}
+  fireMode: 0
 --- !u!1 &9067793582553651803
 GameObject:
   m_ObjectHideFlags: 0
