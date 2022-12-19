@@ -18,6 +18,9 @@ public class EnemyDespossess : MonoBehaviour
     [SerializeField] private WeaponSystem weaponSystem;
     [SerializeField] private CoreAnimComponent coreAnimComponent;
     [SerializeField] private RecoilAnimation recoilAnimation;
+    [SerializeField] private EnemyComponentsGetter _enemyComponentsGetter;
+    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private Animator _animator;
     
     
     //GETTERS & SETTERS//
@@ -31,6 +34,9 @@ public class EnemyDespossess : MonoBehaviour
         weaponSystem = GetComponent<WeaponSystem>();
         coreAnimComponent = GetComponent<CoreAnimComponent>();
         recoilAnimation = GetComponent<RecoilAnimation>();
+        _enemyComponentsGetter = GetComponent<EnemyComponentsGetter>();
+        _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -58,19 +64,44 @@ public class EnemyDespossess : MonoBehaviour
     //Método para activar al enemigo cuando sea necesario;
     public void ActivateEnemy()
     {
+        _characterController.enabled = true;
         blendingLayer.enabled = true;
         weaponSystem.enabled = true;
         coreAnimComponent.enabled = true;
         recoilAnimation.enabled = true;
+
+        foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
+        {
+            rigidbodies.isKinematic = true;
+        }
     }
 
     //Método para desactivar al enemigo cuando sea necesario;
     public void DesactivateEnemy()
     {
+        _characterController.enabled = false;
         blendingLayer.enabled = false;
         weaponSystem.enabled = false;
         coreAnimComponent.enabled = false;
         recoilAnimation.enabled = false;
+
+        enabled = false;
+    }
+
+    public void EnemyDie()
+    {
+        _characterController.enabled = false;
+        blendingLayer.enabled = false;
+        weaponSystem.enabled = false;
+        coreAnimComponent.enabled = false;
+        recoilAnimation.enabled = false;
+
+        foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
+        {
+            rigidbodies.isKinematic = false;
+        }
+
+        _animator.enabled = false;
         enabled = false;
     }
 }

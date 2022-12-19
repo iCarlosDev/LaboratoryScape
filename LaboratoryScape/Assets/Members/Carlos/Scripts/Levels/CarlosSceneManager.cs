@@ -127,7 +127,9 @@ public class CarlosSceneManager : MonoBehaviour
          DespossessParameters();
          enmiesList.Remove(closestEnemy);
          enemiesInRangeList.Remove(closestEnemy);
-         Destroy(closestEnemy.gameObject);
+         enemyDespossess.EnemyDie();
+         closestEnemy.enabled = false;
+         closestEnemy = null;
       }
    }
 
@@ -136,6 +138,9 @@ public class CarlosSceneManager : MonoBehaviour
    /// </summary>
    private void DespossessParameters()
    {
+      closestEnemy.CameraBone.gameObject.SetActive(false);
+      closestEnemy.Outlinable.enabled = false;
+      
       playerController.gameObject.SetActive(true);
       playerController.PlayerCamera.gameObject.SetActive(true);
       playerPossess.ImPossessing = false;

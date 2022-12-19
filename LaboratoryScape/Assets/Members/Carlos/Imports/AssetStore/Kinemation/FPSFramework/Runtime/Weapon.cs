@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Kinemation.FPSFramework.Runtime.Core;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Demo.Scripts
 {
@@ -11,6 +12,8 @@ namespace Demo.Scripts
         [SerializeField] private List<Transform> scopes;
         public Transform leftHandTarget;
         public Transform muzzle;
+        public LayerMask enemyColider;
+        public float impactForce;
 
         public RecoilAnimData recoilData;
         public GunAimData gunAimData;
@@ -40,6 +43,15 @@ namespace Demo.Scripts
 
         public void OnFire()
         {
+            RaycastHit hit = new RaycastHit();
+            Ray ray = new Ray(muzzle.position, muzzle.forward);
+
+            if (Physics.Raycast(ray, out hit, 100f, enemyColider, QueryTriggerInteraction.Ignore))
+            {
+                hit.collider.GetComponentInParent<EnemyDespossess>().EnemyDie();
+                hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
+            }
+
             Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4);
             PlayFireAnim();
         }
