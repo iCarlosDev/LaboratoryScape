@@ -28,6 +28,7 @@ public class CarlosSceneManager : MonoBehaviour
    //GETTERS & SETTERS//
    
    public List<FPSController> EnemiesInRangeList => enemiesInRangeList;
+   public List<FPSController> EnmiesList => enmiesList;
 
    ///////////////////////////////////////////
 
@@ -109,7 +110,7 @@ public class CarlosSceneManager : MonoBehaviour
       }
       
       //Actualizamos la posición del player(desactivado) para cuando desposeamos al enemigo aparecer en la misma posición donde ha sido desposeido;
-      playerController.transform.position = closestEnemy.transform.position;
+      playerController.transform.position = new Vector3(closestEnemy.transform.position.x, closestEnemy.transform.position.y + 1f, closestEnemy.transform.position.z);
    }
 
    #endregion

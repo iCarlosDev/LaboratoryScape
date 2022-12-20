@@ -20,6 +20,7 @@ public class EnemyDespossess : MonoBehaviour
     [SerializeField] private RecoilAnimation recoilAnimation;
     [SerializeField] private EnemyComponentsGetter _enemyComponentsGetter;
     [SerializeField] private CharacterController _characterController;
+    [SerializeField] private FPSController _fpsController;
     [SerializeField] private Animator _animator;
     
     
@@ -36,6 +37,7 @@ public class EnemyDespossess : MonoBehaviour
         recoilAnimation = GetComponent<RecoilAnimation>();
         _enemyComponentsGetter = GetComponent<EnemyComponentsGetter>();
         _characterController = GetComponent<CharacterController>();
+        _fpsController = GetComponent<FPSController>();
         _animator = GetComponent<Animator>();
     }
 
@@ -103,5 +105,13 @@ public class EnemyDespossess : MonoBehaviour
 
         _animator.enabled = false;
         enabled = false;
+
+        GetComponent<CapsuleCollider>().enabled = false;
+        
+        _fpsController.enabled = false;
+        CarlosSceneManager.instance.EnmiesList.Remove(_fpsController);
+        CarlosSceneManager.instance.EnemiesInRangeList.Remove(_fpsController);
+
+        weaponSystem.Weapons[weaponSystem.Index].transform.parent = null;
     }
 }

@@ -25,6 +25,10 @@ namespace Demo.Scripts
         private bool reloading;
 
         [SerializeField] private bool bUseInput = true;
+        
+        //////////////////////////////////////////////////
+        public List<Weapon> Weapons => weapons;
+        public int Index => _index;
 
         private void Start()
         {

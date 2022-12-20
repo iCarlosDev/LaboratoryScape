@@ -1328,6 +1328,7 @@ GameObject:
   - component: {fileID: 6036800976475626451}
   - component: {fileID: 1387576416406041180}
   - component: {fileID: 6010826139790769195}
+  - component: {fileID: 1316973164}
   m_Layer: 0
   m_Name: Mira
   m_TagString: Untagged
@@ -1412,6 +1413,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &1316973164
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005008630410960255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7108777247384600004, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &2135022344564023137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1764,7 @@ GameObject:
   - component: {fileID: 9210779984300835357}
   - component: {fileID: 6415736459254556096}
   - component: {fileID: 6415736459254556097}
+  - component: {fileID: 267991809}
   m_Layer: 0
   m_Name: Boca del arma_2
   m_TagString: Untagged
@@ -1833,6 +1849,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &267991809
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767725605920504510}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 555459097386611728, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &3771650501340345369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1941,6 +1971,7 @@ GameObject:
   - component: {fileID: 7065108972371796839}
   - component: {fileID: 4874517931708756281}
   - component: {fileID: 4666628394618699503}
+  - component: {fileID: 4767325}
   m_Layer: 0
   m_Name: Culata
   m_TagString: Untagged
@@ -2025,6 +2056,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &4767325
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3839286865795574685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -136202314957388769, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &4046155132582354730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2355,6 +2400,7 @@ MonoBehaviour:
   recoilAnimation: {fileID: 4923127792122014766}
   _enemyComponentsGetter: {fileID: 4923127792122014760}
   _characterController: {fileID: 4226272234587824070}
+  _fpsController: {fileID: 0}
   _animator: {fileID: 4923127792122014757}
 --- !u!114 &4923127792122014761
 MonoBehaviour:
@@ -3821,8 +3867,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.41645306, y: 0.27300715, z: 0.19}
-  m_Center: {x: -0.0009023398, y: 0.13650367, z: 0.02}
+  m_Size: {x: 0.41645306, y: 0.34, z: 0.19}
+  m_Center: {x: -0.0009023398, y: 0.17, z: 0.02}
 --- !u!54 &5121216983959761256
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3929,6 +3975,7 @@ GameObject:
   - component: {fileID: 4605061980927901825}
   - component: {fileID: 6588537475818223888}
   - component: {fileID: 5594313767277766428}
+  - component: {fileID: 1172358822}
   m_Layer: 0
   m_Name: Recamara
   m_TagString: Untagged
@@ -4013,6 +4060,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &1172358822
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5647705454659526850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7829266506507945299, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &5740909225244136959
 GameObject:
   m_ObjectHideFlags: 0
@@ -4278,6 +4339,7 @@ GameObject:
   - component: {fileID: 2764926643892032951}
   - component: {fileID: 131599905861490365}
   - component: {fileID: 6398027653912142172}
+  - component: {fileID: 1198367909}
   m_Layer: 0
   m_Name: Boca del arma
   m_TagString: Untagged
@@ -4362,6 +4424,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &1198367909
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6398027653912142175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8427249110307686363, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &6424582844549732824
 GameObject:
   m_ObjectHideFlags: 0
@@ -4438,6 +4514,7 @@ GameObject:
   - component: {fileID: 7283656762472464766}
   - component: {fileID: 280164150746802759}
   - component: {fileID: 5370536946677935880}
+  - component: {fileID: 1537901212}
   m_Layer: 0
   m_Name: Guardamanos
   m_TagString: Untagged
@@ -4522,6 +4599,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &1537901212
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692882409856142194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5093943837610437446, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &6737014783371369992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4646,6 +4737,7 @@ GameObject:
   - component: {fileID: 501920251926134661}
   - component: {fileID: 1545834668842097960}
   - component: {fileID: 6943367853556653702}
+  - component: {fileID: 1984414565}
   m_Layer: 0
   m_Name: Guarda Montes
   m_TagString: Untagged
@@ -4730,6 +4822,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &1984414565
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943367853556653753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1594836041956590290, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &6944244153746530080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4774,6 +4880,7 @@ GameObject:
   - component: {fileID: 8924151564951044426}
   - component: {fileID: 4963026522560700026}
   - component: {fileID: 4963026522560700027}
+  - component: {fileID: 894551756}
   m_Layer: 0
   m_Name: Gatillo
   m_TagString: Untagged
@@ -4858,6 +4965,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!64 &894551756
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7255193639646099894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -168131252032610860, guid: 15d1c26309a4b274bbd3b861cb03ab19, type: 3}
 --- !u!1 &7592321260479953819
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,6 +5379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9197922284602559670}
   - component: {fileID: 8425748065445664269}
+  - component: {fileID: 961474247}
   m_Layer: 0
   m_Name: Escopeta
   m_TagString: Untagged
@@ -5303,7 +5425,7 @@ MonoBehaviour:
   enemyColider:
     serializedVersion: 2
     m_Bits: 128
-  ignoredColliders: []
+  impactForce: 10000
   recoilData: {fileID: 11400000, guid: 7672a64d6700ec245b92b890f87be12a, type: 2}
   gunAimData:
     target: {fileID: 11400000, guid: 99a11200d902ef34aaa70526e4f10bc3, type: 2}
@@ -5355,6 +5477,22 @@ MonoBehaviour:
   poseName: 
   isShootgun: 1
   canShoot: 1
+--- !u!54 &961474247
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8425748065445664268}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1 &8467447006911806190
 GameObject:
   m_ObjectHideFlags: 0
