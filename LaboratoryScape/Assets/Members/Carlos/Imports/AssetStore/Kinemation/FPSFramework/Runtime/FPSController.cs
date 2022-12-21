@@ -1,5 +1,4 @@
 using System;
-using EPOOutline;
 using Kinemation.FPSFramework.Runtime.Core;
 using Kinemation.FPSFramework.Runtime.Layers;
 using UnityEngine;
@@ -27,19 +26,19 @@ namespace Demo.Scripts
         [Space(10)] 
         [SerializeField] private bool canBePossess;
 
-        [Header("--- OTHER ---")] 
-        [SerializeField] private Outlinable outlinable;
+        //[Header("--- OTHER ---")] 
+        //[SerializeField] private Outlinable outlinable;
         
         //////////////////////////////////
         public Transform CameraBone => cameraBone;
 
         public bool CanBePossess => canBePossess;
 
-        public Outlinable Outlinable => outlinable;
+        //public Outlinable Outlinable => outlinable;
 
         private void Awake()
         {
-            outlinable = GetComponent<Outlinable>();
+            //outlinable = GetComponent<Outlinable>();
         }
 
         private void Start()
@@ -125,7 +124,7 @@ namespace Demo.Scripts
             {
                 canBePossess = false;
                 CarlosSceneManager.instance.EnemiesInRangeList.Remove(this);
-                outlinable.enabled = false;
+                //outlinable.enabled = false;
             }
         }
     }

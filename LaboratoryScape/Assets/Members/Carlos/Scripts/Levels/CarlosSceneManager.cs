@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Demo.Scripts;
-using EPOOutline;
 using Kinemation.FPSFramework.Runtime.Core;
 using Kinemation.FPSFramework.Runtime.Layers;
 using UnityEngine;
@@ -140,7 +139,7 @@ public class CarlosSceneManager : MonoBehaviour
    private void DespossessParameters()
    {
       closestEnemy.CameraBone.gameObject.SetActive(false);
-      closestEnemy.Outlinable.enabled = false;
+      //closestEnemy.Outlinable.enabled = false;
       
       playerController.gameObject.SetActive(true);
       playerController.PlayerCamera.gameObject.SetActive(true);
@@ -174,9 +173,9 @@ public class CarlosSceneManager : MonoBehaviour
             }
          }
          
-         potentialTarget.Outlinable.enabled = false;
+         //potentialTarget.Outlinable.enabled = false;
       }
       
-      closestEnemy.Outlinable.enabled = true;
+      //closestEnemy.Outlinable.enabled = true;
    }
 }
