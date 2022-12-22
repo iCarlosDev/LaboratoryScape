@@ -63,7 +63,9 @@ public class EnemyDespossess : MonoBehaviour
         }
     }
 
-    //Método para activar al enemigo cuando sea necesario;
+    /// <summary>
+    /// Método para activar al enemigo cuando sea necesario;
+    /// </summary>
     public void ActivateEnemy()
     {
         _characterController.enabled = true;
@@ -71,6 +73,9 @@ public class EnemyDespossess : MonoBehaviour
         weaponSystem.enabled = true;
         coreAnimComponent.enabled = true;
         recoilAnimation.enabled = true;
+        _animator.SetLayerWeight(0, 0);
+        _animator.SetLayerWeight(1, 1);
+        _animator.SetLayerWeight(2, 1);
 
         foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
         {
@@ -78,7 +83,9 @@ public class EnemyDespossess : MonoBehaviour
         }
     }
 
-    //Método para desactivar al enemigo cuando sea necesario;
+    /// <summary>
+    /// Método para desactivar al enemigo cuando sea necesario;
+    /// </summary>
     public void DesactivateEnemy()
     {
         _characterController.enabled = false;
@@ -86,10 +93,16 @@ public class EnemyDespossess : MonoBehaviour
         weaponSystem.enabled = false;
         coreAnimComponent.enabled = false;
         recoilAnimation.enabled = false;
+        _animator.SetLayerWeight(0, 1);
+        _animator.SetLayerWeight(1, 0);
+        _animator.SetLayerWeight(2, 0);
 
         enabled = false;
     }
 
+    /// <summary>
+    /// Método para desactivar los componentes necesarios del enemigo que muere (para que muera de la forma que se quiere);
+    /// </summary>
     public void EnemyDie()
     {
         _characterController.enabled = false;
@@ -97,6 +110,9 @@ public class EnemyDespossess : MonoBehaviour
         weaponSystem.enabled = false;
         coreAnimComponent.enabled = false;
         recoilAnimation.enabled = false;
+        _animator.SetLayerWeight(0, 1);
+        _animator.SetLayerWeight(1, 0);
+        _animator.SetLayerWeight(2, 0);
 
         foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
         {
