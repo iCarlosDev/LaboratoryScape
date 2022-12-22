@@ -48,8 +48,11 @@ namespace Demo.Scripts
 
             if (Physics.Raycast(ray, out hit, 100f, enemyColider, QueryTriggerInteraction.Ignore))
             {
-                hit.collider.GetComponentInParent<EnemyDespossess>().EnemyDie();
-                hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
+                if (hit.collider.CompareTag("EnemyColliders"))
+                {
+                    hit.collider.GetComponentInParent<EnemyDespossess>().EnemyDie();
+                    hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
+                }
             }
 
             Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4);

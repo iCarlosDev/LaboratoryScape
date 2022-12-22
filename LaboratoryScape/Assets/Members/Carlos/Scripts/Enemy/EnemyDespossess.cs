@@ -21,6 +21,7 @@ public class EnemyDespossess : MonoBehaviour
     [SerializeField] private EnemyComponentsGetter _enemyComponentsGetter;
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private FPSController _fpsController;
+    [SerializeField] private EnemyIAMovement _enemyIaMovement;
     [SerializeField] private Animator _animator;
     
     
@@ -38,6 +39,7 @@ public class EnemyDespossess : MonoBehaviour
         _enemyComponentsGetter = GetComponent<EnemyComponentsGetter>();
         _characterController = GetComponent<CharacterController>();
         _fpsController = GetComponent<FPSController>();
+        _enemyIaMovement = GetComponent<EnemyIAMovement>();
         _animator = GetComponent<Animator>();
     }
 
@@ -73,6 +75,8 @@ public class EnemyDespossess : MonoBehaviour
         weaponSystem.enabled = true;
         coreAnimComponent.enabled = true;
         recoilAnimation.enabled = true;
+        _enemyIaMovement.enabled = false;
+        _enemyIaMovement.NavMeshAgent.enabled = false;
         _animator.SetLayerWeight(0, 0);
         _animator.SetLayerWeight(1, 1);
         _animator.SetLayerWeight(2, 1);
@@ -110,6 +114,8 @@ public class EnemyDespossess : MonoBehaviour
         weaponSystem.enabled = false;
         coreAnimComponent.enabled = false;
         recoilAnimation.enabled = false;
+        _enemyIaMovement.enabled = false;
+        _enemyIaMovement.NavMeshAgent.enabled = false;
         _animator.SetLayerWeight(0, 1);
         _animator.SetLayerWeight(1, 0);
         _animator.SetLayerWeight(2, 0);

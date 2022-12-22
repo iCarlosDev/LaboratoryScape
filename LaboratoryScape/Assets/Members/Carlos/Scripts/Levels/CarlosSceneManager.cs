@@ -56,18 +56,12 @@ public class CarlosSceneManager : MonoBehaviour
          
          enmiesList.Add(enemy);
       }
+
+      StartCoroutine(GetClosestEnemyRoutine());
    }
 
    private void Update()
    {
-      if (!playerPossess.HaveCooldown)
-      {
-         if (playerPossess.CanPossess)
-         {
-            MarkPossession();
-         }
-      }
-
       //Si estamos poseiendo un enemigo...
       if (playerPossess.ImPossessing)
       {
@@ -77,14 +71,6 @@ public class CarlosSceneManager : MonoBehaviour
    }
 
    #region - PLAYER -
-
-   /// <summary>
-   /// Método para buscar al enemigo más cercano siempre y cuando no tengamos cooldown de posesión y esté dentro del rango de posesión del player;
-   /// </summary>
-   private void MarkPossession()
-   {
-      GetClosestEnemy(enemiesInRangeList);
-   }
 
    /// <summary>
    /// Método para controlar que sucede cuando posees a un enemigo;
@@ -149,6 +135,24 @@ public class CarlosSceneManager : MonoBehaviour
    }
 
    #endregion
+
+   /// <summary>
+   /// Método para buscar al enemigo más cercano siempre y cuando no tengamos cooldown de posesión y esté dentro del rango de posesión del player;
+   /// </summary>
+   private IEnumerator GetClosestEnemyRoutine()
+   {
+      WaitForSeconds wait = new WaitForSeconds(0.1f);
+
+      while (true)
+      {
+         yield return wait;
+
+         if (!playerPossess.HaveCooldown && playerPossess.CanPossess)
+         {
+            GetClosestEnemy(EnemiesInRangeList);  
+         }
+      }
+   }
    
    /// <summary>
    /// Método para calcular que enemigo está más cerca del player;
