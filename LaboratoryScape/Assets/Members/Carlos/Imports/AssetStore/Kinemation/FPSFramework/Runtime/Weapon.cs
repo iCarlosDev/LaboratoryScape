@@ -1,33 +1,27 @@
-using System;
-using System.Collections;
+// Designed by Kinemation, 2022
+
 using System.Collections.Generic;
 using Kinemation.FPSFramework.Runtime.Core;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-namespace Demo.Scripts
+namespace Demo.Scripts.Runtime
 {
     public class Weapon : MonoBehaviour
     {
         [SerializeField] private List<Transform> scopes;
-        public Transform leftHandTarget;
-        public Transform muzzle;
-        public LayerMask enemyColider;
-        public float impactForce;
-
-        public RecoilAnimData recoilData;
-        public GunAimData gunAimData;
-        public Vector3 handsOffset;
-        public LocRotSpringData springData;
-
+        [SerializeField] public WeaponAnimData gunData;
+        [SerializeField] public RecoilAnimData recoilData;
+        
         public FireMode fireMode;
         public float fireRate;
         public int burstAmount;
-        public string poseName;
-        public bool isShootgun;
-        public bool canShoot;
+
         private Animator _animator;
         private int _scopeIndex;
+        
+        public Transform muzzle;
+        public LayerMask enemyColider;
+        public float impactForce;
 
         private void Start()
         {
@@ -40,7 +34,7 @@ namespace Demo.Scripts
             _scopeIndex = _scopeIndex > scopes.Count - 1 ? 0 : _scopeIndex;
             return scopes[_scopeIndex];
         }
-
+        
         public void OnFire()
         {
             RaycastHit hit = new RaycastHit();
@@ -65,7 +59,6 @@ namespace Demo.Scripts
             {
                 return;
             }
-
             _animator.Play("Fire", 0, 0f);
         }
     }

@@ -7,64 +7,66 @@ namespace Kinemation.FPSFramework.Runtime.Layers
 {
     public class AdsLayer : AnimLayer
     {
-        [SerializeField] private Vector3 handsOffset;
         [Header("SightsAligner")]
         [Range(0f, 1f)] public float aimLayerAlphaLoc;
         [Range(0f, 1f)] public float aimLayerAlphaRot;
-        public GunAimData aimData;
         [SerializeField] private Transform aimTarget;
-        public bool aiming;
-        public bool pointAiming;
-        
+
         private float _aimAlphaLayer = 0f;
         private float _pointAimAlphaLayer = 0f;
         private LocRot _smoothAimPoint;
         private LocRot _recoilAnim;
 
-        public Transform AimTarget => aimTarget;
-
         public override void OnAnimUpdate()
         {
+            var dynamicMaster = GetMasterIK();
+            
+            Vector3 baseLoc = dynamicMaster.position;
+            Quaternion baseRot = dynamicMaster.rotation;
+            
             ApplyAiming();
             ApplyPointAiming();
-        }
+            
+            Vector3 postLoc = dynamicMaster.position;
+            Quaternion postRot = dynamicMaster.rotation;
 
-        public void InitLayer(GunAimData gunAimData)
-        {
-            aimData = gunAimData;
-        }
-
-        public void SetHandsOffset(Vector3 offset)
-        {
-            handsOffset = offset;
+            dynamicMaster.position = Vector3.Lerp(baseLoc, postLoc, layerAlpha);
+            dynamicMaster.rotation = Quaternion.Slerp(baseRot, postRot, layerAlpha);
         }
 
         public void CalculateAimData()
         {
+            var aimData = GetGunData().gunAimData;
+            
             var stateName = aimData.target.stateName.Length > 0
                 ? aimData.target.stateName
                 : aimData.target.staticPose.name;
 
-            if (rigData.animator != null)
+            if (GetAnimator() != null)
             {
-                rigData.animator.Play(stateName);
-                rigData.animator.Update(0f);
+                GetAnimator().Play(stateName);
+                GetAnimator().Update(0f);
             }
             
             // Cache the local data, so we can apply it without issues
             aimData.target.aimLoc = aimData.pivotPoint.InverseTransformPoint(aimTarget.position);
-            aimData.target.aimRot = Quaternion.Inverse(aimData.pivotPoint.rotation) * rigData.rootBone.rotation;
+            aimData.target.aimRot = Quaternion.Inverse(aimData.pivotPoint.rotation) * GetRootBone().rotation;
         }
 
         private void ApplyAiming()
         {
+            var aimData = GetGunData().gunAimData;
+            
+            bool bApplyAiming = GetActionState() == FPSActionState.Aiming &&
+                                GetActionState() != FPSActionState.PointAiming;
+            
             //Apply Aiming
-            var masterTransform = rigData.masterDynamic.obj.transform;
-            _aimAlphaLayer = CoreToolkitLib.GlerpLayer(_aimAlphaLayer, aiming && !pointAiming ? 1f : 0f, 
+            var masterTransform = GetMasterIK();
+            _aimAlphaLayer = CoreToolkitLib.GlerpLayer(_aimAlphaLayer, bApplyAiming ? 1f : 0f, 
                 aimData.aimSpeed);
-
-            CoreToolkitLib.MoveInBoneSpace(rigData.rootBone, rigData.masterDynamic.obj.transform,
-                handsOffset * (1f - _aimAlphaLayer));
+            
+            CoreToolkitLib.MoveInBoneSpace(GetRootBone(), GetMasterIK(),
+                GetGunData().handsOffset * (1f - _aimAlphaLayer));
 
             Vector3 scopeAimLoc = Vector3.zero;
             Quaternion scopeAimRot = Quaternion.identity;
@@ -112,16 +114,19 @@ namespace Kinemation.FPSFramework.Runtime.Layers
 
         private void ApplyPointAiming()
         {
-            _pointAimAlphaLayer = CoreToolkitLib.GlerpLayer(_pointAimAlphaLayer, pointAiming && aiming ? 1f : 0f, 
+            var aimData = GetGunData().gunAimData;
+            bool bApplyAiming = GetActionState() == FPSActionState.PointAiming;
+            
+            _pointAimAlphaLayer = CoreToolkitLib.GlerpLayer(_pointAimAlphaLayer, bApplyAiming ? 1f : 0f, 
                 aimData.aimSpeed);
             
-            CoreToolkitLib.MoveInBoneSpace(rigData.rootBone, rigData.masterDynamic.obj.transform,
+            CoreToolkitLib.MoveInBoneSpace(GetRootBone(), GetMasterIK(),
                 aimData.pointAimOffset.position * _pointAimAlphaLayer);
 
             var pointAimRot = Quaternion.Slerp(Quaternion.identity, aimData.pointAimOffset.rotation, 
                 _pointAimAlphaLayer);
             
-            CoreToolkitLib.RotateInBoneSpace(rigData.rootBone.rotation, rigData.masterDynamic.obj.transform,
+            CoreToolkitLib.RotateInBoneSpace(GetRootBone().rotation, GetMasterIK(),
                 pointAimRot);
         }
 
@@ -129,10 +134,9 @@ namespace Kinemation.FPSFramework.Runtime.Layers
         {
             Vector3 offset = -loc;
             
-            rigData.masterDynamic.obj.transform.position = aimTarget.position;
-            rigData.masterDynamic.obj.transform.rotation = rigData.rootBone.rotation * rot;
-            CoreToolkitLib.MoveInBoneSpace(rigData.masterDynamic.obj.transform,
-                rigData.masterDynamic.obj.transform, -offset);
+            GetMasterIK().position = aimTarget.position;
+            GetMasterIK().rotation = GetRootBone().rotation * rot;
+            CoreToolkitLib.MoveInBoneSpace(GetMasterIK(),GetMasterIK(), -offset);
         }
     }
 }

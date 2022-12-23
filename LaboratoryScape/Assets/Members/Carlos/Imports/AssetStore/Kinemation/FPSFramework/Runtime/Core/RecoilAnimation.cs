@@ -7,63 +7,6 @@ using Random = UnityEngine.Random;
 
 namespace Kinemation.FPSFramework.Runtime.Core
 {
-    [Serializable]
-    public enum FireMode
-    {
-        Semi,
-        Burst,
-        Auto
-    }
-
-    [Serializable]
-    public struct VectorCurve
-    {
-        public AnimationCurve x;
-        public AnimationCurve y;
-        public AnimationCurve z;
-
-        public float GetLastTime()
-        {
-            float maxTime = -1f;
-
-            float curveTime = RecoilCurves.GetMaxTime(x);
-            maxTime = curveTime > maxTime ? curveTime : maxTime;
-        
-            curveTime = RecoilCurves.GetMaxTime(y);
-            maxTime = curveTime > maxTime ? curveTime : maxTime;
-        
-            curveTime = RecoilCurves.GetMaxTime(z);
-            maxTime = curveTime > maxTime ? curveTime : maxTime;
-
-            return maxTime;
-        }
-
-        public Vector3 Evaluate(float time)
-        {
-            return new Vector3(x.Evaluate(time), y.Evaluate(time), z.Evaluate(time));
-        }
-
-        public bool IsValid()
-        {
-            return x != null && y != null && z != null;
-        }
-    }
-
-    [Serializable]
-    public struct RecoilCurves
-    {
-        public VectorCurve semiRotCurve;
-        public VectorCurve semiLocCurve;
-        public VectorCurve autoRotCurve;
-        public VectorCurve autoLocCurve;
-
-        private List<AnimationCurve> _curves;
-        public static float GetMaxTime(AnimationCurve curve)
-        {
-            return curve[curve.length - 1].time;
-        }
-    }
-
     public struct StartRest
     {
         public StartRest(bool x, bool y, bool z)
@@ -133,8 +76,10 @@ namespace Kinemation.FPSFramework.Runtime.Core
         private bool _isLooping;
         private bool _enableSmoothing;
     
-        public void Init(RecoilAnimData data, float fireRate)
+        public void Init(RecoilAnimData data, float fireRate, FireMode newFireMode)
         {
+            fireMode = newFireMode;
+            
             _recoilData = data;
 
             OutRot = Vector3.zero;
@@ -150,7 +95,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
 
             SetupStateMachine();
         }
-        
+
         public void Play()
         {
             //Iterate through each transition, if true execute
@@ -169,8 +114,8 @@ namespace Kinemation.FPSFramework.Runtime.Core
 
         public void Stop()
         {
-            _isLooping = false;
             _stateMachine[_stateIndex].onStop.Invoke();
+            _isLooping = false;
         }
 
         private void Update()
@@ -178,9 +123,9 @@ namespace Kinemation.FPSFramework.Runtime.Core
             if (_isPlaying)
             {
                 UpdateSolver();
-                ApplySmoothing();
                 UpdateTimeline();
             }
+            ApplySmoothing();
         
             Vector3 finalLoc = _smoothLocOut;
         
@@ -429,6 +374,11 @@ namespace Kinemation.FPSFramework.Runtime.Core
 
             autoState.onStop = () =>
             {
+                if (!_isLooping)
+                {
+                    return;
+                }
+                
                 float tempRot = _tempRotCurve.GetLastTime();
                 float tempLoc = _tempLocCurve.GetLastTime();
                 _lastFrameTime = tempRot > tempLoc ? tempRot : tempLoc;

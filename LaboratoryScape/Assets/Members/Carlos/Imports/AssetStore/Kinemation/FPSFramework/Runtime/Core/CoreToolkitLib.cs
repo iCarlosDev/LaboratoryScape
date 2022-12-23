@@ -1,10 +1,96 @@
 // Designed by Kinemation, 2022
 
 using System;
+using System.Collections.Generic;
+using Kinemation.FPSFramework.Runtime.Layers;
 using UnityEngine;
 
 namespace Kinemation.FPSFramework.Runtime.Core
 {
+    [Serializable]
+    public enum FireMode
+    {
+        Semi,
+        Burst,
+        Auto
+    }
+    
+    public enum FPSMovementState
+    {
+        Idle,
+        Walking,
+        Running,
+        Sprinting
+    }
+    
+    public enum FPSPoseState
+    {
+        Standing,
+        Crouching
+    }
+    
+    public enum FPSActionState
+    {
+        None,
+        Ready,
+        Aiming,
+        PointAiming,
+    }
+
+    [Serializable]
+    public struct VectorCurve
+    {
+        public AnimationCurve x;
+        public AnimationCurve y;
+        public AnimationCurve z;
+
+        public float GetLastTime()
+        {
+            float maxTime = -1f;
+
+            float curveTime = GetMaxTime(x);
+            maxTime = curveTime > maxTime ? curveTime : maxTime;
+        
+            curveTime = GetMaxTime(y);
+            maxTime = curveTime > maxTime ? curveTime : maxTime;
+        
+            curveTime = GetMaxTime(z);
+            maxTime = curveTime > maxTime ? curveTime : maxTime;
+
+            return maxTime;
+        }
+        
+        public static float GetMaxTime(AnimationCurve curve)
+        {
+            return curve[curve.length - 1].time;
+        }
+        
+        public Vector3 Evaluate(float time)
+        {
+            return new Vector3(x.Evaluate(time), y.Evaluate(time), z.Evaluate(time));
+        }
+
+        public bool IsValid()
+        {
+            return x != null && y != null && z != null;
+        }
+    }
+
+    [Serializable]
+    public struct RecoilCurves
+    {
+        public VectorCurve semiRotCurve;
+        public VectorCurve semiLocCurve;
+        public VectorCurve autoRotCurve;
+        public VectorCurve autoLocCurve;
+
+        private List<AnimationCurve> _curves;
+        public static float GetMaxTime(AnimationCurve curve)
+        {
+            return curve[curve.length - 1].time;
+        }
+    }
+
     [Serializable]
     public struct LocRot
     {
@@ -25,6 +111,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
         public float criticalDamping;
         public float speed;
         public float mass;
+        public float maxValue;
         [NonSerialized] public float error;
         [NonSerialized] public float velocity;
 
@@ -37,6 +124,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
 
             error = 0f;
             velocity = 0f;
+            maxValue = 0f;
         }
         
         public SpringData(float stiffness, float damping, float speed)
@@ -48,6 +136,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
 
             error = 0f;
             velocity = 0f;
+            maxValue = 0f;
         }
     }
 
@@ -67,6 +156,33 @@ namespace Kinemation.FPSFramework.Runtime.Core
         public VectorSpringData rot;
     }
 
+    [Serializable]
+    public struct WeaponAnimData
+    {
+        public Transform leftHandTarget;
+        
+        public GunAimData gunAimData;
+        public Vector3 handsOffset;
+        public LocRotSpringData springData;
+        public FreeAimData freeAimData;
+        public MoveSwayData moveSwayData;
+    }
+
+    public struct CharAnimData
+    {
+        // States
+        public FPSMovementState movementState;
+        public FPSPoseState poseState;
+        public FPSActionState actionState;
+
+        // Input
+        public Vector2 deltaAimInput;
+        public Vector2 moveInput;
+        public int leanDirection;
+        
+        public LocRot recoilAnim;
+    }
+
     public static class CoreToolkitLib
     {
         private const float FloatMin = 1e-10f;
@@ -75,6 +191,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
         public static float SpringInterp(float current, float target, ref SpringData springData)
         {
             float interpSpeed = Mathf.Min(Time.deltaTime * springData.speed, 1f);
+            target = Mathf.Clamp(target, -springData.maxValue, springData.maxValue);
             
             if (!Mathf.Approximately(interpSpeed, 0f))
             {
@@ -143,7 +260,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
         {
             return Quaternion.Slerp(a, b, 1 - Mathf.Exp(-speed * Time.deltaTime));
         }
-
+        
         public static void RotateInBoneSpace(Quaternion target, Transform boneToRotate, Vector3 rotationAmount)
         {
             var headRot = boneToRotate.rotation;
@@ -174,7 +291,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
 
             boneToMove.position += offset;
         }
-        
+
         // Adapted from Two Bone IK constraint, Unity Animation Rigging package
         public static void SolveTwoBoneIK(
             Transform root,

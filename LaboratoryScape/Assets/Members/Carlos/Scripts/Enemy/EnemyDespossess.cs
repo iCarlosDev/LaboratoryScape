@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Demo.Scripts;
+using Demo.Scripts.Runtime;
 using Kinemation.FPSFramework.Runtime.Core;
 using Kinemation.FPSFramework.Runtime.Layers;
 using UnityEngine;
@@ -15,7 +16,6 @@ public class EnemyDespossess : MonoBehaviour
     
     [Header("--- ENEMY SCRIPTS STORAGE ---")]
     [SerializeField] private BlendingLayer blendingLayer;
-    [SerializeField] private WeaponSystem weaponSystem;
     [SerializeField] private CoreAnimComponent coreAnimComponent;
     [SerializeField] private RecoilAnimation recoilAnimation;
     [SerializeField] private EnemyComponentsGetter _enemyComponentsGetter;
@@ -33,7 +33,6 @@ public class EnemyDespossess : MonoBehaviour
     private void Awake()
     {
         blendingLayer = GetComponent<BlendingLayer>();
-        weaponSystem = GetComponent<WeaponSystem>();
         coreAnimComponent = GetComponent<CoreAnimComponent>();
         recoilAnimation = GetComponent<RecoilAnimation>();
         _enemyComponentsGetter = GetComponent<EnemyComponentsGetter>();
@@ -72,14 +71,14 @@ public class EnemyDespossess : MonoBehaviour
     {
         _characterController.enabled = true;
         blendingLayer.enabled = true;
-        weaponSystem.enabled = true;
         coreAnimComponent.enabled = true;
         recoilAnimation.enabled = true;
         _enemyIaMovement.enabled = false;
         _enemyIaMovement.NavMeshAgent.enabled = false;
-        _animator.SetLayerWeight(0, 0);
-        _animator.SetLayerWeight(1, 1);
+        _animator.SetLayerWeight(1, 0);
         _animator.SetLayerWeight(2, 1);
+        _animator.SetLayerWeight(3, 1);
+        _animator.SetLayerWeight(4, 1);
 
         foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
         {
@@ -94,12 +93,12 @@ public class EnemyDespossess : MonoBehaviour
     {
         _characterController.enabled = false;
         blendingLayer.enabled = false;
-        weaponSystem.enabled = false;
         coreAnimComponent.enabled = false;
         recoilAnimation.enabled = false;
-        _animator.SetLayerWeight(0, 1);
-        _animator.SetLayerWeight(1, 0);
+        _animator.SetLayerWeight(1, 1);
         _animator.SetLayerWeight(2, 0);
+        _animator.SetLayerWeight(3, 0);
+        _animator.SetLayerWeight(4, 0);
 
         enabled = false;
     }
@@ -111,14 +110,14 @@ public class EnemyDespossess : MonoBehaviour
     {
         _characterController.enabled = false;
         blendingLayer.enabled = false;
-        weaponSystem.enabled = false;
         coreAnimComponent.enabled = false;
         recoilAnimation.enabled = false;
         _enemyIaMovement.enabled = false;
         _enemyIaMovement.NavMeshAgent.enabled = false;
-        _animator.SetLayerWeight(0, 1);
-        _animator.SetLayerWeight(1, 0);
+        _animator.SetLayerWeight(1, 1);
         _animator.SetLayerWeight(2, 0);
+        _animator.SetLayerWeight(3, 0);
+        _animator.SetLayerWeight(4, 0);
 
         foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
         {
@@ -134,6 +133,6 @@ public class EnemyDespossess : MonoBehaviour
         CarlosSceneManager.instance.EnmiesList.Remove(_fpsController);
         CarlosSceneManager.instance.EnemiesInRangeList.Remove(_fpsController);
 
-        weaponSystem.Weapons[weaponSystem.Index].transform.parent = null;
+        _fpsController.Weapons[_fpsController.Index].transform.parent = null;
     }
 }

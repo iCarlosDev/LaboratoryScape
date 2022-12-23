@@ -97,6 +97,9 @@ namespace Kinemation.FPSFramework.Runtime.Core
         [Tooltip("Used for mesh space calculations")]
         public Transform rootBone;
 
+        public CharAnimData characterData;
+        public WeaponAnimData gunData;
+
         public void Retarget()
         {
             masterDynamic.Retarget();
@@ -109,13 +112,16 @@ namespace Kinemation.FPSFramework.Runtime.Core
     
     public abstract class AnimLayer : MonoBehaviour
     {
+        [Header("Layer Blending")] 
+        [SerializeField, Range(0f, 1f)] public float layerAlpha = 1f;
+        
         [Header("Misc")]
         public bool runInEditor;
-        protected DynamicRigData rigData;
-
-        public virtual void OnRetarget(ref DynamicRigData data)
+        protected CoreAnimComponent core;
+        
+        public void OnRetarget(CoreAnimComponent comp)
         {
-            rigData = data;
+            core = comp;
         }
 
         public virtual void OnPreAnimUpdate()
@@ -129,19 +135,60 @@ namespace Kinemation.FPSFramework.Runtime.Core
         public virtual void OnPostIK()
         {
         }
+
+        protected FPSMovementState GetMovementState()
+        {
+            return core.rigData.characterData.movementState;
+        }
+        
+        protected FPSActionState GetActionState()
+        {
+            return core.rigData.characterData.actionState;
+        }
+
+        protected FPSPoseState GetPoseState()
+        {
+            return core.rigData.characterData.poseState;
+        }
+
+        protected WeaponAnimData GetGunData()
+        {
+            return core.rigData.gunData;
+        }
+        
+        protected CharAnimData GetCharData()
+        {
+            return core.rigData.characterData;
+        }
+
+        protected Transform GetMasterIK()
+        {
+            return core.rigData.masterDynamic.obj.transform;
+        }
+        
+        protected Transform GetRootBone()
+        {
+            return core.rigData.rootBone;
+        }
+
+        protected Animator GetAnimator()
+        {
+            return core.rigData.animator;
+        }
     }
     
     [ExecuteAlways]
     public class CoreAnimComponent : MonoBehaviour
     {
-        [Header("Essentials")] [SerializeField]
-        private List<AnimLayer> animLayers;
-
-        [SerializeField] private DynamicRigData rigData;
+        [Header("Essentials")] 
+        public DynamicRigData rigData;
+        
+        [SerializeField] private List<AnimLayer> animLayers;
         [SerializeField] private bool useIK = true;
 
-        [Header("Misc")] [SerializeField] private bool drawDebug;
-        
+        [Header("Misc")] 
+        [SerializeField] private bool drawDebug;
+
         private bool _updateInEditor;
         private float _interpHands;
         private float _interpLayer;
@@ -165,8 +212,8 @@ namespace Kinemation.FPSFramework.Runtime.Core
             SolveIK(rigData.rightFoot);
             SolveIK(rigData.leftFoot);
         }
-        
-        public void Update()
+
+        private void Update()
         {
             if (!Application.isPlaying && _updateInEditor)
             {
@@ -241,7 +288,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
                     continue;
                 }
                 
-                layer.OnRetarget(ref rigData);
+                layer.OnRetarget(this);
             }
             
             rigData.Retarget();
@@ -273,7 +320,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
                 layer.OnAnimUpdate();
             }
         }
-        
+
         // Called after IK update
         private void PostUpdateLayers()
         {
@@ -513,10 +560,41 @@ namespace Kinemation.FPSFramework.Runtime.Core
 
             Debug.Log(bFound ? "All bones are found!" : "Some bones are missing!");
         }
-
-        public void SetMasterIKTarget(Transform t)
+        
+        public Transform GetRootBone()
         {
-            rigData.masterDynamic.target = t;
+            return rigData.rootBone;
+        }
+
+        public void OnGunEquipped(WeaponAnimData gunAimData)
+        {
+            rigData.gunData = gunAimData;
+            rigData.masterDynamic.target = rigData.gunData.gunAimData.pivotPoint;
+        }
+
+        public void OnSightChanged(Transform newSight)
+        {
+            rigData.gunData.gunAimData.aimPoint = newSight;
+        }
+
+        public void SetMovementState(FPSMovementState state)
+        {
+            rigData.characterData.movementState = state;
+        }
+
+        public void SetActionState(FPSActionState state)
+        {
+            rigData.characterData.actionState = state;
+        }
+
+        public void SetPoseState(FPSPoseState state)
+        {
+            rigData.characterData.poseState = state;
+        }
+
+        public void SetCharData(CharAnimData data)
+        {
+            rigData.characterData = data;
         }
     }
 }

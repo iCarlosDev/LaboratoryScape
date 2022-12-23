@@ -11,24 +11,20 @@ namespace Kinemation.FPSFramework.Runtime.Layers
         [SerializeField] private AnimationClip anim;
         // Character ref
         [SerializeField] private GameObject character;
-        [SerializeField] private Transform rootBone;
         [SerializeField] private Transform spineRootBone;
         [SerializeField] private Quaternion spineBoneRotMS;
 
-        [SerializeField] private bool layerEnabled = true;
+        private float _smoothAlpha;
 
-        private void Update()
+        private void Start()
         {
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                layerEnabled = true;
-            }
+            _smoothAlpha = layerAlpha;
         }
 
         // MS: mesh space
         public void EvaluateSpineMS()
         {
-            if (character == null || anim == null || rootBone == null || spineRootBone == null)
+            if (character == null || anim == null || GetRootBone() == null || spineRootBone == null)
             {
                 return;
             }
@@ -38,16 +34,20 @@ namespace Kinemation.FPSFramework.Runtime.Layers
             character.transform.position = cachedLoc;
 
             // To mesh space
-            spineBoneRotMS = Quaternion.Inverse(rootBone.rotation) * spineRootBone.rotation;
+            spineBoneRotMS = Quaternion.Inverse(GetRootBone().rotation) * spineRootBone.rotation;
         }
 
         public override void OnPreAnimUpdate()
         {
-            if (!layerEnabled)
+            var finalAlpha = layerAlpha;
+            if (GetMovementState() == FPSMovementState.Sprinting)
             {
-                return;
+                finalAlpha = 0f;
             }
-            spineRootBone.rotation = rootBone.rotation * spineBoneRotMS;
+            
+            _smoothAlpha = CoreToolkitLib.Glerp(_smoothAlpha, finalAlpha, 15f);
+            spineRootBone.rotation = Quaternion.Slerp(spineRootBone.rotation,
+                GetRootBone().rotation * spineBoneRotMS, _smoothAlpha);
         }
     }
 }

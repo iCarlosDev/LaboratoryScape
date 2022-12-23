@@ -11,8 +11,11 @@ namespace Kinemation.FPSFramework.Runtime.Layers
 
         public override void OnAnimUpdate()
         {
-            rigData.leftHand.obj.transform.position = leftHandTarget.position;
-            rigData.leftHand.obj.transform.rotation = leftHandTarget.rotation;
+            var target = GetGunData().leftHandTarget == null ? leftHandTarget : GetGunData().leftHandTarget;
+            var leftHand = core.rigData.leftHand.obj.transform;
+
+            leftHand.position = Vector3.Lerp(leftHand.position, target.position, layerAlpha);
+            leftHand.rotation = Quaternion.Slerp(leftHand.rotation, target.rotation, layerAlpha);
         }
     }
 }

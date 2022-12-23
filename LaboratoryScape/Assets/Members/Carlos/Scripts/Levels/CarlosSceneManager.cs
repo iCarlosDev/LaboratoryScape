@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Demo.Scripts;
+using Demo.Scripts.Runtime;
 using Kinemation.FPSFramework.Runtime.Core;
 using Kinemation.FPSFramework.Runtime.Layers;
 using UnityEngine;
