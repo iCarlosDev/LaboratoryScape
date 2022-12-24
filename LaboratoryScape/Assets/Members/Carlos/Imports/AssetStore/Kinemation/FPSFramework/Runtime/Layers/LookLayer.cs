@@ -8,6 +8,8 @@ namespace Kinemation.FPSFramework.Runtime.Layers
 {
     public class LookLayer : AnimLayer
     {
+        public float test;
+        
         [SerializeField] private float layerInterpSpeed;
         [SerializeField, Range(0f, 1f)] private float handsLayerAlpha;
         [SerializeField] private float handsLerpSpeed;
@@ -45,7 +47,7 @@ namespace Kinemation.FPSFramework.Runtime.Layers
         private float leanInput;
         
         private float _interpHands;
-        private float _interpLayer;
+        [SerializeField] private float _interpLayer;
         private Vector2 _smoothAim;
 
         // Used to detect zero key frames
@@ -277,7 +279,7 @@ namespace Kinemation.FPSFramework.Runtime.Layers
             var finalAlpha = layerAlpha;
             if (GetMovementState() == FPSMovementState.Sprinting || GetActionState() == FPSActionState.Ready)
             {
-                finalAlpha = 0.5f;
+                finalAlpha = test;
             }
             
             _interpLayer = CoreToolkitLib.GlerpLayer(_interpLayer, finalAlpha, layerInterpSpeed);

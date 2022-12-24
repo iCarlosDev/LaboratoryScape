@@ -7,6 +7,8 @@ namespace Kinemation.FPSFramework.Runtime.Layers
 {
     public class BlendingLayer : AnimLayer
     {
+        [SerializeField] private float test;
+        
         // Source static pose
         [SerializeField] private AnimationClip anim;
         // Character ref
@@ -42,7 +44,7 @@ namespace Kinemation.FPSFramework.Runtime.Layers
             var finalAlpha = layerAlpha;
             if (GetMovementState() == FPSMovementState.Sprinting)
             {
-                finalAlpha = 0f;
+                finalAlpha = test;
             }
             
             _smoothAlpha = CoreToolkitLib.Glerp(_smoothAlpha, finalAlpha, 15f);
