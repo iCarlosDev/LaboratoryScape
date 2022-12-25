@@ -8,7 +8,7 @@ public class BFX_ShaderProperies : MonoBehaviour {
     public BFX_BloodSettings BloodSettings;
 
     public AnimationCurve FloatCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-    public float GraphTimeMultiplier = 1f, GraphIntensityMultiplier = 1f;
+    public float GraphTimeMultiplier = 1, GraphIntensityMultiplier = 1;
     public float TimeDelay = 0;
 
     private bool canUpdate;

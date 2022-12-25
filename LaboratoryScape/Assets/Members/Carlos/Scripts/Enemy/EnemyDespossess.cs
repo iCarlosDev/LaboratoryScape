@@ -10,36 +10,20 @@ using UnityEngine;
 public class EnemyDespossess : MonoBehaviour
 {
     //Variables
+    [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
+    
     [Header("--- DESPOSSESS ---")] 
     [SerializeField] private float timeRemaining;
     [SerializeField] private bool shouldSuicide;
-    
-    [Header("--- ENEMY SCRIPTS STORAGE ---")]
-    [SerializeField] private BlendingLayer blendingLayer;
-    [SerializeField] private CoreAnimComponent coreAnimComponent;
-    [SerializeField] private RecoilAnimation recoilAnimation;
-    [SerializeField] private EnemyComponentsGetter _enemyComponentsGetter;
-    [SerializeField] private CharacterController _characterController;
-    [SerializeField] private FPSController _fpsController;
-    [SerializeField] private EnemyIAMovement _enemyIaMovement;
-    [SerializeField] private Animator _animator;
-    
-    
+
     //GETTERS & SETTERS//
     public bool ShouldSuicide => shouldSuicide;
-    
+
     //////////////////////////////////////////
 
     private void Awake()
     {
-        blendingLayer = GetComponent<BlendingLayer>();
-        coreAnimComponent = GetComponent<CoreAnimComponent>();
-        recoilAnimation = GetComponent<RecoilAnimation>();
-        _enemyComponentsGetter = GetComponent<EnemyComponentsGetter>();
-        _characterController = GetComponent<CharacterController>();
-        _fpsController = GetComponent<FPSController>();
-        _enemyIaMovement = GetComponent<EnemyIAMovement>();
-        _animator = GetComponent<Animator>();
+        _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
     }
 
     private void Update()
@@ -69,18 +53,20 @@ public class EnemyDespossess : MonoBehaviour
     /// </summary>
     public void ActivateEnemy()
     {
-        _characterController.enabled = true;
-        blendingLayer.enabled = true;
-        coreAnimComponent.enabled = true;
-        recoilAnimation.enabled = true;
-        _enemyIaMovement.enabled = false;
-        _enemyIaMovement.NavMeshAgent.enabled = false;
-        _animator.SetLayerWeight(1, 0);
-        _animator.SetLayerWeight(2, 1);
-        _animator.SetLayerWeight(3, 1);
-        _animator.SetLayerWeight(4, 1);
+        _enemyScriptsStorage.CharacterController.enabled = true;
+       _enemyScriptsStorage.BlendingLayer.enabled = true;
+       _enemyScriptsStorage.CoreAnimComponent.enabled = true;
+       _enemyScriptsStorage.RecoilAnimation.enabled = true;
+       _enemyScriptsStorage.EnemyIaMovement.enabled = false;
+       _enemyScriptsStorage.EnemyIaMovement.NavMeshAgent.enabled = false;
+       _enemyScriptsStorage.FieldOfView.enabled = false;
+       _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
+       _enemyScriptsStorage.Animator.SetLayerWeight(1, 0);
+       _enemyScriptsStorage.Animator.SetLayerWeight(2, 1);
+       _enemyScriptsStorage.Animator.SetLayerWeight(3, 1);
+       _enemyScriptsStorage.Animator.SetLayerWeight(4, 1);
 
-        foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
+        foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {
             rigidbodies.isKinematic = true;
         }
@@ -91,48 +77,51 @@ public class EnemyDespossess : MonoBehaviour
     /// </summary>
     public void DesactivateEnemy()
     {
-        _characterController.enabled = false;
-        blendingLayer.enabled = false;
-        coreAnimComponent.enabled = false;
-        recoilAnimation.enabled = false;
-        _animator.SetLayerWeight(1, 1);
-        _animator.SetLayerWeight(2, 0);
-        _animator.SetLayerWeight(3, 0);
-        _animator.SetLayerWeight(4, 0);
+        _enemyScriptsStorage.CharacterController.enabled = false;
+        _enemyScriptsStorage.BlendingLayer.enabled = false;
+        _enemyScriptsStorage.CoreAnimComponent.enabled = false;
+        _enemyScriptsStorage.RecoilAnimation.enabled = false;
+        _enemyScriptsStorage.FieldOfView.enabled = true;
+        _enemyScriptsStorage.Animator.SetLayerWeight(1, 1);
+        _enemyScriptsStorage.Animator.SetLayerWeight(2, 0);
+        _enemyScriptsStorage.Animator.SetLayerWeight(3, 0);
+        _enemyScriptsStorage.Animator.SetLayerWeight(4, 0);
 
         enabled = false;
     }
 
     /// <summary>
-    /// Método para desactivar los componentes necesarios del enemigo que muere (para que muera de la forma que se quiere);
+    /// Método para desactivar los componentes necesarios del enemigo que muere (para que muera de la forma que se desea);
     /// </summary>
     public void EnemyDie()
     {
-        _characterController.enabled = false;
-        blendingLayer.enabled = false;
-        coreAnimComponent.enabled = false;
-        recoilAnimation.enabled = false;
-        _enemyIaMovement.enabled = false;
-        _enemyIaMovement.NavMeshAgent.enabled = false;
-        _animator.SetLayerWeight(1, 1);
-        _animator.SetLayerWeight(2, 0);
-        _animator.SetLayerWeight(3, 0);
-        _animator.SetLayerWeight(4, 0);
+        _enemyScriptsStorage.CharacterController.enabled = false;
+        _enemyScriptsStorage.BlendingLayer.enabled = false;
+        _enemyScriptsStorage.CoreAnimComponent.enabled = false;
+        _enemyScriptsStorage.RecoilAnimation.enabled = false;
+        _enemyScriptsStorage.EnemyIaMovement.enabled = false;
+        _enemyScriptsStorage.EnemyIaMovement.NavMeshAgent.enabled = false;
+        _enemyScriptsStorage.FieldOfView.enabled = false;
+        _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
+        _enemyScriptsStorage.Animator.SetLayerWeight(1, 1);
+        _enemyScriptsStorage.Animator.SetLayerWeight(2, 0);
+        _enemyScriptsStorage.Animator.SetLayerWeight(3, 0);
+        _enemyScriptsStorage.Animator.SetLayerWeight(4, 0);
 
-        foreach (Rigidbody rigidbodies in _enemyComponentsGetter.Rigidbody)
+        foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {
             rigidbodies.isKinematic = false;
         }
 
-        _animator.enabled = false;
+        _enemyScriptsStorage.Animator.enabled = false;
         enabled = false;
 
         GetComponent<CapsuleCollider>().enabled = false;
         
-        _fpsController.enabled = false;
-        CarlosSceneManager.instance.EnmiesList.Remove(_fpsController);
-        CarlosSceneManager.instance.EnemiesInRangeList.Remove(_fpsController);
+        _enemyScriptsStorage.FPSController.enabled = false;
+        CarlosSceneManager.instance.EnmiesList.Remove(_enemyScriptsStorage.FPSController);
+        CarlosSceneManager.instance.EnemiesInRangeList.Remove(_enemyScriptsStorage.FPSController);
 
-        _fpsController.Weapons[_fpsController.Index].transform.parent = null;
+        _enemyScriptsStorage.FPSController.Weapons[_enemyScriptsStorage.FPSController.Index].transform.parent = null;
     }
 }
