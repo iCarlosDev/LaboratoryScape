@@ -32,6 +32,10 @@ namespace Demo.Scripts.Runtime
         public GameObject[] BloodFX;
         public Vector3 direction;
 
+        [Header("--- DAMAGE ---")] 
+        [Space(10)]
+        [SerializeField] private int weaponDamage;
+
         /////////////////////////////////////////////
         /////////////////////////////////////////////
 
@@ -56,12 +60,6 @@ namespace Demo.Scripts.Runtime
             {
                 if (hit.collider.CompareTag("EnemyColliders"))
                 {
-                    hit.collider.GetComponentInParent<EnemyDespossess>().EnemyDie();
-                    hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
-                    
-                    /////////////////////////////////////////////////////////////////////////////
-                    /////////////////////////////////////////////////////////////////////////////
-                    
                     // var randRotation = new Vector3(0, Random.value * 360f, 0);
                     //var dir = CalculateAngle(Vector3.forward, hit.normal);
                     float angle = Mathf.Atan2(-hit.normal.x, -hit.normal.z) * Mathf.Rad2Deg + 180;
@@ -86,6 +84,12 @@ namespace Demo.Scripts.Runtime
                     bloodT.transform.parent = hit.transform;
                     Destroy(attachBloodInstance, 10);
                     Destroy(instance, 10);
+                    
+                    /////////////////////////////////////////////////////////////////////////////
+                    /////////////////////////////////////////////////////////////////////////////
+
+                    hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
+                    hit.collider.SendMessage("hit");
                 }
             }
 

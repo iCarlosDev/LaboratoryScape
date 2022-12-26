@@ -19,6 +19,9 @@ public class EnemyScriptsStorage : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private FieldOfView _fieldOfView;
     [SerializeField] private EnemyIADecisions _enemyIaDecisions;
+    [SerializeField] private EnemyDamage _enemyDamage;
+    [SerializeField] private EnemyDespossess _enemyDespossess;
+    [SerializeField] private EnemyShootCollisionDetector _enemyShootCollisionDetector;
     
     
     //GETTERS && SETTERS//
@@ -32,6 +35,8 @@ public class EnemyScriptsStorage : MonoBehaviour
     public Animator Animator => _animator;
     public FieldOfView FieldOfView => _fieldOfView;
     public EnemyIADecisions EnemyIaDecisions => _enemyIaDecisions;
+    public EnemyDamage EnemyDamage => _enemyDamage;
+    public EnemyDespossess EnemyDespossess => _enemyDespossess;
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
@@ -46,5 +51,7 @@ public class EnemyScriptsStorage : MonoBehaviour
         _animator = GetComponent<Animator>();
         _fieldOfView = GetComponent<FieldOfView>();
         _enemyIaDecisions = GetComponent<EnemyIADecisions>();
+        _enemyDamage = GetComponent<EnemyDamage>();
+        _enemyDespossess = GetComponent<EnemyDespossess>();
     }
 }

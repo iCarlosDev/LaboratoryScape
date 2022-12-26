@@ -598,7 +598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5866136995222404168
 Transform:
   m_ObjectHideFlags: 0
@@ -1633,7 +1633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6370222173784558586
 Transform:
   m_ObjectHideFlags: 0
@@ -3013,7 +3013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4435098106883451721}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.0788, z: 0.2}
+  m_LocalPosition: {x: -0, y: 0.0543, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4549,7 +4549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5542003260040220784
 Transform:
   m_ObjectHideFlags: 0
@@ -4679,7 +4679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2261551899132358604
 Transform:
   m_ObjectHideFlags: 0
@@ -4938,7 +4938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopes:
   - {fileID: 4435098106883451766}
-  - {fileID: 380698043587697709}
   gunData:
     leftHandTarget: {fileID: 4435098106654510581}
     gunAimData:
@@ -5024,6 +5023,7 @@ MonoBehaviour:
   - {fileID: 3034872428933141512, guid: 52d94bfe44b09ff4b9e9788e9a86a778, type: 3}
   - {fileID: 2360933683143488451, guid: 730678b8a5330c449ada55bde83402ce, type: 3}
   direction: {x: 0, y: 0, z: 0}
+  weaponDamage: 10
 --- !u!54 &7930519498454598123
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5134,6 +5134,7 @@ GameObject:
   - component: {fileID: 7873355361255772175}
   - component: {fileID: 7497160937604673983}
   - component: {fileID: 6067919796063261339}
+  - component: {fileID: 7497160937604673985}
   m_Layer: 0
   m_Name: Enemy_FP_Fixed
   m_TagString: Enemy
@@ -5248,7 +5249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c075182a4ce984e828e4497b22d1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerAlpha: 1
+  layerAlpha: 0.517
   runInEditor: 1
   headBone: {fileID: 4264719780127457937}
   freeAimData:
@@ -5668,6 +5669,28 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _fieldOfView: {fileID: 0}
   _enemyIaDecisions: {fileID: 0}
+  _enemyDamage: {fileID: 0}
+  _enemyDespossess: {fileID: 0}
+  _enemyShootCollisionDetector: {fileID: 0}
+--- !u!114 &7497160937604673985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352150928304179880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a84afb7fcde2c141aa2b4a8b47ff1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyScriptsStorage: {fileID: 0}
+  currentHealth: 0
+  maxHealth: 0
+  alreadyDead: 0
+  headDamage: 100
+  bodyDamage: 40
+  extremitiesDamage: 25
 --- !u!1 &7554328756038759871
 GameObject:
   m_ObjectHideFlags: 0
@@ -5996,7 +6019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2184391550404027285
 Transform:
   m_ObjectHideFlags: 0
