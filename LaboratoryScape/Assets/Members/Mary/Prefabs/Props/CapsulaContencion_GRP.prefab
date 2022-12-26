@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6770238801424753840}
   - component: {fileID: 1846891627272661035}
   - component: {fileID: 6130023311152745727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenTubo_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 6017890507299148522}
   - component: {fileID: 5226130089867386997}
   - component: {fileID: 8889820784229729505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCables_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1705373178338343004}
   - component: {fileID: 7187683540567624071}
   - component: {fileID: 7355353198569581757}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCables_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7363245439097728107}
-  m_Layer: 0
+  - component: {fileID: 1667742224185129916}
+  m_Layer: 6
   m_Name: CapsulaContencion_GRP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -272,7 +273,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3635043380531144421}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.627339, y: -4.396245, z: -649.2735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -293,6 +294,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1667742224185129916
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635043380531144421}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 179.76633, y: 385.89664, z: 168.00638}
+  m_Center: {x: -3.9164782, y: -3.1559706, z: -9.046495}
 --- !u!1 &5314042488181118990
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +318,7 @@ GameObject:
   - component: {fileID: 4945813821092339241}
   - component: {fileID: 3484995016199679802}
   - component: {fileID: 2852573291754356158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCapsula_Parte_Sup_inf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +401,7 @@ GameObject:
   - component: {fileID: 2342846865009276169}
   - component: {fileID: 3420956362276626142}
   - component: {fileID: 8475079984219591885}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCapsula_Parte_Inf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +484,7 @@ GameObject:
   - component: {fileID: 4629540189597112610}
   - component: {fileID: 7442751579352055872}
   - component: {fileID: 8887130550364610637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenTubo_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +567,7 @@ GameObject:
   - component: {fileID: 6587406979220832480}
   - component: {fileID: 768957818049935132}
   - component: {fileID: 5542697650305116527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCapsula_Parte_Sup_Medio2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,7 +650,7 @@ GameObject:
   - component: {fileID: 4935379174466227129}
   - component: {fileID: 8021637437421609289}
   - component: {fileID: 8976608723751227093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenPantalla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -719,7 +733,7 @@ GameObject:
   - component: {fileID: 3359496336004250641}
   - component: {fileID: 2976893026478061284}
   - component: {fileID: 4710175032344598986}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCristal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -802,7 +816,7 @@ GameObject:
   - component: {fileID: 4331074243321092622}
   - component: {fileID: 8722454403696887905}
   - component: {fileID: 5201762629046972026}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenBotones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +899,7 @@ GameObject:
   - component: {fileID: 6731381865358304166}
   - component: {fileID: 7908746223249521281}
   - component: {fileID: 1546017217804841354}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCapsula_Parte_Sup_medio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,7 +982,7 @@ GameObject:
   - component: {fileID: 3273143242939112343}
   - component: {fileID: 6084218623750662675}
   - component: {fileID: 8513986414814911286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCapsula_Parte_Sup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1065,7 @@ GameObject:
   - component: {fileID: 7978435295935559333}
   - component: {fileID: 4702320889968615626}
   - component: {fileID: 633596613844075723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CapContenCables_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
