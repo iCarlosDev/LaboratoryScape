@@ -52,7 +52,7 @@ public class CarlosSceneManager : MonoBehaviour
       {
          enemyDespossess = enemy.GetComponent<EnemyDespossess>();
          enemy.enabled = false;
-         enemyDespossess.DesactivateEnemy();
+         enemyDespossess.DesactivateEnemyControl();
          enemy.CameraBone.gameObject.SetActive(false);
          enemy.IsIa = true;
 
@@ -91,7 +91,7 @@ public class CarlosSceneManager : MonoBehaviour
          closestEnemy.CameraBone.gameObject.SetActive(true);
          closestEnemy.enabled = true;
          enemyDespossess.enabled = true;
-         enemyDespossess.ActivateEnemy();
+         enemyDespossess.ActivateEnemyControl();
 
          alreadyPossessed = true;
       }

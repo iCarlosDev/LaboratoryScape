@@ -24,8 +24,11 @@ public class EnemyIAMovement : MonoBehaviour
 
     [Header("--- LOOK PLAYER ---")] 
     [Space(10)]
-    [SerializeField] private Transform pivotPoint;
-    
+    [SerializeField] private LayerMask playerCollider;
+    [SerializeField] private Transform searchPlayer;
+    [SerializeField] private float sensitivity;
+    [SerializeField] private bool lookingPlayer;
+
     //GETTERS && SETTERS//
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
     public List<Transform> Points => points;
@@ -37,12 +40,12 @@ public class EnemyIAMovement : MonoBehaviour
         _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
+        searchPlayer = _enemyScriptsStorage.Weapon.transform.GetChild(6);
+
         foreach (Transform pointsInArray in transform.parent.GetChild(1))
         {
             points.Add(pointsInArray);
         }
-
-        pivotPoint = _enemyScriptsStorage.Weapon.transform.GetChild(1);
     }
 
     private void Update()
@@ -86,8 +89,31 @@ public class EnemyIAMovement : MonoBehaviour
 
     private void LookPlayer()
     {
-        Debug.DrawRay(pivotPoint.position, pivotPoint.forward * 100, Color.red, 1f);
-        Debug.DrawRay(pivotPoint.position, _enemyScriptsStorage.FieldOfView.playerRef.transform.position, Color.red, 1f);
+        searchPlayer.LookAt(_enemyScriptsStorage.FieldOfView.playerRef.transform.position);
+
+        if (!lookingPlayer)
+        {
+            if (searchPlayer.forward.y < _enemyScriptsStorage.Weapon.Muzzle.transform.forward.y)
+            {
+                _enemyScriptsStorage.LookLayer.AimUp += Time.deltaTime * sensitivity;
+            }
+            else
+            {
+                _enemyScriptsStorage.LookLayer.AimUp -= Time.deltaTime * sensitivity;
+            }
+        }
+        
+        RaycastHit hit = new RaycastHit();
+        Ray ray = new Ray(_enemyScriptsStorage.Weapon.Muzzle.transform.position, _enemyScriptsStorage.Weapon.Muzzle.transform.forward);
+
+        if (Physics.Raycast(ray, out hit, 100f, playerCollider, QueryTriggerInteraction.Ignore))
+        {
+            lookingPlayer = true;
+        }
+        else
+        {
+            lookingPlayer = false;
+        }
     }
 
     private void PlayerDetected()

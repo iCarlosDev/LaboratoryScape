@@ -1,4 +1,5 @@
 using System.Linq;
+using Kinemation.FPSFramework.Runtime.Core;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -46,15 +47,16 @@ public class EnemyDespossess : MonoBehaviour
     /// <summary>
     /// Método para activar al enemigo cuando sea necesario;
     /// </summary>
-    public void ActivateEnemy()
+    public void ActivateEnemyControl()
     {
         _enemyScriptsStorage.LookLayer.PelvisOffset = new Vector3(0f, -0.04f, 0f);
+        _enemyScriptsStorage.LookLayer.AimUp = 0f;
+        
         _enemyScriptsStorage.EnemyIaMovement.enabled = false; 
         _enemyScriptsStorage.EnemyIaMovement.NavMeshAgent.enabled = false; 
         _enemyScriptsStorage.FieldOfView.enabled = false;
         _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
         _enemyScriptsStorage.FPSController.IsIa = false;
-
 
         foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {
@@ -65,7 +67,7 @@ public class EnemyDespossess : MonoBehaviour
     /// <summary>
     /// Método para desactivar al enemigo cuando sea necesario;
     /// </summary>
-    public void DesactivateEnemy()
+    public void DesactivateEnemyControl()
     {
         if (_enemyScriptsStorage.EnemyIaMovement.Points.Any())
         {

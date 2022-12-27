@@ -79,6 +79,11 @@ namespace Demo.Scripts.Runtime
             get => shouldAttack;
             set => shouldAttack = value;
         }
+        public CharAnimData CharAnimData
+        {
+            get => _charAnimData;
+            set => _charAnimData = value;
+        }
 
         //////////////////////////////////////////////
 
