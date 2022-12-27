@@ -44,7 +44,7 @@ public class CarlosSceneManager : MonoBehaviour
    {
       Cursor.lockState = CursorLockMode.Locked;
       Cursor.visible = false;
-      
+
       FPSController[] enemiesArray = FindObjectsOfType<FPSController>();
 
       //Recorremos cada enemigo para desactivarlo al empezar y añadimos a la lista "enmiesList" todos los enemigos de la escena;
@@ -54,7 +54,8 @@ public class CarlosSceneManager : MonoBehaviour
          enemy.enabled = false;
          enemyDespossess.DesactivateEnemy();
          enemy.CameraBone.gameObject.SetActive(false);
-         
+         enemy.IsIa = true;
+
          enmiesList.Add(enemy);
       }
 
@@ -97,6 +98,8 @@ public class CarlosSceneManager : MonoBehaviour
       
       //Actualizamos la posición del player(desactivado) para cuando desposeamos al enemigo aparecer en la misma posición donde ha sido desposeido;
       playerController.transform.position = new Vector3(closestEnemy.transform.position.x, closestEnemy.transform.position.y + 1f, closestEnemy.transform.position.z);
+      closestEnemy.MoveX1 = Input.GetAxis("Horizontal");
+      closestEnemy.MoveY1 = Input.GetAxis("Vertical");
    }
 
    #endregion

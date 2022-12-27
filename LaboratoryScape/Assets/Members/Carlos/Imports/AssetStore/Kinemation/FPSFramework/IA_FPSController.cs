@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Demo.Scripts.Runtime
 {
-    public class FPSController : MonoBehaviour
+    public class IA_FPSController : MonoBehaviour
     {
         [Header("FPS Framework")]
         [SerializeField] private CoreAnimComponent coreAnimComponent;
@@ -46,39 +46,12 @@ namespace Demo.Scripts.Runtime
         [Header("--- POSSESSION ---")] 
         [Space(10)] 
         [SerializeField] private bool canBePossess;
-
-        [Header("--- IA PARAMETERS ---")] 
-        [Space(10)] 
-        [SerializeField] private float moveX;
-        [SerializeField] private float moveY;
-        [SerializeField] private bool isIA;
-        [SerializeField] private bool shouldAttack;
         
         //GETTER & SETTER//
         public Transform CameraBone => cameraBone;
         public bool CanBePossess => canBePossess;
         public List<Weapon> Weapons => weapons;
         public int Index => _index;
-        public float MoveX1
-        {
-            get => moveX;
-            set => moveX = value;
-        }
-        public float MoveY1
-        {
-            get => moveY;
-            set => moveY = value;
-        }
-        public bool IsIa
-        {
-            get => isIA;
-            set => isIA = value;
-        }
-        public bool ShouldAttack
-        {
-            get => shouldAttack;
-            set => shouldAttack = value;
-        }
 
         //////////////////////////////////////////////
 
@@ -152,7 +125,7 @@ namespace Demo.Scripts.Runtime
             _recoilAnimation.Play();
         }
 
-        public void OnFirePressed()
+        private void OnFirePressed()
         {
             Fire();
             _bursts = GetGun().burstAmount - 1;
@@ -371,6 +344,9 @@ namespace Demo.Scripts.Runtime
 
         private void UpdateMovement()
         {
+            float moveX = 0f;
+            float moveY = 1f;
+            
             _charAnimData.moveInput = new Vector2(moveX, moveY);
 
             _smoothMoveInput.x = CoreToolkitLib.Glerp(_smoothMoveInput.x, moveX, 7f);
@@ -393,24 +369,8 @@ namespace Demo.Scripts.Runtime
 
         private void Update()
         {
-            if (!isIA)
-            {
-                ProcessActionInput();   
-                ProcessLookInput();
-            }
-            else
-            {
-                if (shouldAttack)
-                {
-                    _charAnimData.actionState = FPSActionState.None;
-                }
-                else
-                {
-                    _charAnimData.actionState = FPSActionState.Ready;
-                    OnFireReleased();
-                }
-            }
-            
+            ProcessActionInput();
+            ProcessLookInput();
             UpdateFiring();
             UpdateMovement();
             UpdateAnimValues();
@@ -426,31 +386,6 @@ namespace Demo.Scripts.Runtime
         private void LateUpdate()
         {
             UpdateCameraRotation();
-        }
-        
-        private void OnTriggerStay(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                canBePossess = true;
-            }
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                CarlosSceneManager.instance.EnemiesInRangeList.Add(this);
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                canBePossess = false;
-                CarlosSceneManager.instance.EnemiesInRangeList.Remove(this);
-            }
         }
     }
 }

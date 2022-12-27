@@ -21,9 +21,11 @@ public class EnemyScriptsStorage : MonoBehaviour
     [SerializeField] private EnemyIADecisions _enemyIaDecisions;
     [SerializeField] private EnemyDamage _enemyDamage;
     [SerializeField] private EnemyDespossess _enemyDespossess;
-    [SerializeField] private EnemyShootCollisionDetector _enemyShootCollisionDetector;
-    
-    
+    [SerializeField] private IA_FPSController _iaFPSController;
+    [SerializeField] private LookLayer _lookLayer;
+    [SerializeField] private Weapon _weapon;
+
+
     //GETTERS && SETTERS//
     public BlendingLayer BlendingLayer => blendingLayer;
     public CoreAnimComponent CoreAnimComponent => coreAnimComponent;
@@ -37,6 +39,8 @@ public class EnemyScriptsStorage : MonoBehaviour
     public EnemyIADecisions EnemyIaDecisions => _enemyIaDecisions;
     public EnemyDamage EnemyDamage => _enemyDamage;
     public EnemyDespossess EnemyDespossess => _enemyDespossess;
+    public LookLayer LookLayer => _lookLayer;
+    public Weapon Weapon => _weapon;
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
@@ -53,5 +57,8 @@ public class EnemyScriptsStorage : MonoBehaviour
         _enemyIaDecisions = GetComponent<EnemyIADecisions>();
         _enemyDamage = GetComponent<EnemyDamage>();
         _enemyDespossess = GetComponent<EnemyDespossess>();
+        _iaFPSController = GetComponent<IA_FPSController>();
+        _lookLayer = GetComponent<LookLayer>();
+        _weapon = _fpsController.Weapons[_fpsController.Index];
     }
 }

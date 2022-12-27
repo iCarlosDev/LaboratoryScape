@@ -1984,7 +1984,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 2600758099620727071, guid: e220637838cac834d9b9d28c32c362ce, type: 3}
   m_Bones:
@@ -5228,7 +5228,7 @@ NavMeshAgent:
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 300
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
@@ -5249,7 +5249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c075182a4ce984e828e4497b22d1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerAlpha: 0.517
+  layerAlpha: 1
   runInEditor: 1
   headBone: {fileID: 4264719780127457937}
   freeAimData:
@@ -5315,6 +5315,10 @@ MonoBehaviour:
   weapons:
   - {fileID: 7297254008945793873}
   canBePossess: 0
+  moveX: 0
+  moveY: 0
+  isIA: 0
+  shouldAttack: 0
 --- !u!114 &7352150928304179927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5563,8 +5567,8 @@ MonoBehaviour:
     position: {x: 0.02, y: -0.01, z: -0.12}
     rotation: {x: -0.5321971, y: -0.07365496, z: -0.042974394, w: 0.8423149}
   lowReadyPose:
-    position: {x: -0.05, y: -0.09, z: -0.03}
-    rotation: {x: -0.22627231, y: 0.18844119, z: -0.091121025, w: -0.9513084}
+    position: {x: -0.05, y: -0.27, z: -0.15}
+    rotation: {x: -0.32091877, y: 0.28018105, z: -0.14279921, w: -0.8933745}
   interpSpeed: 7
   readyPoseType: 0
 --- !u!114 &7873355361255772174
@@ -5612,6 +5616,10 @@ MonoBehaviour:
   currentPoint: 0
   _navMeshAgent: {fileID: 0}
   playerDetected: 0
+  damping: 5
+  lookPos: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  viewingHeight: 3
 --- !u!114 &7873355361255772175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5641,7 +5649,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7352150928304179880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0948f098ae639664ab5cf61bacf2e9e6, type: 3}
   m_Name: 
@@ -5671,7 +5679,8 @@ MonoBehaviour:
   _enemyIaDecisions: {fileID: 0}
   _enemyDamage: {fileID: 0}
   _enemyDespossess: {fileID: 0}
-  _enemyShootCollisionDetector: {fileID: 0}
+  _iaFPSController: {fileID: 0}
+  _lookLayer: {fileID: 0}
 --- !u!114 &7497160937604673985
 MonoBehaviour:
   m_ObjectHideFlags: 0

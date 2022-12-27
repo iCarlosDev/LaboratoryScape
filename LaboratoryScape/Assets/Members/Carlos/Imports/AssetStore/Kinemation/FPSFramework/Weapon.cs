@@ -36,7 +36,9 @@ namespace Demo.Scripts.Runtime
         [Space(10)]
         [SerializeField] private int weaponDamage;
 
-        /////////////////////////////////////////////
+        //GETTERS && SETTERS//
+        public Transform Muzzle => muzzle;
+
         /////////////////////////////////////////////
 
         private void Start()

@@ -1,3 +1,5 @@
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyDespossess : MonoBehaviour
@@ -46,18 +48,13 @@ public class EnemyDespossess : MonoBehaviour
     /// </summary>
     public void ActivateEnemy()
     {
-        _enemyScriptsStorage.CharacterController.enabled = true;
-       _enemyScriptsStorage.BlendingLayer.enabled = true;
-       _enemyScriptsStorage.CoreAnimComponent.enabled = true;
-       _enemyScriptsStorage.RecoilAnimation.enabled = true;
-       _enemyScriptsStorage.EnemyIaMovement.enabled = false;
-       _enemyScriptsStorage.EnemyIaMovement.NavMeshAgent.enabled = false;
-       _enemyScriptsStorage.FieldOfView.enabled = false;
-       _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
-       _enemyScriptsStorage.Animator.SetLayerWeight(1, 0);
-       _enemyScriptsStorage.Animator.SetLayerWeight(2, 1);
-       _enemyScriptsStorage.Animator.SetLayerWeight(3, 1);
-       _enemyScriptsStorage.Animator.SetLayerWeight(4, 1);
+        _enemyScriptsStorage.LookLayer.PelvisOffset = new Vector3(0f, -0.04f, 0f);
+        _enemyScriptsStorage.EnemyIaMovement.enabled = false; 
+        _enemyScriptsStorage.EnemyIaMovement.NavMeshAgent.enabled = false; 
+        _enemyScriptsStorage.FieldOfView.enabled = false;
+        _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
+        _enemyScriptsStorage.FPSController.IsIa = false;
+
 
         foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {
@@ -70,15 +67,15 @@ public class EnemyDespossess : MonoBehaviour
     /// </summary>
     public void DesactivateEnemy()
     {
-        _enemyScriptsStorage.CharacterController.enabled = false;
-        _enemyScriptsStorage.BlendingLayer.enabled = false;
-        _enemyScriptsStorage.CoreAnimComponent.enabled = false;
-        _enemyScriptsStorage.RecoilAnimation.enabled = false;
+        if (_enemyScriptsStorage.EnemyIaMovement.Points.Any())
+        {
+            _enemyScriptsStorage.FPSController.MoveX1 = 0f;
+            _enemyScriptsStorage.FPSController.MoveY1 = 1f;
+        }
+        
+        _enemyScriptsStorage.LookLayer.PelvisOffset = new Vector3(0f, 0.04f, 0f);
+        _enemyScriptsStorage.FPSController.enabled = true;
         _enemyScriptsStorage.FieldOfView.enabled = true;
-        _enemyScriptsStorage.Animator.SetLayerWeight(1, 1);
-        _enemyScriptsStorage.Animator.SetLayerWeight(2, 0);
-        _enemyScriptsStorage.Animator.SetLayerWeight(3, 0);
-        _enemyScriptsStorage.Animator.SetLayerWeight(4, 0);
 
         enabled = false;
     }
@@ -96,10 +93,6 @@ public class EnemyDespossess : MonoBehaviour
         _enemyScriptsStorage.EnemyIaMovement.NavMeshAgent.enabled = false;
         _enemyScriptsStorage.FieldOfView.enabled = false;
         _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
-        _enemyScriptsStorage.Animator.SetLayerWeight(1, 1);
-        _enemyScriptsStorage.Animator.SetLayerWeight(2, 0);
-        _enemyScriptsStorage.Animator.SetLayerWeight(3, 0);
-        _enemyScriptsStorage.Animator.SetLayerWeight(4, 0);
 
         foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {

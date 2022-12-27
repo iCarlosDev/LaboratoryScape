@@ -54,6 +54,25 @@ namespace Kinemation.FPSFramework.Runtime.Layers
         [SerializeField] [HideInInspector] private CachedBones cachedBones;
         [SerializeField] [HideInInspector] private CachedBones cacheRef;
         
+        //GETTERS && SETTERS//
+        public float AimUp
+        {
+            get => aimUp;
+            set => aimUp = value;
+        }
+        public float AimRight
+        {
+            get => aimRight;
+            set => aimRight = value;
+        }
+        public Vector3 PelvisOffset
+        {
+            get => pelvisOffset;
+            set => pelvisOffset = value;
+        }
+
+        //////////////////////
+
         public override void OnPreAnimUpdate()
         {
             if (detectZeroFrames)
