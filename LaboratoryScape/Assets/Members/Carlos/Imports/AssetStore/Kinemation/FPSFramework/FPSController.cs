@@ -155,6 +155,7 @@ namespace Demo.Scripts.Runtime
         {
             GetGun().OnFire();
             _recoilAnimation.Play();
+            //AudioManager.instance.Play("G3_Shot");
         }
 
         public void OnFirePressed()

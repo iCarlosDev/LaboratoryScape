@@ -28,6 +28,10 @@ public class EnemyIAMovement : MonoBehaviour
     [SerializeField] private Transform searchPlayer;
     [SerializeField] private float sensitivity;
     [SerializeField] private bool lookingPlayer;
+    
+    [Header("--- SHOOT PLAYER ---")] 
+    [Space(10)]
+    [SerializeField] private bool shouldShoot;
 
     //GETTERS && SETTERS//
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
@@ -68,6 +72,7 @@ public class EnemyIAMovement : MonoBehaviour
                 }
 
                 _enemyScriptsStorage.FPSController.ShouldAttack = true;
+                shouldShoot = true;
             }   
         }
         else
@@ -79,6 +84,11 @@ public class EnemyIAMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
             
             LookPlayer();
+
+            if (shouldShoot && lookingPlayer)
+            {
+                ShootPlayer();
+            }
         }
     }
 
@@ -108,7 +118,10 @@ public class EnemyIAMovement : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100f, playerCollider, QueryTriggerInteraction.Ignore))
         {
-            lookingPlayer = true;
+            if (!hit.collider.CompareTag("EnemyColliders"))
+            {
+                lookingPlayer = true;   
+            }
         }
         else
         {

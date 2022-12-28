@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDamage : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
     

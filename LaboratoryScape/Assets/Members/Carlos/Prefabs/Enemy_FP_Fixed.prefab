@@ -5036,7 +5036,7 @@ MonoBehaviour:
   muzzle: {fileID: 6260197559288381894}
   enemyColider:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 448
   impactForce: 2000
   DirLight: {fileID: 0}
   BloodAttach: {fileID: 3136605153214515430, guid: 45eef0a861a8a8946b4c23fb9f4f779a,
@@ -5618,6 +5618,7 @@ MonoBehaviour:
   _enemyScriptsStorage: {fileID: 0}
   timeRemaining: 3000
   shouldSuicide: 0
+  isPossessed: 0
 --- !u!114 &7873355361255772172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5653,10 +5654,11 @@ MonoBehaviour:
   rotation: {x: 0, y: 0, z: 0, w: 0}
   playerCollider:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 384
   searchPlayer: {fileID: 0}
   sensitivity: 30
   lookingPlayer: 0
+  shouldShoot: 0
 --- !u!114 &7873355361255772175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5714,9 +5716,8 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _fieldOfView: {fileID: 0}
   _enemyIaDecisions: {fileID: 0}
-  _enemyDamage: {fileID: 0}
+  _enemyHealth: {fileID: 0}
   _enemyDespossess: {fileID: 0}
-  _iaFPSController: {fileID: 0}
   _lookLayer: {fileID: 0}
   _weapon: {fileID: 0}
 --- !u!114 &7497160937604673985

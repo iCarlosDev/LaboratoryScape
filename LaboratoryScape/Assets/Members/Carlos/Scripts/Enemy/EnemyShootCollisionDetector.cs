@@ -19,15 +19,15 @@ public class EnemyShootCollisionDetector : MonoBehaviour
     {
         if (GetComponent<BoxCollider>() != null)
         {
-            _enemyScriptsStorage.EnemyDamage.TakeDamage(_enemyScriptsStorage.EnemyDamage.BodyDamage);   
+            _enemyScriptsStorage.EnemyHealth.TakeDamage(_enemyScriptsStorage.EnemyHealth.BodyDamage);   
         }
         else if (GetComponent<CapsuleCollider>() != null)
         {
-            _enemyScriptsStorage.EnemyDamage.TakeDamage(_enemyScriptsStorage.EnemyDamage.ExtremitiesDamage);
+            _enemyScriptsStorage.EnemyHealth.TakeDamage(_enemyScriptsStorage.EnemyHealth.ExtremitiesDamage);
         }
         else
         {
-            _enemyScriptsStorage.EnemyDamage.TakeDamage(_enemyScriptsStorage.EnemyDamage.HeadDamage);
+            _enemyScriptsStorage.EnemyHealth.TakeDamage(_enemyScriptsStorage.EnemyHealth.HeadDamage);
         }
     }
 }

@@ -110,6 +110,7 @@ namespace Kinemation.FPSFramework.Runtime.Core
         
             _stateMachine[_stateIndex].onPlay.Invoke();
             _lastTimeShot = Time.unscaledTime;
+            AudioManager.instance.Play("G3_Shot");
         }
 
         public void Stop()

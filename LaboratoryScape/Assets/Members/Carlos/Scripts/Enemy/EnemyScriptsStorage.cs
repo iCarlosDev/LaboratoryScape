@@ -19,9 +19,8 @@ public class EnemyScriptsStorage : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private FieldOfView _fieldOfView;
     [SerializeField] private EnemyIADecisions _enemyIaDecisions;
-    [SerializeField] private EnemyDamage _enemyDamage;
+    [SerializeField] private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyDespossess _enemyDespossess;
-    [SerializeField] private IA_FPSController _iaFPSController;
     [SerializeField] private LookLayer _lookLayer;
     [SerializeField] private Weapon _weapon;
 
@@ -37,7 +36,7 @@ public class EnemyScriptsStorage : MonoBehaviour
     public Animator Animator => _animator;
     public FieldOfView FieldOfView => _fieldOfView;
     public EnemyIADecisions EnemyIaDecisions => _enemyIaDecisions;
-    public EnemyDamage EnemyDamage => _enemyDamage;
+    public EnemyHealth EnemyHealth => _enemyHealth;
     public EnemyDespossess EnemyDespossess => _enemyDespossess;
     public LookLayer LookLayer => _lookLayer;
     public Weapon Weapon => _weapon;
@@ -55,9 +54,8 @@ public class EnemyScriptsStorage : MonoBehaviour
         _animator = GetComponent<Animator>();
         _fieldOfView = GetComponent<FieldOfView>();
         _enemyIaDecisions = GetComponent<EnemyIADecisions>();
-        _enemyDamage = GetComponent<EnemyDamage>();
+        _enemyHealth = GetComponent<EnemyHealth>();
         _enemyDespossess = GetComponent<EnemyDespossess>();
-        _iaFPSController = GetComponent<IA_FPSController>();
         _lookLayer = GetComponent<LookLayer>();
         _weapon = _fpsController.Weapons[_fpsController.Index];
     }

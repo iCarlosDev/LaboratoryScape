@@ -84,14 +84,20 @@ namespace Demo.Scripts.Runtime
                     bloodT.LookAt(hit.point + hit.normal, this.direction);
                     bloodT.Rotate(90, 0, 0);
                     bloodT.transform.parent = hit.transform;
-                    Destroy(attachBloodInstance, 10);
-                    Destroy(instance, 10);
+                    Destroy(attachBloodInstance, 10f);
+                    Destroy(instance, 13f);
                     
                     /////////////////////////////////////////////////////////////////////////////
                     /////////////////////////////////////////////////////////////////////////////
 
                     hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
                     hit.collider.SendMessage("hit");
+                }
+
+                if (hit.collider.CompareTag("Player"))
+                {
+                    Debug.Log("Player Disparado!");
+                    PlayerScriptsStorage.instance.PlayerHealth.TakeDamage(1);
                 }
             }
 

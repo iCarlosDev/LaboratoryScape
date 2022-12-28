@@ -87,7 +87,8 @@ public class CarlosSceneManager : MonoBehaviour
          playerController.gameObject.SetActive(false);
 
          enemyDespossess = closestEnemy.GetComponent<EnemyDespossess>();
-         
+
+         enemyDespossess.IsPossessed = true;
          closestEnemy.CameraBone.gameObject.SetActive(true);
          closestEnemy.enabled = true;
          enemyDespossess.enabled = true;
@@ -126,7 +127,7 @@ public class CarlosSceneManager : MonoBehaviour
    /// <summary>
    /// Método donde se modifican parametros al desposeer un enemigo;
    /// </summary>
-   private void DespossessParameters()
+   public void DespossessParameters()
    {
       closestEnemy.CameraBone.gameObject.SetActive(false);
       //closestEnemy.Outlinable.enabled = false;

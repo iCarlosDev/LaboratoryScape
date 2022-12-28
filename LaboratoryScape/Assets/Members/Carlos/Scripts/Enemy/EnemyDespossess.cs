@@ -11,9 +11,15 @@ public class EnemyDespossess : MonoBehaviour
     [Header("--- DESPOSSESS ---")] 
     [SerializeField] private float timeRemaining;
     [SerializeField] private bool shouldSuicide;
+    [SerializeField] private bool isPossessed;
 
     //GETTERS & SETTERS//
     public bool ShouldSuicide => shouldSuicide;
+    public bool IsPossessed
+    {
+        get => isPossessed;
+        set => isPossessed = value;
+    }
 
     //////////////////////////////////////////
 
@@ -87,6 +93,11 @@ public class EnemyDespossess : MonoBehaviour
     /// </summary>
     public void EnemyDie()
     {
+        if (isPossessed)
+        {
+            CarlosSceneManager.instance.DespossessParameters();
+        }
+
         _enemyScriptsStorage.CharacterController.enabled = false;
         _enemyScriptsStorage.BlendingLayer.enabled = false;
         _enemyScriptsStorage.CoreAnimComponent.enabled = false;
@@ -111,5 +122,7 @@ public class EnemyDespossess : MonoBehaviour
         CarlosSceneManager.instance.EnemiesInRangeList.Remove(_enemyScriptsStorage.FPSController);
 
         _enemyScriptsStorage.FPSController.Weapons[_enemyScriptsStorage.FPSController.Index].transform.parent = null;
+
+        isPossessed = false;
     }
 }
