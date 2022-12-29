@@ -53,6 +53,8 @@ namespace Demo.Scripts.Runtime
         [SerializeField] private float moveY;
         [SerializeField] private bool isIA;
         [SerializeField] private bool shouldAttack;
+
+        [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
         
         //GETTER & SETTER//
         public Transform CameraBone => cameraBone;
@@ -79,11 +81,7 @@ namespace Demo.Scripts.Runtime
             get => shouldAttack;
             set => shouldAttack = value;
         }
-        public CharAnimData CharAnimData
-        {
-            get => _charAnimData;
-            set => _charAnimData = value;
-        }
+        public CoreAnimComponent CoreAnimComponent => coreAnimComponent;
 
         //////////////////////////////////////////////
 
@@ -99,6 +97,8 @@ namespace Demo.Scripts.Runtime
             _recoilAnimation = GetComponent<RecoilAnimation>();
 
             controller = GetComponent<CharacterController>();
+
+            _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
 
             EquipWeapon();
         }
@@ -155,7 +155,6 @@ namespace Demo.Scripts.Runtime
         {
             GetGun().OnFire();
             _recoilAnimation.Play();
-            //AudioManager.instance.Play("G3_Shot");
         }
 
         public void OnFirePressed()
@@ -170,7 +169,7 @@ namespace Demo.Scripts.Runtime
             return weapons[_index];
         }
 
-        private void OnFireReleased()
+        public void OnFireReleased()
         {
             _recoilAnimation.Stop();
             _fireTimer = -1f;
@@ -231,12 +230,12 @@ namespace Demo.Scripts.Runtime
         {
             _charAnimData.leanDirection = 0;
             
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None)
             {
                 SprintPressed();
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetKeyUp(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None)
             {
                 SprintReleased();
             }
@@ -307,7 +306,7 @@ namespace Demo.Scripts.Runtime
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.H))
+            /*if (Input.GetKeyDown(KeyCode.H))
             {
                 if (_charAnimData.actionState == FPSActionState.Ready)
                 {
@@ -318,6 +317,21 @@ namespace Demo.Scripts.Runtime
                     _charAnimData.actionState = FPSActionState.Ready;
                     OnFireReleased();
                 }
+            }*/
+
+            if (!_enemyScriptsStorage.WeaponPoseDetector.IsBlocked)
+            {
+                if (_charAnimData.actionState == FPSActionState.Ready)
+                {
+                    _charAnimData.actionState = FPSActionState.None;
+                }
+                else
+                {
+                    _charAnimData.actionState = FPSActionState.Ready;
+                    OnFireReleased();
+                }
+
+                _enemyScriptsStorage.WeaponPoseDetector.IsBlocked = true;
             }
         }
 

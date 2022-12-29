@@ -23,12 +23,17 @@ public class CarlosSceneManager : MonoBehaviour
    [SerializeField] private List<FPSController> enemiesInRangeList;
    [SerializeField] private FPSController closestEnemy;
    [SerializeField] private EnemyDespossess enemyDespossess;
+   [SerializeField] private GameObject health_Canvas;
    [SerializeField] private bool alreadyPossessed;
    
    //GETTERS & SETTERS//
-   
    public List<FPSController> EnemiesInRangeList => enemiesInRangeList;
    public List<FPSController> EnmiesList => enmiesList;
+   public GameObject HealthCanvas
+   {
+      get => health_Canvas;
+      set => health_Canvas = value;
+   }
 
    ///////////////////////////////////////////
 
@@ -38,12 +43,16 @@ public class CarlosSceneManager : MonoBehaviour
       
       playerController = FindObjectOfType<PlayerController>();
       playerPossess = playerController.GetComponent<PlayerPossess>();
+      health_Canvas = GameObject.Find("EnemyHealth_Canvas");
    }
 
    private void Start()
    {
       Cursor.lockState = CursorLockMode.Locked;
       Cursor.visible = false;
+
+      PlayerScriptsStorage.instance.PlayerHealth.HealthCanvas.SetActive(true);
+      health_Canvas.SetActive(false);
 
       FPSController[] enemiesArray = FindObjectsOfType<FPSController>();
 
@@ -83,6 +92,7 @@ public class CarlosSceneManager : MonoBehaviour
       if (!alreadyPossessed)
       {
          playerPossess.CanPossess = false;
+         PlayerScriptsStorage.instance.PlayerHealth.HealthCanvas.SetActive(false);
          playerController.PlayerCamera.gameObject.SetActive(false);
          playerController.gameObject.SetActive(false);
 
@@ -134,6 +144,7 @@ public class CarlosSceneManager : MonoBehaviour
       
       playerController.gameObject.SetActive(true);
       playerController.PlayerCamera.gameObject.SetActive(true);
+      PlayerScriptsStorage.instance.PlayerHealth.HealthCanvas.SetActive(true);
       playerPossess.ImPossessing = false;
       playerPossess.HaveCooldown = true;
       alreadyPossessed = false;

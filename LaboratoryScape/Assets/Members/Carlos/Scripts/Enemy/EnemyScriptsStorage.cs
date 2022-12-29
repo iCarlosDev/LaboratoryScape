@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class EnemyScriptsStorage : MonoBehaviour
 {
+    public static EnemyScriptsStorage instance;
+    
     [Header("--- ENEMY SCRIPTS STORAGE ---")]
     [SerializeField] private BlendingLayer blendingLayer;
     [SerializeField] private CoreAnimComponent coreAnimComponent;
@@ -23,6 +25,7 @@ public class EnemyScriptsStorage : MonoBehaviour
     [SerializeField] private EnemyDespossess _enemyDespossess;
     [SerializeField] private LookLayer _lookLayer;
     [SerializeField] private Weapon _weapon;
+    [SerializeField] private WeaponPoseDetector weaponPoseDetector;
 
 
     //GETTERS && SETTERS//
@@ -40,10 +43,13 @@ public class EnemyScriptsStorage : MonoBehaviour
     public EnemyDespossess EnemyDespossess => _enemyDespossess;
     public LookLayer LookLayer => _lookLayer;
     public Weapon Weapon => _weapon;
+    public WeaponPoseDetector WeaponPoseDetector => weaponPoseDetector;
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
     {
+        instance = this;
+        
         blendingLayer = GetComponent<BlendingLayer>();
         coreAnimComponent = GetComponent<CoreAnimComponent>();
         recoilAnimation = GetComponent<RecoilAnimation>();
@@ -58,5 +64,6 @@ public class EnemyScriptsStorage : MonoBehaviour
         _enemyDespossess = GetComponent<EnemyDespossess>();
         _lookLayer = GetComponent<LookLayer>();
         _weapon = _fpsController.Weapons[_fpsController.Index];
+        weaponPoseDetector = _fpsController.CameraBone.transform.GetChild(0).GetComponent<WeaponPoseDetector>();
     }
 }

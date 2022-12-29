@@ -35,6 +35,11 @@ namespace Demo.Scripts.Runtime
         [Header("--- DAMAGE ---")] 
         [Space(10)]
         [SerializeField] private int weaponDamage;
+        
+        [Header("--- SHOOT ---")] 
+        [Space(10)]
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private float probabilidadDeFallar = 0.25f;
 
         //GETTERS && SETTERS//
         public Transform Muzzle => muzzle;
@@ -44,6 +49,7 @@ namespace Demo.Scripts.Runtime
         private void Start()
         {
             _animator = GetComponent<Animator>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         public Transform GetScope()
@@ -93,15 +99,26 @@ namespace Demo.Scripts.Runtime
                     hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
                     hit.collider.SendMessage("hit");
                 }
-
+                
                 if (hit.collider.CompareTag("Player"))
                 {
-                    Debug.Log("Player Disparado!");
-                    PlayerScriptsStorage.instance.PlayerHealth.TakeDamage(1);
+                    float aleatorio = Random.Range(0f, 1f);
+                    
+                    if (aleatorio < probabilidadDeFallar)
+                    {
+                        // el disparo ha fallado
+                        Debug.Log("El disparo ha fallado");
+                    }
+                    else
+                    {
+                        Debug.Log("Player Disparado!");
+                        PlayerScriptsStorage.instance.PlayerHealth.TakeDamage(1);
+                    }
                 }
             }
 
             Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4);
+            _audioSource.PlayOneShot(_audioSource.clip);
             PlayFireAnim();
         }
 

@@ -85,7 +85,7 @@ public class EnemyIAMovement : MonoBehaviour
             
             LookPlayer();
 
-            if (shouldShoot && lookingPlayer)
+            if (shouldShoot)
             {
                 ShootPlayer();
             }
@@ -118,9 +118,15 @@ public class EnemyIAMovement : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 100f, playerCollider, QueryTriggerInteraction.Ignore))
         {
-            if (!hit.collider.CompareTag("EnemyColliders"))
+            lookingPlayer = true;
+            
+            if (hit.collider.CompareTag("EnemyColliders"))
             {
-                lookingPlayer = true;   
+                shouldShoot = false;
+            }
+            else
+            {
+                shouldShoot = true;
             }
         }
         else

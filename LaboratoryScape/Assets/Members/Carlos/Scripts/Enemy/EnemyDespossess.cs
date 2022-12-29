@@ -1,5 +1,6 @@
 using System.Linq;
 using Kinemation.FPSFramework.Runtime.Core;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class EnemyDespossess : MonoBehaviour
 {
     //Variables
     [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
+    private CharAnimData _charAnimData;
+    private CoreAnimComponent coreAnimComponent;
     
     [Header("--- DESPOSSESS ---")] 
     [SerializeField] private float timeRemaining;
@@ -26,10 +29,12 @@ public class EnemyDespossess : MonoBehaviour
     private void Awake()
     {
         _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
+        coreAnimComponent = GetComponent<CoreAnimComponent>();
     }
 
     private void Update()
     {
+        coreAnimComponent.SetCharData(_charAnimData);
         Suicide();
     }
 
@@ -55,6 +60,11 @@ public class EnemyDespossess : MonoBehaviour
     /// </summary>
     public void ActivateEnemyControl()
     {
+        CarlosSceneManager.instance.HealthCanvas.SetActive(true);
+        _enemyScriptsStorage.EnemyHealth.HealthTMP = CarlosSceneManager.instance.HealthCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        
+        _charAnimData.actionState = FPSActionState.None;
+        
         _enemyScriptsStorage.LookLayer.PelvisOffset = new Vector3(0f, -0.04f, 0f);
         _enemyScriptsStorage.LookLayer.AimUp = 0f;
         
@@ -63,6 +73,8 @@ public class EnemyDespossess : MonoBehaviour
         _enemyScriptsStorage.FieldOfView.enabled = false;
         _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
         _enemyScriptsStorage.FPSController.IsIa = false;
+        
+        _enemyScriptsStorage.EnemyHealth.HealthTMP.text = $"{_enemyScriptsStorage.EnemyHealth.CurrentHealth}";
 
         foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {
@@ -106,6 +118,11 @@ public class EnemyDespossess : MonoBehaviour
         _enemyScriptsStorage.EnemyIaMovement.NavMeshAgent.enabled = false;
         _enemyScriptsStorage.FieldOfView.enabled = false;
         _enemyScriptsStorage.EnemyIaDecisions.enabled = false;
+
+        if (_enemyScriptsStorage.EnemyHealth.HealthTMP != null)
+        {
+            CarlosSceneManager.instance.HealthCanvas.SetActive(false);   
+        }
 
         foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {

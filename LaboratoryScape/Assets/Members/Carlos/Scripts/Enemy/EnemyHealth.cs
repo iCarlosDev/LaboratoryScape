@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -13,6 +14,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     [SerializeField] private int maxHealth;
     [SerializeField] private bool alreadyDead;
+    
+    [Header("--- HEALTH PARAMETERS ---")]
+    [Space(10)]
+    [SerializeField] private TextMeshProUGUI health_TMP;
 
     [Header("--- DAMAGE VALUES ---")]
     [Space(10)]
@@ -24,7 +29,13 @@ public class EnemyHealth : MonoBehaviour
     public int HeadDamage => headDamage;
     public int BodyDamage => bodyDamage;
     public int ExtremitiesDamage => extremitiesDamage;
-    
+    public TextMeshProUGUI HealthTMP
+    {
+        get => health_TMP;
+        set => health_TMP = value;
+    }
+    public int CurrentHealth => currentHealth;
+
     ////////////////////////////////////////////
     
     private void Awake()
@@ -58,5 +69,10 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        if (health_TMP != null)
+        { 
+            health_TMP.text = $"{currentHealth}";
+        }
     }
 }
