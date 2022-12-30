@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5664297406128817937}
   - component: {fileID: 7311208935590222818}
   - component: {fileID: 6728267832605697541}
+  - component: {fileID: 8432954026484552705}
   m_Layer: 6
   m_Name: Techo
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8432954026484552705
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509525980344560829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7369275342607637648, guid: a6646eda158346e4c813943753aa1714, type: 3}
 --- !u!1 &7486702806188476060
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +109,7 @@ GameObject:
   - component: {fileID: 2688354526335734189}
   - component: {fileID: 4461983307746034288}
   - component: {fileID: 5009032397967879830}
+  - component: {fileID: 6974774058521345849}
   m_Layer: 6
   m_Name: Pasillo_Paredes
   m_TagString: Untagged
@@ -166,6 +182,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6974774058521345849
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486702806188476060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1459768318963308605, guid: a6646eda158346e4c813943753aa1714, type: 3}
 --- !u!1 &8420889980436775971
 GameObject:
   m_ObjectHideFlags: 0
