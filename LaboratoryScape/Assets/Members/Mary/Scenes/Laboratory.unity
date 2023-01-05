@@ -1329,7 +1329,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: 0.10407113, y: -0.3278503, z: 0.03636432, w: 0.9382755}
+  m_LocalRotation: {x: 0.10407115, y: -0.32785037, z: 0.03636433, w: 0.9382755}
   m_LocalPosition: {x: 7.1754127, y: 1.5795859, z: -7.9049077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5750,6 +5750,7 @@ GameObject:
   - component: {fileID: 5800023035151691375}
   - component: {fileID: 5072681855456489595}
   - component: {fileID: 1205178073008196658}
+  - component: {fileID: 5800023035151691376}
   m_Layer: 0
   m_Name: Paredes_GranSala
   m_TagString: Untagged
@@ -13698,6 +13699,7 @@ GameObject:
   - component: {fileID: 8688490445356463533}
   - component: {fileID: 4917804560896804894}
   - component: {fileID: 8989973125338582772}
+  - component: {fileID: 8989973125338582773}
   m_Layer: 0
   m_Name: Techo_Almacen
   m_TagString: Untagged
@@ -13865,6 +13867,7 @@ GameObject:
   - component: {fileID: 4806702403509981991}
   - component: {fileID: 8065366247410531933}
   - component: {fileID: 437643110586276786}
+  - component: {fileID: 8065366247410531934}
   m_Layer: 0
   m_Name: Pasillo_03_Paredes
   m_TagString: Untagged
@@ -14526,6 +14529,7 @@ GameObject:
   - component: {fileID: 2780782514244101651}
   - component: {fileID: 2890828397114045790}
   - component: {fileID: 4643021082738438529}
+  - component: {fileID: 4643021082738438530}
   m_Layer: 6
   m_Name: Paredes_lavabo
   m_TagString: Untagged
@@ -14534,6 +14538,20 @@ GameObject:
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &4643021082738438529
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4643021082738438528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 266092536018197207, guid: 68e8d3fe8a7262741ac208fafafa9a9a, type: 3}
+--- !u!64 &4643021082738438530
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14559,6 +14577,7 @@ GameObject:
   - component: {fileID: 2780782514361412935}
   - component: {fileID: 2890828397265174026}
   - component: {fileID: 4643021082855750357}
+  - component: {fileID: 4643021082855750358}
   m_Layer: 6
   m_Name: Paredes_lavabo
   m_TagString: Untagged
@@ -14567,6 +14586,20 @@ GameObject:
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &4643021082855750357
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4643021082855750356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 266092536018197207, guid: e191dd8fa0bec574a996db429d08a9c7, type: 3}
+--- !u!64 &4643021082855750358
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15320,6 +15353,7 @@ GameObject:
   - component: {fileID: 2355621413395170382}
   - component: {fileID: 1011659778473464592}
   - component: {fileID: 4915230999522733002}
+  - component: {fileID: 4915230999522733003}
   m_Layer: 6
   m_Name: Paredes_Almacen
   m_TagString: Untagged
@@ -15328,6 +15362,20 @@ GameObject:
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &4915230999522733002
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4915230999522733001}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2148836075799987006, guid: bb70a8b5a65ee724faf7ec867c866504, type: 3}
+--- !u!64 &4915230999522733003
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17582,6 +17630,20 @@ Transform:
   m_Father: {fileID: 6348219606096145700}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &5800023035151691376
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401165788063915309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7474580986025598148, guid: f096d8b17864b9740b3381491f2be9c6, type: 3}
 --- !u!1 &5805913340969498668
 GameObject:
   m_ObjectHideFlags: 0
@@ -17839,6 +17901,7 @@ GameObject:
   - component: {fileID: 2306727294801310976}
   - component: {fileID: 4115625746279730444}
   - component: {fileID: 5857126841861381804}
+  - component: {fileID: 5857126841861381805}
   m_Layer: 6
   m_Name: Paredes_Pasillo
   m_TagString: Untagged
@@ -17847,6 +17910,20 @@ GameObject:
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &5857126841861381804
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857126841861381803}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 776060720866647277, guid: b766de26787cc1e4791710b7cb013056, type: 3}
+--- !u!64 &5857126841861381805
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19318,6 +19395,7 @@ GameObject:
   - component: {fileID: 1715037356069700180}
   - component: {fileID: 2675209306767300747}
   - component: {fileID: 4050051300046157490}
+  - component: {fileID: 6359228843820911860}
   m_Layer: 0
   m_Name: Techo_Pasillo
   m_TagString: Untagged
@@ -19325,6 +19403,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &6359228843820911860
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359228843820911859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495302349949090187, guid: b766de26787cc1e4791710b7cb013056, type: 3}
 --- !u!1 &6368026686706183889
 GameObject:
   m_ObjectHideFlags: 0
@@ -21851,6 +21943,7 @@ GameObject:
   - component: {fileID: 1795708030504765110}
   - component: {fileID: 5317963396861615812}
   - component: {fileID: 2018133848498775528}
+  - component: {fileID: 7271197669487849977}
   m_Layer: 0
   m_Name: Techo_lavabo
   m_TagString: Untagged
@@ -21858,6 +21951,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &7271197669487849977
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7271197669487849976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7552463141551495968, guid: e191dd8fa0bec574a996db429d08a9c7, type: 3}
 --- !u!1 &7271197669605423788
 GameObject:
   m_ObjectHideFlags: 0
@@ -21869,6 +21976,7 @@ GameObject:
   - component: {fileID: 1795708030387457506}
   - component: {fileID: 5317963396744041872}
   - component: {fileID: 2018133848381206204}
+  - component: {fileID: 7271197669605423789}
   m_Layer: 0
   m_Name: Techo_lavabo
   m_TagString: Untagged
@@ -21876,6 +21984,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &7271197669605423789
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7271197669605423788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7552463141551495968, guid: 68e8d3fe8a7262741ac208fafafa9a9a, type: 3}
 --- !u!4 &7283317006957075953
 Transform:
   m_ObjectHideFlags: 0
@@ -22999,6 +23121,7 @@ GameObject:
   - component: {fileID: 3579404076679601625}
   - component: {fileID: 963050922933134762}
   - component: {fileID: 7632377927393884684}
+  - component: {fileID: 7632377927393884685}
   m_Layer: 6
   m_Name: Pasillo_03_Techo
   m_TagString: Untagged
@@ -23007,6 +23130,20 @@ GameObject:
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &7632377927393884684
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7632377927393884683}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8384598335901557994, guid: f096d8b17864b9740b3381491f2be9c6, type: 3}
+--- !u!64 &7632377927393884685
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24088,6 +24225,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4401124162880599428}
+  m_Mesh: {fileID: -5141094860272984772, guid: f096d8b17864b9740b3381491f2be9c6, type: 3}
+--- !u!64 &8065366247410531934
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401124162880599428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5141094860272984772, guid: f096d8b17864b9740b3381491f2be9c6, type: 3}
 --- !u!33 &8079861727098373249
 MeshFilter:
@@ -26221,12 +26372,12 @@ PrefabInstance:
     - target: {fileID: 8675549573243613031, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 1.088958
+      value: 1.140511
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573243613031, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -4.347328
+      value: -4.352013
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573481243922, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -26236,12 +26387,12 @@ PrefabInstance:
     - target: {fileID: 8675549573481243922, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 1.088958
+      value: 1.140511
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573481243922, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -4.347328
+      value: -4.352013
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573481243951, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -26281,7 +26432,7 @@ PrefabInstance:
     - target: {fileID: 8675549573485822135, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.008920878
+      value: -0.008920908
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573485822135, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -26301,12 +26452,12 @@ PrefabInstance:
     - target: {fileID: 8675549573902892155, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_FollowOffset.y
-      value: 1.088958
+      value: 1.140511
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573902892155, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_FollowOffset.z
-      value: -4.347328
+      value: -4.352013
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573976389200, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -27417,6 +27568,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8989973125338582773
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4331121159640638665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8001171628275218729, guid: bb70a8b5a65ee724faf7ec867c866504, type: 3}
 --- !u!4 &9004059983646264503
 Transform:
   m_ObjectHideFlags: 0
