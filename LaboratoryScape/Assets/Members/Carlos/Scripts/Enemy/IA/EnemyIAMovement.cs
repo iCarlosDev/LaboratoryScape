@@ -13,6 +13,7 @@ public class EnemyIAMovement : MonoBehaviour
     [SerializeField] private List<Transform> points;
     [SerializeField] private int currentPoint;
     [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private bool returnable;
 
     [SerializeField] private bool playerDetected;
 
@@ -157,11 +158,19 @@ public class EnemyIAMovement : MonoBehaviour
         {
             if (currentPoint.Equals(points.Count - 1))
             {
-                points.Reverse();
-                currentPoint = 0;
+                if (returnable)
+                {
+                    points.Reverse();
+                    currentPoint = 0;
+                }
+                else
+                {
+                    currentPoint = 0;   
+                }
+                
                 return;
             }
-            
+
             currentPoint++;
         }
     }

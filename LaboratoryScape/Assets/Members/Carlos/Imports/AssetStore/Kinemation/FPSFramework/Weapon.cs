@@ -78,9 +78,9 @@ namespace Demo.Scripts.Runtime
                     var instance = Instantiate(BloodFX[effectIdx], hit.point, Quaternion.Euler(0, angle + 90, 0));
                     effectIdx++;
 
-                    var settings = instance.GetComponent<BFX_BloodSettings>();
+                    //var settings = instance.GetComponent<BFX_BloodSettings>();
                     //settings.FreezeDecalDisappearance = true;
-                    settings.LightIntensityMultiplier = DirLight.intensity;
+                    //settings.LightIntensityMultiplier = DirLight.intensity;
 
                     var attachBloodInstance = Instantiate(BloodAttach);
                     var bloodT = attachBloodInstance.transform;
