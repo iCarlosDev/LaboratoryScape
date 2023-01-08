@@ -319,7 +319,7 @@ namespace Demo.Scripts.Runtime
                 }
             }*/
 
-            if (!_enemyScriptsStorage.WeaponPoseDetector.IsBlocked)
+            if (!_enemyScriptsStorage.WeaponPoseDetector.IsBlocked && _enemyScriptsStorage.WeaponPoseDetector.HasEntered)
             {
                 if (_charAnimData.actionState == FPSActionState.Ready)
                 {
@@ -333,6 +333,11 @@ namespace Demo.Scripts.Runtime
 
                 _enemyScriptsStorage.WeaponPoseDetector.IsBlocked = true;
             }
+        }
+
+        public void ChangePose()
+        {
+            _charAnimData.actionState = FPSActionState.None;
         }
 
         private void ProcessLookInput()
@@ -354,7 +359,7 @@ namespace Demo.Scripts.Runtime
             }
         }
 
-        private void UpdateFiring()
+        public void UpdateFiring()
         {
             if (_recoilAnimation.fireMode != FireMode.Semi && _fireTimer >= 60f / GetGun().fireRate)
             {

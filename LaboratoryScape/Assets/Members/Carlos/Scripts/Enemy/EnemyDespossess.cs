@@ -40,7 +40,7 @@ public class EnemyDespossess : MonoBehaviour
 
     private void Start()
     {
-        timeRemaining = 3000f;
+        timeRemaining = 15f;
     }
 
     private void Suicide()
@@ -62,9 +62,7 @@ public class EnemyDespossess : MonoBehaviour
     {
         CarlosSceneManager.instance.HealthCanvas.SetActive(true);
         _enemyScriptsStorage.EnemyHealth.HealthTMP = CarlosSceneManager.instance.HealthCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        
-        _charAnimData.actionState = FPSActionState.None;
-        
+
         _enemyScriptsStorage.LookLayer.PelvisOffset = new Vector3(0f, -0.04f, 0f);
         _enemyScriptsStorage.LookLayer.AimUp = 0f;
         
@@ -80,6 +78,9 @@ public class EnemyDespossess : MonoBehaviour
         {
             rigidbodies.isKinematic = true;
         }
+        
+        _enemyScriptsStorage.FPSController.ChangePose();
+        _enemyScriptsStorage.FPSController.OnFireReleased();
     }
 
     /// <summary>

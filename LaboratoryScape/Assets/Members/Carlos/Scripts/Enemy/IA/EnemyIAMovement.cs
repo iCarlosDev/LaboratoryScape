@@ -55,6 +55,8 @@ public class EnemyIAMovement : MonoBehaviour
 
     private void Update()
     {
+        _enemyScriptsStorage.FPSController.UpdateFiring();
+        
         if (!playerDetected)
         {
             //Si no existen puntos de patrullaje en el enemigo no hará esta lógica (esto puede servir si queremos que hayan enemigos vigilando puntos en concreto sin moverse);

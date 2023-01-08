@@ -23,6 +23,7 @@ public class WeaponPoseDetector : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             isBlocked = false;
+            hasEntered = true;
         }
     }
 

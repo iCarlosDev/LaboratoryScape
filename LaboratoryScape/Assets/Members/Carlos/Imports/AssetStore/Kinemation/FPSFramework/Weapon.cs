@@ -8,6 +8,8 @@ namespace Demo.Scripts.Runtime
 {
     public class Weapon : MonoBehaviour
     {
+        [SerializeField] private EnemyScriptsStorage enemyScriptsStorage;
+        
         [SerializeField] private List<Transform> scopes;
         [SerializeField] public WeaponAnimData gunData;
         [SerializeField] public RecoilAnimData recoilData;
@@ -48,6 +50,7 @@ namespace Demo.Scripts.Runtime
 
         private void Start()
         {
+            enemyScriptsStorage = GetComponentInParent<EnemyScriptsStorage>();
             _animator = GetComponent<Animator>();
             _audioSource = GetComponent<AudioSource>();
         }
@@ -118,8 +121,14 @@ namespace Demo.Scripts.Runtime
             }
 
             Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4);
-            _audioSource.PlayOneShot(_audioSource.clip);
             PlayFireAnim();
+
+            if (enemyScriptsStorage.FPSController.IsIa)
+            {
+                return;
+            }
+            
+            _audioSource.PlayOneShot(_audioSource.clip);
         }
 
         private void PlayFireAnim()
