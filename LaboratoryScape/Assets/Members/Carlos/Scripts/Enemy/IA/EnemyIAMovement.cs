@@ -33,11 +33,17 @@ public class EnemyIAMovement : MonoBehaviour
     [Header("--- SHOOT PLAYER ---")] 
     [Space(10)]
     [SerializeField] private bool shouldShoot;
+    [SerializeField] private bool firstTimeShooting;
 
     //GETTERS && SETTERS//
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
     public List<Transform> Points => points;
-    
+    public bool FirstTimeShooting
+    {
+        get => firstTimeShooting;
+        set => firstTimeShooting = value;
+    }
+
     ////////////////////////////////////////////////////
 
     private void Awake()
@@ -75,7 +81,6 @@ public class EnemyIAMovement : MonoBehaviour
                 }
 
                 _enemyScriptsStorage.FPSController.ShouldAttack = true;
-                shouldShoot = true;
             }   
         }
         else
@@ -88,7 +93,7 @@ public class EnemyIAMovement : MonoBehaviour
             
             LookPlayer();
 
-            if (shouldShoot)
+            if (shouldShoot && !firstTimeShooting)
             {
                 ShootPlayer();
             }
@@ -98,6 +103,7 @@ public class EnemyIAMovement : MonoBehaviour
     private void ShootPlayer()
     {
         _enemyScriptsStorage.FPSController.OnFirePressed();
+        firstTimeShooting = true;
     }
 
     private void LookPlayer()
@@ -106,6 +112,9 @@ public class EnemyIAMovement : MonoBehaviour
 
         if (!lookingPlayer)
         {
+            shouldShoot = false;
+            _enemyScriptsStorage.FPSController.OnFireReleased();
+            
             if (searchPlayer.forward.y < _enemyScriptsStorage.Weapon.Muzzle.transform.forward.y)
             {
                 _enemyScriptsStorage.LookLayer.AimUp += Time.deltaTime * sensitivity;
@@ -115,7 +124,11 @@ public class EnemyIAMovement : MonoBehaviour
                 _enemyScriptsStorage.LookLayer.AimUp -= Time.deltaTime * sensitivity;
             }
         }
-        
+        else
+        {
+            shouldShoot = true;
+        }
+
         RaycastHit hit = new RaycastHit();
         Ray ray = new Ray(_enemyScriptsStorage.Weapon.Muzzle.transform.position, _enemyScriptsStorage.Weapon.Muzzle.transform.forward);
 
@@ -126,10 +139,7 @@ public class EnemyIAMovement : MonoBehaviour
             if (hit.collider.CompareTag("EnemyColliders"))
             {
                 shouldShoot = false;
-            }
-            else
-            {
-                shouldShoot = true;
+                _enemyScriptsStorage.FPSController.OnFireReleased();
             }
         }
         else

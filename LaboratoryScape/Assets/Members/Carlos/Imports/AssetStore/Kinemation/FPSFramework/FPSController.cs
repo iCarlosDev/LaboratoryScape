@@ -159,9 +159,16 @@ namespace Demo.Scripts.Runtime
 
         public void OnFirePressed()
         {
-            Fire();
-            _bursts = GetGun().burstAmount - 1;
-            _fireTimer = 0f;
+            if (_enemyScriptsStorage.Weapon.CurrentAmmo > 0)
+            {
+                Fire();
+                _bursts = GetGun().burstAmount - 1; 
+                _fireTimer = 0f;
+            }
+            else
+            {
+                OnFireReleased();
+            }
         }
 
         private Weapon GetGun()
@@ -171,6 +178,7 @@ namespace Demo.Scripts.Runtime
 
         public void OnFireReleased()
         {
+            _enemyScriptsStorage.EnemyIaMovement.FirstTimeShooting = false;
             _recoilAnimation.Stop();
             _fireTimer = -1f;
         }
@@ -363,7 +371,14 @@ namespace Demo.Scripts.Runtime
         {
             if (_recoilAnimation.fireMode != FireMode.Semi && _fireTimer >= 60f / GetGun().fireRate)
             {
-                Fire();
+                if (_enemyScriptsStorage.Weapon.CurrentAmmo > 0)
+                {
+                    Fire();
+                }
+                else
+                {
+                    OnFireReleased();
+                }
 
                 if (_recoilAnimation.fireMode == FireMode.Burst)
                 {

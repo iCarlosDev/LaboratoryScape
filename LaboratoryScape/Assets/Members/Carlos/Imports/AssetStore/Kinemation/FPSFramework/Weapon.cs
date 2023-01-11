@@ -41,10 +41,13 @@ namespace Demo.Scripts.Runtime
         [Header("--- SHOOT ---")] 
         [Space(10)]
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private int maxAmmo;
+        [SerializeField] private int currentAmmo;
         [SerializeField] private float probabilidadDeFallar = 0.25f;
 
         //GETTERS && SETTERS//
         public Transform Muzzle => muzzle;
+        public int CurrentAmmo => currentAmmo;
 
         /////////////////////////////////////////////
 
@@ -53,6 +56,9 @@ namespace Demo.Scripts.Runtime
             enemyScriptsStorage = GetComponentInParent<EnemyScriptsStorage>();
             _animator = GetComponent<Animator>();
             _audioSource = GetComponent<AudioSource>();
+
+            maxAmmo = 300;
+            currentAmmo = 30;
         }
 
         public Transform GetScope()
@@ -64,6 +70,8 @@ namespace Demo.Scripts.Runtime
         
         public void OnFire()
         {
+            currentAmmo--;
+            
             RaycastHit hit = new RaycastHit();
             Ray ray = new Ray(muzzle.position, muzzle.forward);
 
@@ -71,52 +79,15 @@ namespace Demo.Scripts.Runtime
             {
                 if (hit.collider.CompareTag("EnemyColliders"))
                 {
-                    // var randRotation = new Vector3(0, Random.value * 360f, 0);
-                    //var dir = CalculateAngle(Vector3.forward, hit.normal);
-                    float angle = Mathf.Atan2(-hit.normal.x, -hit.normal.z) * Mathf.Rad2Deg + 180;
-
-                    var effectIdx = Random.Range(0, BloodFX.Length);
-                    if (effectIdx == BloodFX.Length) effectIdx = 0;
-
-                    var instance = Instantiate(BloodFX[effectIdx], hit.point, Quaternion.Euler(0, angle + 90, 0));
-                    effectIdx++;
-
-                    //var settings = instance.GetComponent<BFX_BloodSettings>();
-                    //settings.FreezeDecalDisappearance = true;
-                    //settings.LightIntensityMultiplier = DirLight.intensity;
-
-                    var attachBloodInstance = Instantiate(BloodAttach);
-                    var bloodT = attachBloodInstance.transform;
-                    bloodT.position = hit.point;
-                    bloodT.localRotation = Quaternion.identity;
-                    bloodT.localScale = Vector3.one * Random.Range(0.75f, 1.2f);
-                    bloodT.LookAt(hit.point + hit.normal, this.direction);
-                    bloodT.Rotate(90, 0, 0);
-                    bloodT.transform.parent = hit.transform;
-                    Destroy(attachBloodInstance, 10f);
-                    Destroy(instance, 13f);
-                    
-                    /////////////////////////////////////////////////////////////////////////////
-                    /////////////////////////////////////////////////////////////////////////////
-
-                    hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce);
-                    hit.collider.SendMessage("hit");
+                   SpawnBlood(hit);
+                   
+                   hit.collider.GetComponent<Rigidbody>().AddForce(-hit.normal * impactForce); 
+                   hit.collider.SendMessage("hit");
                 }
                 
                 if (hit.collider.CompareTag("Player"))
                 {
-                    float aleatorio = Random.Range(0f, 1f);
-                    
-                    if (aleatorio < probabilidadDeFallar)
-                    {
-                        // el disparo ha fallado
-                        Debug.Log("El disparo ha fallado");
-                    }
-                    else
-                    {
-                        Debug.Log("Player Disparado!");
-                        PlayerScriptsStorage.instance.PlayerHealth.TakeDamage(1);
-                    }
+                    ShootPlayerProbability();
                 }
             }
 
@@ -127,8 +98,56 @@ namespace Demo.Scripts.Runtime
             {
                 return;
             }
-            
             _audioSource.PlayOneShot(_audioSource.clip);
+        }
+
+        private void RemoveBullets()
+        {
+            
+        }
+
+        private void ShootPlayerProbability()
+        {
+            float aleatorio = Random.Range(0f, 1f);
+                    
+            if (aleatorio < probabilidadDeFallar)
+            {
+                // el disparo ha fallado
+                Debug.Log("El disparo ha fallado");
+            }
+            else
+            {
+                Debug.Log("Player Disparado!");
+                PlayerScriptsStorage.instance.PlayerHealth.TakeDamage(1);
+            }
+        }
+
+        private void SpawnBlood(RaycastHit hit)
+        {
+            // var randRotation = new Vector3(0, Random.value * 360f, 0);
+            //var dir = CalculateAngle(Vector3.forward, hit.normal);
+            float angle = Mathf.Atan2(-hit.normal.x, -hit.normal.z) * Mathf.Rad2Deg + 180;
+
+            var effectIdx = Random.Range(0, BloodFX.Length);
+            if (effectIdx == BloodFX.Length) effectIdx = 0;
+
+            var instance = Instantiate(BloodFX[effectIdx], hit.point, Quaternion.Euler(0, angle + 90, 0));
+            effectIdx++;
+
+            //var settings = instance.GetComponent<BFX_BloodSettings>();
+            //settings.FreezeDecalDisappearance = true;
+            //settings.LightIntensityMultiplier = DirLight.intensity;
+
+            var attachBloodInstance = Instantiate(BloodAttach);
+            var bloodT = attachBloodInstance.transform;
+            bloodT.position = hit.point;
+            bloodT.localRotation = Quaternion.identity;
+            bloodT.localScale = Vector3.one * Random.Range(0.75f, 1.2f);
+            bloodT.LookAt(hit.point + hit.normal, this.direction);
+            bloodT.Rotate(90, 0, 0);
+            bloodT.transform.parent = hit.transform;
+            Destroy(attachBloodInstance, 10f);
+            Destroy(instance, 13f);
         }
 
         private void PlayFireAnim()

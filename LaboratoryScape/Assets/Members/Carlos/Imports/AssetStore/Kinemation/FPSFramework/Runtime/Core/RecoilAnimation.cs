@@ -75,7 +75,14 @@ namespace Kinemation.FPSFramework.Runtime.Core
         private bool _isPlaying;
         private bool _isLooping;
         private bool _enableSmoothing;
-    
+
+        [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
+
+        private void Awake()
+        {
+            _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
+        }
+
         public void Init(RecoilAnimData data, float fireRate, FireMode newFireMode)
         {
             fireMode = newFireMode;
@@ -110,7 +117,6 @@ namespace Kinemation.FPSFramework.Runtime.Core
         
             _stateMachine[_stateIndex].onPlay.Invoke();
             _lastTimeShot = Time.unscaledTime;
-            AudioManager.instance.Play("G3_Shot");
         }
 
         public void Stop()
