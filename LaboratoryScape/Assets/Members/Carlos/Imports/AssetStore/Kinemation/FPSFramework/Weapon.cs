@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using Kinemation.FPSFramework.Runtime.Core;
+using TMPro;
 using UnityEngine;
 
 namespace Demo.Scripts.Runtime
@@ -41,13 +42,24 @@ namespace Demo.Scripts.Runtime
         [Header("--- SHOOT ---")] 
         [Space(10)]
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private int ammoCapacity;
         [SerializeField] private int maxAmmo;
         [SerializeField] private int currentAmmo;
         [SerializeField] private float probabilidadDeFallar = 0.25f;
+        
+        [Header("--- CANVAS ---")] 
+        [Space(10)]
+        [SerializeField] private TextMeshProUGUI ammoTMP;
 
         //GETTERS && SETTERS//
         public Transform Muzzle => muzzle;
         public int CurrentAmmo => currentAmmo;
+        public int MaxAmmo => maxAmmo;
+        public TextMeshProUGUI AmmoTMP
+        {
+            get => ammoTMP;
+            set => ammoTMP = value;
+        }
 
         /////////////////////////////////////////////
 
@@ -56,9 +68,9 @@ namespace Demo.Scripts.Runtime
             enemyScriptsStorage = GetComponentInParent<EnemyScriptsStorage>();
             _animator = GetComponent<Animator>();
             _audioSource = GetComponent<AudioSource>();
-
+            
             maxAmmo = 300;
-            currentAmmo = 30;
+            currentAmmo = ammoCapacity;
         }
 
         public Transform GetScope()
@@ -71,7 +83,12 @@ namespace Demo.Scripts.Runtime
         public void OnFire()
         {
             currentAmmo--;
-            
+
+            if (ammoTMP != null)
+            {
+                ammoTMP.text = $"{currentAmmo} / {maxAmmo}";
+            }
+
             RaycastHit hit = new RaycastHit();
             Ray ray = new Ray(muzzle.position, muzzle.forward);
 
@@ -101,9 +118,47 @@ namespace Demo.Scripts.Runtime
             _audioSource.PlayOneShot(_audioSource.clip);
         }
 
-        private void RemoveBullets()
+        public void Reload()
         {
+            if (currentAmmo < ammoCapacity)
+            {
+                if (currentAmmo > 0)
+                {
+                    if (maxAmmo >= ammoCapacity)
+                    {
+                        maxAmmo -= ammoCapacity - currentAmmo;
+                        currentAmmo = ammoCapacity;
+                    }
+                    else if (maxAmmo < ammoCapacity)
+                    {
+                        if (currentAmmo + maxAmmo > ammoCapacity)
+                        {
+                            maxAmmo -= ammoCapacity - currentAmmo;
+                            currentAmmo = ammoCapacity;
+                        }
+                        else
+                        {
+                            currentAmmo += maxAmmo;
+                            maxAmmo = 0;
+                        }
+                    }
+                }
+                else if (currentAmmo.Equals(0))
+                {
+                    if (maxAmmo >= ammoCapacity)
+                    {
+                        currentAmmo = ammoCapacity;
+                        maxAmmo -= ammoCapacity;
+                    }
+                    else
+                    {
+                        currentAmmo += maxAmmo;
+                        maxAmmo = 0;
+                    }
+                }
+            }
             
+            ammoTMP.text = $"{currentAmmo} / {maxAmmo}";
         }
 
         private void ShootPlayerProbability()

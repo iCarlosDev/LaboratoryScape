@@ -269,6 +269,11 @@ namespace Demo.Scripts.Runtime
                     _charAnimData.leanDirection = -1;
                 }
 
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    GetGun().Reload();
+                }
+
                 if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     OnFirePressed();

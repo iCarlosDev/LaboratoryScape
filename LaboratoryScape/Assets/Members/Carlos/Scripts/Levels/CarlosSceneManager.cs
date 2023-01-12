@@ -24,16 +24,14 @@ public class CarlosSceneManager : MonoBehaviour
    [SerializeField] private FPSController closestEnemy;
    [SerializeField] private EnemyDespossess enemyDespossess;
    [SerializeField] private GameObject health_Canvas;
+   [SerializeField] private GameObject ammo_Canvas;
    [SerializeField] private bool alreadyPossessed;
    
    //GETTERS & SETTERS//
    public List<FPSController> EnemiesInRangeList => enemiesInRangeList;
    public List<FPSController> EnmiesList => enmiesList;
-   public GameObject HealthCanvas
-   {
-      get => health_Canvas;
-      set => health_Canvas = value;
-   }
+   public GameObject HealthCanvas => health_Canvas;
+   public GameObject AmmoCanvas => ammo_Canvas;
 
    ///////////////////////////////////////////
 
@@ -44,6 +42,7 @@ public class CarlosSceneManager : MonoBehaviour
       playerController = FindObjectOfType<PlayerController>();
       playerPossess = playerController.GetComponent<PlayerPossess>();
       health_Canvas = GameObject.Find("EnemyHealth_Canvas");
+      ammo_Canvas = GameObject.Find("EnemyAmmo_Canvas");
    }
 
    private void Start()
@@ -53,6 +52,7 @@ public class CarlosSceneManager : MonoBehaviour
 
       PlayerScriptsStorage.instance.PlayerHealth.HealthCanvas.SetActive(true);
       health_Canvas.SetActive(false);
+      ammo_Canvas.SetActive(false);
 
       FPSController[] enemiesArray = FindObjectsOfType<FPSController>();
 

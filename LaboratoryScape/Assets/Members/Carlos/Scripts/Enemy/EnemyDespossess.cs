@@ -61,7 +61,9 @@ public class EnemyDespossess : MonoBehaviour
     public void ActivateEnemyControl()
     {
         CarlosSceneManager.instance.HealthCanvas.SetActive(true);
+        CarlosSceneManager.instance.AmmoCanvas.SetActive(true);
         _enemyScriptsStorage.EnemyHealth.HealthTMP = CarlosSceneManager.instance.HealthCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        _enemyScriptsStorage.Weapon.AmmoTMP = CarlosSceneManager.instance.AmmoCanvas.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
         _enemyScriptsStorage.LookLayer.PelvisOffset = new Vector3(0f, -0.04f, 0f);
         _enemyScriptsStorage.LookLayer.AimUp = 0f;
@@ -73,6 +75,7 @@ public class EnemyDespossess : MonoBehaviour
         _enemyScriptsStorage.FPSController.IsIa = false;
         
         _enemyScriptsStorage.EnemyHealth.HealthTMP.text = $"{_enemyScriptsStorage.EnemyHealth.CurrentHealth}";
+        _enemyScriptsStorage.Weapon.AmmoTMP.text = $"{_enemyScriptsStorage.Weapon.CurrentAmmo} / {_enemyScriptsStorage.Weapon.MaxAmmo}";
 
         foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
         {
@@ -123,6 +126,11 @@ public class EnemyDespossess : MonoBehaviour
         if (_enemyScriptsStorage.EnemyHealth.HealthTMP != null)
         {
             CarlosSceneManager.instance.HealthCanvas.SetActive(false);   
+        }
+
+        if (_enemyScriptsStorage.Weapon.AmmoTMP != null)
+        {
+            CarlosSceneManager.instance.AmmoCanvas.SetActive(false);   
         }
 
         foreach (Rigidbody rigidbodies in _enemyScriptsStorage.EnemyComponentsGetter.Rigidbody)
