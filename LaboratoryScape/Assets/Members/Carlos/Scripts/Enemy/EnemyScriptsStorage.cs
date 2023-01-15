@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Demo.Scripts.Runtime;
+using EPOOutline;
 using Kinemation.FPSFramework.Runtime.Core;
 using Kinemation.FPSFramework.Runtime.Layers;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class EnemyScriptsStorage : MonoBehaviour
     [SerializeField] private LookLayer _lookLayer;
     [SerializeField] private Weapon _weapon;
     [SerializeField] private WeaponPoseDetector weaponPoseDetector;
+    [SerializeField] private Outlinable _outlinable;
 
 
     //GETTERS && SETTERS//
@@ -44,6 +46,7 @@ public class EnemyScriptsStorage : MonoBehaviour
     public LookLayer LookLayer => _lookLayer;
     public Weapon Weapon => _weapon;
     public WeaponPoseDetector WeaponPoseDetector => weaponPoseDetector;
+    public Outlinable Outlinable => _outlinable;
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
@@ -65,5 +68,6 @@ public class EnemyScriptsStorage : MonoBehaviour
         _lookLayer = GetComponent<LookLayer>();
         _weapon = _fpsController.Weapons[_fpsController.Index];
         weaponPoseDetector = _fpsController.CameraBone.transform.GetChild(0).GetComponent<WeaponPoseDetector>();
+        _outlinable = GetComponent<Outlinable>();
     }
 }

@@ -140,7 +140,7 @@ public class CarlosSceneManager : MonoBehaviour
    public void DespossessParameters()
    {
       closestEnemy.CameraBone.gameObject.SetActive(false);
-      //closestEnemy.Outlinable.enabled = false;
+      closestEnemy.EnemyScriptsStorage.Outlinable.enabled = false;
       
       playerController.gameObject.SetActive(true);
       playerController.PlayerCamera.gameObject.SetActive(true);
@@ -166,6 +166,13 @@ public class CarlosSceneManager : MonoBehaviour
          if (!playerPossess.HaveCooldown && playerPossess.CanPossess)
          {
             GetClosestEnemy(EnemiesInRangeList);  
+         }
+         else
+         {
+            if (closestEnemy != null)
+            {
+               closestEnemy.EnemyScriptsStorage.Outlinable.enabled = false;
+            }
          }
       }
    }
@@ -193,9 +200,9 @@ public class CarlosSceneManager : MonoBehaviour
             }
          }
          
-         //potentialTarget.Outlinable.enabled = false;
+         potentialTarget.EnemyScriptsStorage.Outlinable.enabled = false;
       }
       
-      //closestEnemy.Outlinable.enabled = true;
+      closestEnemy.EnemyScriptsStorage.Outlinable.enabled = true;
    }
 }

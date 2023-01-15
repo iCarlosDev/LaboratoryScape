@@ -82,6 +82,7 @@ namespace Demo.Scripts.Runtime
             set => shouldAttack = value;
         }
         public CoreAnimComponent CoreAnimComponent => coreAnimComponent;
+        public EnemyScriptsStorage EnemyScriptsStorage => _enemyScriptsStorage;
 
         //////////////////////////////////////////////
 
