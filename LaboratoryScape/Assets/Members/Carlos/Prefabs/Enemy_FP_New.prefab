@@ -1,5 +1,66 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &422758822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422758823}
+  - component: {fileID: 422758824}
+  - component: {fileID: 626605436}
+  m_Layer: 0
+  m_Name: AimObstacleDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422758823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422758822}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0538, z: 0.1008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 538933627810086427}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &422758824
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422758822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.02
+  m_Height: 0.685928
+  m_Direction: 2
+  m_Center: {x: 1.9358513e-10, y: 0.000000020043947, z: 0.3479646}
+--- !u!114 &626605436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422758822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299e87246b7f31e4785b97c2bcb45a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyScriptsStorage: {fileID: 0}
+  isColliding: 0
 --- !u!1 &199725071010266035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,7 +1736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 538933626846191624}
   m_LocalRotation: {x: 0.009396086, y: -0.0000029653297, z: -0.0000001806765, w: 0.99995583}
-  m_LocalPosition: {x: 0.0545, y: -0.0678, z: 0.2643}
+  m_LocalPosition: {x: 0.054, y: -0.065, z: 0.095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1693,9 +1754,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.02
-  m_Height: 0.49
+  m_Height: 0.685928
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.25}
+  m_Center: {x: 1.9358513e-10, y: 0.000000020043947, z: 0.3479646}
 --- !u!114 &538933626846191626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,7 +1769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1afdb4acf3b1e144860f559307bdb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasEntered: 0
+  enemyScriptsStorage: {fileID: 0}
   isBlocked: 0
 --- !u!1 &538933626947125297
 GameObject:
@@ -2658,6 +2719,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 538933626846191627}
+  - {fileID: 422758823}
   m_Father: {fileID: 6241011400374593275}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3295,7 +3357,10 @@ MonoBehaviour:
   crouchHeight: 0.7
   sensitivity: 2
   shouldMove: 1
-  speed: 1.7
+  walkSpeed: 1.7
+  sprintSpeed: 3.4
+  crouchSpeed: 0
+  currentSpeed: 0
   controller: {fileID: 6201519285769432637}
   animator: {fileID: 6201519285769432578}
   weapons:
@@ -3306,6 +3371,7 @@ MonoBehaviour:
   isIA: 0
   shouldAttack: 0
   _enemyScriptsStorage: {fileID: 0}
+  weaponBlockFlag: 0
 --- !u!114 &6201519285769432628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3680,6 +3746,7 @@ MonoBehaviour:
   _weapon: {fileID: 0}
   weaponPoseDetector: {fileID: 0}
   _outlinable: {fileID: 0}
+  aimColliderDetector: {fileID: 0}
 --- !u!114 &6201519285769432638
 MonoBehaviour:
   m_ObjectHideFlags: 0

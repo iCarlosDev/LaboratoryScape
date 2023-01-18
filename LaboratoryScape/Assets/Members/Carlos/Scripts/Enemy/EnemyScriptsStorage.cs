@@ -28,6 +28,7 @@ public class EnemyScriptsStorage : MonoBehaviour
     [SerializeField] private Weapon _weapon;
     [SerializeField] private WeaponPoseDetector weaponPoseDetector;
     [SerializeField] private Outlinable _outlinable;
+    [SerializeField] private AimColliderDetector aimColliderDetector;
 
 
     //GETTERS && SETTERS//
@@ -47,6 +48,7 @@ public class EnemyScriptsStorage : MonoBehaviour
     public Weapon Weapon => _weapon;
     public WeaponPoseDetector WeaponPoseDetector => weaponPoseDetector;
     public Outlinable Outlinable => _outlinable;
+    public AimColliderDetector AimColliderDetector => aimColliderDetector;
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
@@ -69,5 +71,6 @@ public class EnemyScriptsStorage : MonoBehaviour
         _weapon = _fpsController.Weapons[_fpsController.Index];
         weaponPoseDetector = _fpsController.CameraBone.transform.GetChild(0).GetComponent<WeaponPoseDetector>();
         _outlinable = GetComponent<Outlinable>();
+        aimColliderDetector = _fpsController.CameraBone.transform.GetChild(1).GetComponent<AimColliderDetector>();
     }
 }

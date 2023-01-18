@@ -19,7 +19,10 @@ namespace Demo.Scripts.Runtime
 
         [Header("Movement")] 
         [SerializeField] private bool shouldMove;
-        [SerializeField] private float speed = 10f;
+        [SerializeField] private float walkSpeed;
+        [SerializeField] private float sprintSpeed;
+        [SerializeField] private float crouchSpeed;
+        [SerializeField] private float currentSpeed;
         [SerializeField] private CharacterController controller;
         [SerializeField] private Animator animator;
 
@@ -83,9 +86,7 @@ namespace Demo.Scripts.Runtime
             get => shouldAttack;
             set => shouldAttack = value;
         }
-        public CoreAnimComponent CoreAnimComponent => coreAnimComponent;
         public EnemyScriptsStorage EnemyScriptsStorage => _enemyScriptsStorage;
-
         public bool WeaponBlockFlag
         {
             get => weaponBlockFlag;
@@ -113,6 +114,11 @@ namespace Demo.Scripts.Runtime
             controller = GetComponent<CharacterController>();
 
             _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
+
+            walkSpeed = 1.7f;
+            sprintSpeed = walkSpeed * 2f;
+            crouchSpeed = walkSpeed * 0.7f;
+            currentSpeed = walkSpeed;
 
             EquipWeapon();
         }
@@ -151,10 +157,16 @@ namespace Demo.Scripts.Runtime
             if (_aiming)
             {
                 _charAnimData.actionState = FPSActionState.Aiming;
+                _enemyScriptsStorage.WeaponPoseDetector.IsBlocked = false;
+                _enemyScriptsStorage.WeaponPoseDetector.gameObject.SetActive(false);
+                _enemyScriptsStorage.AimColliderDetector.gameObject.SetActive(true);
             }
             else
             {
                 _charAnimData.actionState = FPSActionState.None;
+                _enemyScriptsStorage.AimColliderDetector.IsColliding = false;
+                _enemyScriptsStorage.AimColliderDetector.gameObject.SetActive(false);
+                _enemyScriptsStorage.WeaponPoseDetector.gameObject.SetActive(true);
             }
             
             _recoilAnimation.isAiming = _aiming;
@@ -207,7 +219,7 @@ namespace Demo.Scripts.Runtime
             _charAnimData.movementState = FPSMovementState.Sprinting;
             _charAnimData.actionState = FPSActionState.None;
 
-            speed *= 2f;
+            currentSpeed = sprintSpeed;
             animator.SetBool(Sprint, true);
         }
         
@@ -220,9 +232,8 @@ namespace Demo.Scripts.Runtime
             
             _charAnimData.movementState = FPSMovementState.Walking;
 
-            speed /= 2f;
+            currentSpeed = walkSpeed;
             animator.SetBool(Sprint, false);
-            weaponBlockFlag = false;
         }
 
         private void Crouch()
@@ -231,7 +242,7 @@ namespace Demo.Scripts.Runtime
             height *= crouchHeight;
             controller.height = height;
             controller.center = new Vector3(0f, _lowerCapsuleOffset + height / 2f, 0f);
-            speed *= 0.7f;
+            currentSpeed = crouchSpeed;
             
             _charAnimData.poseState = FPSPoseState.Crouching;
             animator.SetBool(Crouch1, true);
@@ -243,7 +254,7 @@ namespace Demo.Scripts.Runtime
             height /= crouchHeight;
             controller.height = height;
             controller.center = new Vector3(0f, _lowerCapsuleOffset + height / 2f, 0f);
-            speed /= 0.7f;
+            currentSpeed = walkSpeed;
 
             _charAnimData.poseState = FPSPoseState.Standing;
             animator.SetBool(Crouch1, false);
@@ -252,13 +263,18 @@ namespace Demo.Scripts.Runtime
         private void ProcessActionInput()
         {
             _charAnimData.leanDirection = 0;
+
+            if (_aiming)
+            {
+                _charAnimData.actionState = FPSActionState.Aiming;
+            }
             
-            if (Input.GetKeyDown(KeyCode.LeftShift) && _charAnimData.actionState != FPSActionState.Ready && _charAnimData.movementState == FPSMovementState.Walking)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None && _charAnimData.movementState == FPSMovementState.Walking)
             {
                 SprintPressed();
             }
 
-            if ((Input.GetKeyUp(KeyCode.LeftShift) && _charAnimData.actionState != FPSActionState.Ready && _charAnimData.movementState == FPSMovementState.Sprinting) || weaponBlockFlag)
+            if ((Input.GetKeyUp(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None && _charAnimData.movementState == FPSMovementState.Sprinting))
             {
                 SprintReleased();
             }
@@ -270,7 +286,7 @@ namespace Demo.Scripts.Runtime
             
             if (weaponBlockFlag)
             {
-                if (_enemyScriptsStorage.WeaponPoseDetector.IsBlocked)
+                if (_enemyScriptsStorage.WeaponPoseDetector.IsBlocked || EnemyScriptsStorage.AimColliderDetector.IsColliding)
                 {
                     _charAnimData.actionState = FPSActionState.Ready;
                     OnFireReleased();
@@ -281,23 +297,28 @@ namespace Demo.Scripts.Runtime
                     weaponBlockFlag = false;
                 }
             }
+            
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                ToggleAim();
+            }
 
             if (_charAnimData.movementState == FPSMovementState.Sprinting)
             {
                 return;
             }
 
+            if (Input.GetKey(KeyCode.Q))
+            {
+                _charAnimData.leanDirection = 1;
+            }
+            else if (Input.GetKey(KeyCode.E))
+            {
+                _charAnimData.leanDirection = -1;
+            }
+            
             if (_charAnimData.actionState != FPSActionState.Ready)
             {
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    _charAnimData.leanDirection = 1;
-                }
-                else if (Input.GetKey(KeyCode.E))
-                {
-                    _charAnimData.leanDirection = -1;
-                }
-
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     GetGun().Reload();
@@ -312,12 +333,7 @@ namespace Demo.Scripts.Runtime
                 {
                     OnFireReleased();
                 }
-            
-                if (Input.GetKeyDown(KeyCode.Mouse1))
-                {
-                    ToggleAim();
-                }
-            
+
                 if (Input.GetKeyDown(KeyCode.V))
                 {
                     ChangeScope();
@@ -442,7 +458,7 @@ namespace Demo.Scripts.Runtime
             animator.SetFloat(MoveY, _smoothMoveInput.y);
                 
             Vector3 move = transform.right * moveX + transform.forward * moveY;
-            controller.Move(move * speed * Time.deltaTime);
+            controller.Move(move * currentSpeed * Time.deltaTime);
         }
 
         private void UpdateAnimValues()

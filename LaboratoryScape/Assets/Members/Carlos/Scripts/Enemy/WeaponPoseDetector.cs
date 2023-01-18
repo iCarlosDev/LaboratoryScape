@@ -1,18 +1,22 @@
 using System;
+using System.Collections.Generic;
 using Demo.Scripts.Runtime;
 using UnityEngine;
 
 public class WeaponPoseDetector : MonoBehaviour
 {
     //Variables
-    [SerializeField] private bool isBlocked;
     [SerializeField] private EnemyScriptsStorage enemyScriptsStorage;
+    [SerializeField] private bool isBlocked;
 
+    //GETTERS && SETTERS//
     public bool IsBlocked
     {
         get => isBlocked;
         set => isBlocked = value;
     }
+
+    ////////////////////////////////////
 
     private void Awake()
     {
@@ -24,8 +28,8 @@ public class WeaponPoseDetector : MonoBehaviour
         if (other.CompareTag("Obstacle"))
         {
             enemyScriptsStorage.FPSController.WeaponBlockFlag = true;
-            enemyScriptsStorage.FPSController.aiming = false;
             isBlocked = true;
+            //enemyScriptsStorage.FPSController.aiming = false;
         }
     }
 
