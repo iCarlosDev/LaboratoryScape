@@ -1,5 +1,6 @@
 // Designed by Kinemation, 2022
 
+using System.Collections;
 using System.Collections.Generic;
 using Kinemation.FPSFramework.Runtime.Core;
 using UnityEngine;
@@ -55,6 +56,7 @@ namespace Demo.Scripts.Runtime
         [SerializeField] private bool shouldAttack;
 
         [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
+        [SerializeField] private bool weaponBlockFlag;
         
         //GETTER & SETTER//
         public Transform CameraBone => cameraBone;
@@ -83,6 +85,17 @@ namespace Demo.Scripts.Runtime
         }
         public CoreAnimComponent CoreAnimComponent => coreAnimComponent;
         public EnemyScriptsStorage EnemyScriptsStorage => _enemyScriptsStorage;
+
+        public bool WeaponBlockFlag
+        {
+            get => weaponBlockFlag;
+            set => weaponBlockFlag = value;
+        }
+        public bool aiming
+        {
+            get => _aiming;
+            set => _aiming = value;
+        }
 
         //////////////////////////////////////////////
 
@@ -209,6 +222,7 @@ namespace Demo.Scripts.Runtime
 
             speed /= 2f;
             animator.SetBool(Sprint, false);
+            weaponBlockFlag = false;
         }
 
         private void Crouch()
@@ -239,12 +253,12 @@ namespace Demo.Scripts.Runtime
         {
             _charAnimData.leanDirection = 0;
             
-            if (Input.GetKeyDown(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && _charAnimData.actionState != FPSActionState.Ready && _charAnimData.movementState == FPSMovementState.Walking)
             {
                 SprintPressed();
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None)
+            if ((Input.GetKeyUp(KeyCode.LeftShift) && _charAnimData.actionState != FPSActionState.Ready && _charAnimData.movementState == FPSMovementState.Sprinting) || weaponBlockFlag)
             {
                 SprintReleased();
             }
@@ -252,6 +266,20 @@ namespace Demo.Scripts.Runtime
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ChangeWeapon();
+            }
+            
+            if (weaponBlockFlag)
+            {
+                if (_enemyScriptsStorage.WeaponPoseDetector.IsBlocked)
+                {
+                    _charAnimData.actionState = FPSActionState.Ready;
+                    OnFireReleased();
+                }
+                else
+                {
+                    _charAnimData.actionState = FPSActionState.None;
+                    weaponBlockFlag = false;
+                }
             }
 
             if (_charAnimData.movementState == FPSMovementState.Sprinting)
@@ -332,21 +360,6 @@ namespace Demo.Scripts.Runtime
                     OnFireReleased();
                 }
             }*/
-
-            if (!_enemyScriptsStorage.WeaponPoseDetector.IsBlocked && _enemyScriptsStorage.WeaponPoseDetector.HasEntered)
-            {
-                if (_charAnimData.actionState == FPSActionState.Ready)
-                {
-                    _charAnimData.actionState = FPSActionState.None;
-                }
-                else
-                {
-                    _charAnimData.actionState = FPSActionState.Ready;
-                    OnFireReleased();
-                }
-
-                _enemyScriptsStorage.WeaponPoseDetector.IsBlocked = true;
-            }
         }
 
         public void ChangePose()

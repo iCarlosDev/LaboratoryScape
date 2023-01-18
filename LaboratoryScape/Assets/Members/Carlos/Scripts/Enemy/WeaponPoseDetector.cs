@@ -1,10 +1,12 @@
+using System;
+using Demo.Scripts.Runtime;
 using UnityEngine;
 
 public class WeaponPoseDetector : MonoBehaviour
 {
     //Variables
-    [SerializeField] private bool hasEntered;
     [SerializeField] private bool isBlocked;
+    [SerializeField] private EnemyScriptsStorage enemyScriptsStorage;
 
     public bool IsBlocked
     {
@@ -12,18 +14,18 @@ public class WeaponPoseDetector : MonoBehaviour
         set => isBlocked = value;
     }
 
-    public bool HasEntered
+    private void Awake()
     {
-        get => hasEntered;
-        set => hasEntered = value;
+        enemyScriptsStorage = GetComponentInParent<EnemyScriptsStorage>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle"))
         {
-            isBlocked = false;
-            hasEntered = true;
+            enemyScriptsStorage.FPSController.WeaponBlockFlag = true;
+            enemyScriptsStorage.FPSController.aiming = false;
+            isBlocked = true;
         }
     }
 
