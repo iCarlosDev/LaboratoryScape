@@ -9,6 +9,8 @@ namespace Demo.Scripts.Runtime
 {
     public class FPSController : MonoBehaviour
     {
+        private PauseMenuController pauseMenuController;
+        
         [Header("FPS Framework")]
         [SerializeField] private CoreAnimComponent coreAnimComponent;
         
@@ -60,6 +62,7 @@ namespace Demo.Scripts.Runtime
 
         [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
         [SerializeField] private bool weaponBlockFlag;
+        [SerializeField] private bool shouldCancelSprint;
         
         //GETTER & SETTER//
         public Transform CameraBone => cameraBone;
@@ -115,6 +118,8 @@ namespace Demo.Scripts.Runtime
 
             _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
 
+            pauseMenuController = FindObjectOfType<PauseMenuController>();
+
             walkSpeed = 1.7f;
             sprintSpeed = walkSpeed * 2f;
             crouchSpeed = walkSpeed * 0.7f;
@@ -152,6 +157,11 @@ namespace Demo.Scripts.Runtime
 
         public void ToggleAim()
         {
+            if (!aiming && _charAnimData.movementState == FPSMovementState.Sprinting)
+            {
+                return;
+            }
+            
             _aiming = !_aiming;
 
             if (_aiming)
@@ -216,6 +226,13 @@ namespace Demo.Scripts.Runtime
                 return;
             }
             
+            if (aiming)
+            {
+                ToggleAim();   
+            }
+
+            shouldCancelSprint = true;
+            
             _charAnimData.movementState = FPSMovementState.Sprinting;
             _charAnimData.actionState = FPSActionState.None;
 
@@ -269,12 +286,12 @@ namespace Demo.Scripts.Runtime
                 _charAnimData.actionState = FPSActionState.Aiming;
             }
             
-            if (Input.GetKeyDown(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None && _charAnimData.movementState == FPSMovementState.Walking)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && (moveX > 0.1f || moveY > 0.1f))
             {
                 SprintPressed();
             }
 
-            if ((Input.GetKeyUp(KeyCode.LeftShift) && _charAnimData.actionState == FPSActionState.None && _charAnimData.movementState == FPSMovementState.Sprinting))
+            if (Input.GetKeyUp(KeyCode.LeftShift) && _charAnimData.movementState == FPSMovementState.Sprinting)
             {
                 SprintReleased();
             }
@@ -301,6 +318,12 @@ namespace Demo.Scripts.Runtime
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 ToggleAim();
+            }
+
+            if (moveX.Equals(0f) && moveY.Equals(0f) && shouldCancelSprint)
+            {
+               SprintReleased();
+               shouldCancelSprint = false;
             }
 
             if (_charAnimData.movementState == FPSMovementState.Sprinting)
@@ -468,7 +491,7 @@ namespace Demo.Scripts.Runtime
 
         private void Update()
         {
-            if (!isIA)
+            if (!isIA && !pauseMenuController.ShouldPause)
             {
                 ProcessActionInput();   
                 ProcessLookInput();

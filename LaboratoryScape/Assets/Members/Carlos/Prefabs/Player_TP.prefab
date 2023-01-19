@@ -309,7 +309,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8675549573485822134}
-  m_LocalRotation: {x: 0.10759976, y: -0.000000029802322, z: 0.000000011175871, w: 0.9941944}
+  m_LocalRotation: {x: 0.1075998, y: -0.000000029802322, z: 0.000000011175871, w: 0.9941944}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -548,8 +548,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.5
-  m_Radius: 0.29
+  m_Height: 0.36
+  m_Radius: 0.17
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -626,6 +626,8 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   alreadyDead: 0
+  health_TMP: {fileID: 0}
+  health_Canvas: {fileID: 0}
 --- !u!114 &2873872841158040637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +665,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8675549574199532396}
-  m_LocalRotation: {x: 0.12566584, y: -0.000000029802322, z: -0, w: 0.9920727}
+  m_LocalRotation: {x: 0.1256659, y: -0.000000029802322, z: 0.000000007450581, w: 0.9920727}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -735,6 +737,7 @@ GameObject:
   - component: {fileID: 8675549574217299554}
   - component: {fileID: 8675549574217299557}
   - component: {fileID: 8675549574217299556}
+  - component: {fileID: 8675549573656620020}
   m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
@@ -751,7 +754,7 @@ Transform:
   m_GameObject: {fileID: 8675549574217299553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.36725035, z: 1}
+  m_LocalScale: {x: 0.64645, y: 0.23740898, z: 0.64645}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8675549574376992793}
@@ -808,6 +811,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8675549573656620020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675549574217299553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8675549574364442628
 GameObject:
   m_ObjectHideFlags: 3
@@ -832,7 +847,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8675549574364442628}
-  m_LocalRotation: {x: 0.08954592, y: -0.00000011920929, z: 0.000000018626451, w: 0.99598277}
+  m_LocalRotation: {x: 0.089545965, y: -0.000000029802322, z: -0, w: 0.99598277}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -904,6 +919,7 @@ GameObject:
   - component: {fileID: 8675549574376992793}
   - component: {fileID: 8675549574376992796}
   - component: {fileID: 8675549574376992795}
+  - component: {fileID: 8675549573656620019}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -976,6 +992,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8675549573656620019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675549574376992792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 034bc47afcbf5e141a58d5c20b7808e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8675549574546944840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1030,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8675549574546944840}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000009536743, y: 1.1199999, z: -4.3500004}
+  m_LocalPosition: {x: 0.0000009536743, y: 1.1199999, z: -4.3499985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1065,7 +1093,7 @@ MonoBehaviour:
     m_DecelTime: 0.1
     m_InputAxisName: Mouse Y
     m_InputAxisValue: 0
-    m_InvertInput: 0
+    m_InvertInput: 1
     m_MinValue: 0
     m_MaxValue: 1
     m_Wrap: 0
@@ -1112,7 +1140,7 @@ MonoBehaviour:
   m_BindingMode: 4
   m_SplineCurvature: 0.2
   m_Orbits:
-  - m_Height: 3.98
+  - m_Height: 1.51
     m_Radius: 5.84
   - m_Height: 1.12
     m_Radius: 4.35
