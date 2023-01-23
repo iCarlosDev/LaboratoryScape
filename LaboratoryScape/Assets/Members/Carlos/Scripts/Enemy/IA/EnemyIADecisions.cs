@@ -35,7 +35,7 @@ public class EnemyIADecisions : MonoBehaviour
         _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
     }
 
-    private void Start()
+    private void Start() 
     {
         // Añade una regla con alta prioridad que dice "si el enemigo está a menos de 5 metros de distancia, dispara"
         AddRule(10, () => {

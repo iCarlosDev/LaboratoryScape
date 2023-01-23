@@ -91,6 +91,12 @@ public class CarlosSceneManager : MonoBehaviour
       //Comprobamos si hemos poseido, desactivamos al player y activamos al enemigo poseido;
       if (!alreadyPossessed)
       {
+         if (enemyDespossess == null)
+         {
+            playerPossess.ImPossessing = false;
+            return;
+         }
+         
          playerPossess.CanPossess = false;
          PlayerScriptsStorage.instance.PlayerHealth.HealthCanvas.SetActive(false);
          playerController.PlayerCamera.gameObject.SetActive(false);

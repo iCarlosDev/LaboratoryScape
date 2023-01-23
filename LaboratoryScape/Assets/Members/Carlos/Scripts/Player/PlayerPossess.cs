@@ -35,10 +35,7 @@ public class PlayerPossess : MonoBehaviour
     {
         if (!haveCooldown)
         {
-            if (canPossess)
-            {
-                Possess();
-            }
+            Possess();
         }
         else
         {
@@ -51,7 +48,7 @@ public class PlayerPossess : MonoBehaviour
     /// </summary>
     private void Possess()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && canPossess)
         {
             possessCooldown = 5f;
             imPossessing = true;
