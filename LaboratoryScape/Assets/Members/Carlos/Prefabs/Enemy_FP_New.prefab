@@ -3358,7 +3358,7 @@ MonoBehaviour:
   sensitivity: 2
   shouldMove: 1
   walkSpeed: 1.7
-  sprintSpeed: 3.4
+  sprintSpeed: 0
   crouchSpeed: 0
   currentSpeed: 0
   controller: {fileID: 6201519285769432637}
@@ -3372,6 +3372,7 @@ MonoBehaviour:
   shouldAttack: 0
   _enemyScriptsStorage: {fileID: 0}
   weaponBlockFlag: 0
+  shouldCancelSprint: 0
 --- !u!114 &6201519285769432628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3667,6 +3668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyScriptsStorage: {fileID: 0}
+  _enemyIaDecisions: {fileID: 0}
   points: []
   currentPoint: 0
   _navMeshAgent: {fileID: 0}
@@ -3681,8 +3683,6 @@ MonoBehaviour:
   searchPlayer: {fileID: 538933626219855107}
   sensitivity: 30
   lookingPlayer: 0
-  shouldShoot: 0
-  firstTimeShooting: 0
 --- !u!114 &6201519285769432632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3718,6 +3718,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyScriptsStorage: {fileID: 0}
+  coverPoints: []
+  shouldShoot: 0
+  firstTimeShooting: 0
 --- !u!114 &6201519285769432633
 MonoBehaviour:
   m_ObjectHideFlags: 0

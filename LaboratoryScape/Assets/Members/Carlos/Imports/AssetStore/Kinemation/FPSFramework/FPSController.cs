@@ -214,7 +214,7 @@ namespace Demo.Scripts.Runtime
 
         public void OnFireReleased()
         {
-            _enemyScriptsStorage.EnemyIaMovement.FirstTimeShooting = false;
+            _enemyScriptsStorage.EnemyIaDecisions.FirstTimeShooting = false;
             _recoilAnimation.Stop();
             _fireTimer = -1f;
         }

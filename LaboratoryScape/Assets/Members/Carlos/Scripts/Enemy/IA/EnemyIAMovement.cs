@@ -9,6 +9,7 @@ public class EnemyIAMovement : MonoBehaviour
 {
     //Variables
     [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
+    [SerializeField] private EnemyIADecisions _enemyIaDecisions;
     
     [SerializeField] private List<Transform> points;
     [SerializeField] private int currentPoint;
@@ -29,26 +30,17 @@ public class EnemyIAMovement : MonoBehaviour
     [SerializeField] private Transform searchPlayer;
     [SerializeField] private float sensitivity;
     [SerializeField] private bool lookingPlayer;
-    
-    [Header("--- SHOOT PLAYER ---")] 
-    [Space(10)]
-    [SerializeField] private bool shouldShoot;
-    [SerializeField] private bool firstTimeShooting;
 
     //GETTERS && SETTERS//
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
     public List<Transform> Points => points;
-    public bool FirstTimeShooting
-    {
-        get => firstTimeShooting;
-        set => firstTimeShooting = value;
-    }
 
     ////////////////////////////////////////////////////
 
     private void Awake()
     {
         _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
+        _enemyIaDecisions = GetComponent<EnemyIADecisions>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         searchPlayer = _enemyScriptsStorage.Weapon.transform.GetChild(6);
@@ -92,18 +84,7 @@ public class EnemyIAMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
             
             LookPlayer();
-
-            if (shouldShoot && !firstTimeShooting)
-            {
-                ShootPlayer();
-            }
         }
-    }
-
-    private void ShootPlayer()
-    {
-        _enemyScriptsStorage.FPSController.OnFirePressed();
-        firstTimeShooting = true;
     }
 
     private void LookPlayer()
@@ -112,7 +93,7 @@ public class EnemyIAMovement : MonoBehaviour
 
         if (!lookingPlayer)
         {
-            shouldShoot = false;
+            _enemyIaDecisions.ShouldShoot = false;
             _enemyScriptsStorage.FPSController.OnFireReleased();
             
             if (searchPlayer.forward.y < _enemyScriptsStorage.Weapon.Muzzle.transform.forward.y)
@@ -126,7 +107,7 @@ public class EnemyIAMovement : MonoBehaviour
         }
         else
         {
-            shouldShoot = true;
+            _enemyIaDecisions.ShouldShoot = true;
         }
 
         RaycastHit hit = new RaycastHit();
@@ -138,7 +119,7 @@ public class EnemyIAMovement : MonoBehaviour
             
             if (hit.collider.CompareTag("EnemyColliders"))
             {
-                shouldShoot = false;
+                _enemyIaDecisions.ShouldShoot = false;
                 _enemyScriptsStorage.FPSController.OnFireReleased();
             }
         }
