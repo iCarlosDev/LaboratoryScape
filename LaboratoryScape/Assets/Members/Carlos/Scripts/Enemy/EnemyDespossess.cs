@@ -3,6 +3,8 @@ using Kinemation.FPSFramework.Runtime.Core;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class EnemyDespossess : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class EnemyDespossess : MonoBehaviour
     [SerializeField] private bool shouldSuicide;
     [SerializeField] private bool isPossessed;
 
+    [SerializeField] private Volume _volume;
+
     //GETTERS & SETTERS//
     public bool ShouldSuicide => shouldSuicide;
     public bool IsPossessed
@@ -23,6 +27,7 @@ public class EnemyDespossess : MonoBehaviour
         get => isPossessed;
         set => isPossessed = value;
     }
+    public Volume volume => _volume;
 
     //////////////////////////////////////////
 
@@ -47,7 +52,28 @@ public class EnemyDespossess : MonoBehaviour
     {
         //Nada más poseamos a un enemigo empezará una cuenta atrás;
         timeRemaining -= Time.deltaTime;
-        
+
+        DepthOfField dof;
+        _volume.profile.TryGet(out dof);
+        dof.nearMaxBlur += Time.deltaTime * 2;
+
+        if (dof.nearMaxBlur >= 8f)
+        {
+            dof.focusDistance.value -= Time.deltaTime * 2;
+        }
+
+        if (dof.focusDistance.value <= 0.1f)
+        {
+            dof.focusDistance.value = 0.1f;
+            LensDistortion ld;
+            _volume.profile.TryGet(out ld);
+            ld.intensity.value -= Time.deltaTime * 2;
+            ld.scale.value -= Time.deltaTime * 2;
+            ChromaticAberration ca;
+            _volume.profile.TryGet(out ca);
+            ca.intensity.value += Time.deltaTime * 2;
+        }
+
         //Si presionamos "F" o la cuenta atrás llega a 0 el enemigo poseido morirá;
         if (Input.GetKeyDown(KeyCode.F) || timeRemaining <= 0)
         {

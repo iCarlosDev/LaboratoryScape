@@ -10,13 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuPanel;
     [SerializeField] private GameObject optionsMenuPanel;
 
-    private void Awake()
-    {
-        pauseMenuCanvas = GameObject.Find("PauseMenu_Canvas");
-        pauseMenuPanel = pauseMenuCanvas.transform.GetChild(0).gameObject;
-        optionsMenuPanel = pauseMenuCanvas.transform.GetChild(1).gameObject;
-    }
-
     private void Start()
     {
         Time.timeScale = 1f;
