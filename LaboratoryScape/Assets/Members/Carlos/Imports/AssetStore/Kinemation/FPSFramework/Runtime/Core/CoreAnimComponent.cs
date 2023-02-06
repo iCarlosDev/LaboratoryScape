@@ -192,6 +192,15 @@ namespace Kinemation.FPSFramework.Runtime.Core
         private bool _updateInEditor;
         private float _interpHands;
         private float _interpLayer;
+        
+        //GETTERS && SETTERS//
+        public bool UseIK
+        {
+            get => useIK;
+            set => useIK = value;
+        }
+
+        //////////////////////
 
         private void ApplyIK()
         {

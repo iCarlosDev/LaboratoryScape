@@ -344,7 +344,7 @@ namespace Demo.Scripts.Runtime
             {
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    GetGun().Reload();
+                    GetGun().AnimReload();
                 }
 
                 if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -399,6 +399,16 @@ namespace Demo.Scripts.Runtime
                     OnFireReleased();
                 }
             }*/
+        }
+
+        public void Reload()
+        {
+            weapons[0].Reload();
+        }
+
+        public void UseIKTrue()
+        {
+            weapons[0]._coreAnimComponent.UseIK = true;
         }
 
         public void ChangePose()

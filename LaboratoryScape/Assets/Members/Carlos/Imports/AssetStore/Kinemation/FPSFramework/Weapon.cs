@@ -14,6 +14,7 @@ namespace Demo.Scripts.Runtime
         [SerializeField] private List<Transform> scopes;
         [SerializeField] public WeaponAnimData gunData;
         [SerializeField] public RecoilAnimData recoilData;
+        [SerializeField] public CoreAnimComponent _coreAnimComponent;
         
         public FireMode fireMode;
         public float fireRate;
@@ -66,8 +67,9 @@ namespace Demo.Scripts.Runtime
         private void Start()
         {
             enemyScriptsStorage = GetComponentInParent<EnemyScriptsStorage>();
-            _animator = GetComponent<Animator>();
+            _animator = GetComponentInParent<Animator>();
             _audioSource = GetComponent<AudioSource>();
+            _coreAnimComponent = GetComponentInParent<CoreAnimComponent>();
             
             maxAmmo = 300;
             currentAmmo = ammoCapacity;
@@ -118,37 +120,30 @@ namespace Demo.Scripts.Runtime
             _audioSource.PlayOneShot(_audioSource.clip);
         }
 
-        public void Reload()
+        public void AnimReload()
         {
             if (currentAmmo < ammoCapacity)
             {
-                if (currentAmmo > 0)
+                _coreAnimComponent.UseIK = false;
+                _animator.Play("Reloading", 2);
+            }
+        }
+
+        public void Reload()
+        {
+            if (currentAmmo > 0)
+            {
+                if (maxAmmo >= ammoCapacity)
                 {
-                    if (maxAmmo >= ammoCapacity)
+                    maxAmmo -= ammoCapacity - currentAmmo;
+                    currentAmmo = ammoCapacity;
+                }
+                else if (maxAmmo < ammoCapacity)
+                {
+                    if (currentAmmo + maxAmmo > ammoCapacity)
                     {
                         maxAmmo -= ammoCapacity - currentAmmo;
                         currentAmmo = ammoCapacity;
-                    }
-                    else if (maxAmmo < ammoCapacity)
-                    {
-                        if (currentAmmo + maxAmmo > ammoCapacity)
-                        {
-                            maxAmmo -= ammoCapacity - currentAmmo;
-                            currentAmmo = ammoCapacity;
-                        }
-                        else
-                        {
-                            currentAmmo += maxAmmo;
-                            maxAmmo = 0;
-                        }
-                    }
-                }
-                else if (currentAmmo.Equals(0))
-                {
-                    if (maxAmmo >= ammoCapacity)
-                    {
-                        currentAmmo = ammoCapacity;
-                        maxAmmo -= ammoCapacity;
                     }
                     else
                     {
@@ -156,9 +151,22 @@ namespace Demo.Scripts.Runtime
                         maxAmmo = 0;
                     }
                 }
+                
+                ammoTMP.text = $"{currentAmmo} / {maxAmmo}";
             }
-            
-            ammoTMP.text = $"{currentAmmo} / {maxAmmo}";
+            else if (currentAmmo.Equals(0))
+            {
+                if (maxAmmo >= ammoCapacity)
+                {
+                    currentAmmo = ammoCapacity;
+                    maxAmmo -= ammoCapacity;
+                }
+                else
+                {
+                    currentAmmo += maxAmmo;
+                    maxAmmo = 0;
+                }
+            }
         }
 
         private void ShootPlayerProbability()

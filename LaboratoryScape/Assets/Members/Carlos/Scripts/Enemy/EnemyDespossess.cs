@@ -55,22 +55,19 @@ public class EnemyDespossess : MonoBehaviour
 
         DepthOfField dof;
         _volume.profile.TryGet(out dof);
-        dof.nearMaxBlur += Time.deltaTime * 2;
+        ChromaticAberration ca;
+        _volume.profile.TryGet(out ca);
+        dof.nearMaxBlur += Time.deltaTime / 2;
 
         if (dof.nearMaxBlur >= 8f)
         {
-            dof.focusDistance.value -= Time.deltaTime * 2;
+            dof.focusDistance.value -= Time.deltaTime / 2;
         }
 
         if (dof.focusDistance.value <= 0.1f)
         {
             dof.focusDistance.value = 0.1f;
-            LensDistortion ld;
-            _volume.profile.TryGet(out ld);
-            ld.intensity.value -= Time.deltaTime * 2;
-            ld.scale.value -= Time.deltaTime * 2;
-            ChromaticAberration ca;
-            _volume.profile.TryGet(out ca);
+            
             ca.intensity.value += Time.deltaTime * 2;
         }
 
@@ -78,6 +75,11 @@ public class EnemyDespossess : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) || timeRemaining <= 0)
         {
             shouldSuicide = true;
+
+            dof.nearMaxBlur = 0f;
+            dof.focusDistance.value = 10f;
+            ca.intensity.value = 0f;
+            volume.gameObject.SetActive(false);
         }
     }
 
