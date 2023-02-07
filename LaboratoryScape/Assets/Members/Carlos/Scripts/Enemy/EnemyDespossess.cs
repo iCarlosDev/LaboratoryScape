@@ -57,18 +57,12 @@ public class EnemyDespossess : MonoBehaviour
         _volume.profile.TryGet(out dof);
         ChromaticAberration ca;
         _volume.profile.TryGet(out ca);
-        dof.nearMaxBlur += Time.deltaTime / 2;
+        dof.nearMaxBlur += Time.deltaTime / 4;
+        dof.farMaxBlur += Time.deltaTime / 4;
 
         if (dof.nearMaxBlur >= 8f)
         {
-            dof.focusDistance.value -= Time.deltaTime / 2;
-        }
-
-        if (dof.focusDistance.value <= 0.1f)
-        {
-            dof.focusDistance.value = 0.1f;
-            
-            ca.intensity.value += Time.deltaTime * 2;
+            ca.intensity.value += Time.deltaTime / 2;
         }
 
         //Si presionamos "F" o la cuenta atrás llega a 0 el enemigo poseido morirá;
