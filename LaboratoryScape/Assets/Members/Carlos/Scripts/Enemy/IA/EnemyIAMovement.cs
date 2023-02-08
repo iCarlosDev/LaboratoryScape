@@ -9,8 +9,7 @@ public class EnemyIAMovement : MonoBehaviour
 {
     //Variables
     [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
-    [SerializeField] private EnemyIADecisions _enemyIaDecisions;
-    
+
     [SerializeField] private List<Transform> points;
     [SerializeField] private int currentPoint;
     [SerializeField] private NavMeshAgent _navMeshAgent;
@@ -30,6 +29,11 @@ public class EnemyIAMovement : MonoBehaviour
     [SerializeField] private Transform searchPlayer;
     [SerializeField] private float sensitivity;
     [SerializeField] private bool lookingPlayer;
+    
+    [Header("--- SHOOT PLAYER ---")] 
+    [Space(10)]
+    [SerializeField] private bool shouldShoot;
+    [SerializeField] private bool firstTimeShooting;
 
     //GETTERS && SETTERS//
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
@@ -40,7 +44,6 @@ public class EnemyIAMovement : MonoBehaviour
     private void Awake()
     {
         _enemyScriptsStorage = GetComponent<EnemyScriptsStorage>();
-        _enemyIaDecisions = GetComponent<EnemyIADecisions>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
         searchPlayer = _enemyScriptsStorage.Weapon.transform.GetChild(6);
@@ -77,14 +80,43 @@ public class EnemyIAMovement : MonoBehaviour
         }
         else
         {
-            //_enemyScriptsStorage.EnemyIaDecisions.EvaluateRulesUpdate();
             lookPos = _enemyScriptsStorage.FieldOfView.playerRef.transform.position - transform.position;
             lookPos.y = 0;
             rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
             
             LookPlayer();
+            Shoot();
+            FollowPlayer();
         }
+    }
+
+    private void Cover()
+    {
+        
+    }
+
+    private void Shoot()
+    {
+        if (shouldShoot && !firstTimeShooting)
+        {
+            _enemyScriptsStorage.FPSController.OnFirePressed();
+            firstTimeShooting = true; 
+        }
+    }
+
+    private void FollowPlayer()
+    {
+        if (_enemyScriptsStorage.FieldOfView.canSeePlayer)
+        {
+            _navMeshAgent.ResetPath();
+            _enemyScriptsStorage.Animator.SetBool("IsMoving", false);
+            _enemyScriptsStorage.FPSController.MoveY1 = 0f;
+            return;
+        }
+        _navMeshAgent.SetDestination(_enemyScriptsStorage.FieldOfView.playerRef.transform.position);
+        _enemyScriptsStorage.Animator.SetBool("IsMoving", true);
+        _enemyScriptsStorage.FPSController.MoveY1 = 1f;
     }
 
     private void LookPlayer()
@@ -93,7 +125,8 @@ public class EnemyIAMovement : MonoBehaviour
 
         if (!lookingPlayer)
         {
-            _enemyIaDecisions.ShouldShoot = false;
+            shouldShoot = false;
+            firstTimeShooting = false;
             _enemyScriptsStorage.FPSController.OnFireReleased();
             
             if (searchPlayer.forward.y < _enemyScriptsStorage.Weapon.Muzzle.transform.forward.y)
@@ -107,7 +140,7 @@ public class EnemyIAMovement : MonoBehaviour
         }
         else
         {
-            _enemyIaDecisions.ShouldShoot = true;
+            shouldShoot = true;
         }
 
         RaycastHit hit = new RaycastHit();
@@ -119,7 +152,7 @@ public class EnemyIAMovement : MonoBehaviour
             
             if (hit.collider.CompareTag("EnemyColliders"))
             {
-                _enemyIaDecisions.ShouldShoot = false;
+                shouldShoot = false;
                 _enemyScriptsStorage.FPSController.OnFireReleased();
             }
         }
@@ -133,7 +166,8 @@ public class EnemyIAMovement : MonoBehaviour
     {
         _navMeshAgent.ResetPath();
         _enemyScriptsStorage.Animator.SetBool("IsMoving", false);
-        _enemyScriptsStorage.FieldOfView.enabled = false;
+        //_enemyScriptsStorage.FieldOfView.enabled = false;
+        _enemyScriptsStorage.FieldOfView.radius = 5f;
         playerDetected = true;
     }
 

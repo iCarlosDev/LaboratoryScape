@@ -71,7 +71,7 @@ public class EnemyDespossess : MonoBehaviour
             shouldSuicide = true;
 
             dof.nearMaxBlur = 0f;
-            dof.focusDistance.value = 10f;
+            dof.nearMaxBlur = 0f;
             ca.intensity.value = 0f;
             volume.gameObject.SetActive(false);
         }

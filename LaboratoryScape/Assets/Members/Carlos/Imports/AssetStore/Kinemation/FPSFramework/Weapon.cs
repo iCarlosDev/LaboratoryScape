@@ -151,8 +151,6 @@ namespace Demo.Scripts.Runtime
                         maxAmmo = 0;
                     }
                 }
-                
-                ammoTMP.text = $"{currentAmmo} / {maxAmmo}";
             }
             else if (currentAmmo.Equals(0))
             {
@@ -167,6 +165,13 @@ namespace Demo.Scripts.Runtime
                     maxAmmo = 0;
                 }
             }
+
+            if (!enemyScriptsStorage.FPSController.IsIa)
+            {
+                ammoTMP.text = $"{currentAmmo} / {maxAmmo}";
+            }
+            
+            enemyScriptsStorage.FPSController.IsReloading = false;
         }
 
         private void ShootPlayerProbability()

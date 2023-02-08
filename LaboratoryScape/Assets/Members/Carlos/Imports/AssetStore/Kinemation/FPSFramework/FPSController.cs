@@ -59,6 +59,7 @@ namespace Demo.Scripts.Runtime
         [SerializeField] private float moveY;
         [SerializeField] private bool isIA;
         [SerializeField] private bool shouldAttack;
+        [SerializeField] private bool isReloading;
 
         [SerializeField] private EnemyScriptsStorage _enemyScriptsStorage;
         [SerializeField] private bool weaponBlockFlag;
@@ -99,6 +100,11 @@ namespace Demo.Scripts.Runtime
         {
             get => _aiming;
             set => _aiming = value;
+        }
+        public bool IsReloading
+        {
+            get => isReloading;
+            set => isReloading = value;
         }
 
         //////////////////////////////////////////////
@@ -204,6 +210,12 @@ namespace Demo.Scripts.Runtime
             else
             {
                 OnFireReleased();
+                
+                if (!isReloading)
+                {
+                    weapons[_index].AnimReload();
+                    isReloading = true;
+                }
             }
         }
 
@@ -403,12 +415,12 @@ namespace Demo.Scripts.Runtime
 
         public void Reload()
         {
-            weapons[0].Reload();
+            weapons[_index].Reload();
         }
 
         public void UseIKTrue()
         {
-            weapons[0]._coreAnimComponent.UseIK = true;
+            weapons[_index]._coreAnimComponent.UseIK = true;
         }
 
         public void ChangePose()
@@ -446,6 +458,12 @@ namespace Demo.Scripts.Runtime
                 else
                 {
                     OnFireReleased();
+                    
+                    if (!isReloading)
+                    {
+                        weapons[_index].AnimReload();
+                        isReloading = true;
+                    }
                 }
 
                 if (_recoilAnimation.fireMode == FireMode.Burst)
