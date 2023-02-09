@@ -9693,7 +9693,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1184209377}
   - {fileID: 268779019}
   m_Father: {fileID: 1409089585}
   m_RootOrder: 1
@@ -32550,19 +32549,8 @@ PrefabInstance:
       propertyPath: _volume
       value: 
       objectReference: {fileID: 839605119}
-    - target: {fileID: 6201519285769432632, guid: f70df9da3a9a0464c86fea9b9d7c42ce,
-        type: 3}
-      propertyPath: radius
-      value: 9.54
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70df9da3a9a0464c86fea9b9d7c42ce, type: 3}
---- !u!4 &1184209377 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 67576235722060920, guid: f70df9da3a9a0464c86fea9b9d7c42ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1184209376}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1190070231
 GameObject:
   m_ObjectHideFlags: 0
@@ -49391,7 +49379,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
-  m_LocalRotation: {x: 0.014732357, y: -0.70695233, z: 0.014732315, w: 0.70695424}
+  m_LocalRotation: {x: 0.014732362, y: -0.70695233, z: 0.014732321, w: 0.70695424}
   m_LocalPosition: {x: 33.97, y: 1.14, z: 5.8599954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -56662,7 +56650,7 @@ PrefabInstance:
     - target: {fileID: 8675549573485822135, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02083467
+      value: 0.020834673
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573485822135, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -56672,7 +56660,12 @@ PrefabInstance:
     - target: {fileID: 8675549573485822135, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000018626451
+      value: 9.313226e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675549573976389200, guid: e0d336a76d09c0848859419d913ecd18,
+        type: 3}
+      propertyPath: speed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8675549573976389201, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}

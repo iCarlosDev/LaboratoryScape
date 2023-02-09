@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int headDamage;
     [SerializeField] private int bodyDamage;
     [SerializeField] private int extremitiesDamage;
+
+    [Header("--- SOUND ---")] 
+    [Space(10)] 
+    [SerializeField] private AudioSource walkieTalkieAudioSource;
+    [SerializeField] private AudioSource footStepsAudioSource;
 
     //GETTERS && SETTERS//
     public int HeadDamage => headDamage;
@@ -47,6 +53,8 @@ public class EnemyHealth : MonoBehaviour
     {
         maxHealth = 100;
         currentHealth = maxHealth;
+
+        StartCoroutine(WalkieTalkieSoundCoroutine());
     }
 
     private void Update()
@@ -54,6 +62,25 @@ public class EnemyHealth : MonoBehaviour
         if (!alreadyDead)
         {
             IsDead();   
+        }
+    }
+
+    public void FootStepsSound()
+    {
+        footStepsAudioSource.PlayOneShot(footStepsAudioSource.clip);
+    }
+
+    private IEnumerator WalkieTalkieSoundCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10f);
+            int randomNumber = Random.Range(1, 3);
+            Debug.Log(randomNumber);
+            if (randomNumber == 2)
+            {
+                walkieTalkieAudioSource.Play(); 
+            }
         }
     }
 
