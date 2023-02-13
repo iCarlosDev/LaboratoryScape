@@ -52,6 +52,8 @@ namespace Demo.Scripts.Runtime
         [Space(10)]
         [SerializeField] private TextMeshProUGUI ammoTMP;
 
+        public int Counter;
+
         //GETTERS && SETTERS//
         public Transform Muzzle => muzzle;
         public int CurrentAmmo => currentAmmo;
@@ -113,10 +115,11 @@ namespace Demo.Scripts.Runtime
             Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4);
             PlayFireAnim();
 
-            if (enemyScriptsStorage.FPSController.IsIa)
+            /*if (enemyScriptsStorage.FPSController.IsIa)
             {
                 return;
-            }
+            }*/
+
             _audioSource.PlayOneShot(_audioSource.clip);
         }
 

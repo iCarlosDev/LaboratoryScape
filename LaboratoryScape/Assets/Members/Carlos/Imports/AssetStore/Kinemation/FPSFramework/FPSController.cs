@@ -453,6 +453,7 @@ namespace Demo.Scripts.Runtime
             {
                 if (_enemyScriptsStorage.Weapon.CurrentAmmo > 0)
                 {
+                    Debug.Log("UpdatingFireRate");
                     Fire();
                 }
                 else
