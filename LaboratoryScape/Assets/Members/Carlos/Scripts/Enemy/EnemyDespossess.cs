@@ -18,7 +18,8 @@ public class EnemyDespossess : MonoBehaviour
     [SerializeField] private bool shouldSuicide;
     [SerializeField] private bool isPossessed;
 
-    [SerializeField] private Volume _volume;
+    [SerializeField] private Volume despossessVolume;
+    [SerializeField] private Volume possessVolume;
 
     //GETTERS & SETTERS//
     public bool ShouldSuicide => shouldSuicide;
@@ -26,8 +27,7 @@ public class EnemyDespossess : MonoBehaviour
     {
         get => isPossessed;
         set => isPossessed = value;
-    }
-    public Volume volume => _volume;
+    } 
 
     //////////////////////////////////////////
 
@@ -52,11 +52,13 @@ public class EnemyDespossess : MonoBehaviour
     {
         //Nada más poseamos a un enemigo empezará una cuenta atrás;
         timeRemaining -= Time.deltaTime;
-
+        possessVolume.weight = 0f;
+        despossessVolume.weight = 1f;
+        
         DepthOfField dof;
-        _volume.profile.TryGet(out dof);
+        despossessVolume.profile.TryGet(out dof);
         ChromaticAberration ca;
-        _volume.profile.TryGet(out ca);
+        despossessVolume.profile.TryGet(out ca);
         dof.nearMaxBlur += Time.deltaTime / 4;
         dof.farMaxBlur += Time.deltaTime / 4;
 
@@ -71,9 +73,11 @@ public class EnemyDespossess : MonoBehaviour
             shouldSuicide = true;
 
             dof.nearMaxBlur = 0f;
-            dof.nearMaxBlur = 0f;
+            dof.farMaxBlur = 0f;
             ca.intensity.value = 0f;
-            volume.gameObject.SetActive(false);
+            
+            despossessVolume.weight = 0f;
+            possessVolume.weight = 1f;
         }
     }
 

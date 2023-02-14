@@ -1393,6 +1393,7 @@ MonoBehaviour:
   currentAmmo: 0
   probabilidadDeFallar: 0.5
   ammoTMP: {fileID: 0}
+  Counter: 0
 --- !u!82 &538933626797793430
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3646,7 +3647,8 @@ MonoBehaviour:
   timeRemaining: 3000
   shouldSuicide: 0
   isPossessed: 0
-  _volume: {fileID: 0}
+  despossessVolume: {fileID: 0}
+  possessVolume: {fileID: 0}
 --- !u!114 &6201519285769432634
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -67,7 +67,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void FootStepsSound()
     {
-        footStepsAudioSource.PlayOneShot(footStepsAudioSource.clip);
+        footStepsAudioSource.Play();
     }
 
     private IEnumerator WalkieTalkieSoundCoroutine()

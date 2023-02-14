@@ -109,7 +109,6 @@ public class CarlosSceneManager : MonoBehaviour
          closestEnemy.enabled = true;
          enemyDespossess.enabled = true;
          enemyDespossess.ActivateEnemyControl();
-         enemyDespossess.volume.gameObject.SetActive(true);
 
          alreadyPossessed = true;
       }
