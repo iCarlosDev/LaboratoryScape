@@ -1,5 +1,6 @@
 // Designed by Kinemation, 2022
 
+using System.Collections;
 using System.Collections.Generic;
 using Kinemation.FPSFramework.Runtime.Core;
 using TMPro;
@@ -47,6 +48,8 @@ namespace Demo.Scripts.Runtime
         [SerializeField] private int maxAmmo;
         [SerializeField] private int currentAmmo;
         [SerializeField] private float probabilidadDeFallar = 0.25f;
+        [SerializeField] private bool isShootgun;
+        [SerializeField] private bool shouldShoot;
         
         [Header("--- CANVAS ---")] 
         [Space(10)]
@@ -63,6 +66,7 @@ namespace Demo.Scripts.Runtime
             get => ammoTMP;
             set => ammoTMP = value;
         }
+        public bool ShouldShoot => shouldShoot;
 
         /////////////////////////////////////////////
 
@@ -72,6 +76,7 @@ namespace Demo.Scripts.Runtime
             _animator = GetComponentInParent<Animator>();
             _audioSource = GetComponent<AudioSource>();
             _coreAnimComponent = GetComponentInParent<CoreAnimComponent>();
+            shouldShoot = true;
             
             maxAmmo = 300;
             currentAmmo = ammoCapacity;
@@ -83,9 +88,20 @@ namespace Demo.Scripts.Runtime
             _scopeIndex = _scopeIndex > scopes.Count - 1 ? 0 : _scopeIndex;
             return scopes[_scopeIndex];
         }
-        
+
+        private IEnumerator waitToShoot()
+        {
+            yield return new WaitForSeconds(1f);
+            shouldShoot = true;
+        }
+
         public void OnFire()
         {
+            if (isShootgun && !shouldShoot)
+            {
+                return;
+            }
+            
             currentAmmo--;
 
             if (ammoTMP != null)
@@ -115,12 +131,13 @@ namespace Demo.Scripts.Runtime
             Debug.DrawRay(muzzle.position, muzzle.forward * 100, Color.red, 4);
             PlayFireAnim();
 
-            /*if (enemyScriptsStorage.FPSController.IsIa)
-            {
-                return;
-            }*/
-
             _audioSource.PlayOneShot(_audioSource.clip);
+
+            if (isShootgun)
+            {
+                StartCoroutine(waitToShoot());
+                shouldShoot = false;
+            }
         }
 
         public void AnimReload()
