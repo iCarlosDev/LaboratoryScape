@@ -10703,15 +10703,29 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Exclusive Fullscreen
+      m_Image: {fileID: 0}
     - m_Text: Fullscreen
       m_Image: {fileID: 0}
-    - m_Text: Windowed Fullscreen
+    - m_Text: Maximized Fullscreen
       m_Image: {fileID: 0}
     - m_Text: Windowed
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 549117136}
+        m_TargetAssemblyTypeName: CarlosSceneManager, Assembly-CSharp
+        m_MethodName: SetFullScreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &455234173
 MonoBehaviour:
@@ -16668,6 +16682,7 @@ MonoBehaviour:
   health_Canvas: {fileID: 0}
   ammo_Canvas: {fileID: 0}
   alreadyPossessed: 0
+  resolutionDD: {fileID: 624766823}
 --- !u!4 &549117137
 Transform:
   m_ObjectHideFlags: 0
@@ -18705,7 +18720,7 @@ GameObject:
   - component: {fileID: 624766823}
   m_Layer: 0
   m_Name: Resolution_DD
-  m_TagString: Untagged
+  m_TagString: ResolutionDD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18791,7 +18806,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 549117136}
+        m_TargetAssemblyTypeName: CarlosSceneManager, Assembly-CSharp
+        m_MethodName: SetResolution
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &624766824
 MonoBehaviour:
@@ -20572,19 +20599,27 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Ultra
-      m_Image: {fileID: 0}
     - m_Text: High
       m_Image: {fileID: 0}
     - m_Text: Normal
       m_Image: {fileID: 0}
     - m_Text: Low
       m_Image: {fileID: 0}
-    - m_Text: VeryLow
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 549117136}
+        m_TargetAssemblyTypeName: CarlosSceneManager, Assembly-CSharp
+        m_MethodName: SetQuality
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &688136594
 MonoBehaviour:
@@ -23513,7 +23548,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 549117136}
+        m_TargetAssemblyTypeName: CarlosSceneManager, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &872829093
 GameObject:
   m_ObjectHideFlags: 0
@@ -32614,11 +32661,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6201519285769432629, guid: f70df9da3a9a0464c86fea9b9d7c42ce,
         type: 3}
-      propertyPath: _volume
-      value: 
-      objectReference: {fileID: 839605119}
-    - target: {fileID: 6201519285769432629, guid: f70df9da3a9a0464c86fea9b9d7c42ce,
-        type: 3}
       propertyPath: possessVolume
       value: 
       objectReference: {fileID: 2004438162}
@@ -32627,6 +32669,12 @@ PrefabInstance:
       propertyPath: despossessVolume
       value: 
       objectReference: {fileID: 839605119}
+    - target: {fileID: 9150523236154026891, guid: f70df9da3a9a0464c86fea9b9d7c42ce,
+        type: 3}
+      propertyPath: recoilData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f95be9da255d874cb48001febf7e703,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70df9da3a9a0464c86fea9b9d7c42ce, type: 3}
 --- !u!1 &1190070231
@@ -56766,6 +56814,11 @@ PrefabInstance:
       propertyPath: despossessVolume
       value: 
       objectReference: {fileID: 839605119}
+    - target: {fileID: 9150523236154026891, guid: f70df9da3a9a0464c86fea9b9d7c42ce,
+        type: 3}
+      propertyPath: DirLight
+      value: 
+      objectReference: {fileID: 157207113}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70df9da3a9a0464c86fea9b9d7c42ce, type: 3}
 --- !u!4 &543450653380100581 stripped
@@ -56947,7 +57000,7 @@ PrefabInstance:
     - target: {fileID: 8675549574364442629, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0026937262
+      value: 0.0026937257
       objectReference: {fileID: 0}
     - target: {fileID: 8675549574364442629, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -56957,7 +57010,7 @@ PrefabInstance:
     - target: {fileID: 8675549574364442629, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 5.820766e-10
+      value: 6.9849193e-10
       objectReference: {fileID: 0}
     - target: {fileID: 8675549574546944841, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}

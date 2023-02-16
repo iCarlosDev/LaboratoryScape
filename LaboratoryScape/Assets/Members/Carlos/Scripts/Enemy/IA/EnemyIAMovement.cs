@@ -148,7 +148,7 @@ public class EnemyIAMovement : MonoBehaviour
         {
             lookingPlayer = true;
             
-            if (hit.collider.CompareTag("EnemyColliders"))
+            if (hit.collider.CompareTag("EnemyColliders") && !_enemyScriptsStorage.EnemyDespossess.IsPossessed)
             {
                 shouldShoot = false;
                 _enemyScriptsStorage.FPSController.OnFireReleased();

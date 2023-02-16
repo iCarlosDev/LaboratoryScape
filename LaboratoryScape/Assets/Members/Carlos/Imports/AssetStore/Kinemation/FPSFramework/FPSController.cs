@@ -203,9 +203,12 @@ namespace Demo.Scripts.Runtime
         {
             if (_enemyScriptsStorage.Weapon.CurrentAmmo > 0)
             {
-                Fire();
-                _bursts = GetGun().burstAmount - 1; 
-                _fireTimer = 0f;
+                if (weapons[_index].ShouldShoot)
+                {
+                    Fire();
+                    _bursts = GetGun().burstAmount - 1; 
+                    _fireTimer = 0f;
+                }
             }
             else
             {

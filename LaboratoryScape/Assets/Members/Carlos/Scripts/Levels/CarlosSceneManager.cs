@@ -5,6 +5,7 @@ using Demo.Scripts;
 using Demo.Scripts.Runtime;
 using Kinemation.FPSFramework.Runtime.Core;
 using Kinemation.FPSFramework.Runtime.Layers;
+using TMPro;
 using UnityEngine;
 
 public class CarlosSceneManager : MonoBehaviour
@@ -26,12 +27,17 @@ public class CarlosSceneManager : MonoBehaviour
    [SerializeField] private GameObject health_Canvas;
    [SerializeField] private GameObject ammo_Canvas;
    [SerializeField] private bool alreadyPossessed;
+
+   [Header("--- CANVAS ---")]
+   [Space(10)]
+   [SerializeField] private TMP_Dropdown resolutionDD;
    
    //GETTERS & SETTERS//
    public List<FPSController> EnemiesInRangeList => enemiesInRangeList;
    public List<FPSController> EnmiesList => enmiesList;
    public GameObject HealthCanvas => health_Canvas;
    public GameObject AmmoCanvas => ammo_Canvas;
+   public TMP_Dropdown ResolutionDD => resolutionDD;
 
    ///////////////////////////////////////////
 
@@ -211,4 +217,28 @@ public class CarlosSceneManager : MonoBehaviour
       
       closestEnemy.EnemyScriptsStorage.Outlinable.enabled = true;
    }
+   
+   #region - SETTINGS MANAGER -
+
+   public void SetVolume(float volume)
+   {
+      SettingsManager.instance.SetVolume(volume);
+   }
+    
+   public void SetQuality(int qualityIndex)
+   {
+      SettingsManager.instance.SetQuality(qualityIndex);
+   }
+
+   public void SetFullScreen(int fullscreenIndex)
+   {
+      SettingsManager.instance.SetFullScreen(fullscreenIndex);
+   }
+
+   public void SetResolution(int resolutionIndex)
+   {
+      SettingsManager.instance.SetResolution(resolutionIndex);
+   }
+
+   #endregion
 }
