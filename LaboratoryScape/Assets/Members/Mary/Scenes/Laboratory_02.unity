@@ -18094,7 +18094,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438808209}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.059998, y: 1.1209884, z: 76.21}
+  m_LocalPosition: {x: -38.059998, y: 1.1402581, z: 76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28934,6 +28934,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7185306379600680448}
     m_Modifications:
+    - target: {fileID: 1241640810914449822, guid: e7398e3dde534b7429495509c876f886,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.29624072
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241640810914449822, guid: e7398e3dde534b7429495509c876f886,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241640810914449822, guid: e7398e3dde534b7429495509c876f886,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9551133
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241640810914449822, guid: e7398e3dde534b7429495509c876f886,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -145.536
+      objectReference: {fileID: 0}
     - target: {fileID: 7390985838653485033, guid: e7398e3dde534b7429495509c876f886,
         type: 3}
       propertyPath: m_RootOrder
@@ -33078,7 +33098,7 @@ PrefabInstance:
     - target: {fileID: 5131476630209285770, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.883232
+      value: 12.07
       objectReference: {fileID: 0}
     - target: {fileID: 5131476630209285770, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -40397,10 +40417,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4495931224414127234}
     m_Modifications:
+    - target: {fileID: 3435813176011814676, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.377
+      objectReference: {fileID: 0}
     - target: {fileID: 4011836509293771770, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
         type: 3}
       propertyPath: m_Name
       value: Puerta_de_metal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318391115944605728, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.393
       objectReference: {fileID: 0}
     - target: {fileID: 8098902463547958472, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
         type: 3}
@@ -48061,12 +48091,12 @@ GameObject:
   - component: {fileID: 1229578562}
   - component: {fileID: 1229578564}
   - component: {fileID: 1229578563}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Techo_lavabo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1229578562
 Transform:
@@ -48103,7 +48133,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 38067c6410ea3b94b92a6d3115e980d3, type: 3}
+  - {fileID: 2100000, guid: d7b5f48a96e18024398fc9d65fa73df9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -58867,7 +58897,7 @@ PrefabInstance:
     - target: {fileID: 8098902463547958472, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.2090437
+      value: -2.22
       objectReference: {fileID: 0}
     - target: {fileID: 8098902463547958472, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
         type: 3}
@@ -58877,7 +58907,7 @@ PrefabInstance:
     - target: {fileID: 8098902463547958472, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.12699807
+      value: -0.127
       objectReference: {fileID: 0}
     - target: {fileID: 8098902463547958472, guid: b95c9b543e6baad4caa6a6eb554cb7a6,
         type: 3}
@@ -60604,12 +60634,12 @@ GameObject:
   - component: {fileID: 1551062966}
   - component: {fileID: 1551062968}
   - component: {fileID: 1551062967}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Paredes_lavabo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1551062966
 Transform:
@@ -60646,7 +60676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 38067c6410ea3b94b92a6d3115e980d3, type: 3}
+  - {fileID: 2100000, guid: d7b5f48a96e18024398fc9d65fa73df9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84177,7 +84207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 38067c6410ea3b94b92a6d3115e980d3, type: 3}
+  - {fileID: 2100000, guid: d7b5f48a96e18024398fc9d65fa73df9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84219,7 +84249,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1094000536027791675, guid: 159cf36d76fbc1d4ba043bbb02eb3d71, type: 3}
+  - {fileID: 2100000, guid: 7b08531c280612b48a1d2ba1a0ed8eb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84366,6 +84396,7 @@ GameObject:
   - component: {fileID: 8232216180043084022}
   - component: {fileID: 6874618933406473612}
   - component: {fileID: 3934088573249009763}
+  - component: {fileID: 8232216180043084023}
   m_Layer: 0
   m_Name: Pasillo_03_Paredes
   m_TagString: Untagged
@@ -84742,7 +84773,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673510923679211212}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -38.059998, y: 1.1209884, z: 62.78}
+  m_LocalPosition: {x: -38.059998, y: 1.1402581, z: 62.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -84994,6 +85025,7 @@ GameObject:
   - component: {fileID: 6987247521970441662}
   - component: {fileID: 8570257615517897642}
   - component: {fileID: 2320415609494712291}
+  - component: {fileID: 8570257615517897643}
   m_Layer: 0
   m_Name: Paredes_GranSala
   m_TagString: Untagged
@@ -85028,7 +85060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3435961908671539495}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -20.661, y: 1.0016705, z: 120.10384}
+  m_LocalPosition: {x: -20.661, y: 1.0209402, z: 123.99}
   m_LocalScale: {x: 3.4863675, y: 1, z: 4.023688}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85401,7 +85433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4243692200983254767}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.65, y: 1.3007302, z: 99.37}
+  m_LocalPosition: {x: -26.65, y: 1.3199999, z: 99.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85513,7 +85545,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 38067c6410ea3b94b92a6d3115e980d3, type: 3}
+  - {fileID: 2100000, guid: d7b5f48a96e18024398fc9d65fa73df9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85818,7 +85850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3832300552620531256}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.09, y: 2.3207302, z: 65.61}
+  m_LocalPosition: {x: -22.09, y: 2.34, z: 65.4}
   m_LocalScale: {x: 1, y: 1, z: 1.2593983}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -86646,6 +86678,7 @@ GameObject:
   - component: {fileID: 4045521388944903728}
   - component: {fileID: 83030352890232328}
   - component: {fileID: 4456051349326448251}
+  - component: {fileID: 6440646546136652251}
   m_Layer: 0
   m_Name: Pasillo_03_Techo
   m_TagString: Untagged
@@ -86653,6 +86686,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &6440646546136652251
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6440646546136652250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8384598335901557994, guid: e6d972c1e6af925428af02485fe30970, type: 3}
 --- !u!1 &6488158807594859441
 GameObject:
   m_ObjectHideFlags: 0
@@ -86699,13 +86746,28 @@ GameObject:
   - component: {fileID: 70822974074154560}
   - component: {fileID: 4426961977913739000}
   - component: {fileID: 3739854234046076341}
-  m_Layer: 0
+  - component: {fileID: 6599950019670872428}
+  m_Layer: 6
   m_Name: Paredes_lavabo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!64 &6599950019670872428
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6599950019670872427}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 266092536018197207, guid: 38067c6410ea3b94b92a6d3115e980d3, type: 3}
 --- !u!33 &6613584100467023475
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -86900,7 +86962,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7565069606101060794}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0900006, y: 1.44, z: 41.36}
+  m_LocalPosition: {x: -1.0900006, y: 1.4592698, z: 41.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -87354,6 +87416,20 @@ Transform:
   m_Father: {fileID: 7535378392851255029}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8232216180043084023
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979970224862828117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5141094860272984772, guid: e6d972c1e6af925428af02485fe30970, type: 3}
 --- !u!1 &8249998636583551270
 GameObject:
   m_ObjectHideFlags: 0
@@ -87521,6 +87597,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2592827079799127804}
+  m_Mesh: {fileID: 7474580986025598148, guid: e6d972c1e6af925428af02485fe30970, type: 3}
+--- !u!64 &8570257615517897643
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592827079799127804}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 7474580986025598148, guid: e6d972c1e6af925428af02485fe30970, type: 3}
 --- !u!1001 &8675549573656620016
 PrefabInstance:
@@ -87700,7 +87790,7 @@ PrefabInstance:
     - target: {fileID: 8675549574199532397, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12872693
+      value: 0.1287269
       objectReference: {fileID: 0}
     - target: {fileID: 8675549574199532397, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -87710,7 +87800,7 @@ PrefabInstance:
     - target: {fileID: 8675549574199532397, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000062584877
+      value: -0.0000006109476
       objectReference: {fileID: 0}
     - target: {fileID: 8675549574364442629, guid: e0d336a76d09c0848859419d913ecd18,
         type: 3}
@@ -87802,7 +87892,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 756828728848728599, guid: 159cf36d76fbc1d4ba043bbb02eb3d71, type: 3}
+  - {fileID: 2100000, guid: 09880e714c2aac849ae9b77a7345c91a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87925,13 +88015,28 @@ GameObject:
   - component: {fileID: 221602654237306121}
   - component: {fileID: 5923881714696058235}
   - component: {fileID: 574546000004419159}
-  m_Layer: 0
+  - component: {fileID: 9155979952324876872}
+  m_Layer: 6
   m_Name: Techo_lavabo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!64 &9155979952324876872
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9155979952324876871}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7552463141551495968, guid: 38067c6410ea3b94b92a6d3115e980d3, type: 3}
 --- !u!23 &9164248297258425572
 MeshRenderer:
   m_ObjectHideFlags: 0
