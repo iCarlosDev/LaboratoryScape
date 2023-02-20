@@ -206,7 +206,7 @@ namespace Demo.Scripts.Runtime
             else
             {
                 Debug.Log("Player Disparado!");
-                PlayerScriptsStorage.instance.PlayerHealth.TakeDamage(1);
+                PlayerScriptsStorage.instance.PlayerHealth.TakeDamage(weaponDamage);
             }
         }
 

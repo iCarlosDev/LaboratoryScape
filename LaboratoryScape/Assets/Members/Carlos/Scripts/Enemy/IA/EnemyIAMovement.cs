@@ -80,8 +80,13 @@ public class EnemyIAMovement : MonoBehaviour
         {
             lookPos = _enemyScriptsStorage.FieldOfView.playerRef.transform.position - transform.position;
             lookPos.y = 0;
-            rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+            
+            if (_enemyScriptsStorage.FieldOfView.canSeePlayer)
+            {
+                rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+            }
+           
             
             LookPlayer();
             Shoot();

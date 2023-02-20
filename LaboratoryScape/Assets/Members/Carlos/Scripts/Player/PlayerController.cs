@@ -29,6 +29,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float jumpForce;
     
+    [Header("--- JUMP ---")] 
+    [Space(10)] 
+    [SerializeField] private Animator _animmator;
+    
     //GETTERS & SETTERS//
     public Transform PlayerCamera => playerCamera;
 
@@ -70,6 +74,12 @@ public class PlayerController : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //Movemos el player hacia el frente;
             _characterController.SimpleMove(moveDir.normalized * speed);
+            
+            _animmator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            _animmator.SetBool("IsWalking", false);
         }
     }
 
