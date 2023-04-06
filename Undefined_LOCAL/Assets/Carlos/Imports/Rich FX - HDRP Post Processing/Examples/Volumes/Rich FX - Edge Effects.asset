@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Rich FX - Edge Effects
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 3297075996553498677}
+  - {fileID: 8105103360558245205}
+  - {fileID: 7236921443803855736}
+--- !u!114 &3297075996553498677
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf6ddbeae5d5d409254f339115b8d3, type: 3}
+  m_Name: ColorEdges
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  edgeWidth:
+    m_OverrideState: 1
+    m_Value: 1.42
+    min: 0.5
+    max: 10
+  edgeColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0.9069271, b: 0, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+--- !u!114 &7236921443803855736
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d74ada68f27c54d83acecbe81382dd, type: 3}
+  m_Name: SimpleOutline
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.304
+    min: 0
+    max: 1
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.145
+    min: 0.01
+    max: 1
+--- !u!114 &8105103360558245205
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eeb80a2fdea884d93339a75ef86fb6, type: 3}
+  m_Name: EdgeDetection
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  threshold:
+    m_OverrideState: 1
+    m_Value: 0.139
+    min: 0
+    max: 1

@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Rich FX - Combination Security Camera
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 2129594271833796560}
+  - {fileID: 5388338393117258143}
+  - {fileID: 7272841125009567086}
+--- !u!114 &2129594271833796560
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb84ef370027824a8998860f99b0bfa, type: 3}
+  m_Name: GrayScale
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+--- !u!114 &5388338393117258143
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cf8f3a6181c0a45ae8bdcae4651f1d, type: 3}
+  m_Name: Scanlines
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 6.76
+    min: 0
+    max: 10
+  noise:
+    m_OverrideState: 1
+    m_Value: 0.234
+    min: 0
+    max: 1
+  count:
+    m_OverrideState: 1
+    m_Value: 3079
+    min: 0
+    max: 4096
+--- !u!114 &7272841125009567086
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe9c272260c37d4ab35544c3beaa2fe, type: 3}
+  m_Name: Glitch
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  block:
+    m_OverrideState: 1
+    m_Value: 0.11
+    min: 0
+    max: 1
+  drift:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  jitter:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  jump:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  shake:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1

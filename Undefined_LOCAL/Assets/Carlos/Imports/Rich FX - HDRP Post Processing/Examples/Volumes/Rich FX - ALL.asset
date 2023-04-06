@@ -1,0 +1,1446 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8976542560788982761
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11fb884c3ba08364a8141e8e267bf41f, type: 3}
+  m_Name: DirectionalBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 100
+  angle:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  sampleCount:
+    m_OverrideState: 0
+    m_Value: 15
+    min: 1
+    max: 30
+--- !u!114 &-8771595066224440360
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9ba23c1b07b14b4f936aea1e9cc51e4, type: 3}
+  m_Name: GaussianBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &-8344378853125771318
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eeb80a2fdea884d93339a75ef86fb6, type: 3}
+  m_Name: EdgeDetection
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  threshold:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &-7955763710113269030
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f767f82beffd7a4196596f341d4ca94, type: 3}
+  m_Name: Oil
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  radius:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 30
+--- !u!114 &-6588006788591931851
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac1e3883a2d48245aa5c6852e614928, type: 3}
+  m_Name: ScreenGlitch
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 10
+  speed:
+    m_OverrideState: 0
+    m_Value: 2
+  xDisplacement:
+    m_OverrideState: 0
+    m_Value: 0.05
+    min: -5
+    max: 5
+  randomInferencePower:
+    m_OverrideState: 0
+    m_Value: 0.15
+  linePower:
+    m_OverrideState: 0
+    m_Value: 0.3
+  colorLerp:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: -1
+    max: 1
+--- !u!114 &-5634154301331388072
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795564177478615449422853a9bc3d42, type: 3}
+  m_Name: LowLightCam
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  vignetteIntensity:
+    m_OverrideState: 0
+    m_Value: 0.75
+    min: 0
+    max: 1.5
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  noiseIntensity:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0.1
+    max: 2
+  contrast:
+    m_OverrideState: 0
+    m_Value: 1.5
+    min: 1.2
+    max: 1.8
+  brightness:
+    m_OverrideState: 0
+    m_Value: 0.7
+    min: 0.6
+    max: 0.9
+--- !u!114 &-5586724408522799064
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af51a97f11a41ab4782bf8729b7e1bbb, type: 3}
+  m_Name: EightColor
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  color1:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 0, b: 0, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  color2:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 0, b: 0, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  color3:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 1, b: 0, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  color4:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 1, b: 0, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  color5:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 0, b: 1, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  color6:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 0, b: 1, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  color7:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 1, b: 1, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  color8:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 1, b: 1, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  dithering:
+    m_OverrideState: 0
+    m_Value: 0.05
+    min: 0
+    max: 0.5
+  downsampling:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 1
+    max: 32
+  opacity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &-5385689011370063298
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa312981b47c864d8e51ba7ba994087, type: 3}
+  m_Name: Sharpen
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &-5193265521912568425
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff6e6123cf24c74d98090c3a14c9074, type: 3}
+  m_Name: EGAFilter
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  colorDetail:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 5
+--- !u!114 &-4655235348339302090
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d896a700b5a824b88fccfee00cb612, type: 3}
+  m_Name: LetterBox
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  enabled:
+    m_OverrideState: 0
+    m_Value: 0
+  color:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  aspectRatioType:
+    m_OverrideState: 0
+    m_Value: 0
+  customAspect:
+    m_OverrideState: 0
+    m_Value: 1.25
+--- !u!114 &-4374689363329837668
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1b0c89a5cf8bc43b8e26856e772439, type: 3}
+  m_Name: Melt
+  m_EditorClassIdentifier: 
+  active: 0
+  <displayName>k__BackingField: 
+  m_AdvancedMode: 0
+  m_IsInitialized: 0
+  speed:
+    m_OverrideState: 1
+    m_Value: 36.85
+  amplitude:
+    m_OverrideState: 1
+    m_Value: 0.1
+    min: 0
+    max: 0.1
+  fractionX:
+    m_OverrideState: 1
+    m_Value: 62.75
+  fractionY:
+    m_OverrideState: 1
+    m_Value: 25
+  m_Material: {fileID: 0}
+--- !u!114 &-3947407322667013118
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44a69605c9906b4ea562d62af081f4e, type: 3}
+  m_Name: Slice
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rowCount:
+    m_OverrideState: 0
+    m_Value: 30
+  angle:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -90
+    max: 90
+  displacement:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -1
+    max: 1
+  randomSeed:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-3497366447364279151
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11b3a0c0444ec045a2afe7a51793075, type: 3}
+  m_Name: Overlay
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  sourceType:
+    m_OverrideState: 0
+    m_Value: 1
+  blendMode:
+    m_OverrideState: 0
+    m_Value: 2
+  opacity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  color:
+    m_OverrideState: 0
+    m_Value: {r: 1, g: 0, b: 0, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  gradient:
+    m_OverrideState: 0
+    m_Value:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 1, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  angle:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -180
+    max: 180
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  sourceAlpha:
+    m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &-3429547400780924499
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbd2a5e486bbed4d96e13afe1a235a0, type: 3}
+  m_Name: Posterize
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  _Gamma:
+    m_OverrideState: 0
+    m_Value: 2
+  _ColorCount:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1024
+--- !u!114 &-3264414946654113281
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f9608d0b7be709499c8576490633363, type: 3}
+  m_Name: SimpleGaussianBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &-2073616907345057551
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6832434842b1c8f4984aac56b8f0b2fc, type: 3}
+  m_Name: Pixelate
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  amount:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-1683113030386084017
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178b5e4154a3ce7409b843f2429ed27f, type: 3}
+  m_Name: CGAFilter
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  gamma:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 2.5
+  colorPalette:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-1580745973505170576
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5372b5d99bafb2408ef1df10c85ca30, type: 3}
+  m_Name: HeatDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.149
+    min: 0
+    max: 0.3
+  speed:
+    m_OverrideState: 1
+    m_Value: 0.39
+    min: 0
+    max: 1
+  distortionTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 4be68b618b110d54a91f7e8ec36e9176, type: 3}
+--- !u!114 &-957578789631182021
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9c293978e552d4382bf5768315789b, type: 3}
+  m_Name: SketchMotion
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  sketchiness:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  speed:
+    m_OverrideState: 0
+    m_Value: 100
+    min: 0
+    max: 500
+  motionAmount:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 5
+  baseModifier:
+    m_OverrideState: 0
+    m_Value: 0.902
+    min: 0.9
+    max: 1
+  invert:
+    m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Rich FX - ALL
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: -7955763710113269030}
+  - {fileID: -3429547400780924499}
+  - {fileID: 8568976971297099423}
+  - {fileID: -957578789631182021}
+  - {fileID: -8976542560788982761}
+  - {fileID: -8771595066224440360}
+  - {fileID: 5567622957943453272}
+  - {fileID: -3264414946654113281}
+  - {fileID: -1683113030386084017}
+  - {fileID: -5193265521912568425}
+  - {fileID: -5586724408522799064}
+  - {fileID: 3632881463080345051}
+  - {fileID: 4191675881752710548}
+  - {fileID: -3497366447364279151}
+  - {fileID: 6888592749176843137}
+  - {fileID: 7460983010386627380}
+  - {fileID: -8344378853125771318}
+  - {fileID: 639447070196090252}
+  - {fileID: 5906307976471707830}
+  - {fileID: 1703537553691982657}
+  - {fileID: 7564538837505798672}
+  - {fileID: 883882232990525241}
+  - {fileID: 5368560785720259754}
+  - {fileID: -6588006788591931851}
+  - {fileID: 9026168391990922585}
+  - {fileID: -3947407322667013118}
+  - {fileID: 4561052007153699412}
+  - {fileID: 468687095331384840}
+  - {fileID: 5276952157429707129}
+  - {fileID: -5634154301331388072}
+  - {fileID: -4655235348339302090}
+  - {fileID: 5871990140562017493}
+  - {fileID: -2073616907345057551}
+  - {fileID: -5385689011370063298}
+  - {fileID: 8024943792535138741}
+  - {fileID: 3502148845901296348}
+  - {fileID: 7749590424370280315}
+  - {fileID: 8966190200666813605}
+--- !u!114 &468687095331384840
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a6db45ad76003e47b299c380ffa3aed, type: 3}
+  m_Name: Wobble
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  amplitude:
+    m_OverrideState: 0
+    m_Value: 0.003
+    min: 0
+    max: 0.1
+  speed:
+    m_OverrideState: 0
+    m_Value: 10
+  frequence:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &639447070196090252
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d74ada68f27c54d83acecbe81382dd, type: 3}
+  m_Name: SimpleOutline
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  threshold:
+    m_OverrideState: 0
+    m_Value: 0.01
+    min: 0.01
+    max: 1
+--- !u!114 &657440097470911835
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: debc660c8c8b4c64491e3b04cfe60933, type: 3}
+  m_Name: Frost
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  progress:
+    m_OverrideState: 1
+    m_Value: 0.518
+    min: 0
+    max: 1
+  frost:
+    m_OverrideState: 0
+    m_Value: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
+  ice:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  frostTint:
+    m_OverrideState: 0
+    m_Value: {r: 0.9, g: 0.9, b: 1.1, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  randomizeFrost:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &883882232990525241
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71487a2ded5feb84fb6bbafc51fd9e81, type: 3}
+  m_Name: RGBSplit
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 100
+  angle:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &1703537553691982657
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7030bd223c612f849a002a1d183833f1, type: 3}
+  m_Name: DisplaceView
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  amount:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0}
+--- !u!114 &3502148845901296348
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d919a597644a1b74bafa4c6955dd0650, type: 3}
+  m_Name: PencilSketch
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  steps:
+    m_OverrideState: 0
+    m_Value: 0
+  tolerance:
+    m_OverrideState: 0
+    m_Value: 0.1
+    min: 0
+    max: 1
+--- !u!114 &3632881463080345051
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb84ef370027824a8998860f99b0bfa, type: 3}
+  m_Name: GrayScale
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &4191675881752710548
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492e91124f4e4e1429fa62929626c71f, type: 3}
+  m_Name: HueSaturationInvert
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  hueShift:
+    m_OverrideState: 0
+    m_Value: 0
+    min: -1
+    max: 1
+  saturation:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 2
+  invert:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &4561052007153699412
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6744a1c41b9e641843d632f4cd7e0f, type: 3}
+  m_Name: Underwater
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  amount:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  speed:
+    m_OverrideState: 0
+    m_Value: 50
+--- !u!114 &5276952157429707129
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b87cb63c494e145848d0aa9bbea605, type: 3}
+  m_Name: BloomStreak
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  threshold:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+    max: 5
+  stretch:
+    m_OverrideState: 0
+    m_Value: 0.75
+    min: 0
+    max: 1
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  tint:
+    m_OverrideState: 0
+    m_Value: {r: 0.55, g: 0.55, b: 1, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+--- !u!114 &5368560785720259754
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cf8f3a6181c0a45ae8bdcae4651f1d, type: 3}
+  m_Name: Scanlines
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 10
+  noise:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  count:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 4096
+--- !u!114 &5567622957943453272
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d39411c5cccdf34d8f526da588f1ea3, type: 3}
+  m_Name: RadialBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  effectAmount:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  centerX:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  centerY:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  radius:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  samples:
+    m_OverrideState: 0
+    m_Value: 4
+    min: 4
+    max: 20
+--- !u!114 &5871990140562017493
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8dbf9e49800a9d4f8ec75ce3b3b6035, type: 3}
+  m_Name: Nightvision
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  darkness:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+  greenPower:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &5906307976471707830
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c57d4be0a6cf6a48b15ffa60a528f56, type: 3}
+  m_Name: ChromaLines
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  scanlinesIntensity:
+    m_OverrideState: 0
+    m_Value: 0.04
+    min: 0
+    max: 1
+  speed1:
+    m_OverrideState: 0
+    m_Value: 6
+  scanlinesCount:
+    m_OverrideState: 0
+    m_Value: 800
+--- !u!114 &6888592749176843137
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75956f5c85e160f4e83a063fb319664f, type: 3}
+  m_Name: Recolor
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  edgeColor:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 0, b: 0, a: 0}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  edgeSource:
+    m_OverrideState: 0
+    m_Value: 1
+  edgeThreshold:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+  edgeContrast:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+  fillGradient:
+    m_OverrideState: 0
+    m_Value:
+      serializedVersion: 2
+      key0: {r: 0, g: 0, b: 1, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  fillOpacity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  ditherType:
+    m_OverrideState: 0
+    m_Value: 2
+  ditherStrength:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &6941748830763548131
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Distort
+  m_EditorClassIdentifier: Assembly-CSharp:IE.RichFX:Distort
+  active: 0
+  m_AdvancedMode: 0
+  speed:
+    m_OverrideState: 1
+    m_Value: 255
+  amplitude:
+    m_OverrideState: 1
+    m_Value: 0.0319
+    min: 0
+    max: 0.1
+  fractionX:
+    m_OverrideState: 1
+    m_Value: 50
+  fractionY:
+    m_OverrideState: 1
+    m_Value: 50
+--- !u!114 &7388888718649947139
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Glitch
+  m_EditorClassIdentifier: Assembly-CSharp:IE.RichFX:Glitch
+  active: 1
+  m_AdvancedMode: 0
+  block:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  drift:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  jitter:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  jump:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  shake:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &7460983010386627380
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aacf6ddbeae5d5d409254f339115b8d3, type: 3}
+  m_Name: ColorEdges
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  edgeWidth:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0.5
+    max: 10
+  edgeColor:
+    m_OverrideState: 0
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+--- !u!114 &7564538837505798672
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e308014f3f0b8f4e932c35bf3763dc4, type: 3}
+  m_Name: RGBDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+  speed:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &7663145373409646388
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead7cddde668afc448d3144ecfb3cc2a, type: 3}
+  m_Name: OldTV
+  m_EditorClassIdentifier: 
+  active: 1
+  <displayName>k__BackingField: 
+  m_AdvancedMode: 0
+  m_IsInitialized: 0
+  verticalJerk:
+    m_OverrideState: 0
+    m_Value: 0.451
+    min: 0
+    max: 1
+  verticalMovement:
+    m_OverrideState: 0
+    m_Value: 0.451
+    min: 0
+    max: 1
+  bottomStatic:
+    m_OverrideState: 1
+    m_Value: 0.2
+    min: 0
+    max: 1
+  scanlines:
+    m_OverrideState: 1
+    m_Value: 0.457
+    min: 0
+    max: 1
+  rgbOffset:
+    m_OverrideState: 1
+    m_Value: 0.479
+    min: 0
+    max: 1
+  horizontalFuzz:
+    m_OverrideState: 0
+    m_Value: 0.861
+    min: 0
+    max: 1
+  m_Material: {fileID: 0}
+--- !u!114 &7663695260011502262
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d919a597644a1b74bafa4c6955dd0650, type: 3}
+  m_Name: LofiSketch
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  steps:
+    m_OverrideState: 1
+    m_Value: 12
+  tolerance:
+    m_OverrideState: 1
+    m_Value: 0.165
+    min: 0
+    max: 1
+--- !u!114 &7749590424370280315
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe9c272260c37d4ab35544c3beaa2fe, type: 3}
+  m_Name: Glitch
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  block:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  drift:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  jitter:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  jump:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  shake:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &8024943792535138741
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b49eda3aa86ec4cb3c5f2e053cb0dd, type: 3}
+  m_Name: Zoom
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  scale:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+  centerX:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+  centerY:
+    m_OverrideState: 0
+    m_Value: 0.5
+    min: 0
+    max: 1
+--- !u!114 &8248142827702906587
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: TextureDistortion
+  m_EditorClassIdentifier: Assembly-CSharp:IE.RichFX:TextureDistortion
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.251
+    min: 0
+    max: 0.3
+  speed:
+    m_OverrideState: 1
+    m_Value: 0.044
+    min: 0
+    max: 1
+  distortionTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 4f34bd079c32aee4d8448f7f236ada77, type: 3}
+--- !u!114 &8568976971297099423
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4951ac44ab224394d82b52ba36609b6e, type: 3}
+  m_Name: RainbowFlow
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  steps:
+    m_OverrideState: 0
+    m_Value: 0
+  speed:
+    m_OverrideState: 0
+    m_Value: 0.15
+    min: 0
+    max: 50
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 0.5
+  blackAndWhite:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &8966190200666813605
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79863c88852b02a45b0f118843b4be60, type: 3}
+  m_Name: ScreenFuzz
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1
+--- !u!114 &9026168391990922585
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd5a43e3b728894bafa6114d7292f72, type: 3}
+  m_Name: SimpleFrostedGlass
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 1

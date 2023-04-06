@@ -1,0 +1,422 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8848985551570738916
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac1e3883a2d48245aa5c6852e614928, type: 3}
+  m_Name: ScreenGlitch
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.02
+    min: 0
+    max: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 2
+  xDisplacement:
+    m_OverrideState: 1
+    m_Value: 0
+    min: -1
+    max: 1
+  randomInferencePower:
+    m_OverrideState: 1
+    m_Value: 0.15
+  linePower:
+    m_OverrideState: 1
+    m_Value: 0.3
+  colorLerp:
+    m_OverrideState: 1
+    m_Value: 0.5
+    min: -1
+    max: 1
+--- !u!114 &-7900641672838575006
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf1b0c89a5cf8bc43b8e26856e772439, type: 3}
+  m_Name: Distort
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  speed:
+    m_OverrideState: 1
+    m_Value: 15
+  amplitude:
+    m_OverrideState: 1
+    m_Value: 0.1
+    min: 0
+    max: 0.1
+  fractionX:
+    m_OverrideState: 1
+    m_Value: 100
+  fractionY:
+    m_OverrideState: 1
+    m_Value: 50
+--- !u!114 &-7506138283352446713
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a6db45ad76003e47b299c380ffa3aed, type: 3}
+  m_Name: Wobble
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  amplitude:
+    m_OverrideState: 1
+    m_Value: 0.0285
+    min: 0
+    max: 0.1
+  speed:
+    m_OverrideState: 1
+    m_Value: 10
+  frequence:
+    m_OverrideState: 1
+    m_Value: 3.86
+--- !u!114 &-6534795728465039225
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe9c272260c37d4ab35544c3beaa2fe, type: 3}
+  m_Name: Glitch
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  block:
+    m_OverrideState: 1
+    m_Value: 0.334
+    min: 0
+    max: 1
+  drift:
+    m_OverrideState: 1
+    m_Value: 0.076
+    min: 0
+    max: 1
+  jitter:
+    m_OverrideState: 1
+    m_Value: 0.176
+    min: 0
+    max: 1
+  jump:
+    m_OverrideState: 1
+    m_Value: 0.223
+    min: 0
+    max: 1
+  shake:
+    m_OverrideState: 1
+    m_Value: 0.015
+    min: 0
+    max: 1
+--- !u!114 &-4066217125191131546
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e308014f3f0b8f4e932c35bf3763dc4, type: 3}
+  m_Name: RGBDistortion
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 8
+  speed:
+    m_OverrideState: 1
+    m_Value: 150
+--- !u!114 &-2768332634560601917
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Distort
+  m_EditorClassIdentifier: Assembly-CSharp:IE.RichFX:Distort
+  active: 0
+  m_AdvancedMode: 0
+  speed:
+    m_OverrideState: 1
+    m_Value: 15
+  amplitude:
+    m_OverrideState: 1
+    m_Value: 0.0434
+    min: 0
+    max: 0.1
+  fractionX:
+    m_OverrideState: 1
+    m_Value: 50
+  fractionY:
+    m_OverrideState: 1
+    m_Value: 25
+--- !u!114 &-2623195085545053599
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7030bd223c612f849a002a1d183833f1, type: 3}
+  m_Name: DisplaceView
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  amount:
+    m_OverrideState: 1
+    m_Value: {x: 4.72, y: 2.58}
+--- !u!114 &-1877221379943116102
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71487a2ded5feb84fb6bbafc51fd9e81, type: 3}
+  m_Name: RGBSplit
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1.8
+    min: 0
+    max: 100
+  angle:
+    m_OverrideState: 1
+    m_Value: 2.64
+--- !u!114 &-1560762426068813610
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6744a1c41b9e641843d632f4cd7e0f, type: 3}
+  m_Name: Underwater
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  amount:
+    m_OverrideState: 1
+    m_Value: 0.07
+    min: 0
+    max: 1
+  speed:
+    m_OverrideState: 1
+    m_Value: 50
+--- !u!114 &-385664881032676909
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cf8f3a6181c0a45ae8bdcae4651f1d, type: 3}
+  m_Name: Scanlines
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 5.1
+    min: 0
+    max: 10
+  noise:
+    m_OverrideState: 1
+    m_Value: 0.302
+    min: 0
+    max: 1
+  count:
+    m_OverrideState: 1
+    m_Value: 2151
+    min: 0
+    max: 4096
+--- !u!114 &-225576872995305781
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44a69605c9906b4ea562d62af081f4e, type: 3}
+  m_Name: Slice
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  rowCount:
+    m_OverrideState: 1
+    m_Value: 30
+  angle:
+    m_OverrideState: 1
+    m_Value: 17
+    min: -90
+    max: 90
+  displacement:
+    m_OverrideState: 1
+    m_Value: 0.2
+    min: -1
+    max: 1
+  randomSeed:
+    m_OverrideState: 1
+    m_Value: 35
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Rich FX - Screen Distortions
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 3363383683564321503}
+  - {fileID: -2623195085545053599}
+  - {fileID: -7900641672838575006}
+  - {fileID: -6534795728465039225}
+  - {fileID: -4066217125191131546}
+  - {fileID: -1877221379943116102}
+  - {fileID: -385664881032676909}
+  - {fileID: -8848985551570738916}
+  - {fileID: 5659809500128445107}
+  - {fileID: 2696340877297953776}
+  - {fileID: -225576872995305781}
+  - {fileID: 633941406055463717}
+  - {fileID: -1560762426068813610}
+  - {fileID: -7506138283352446713}
+--- !u!114 &633941406055463717
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5372b5d99bafb2408ef1df10c85ca30, type: 3}
+  m_Name: TextureDistortion
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.165
+    min: 0
+    max: 0.3
+  speed:
+    m_OverrideState: 1
+    m_Value: 0.214
+    min: 0
+    max: 1
+  distortionTexture:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: fb40f34750848fb4e8106ee8c1224c15, type: 3}
+--- !u!114 &2696340877297953776
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd5a43e3b728894bafa6114d7292f72, type: 3}
+  m_Name: SimpleFrostedGlass
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.314
+    min: 0
+    max: 1
+--- !u!114 &3363383683564321503
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c57d4be0a6cf6a48b15ffa60a528f56, type: 3}
+  m_Name: ChromaLines
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.299
+    min: 0
+    max: 1
+  scanlinesIntensity:
+    m_OverrideState: 1
+    m_Value: 0.063
+    min: 0
+    max: 1
+  speed:
+    m_OverrideState: 0
+    m_Value: 6
+  scanlinesCount:
+    m_OverrideState: 1
+    m_Value: 1240
+--- !u!114 &5659809500128445107
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79863c88852b02a45b0f118843b4be60, type: 3}
+  m_Name: ScreenFuzz
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.76
+    min: 0
+    max: 1
