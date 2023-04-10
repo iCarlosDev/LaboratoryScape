@@ -14,11 +14,25 @@ public class Soldier_IA : Enemy_IA
     [Space(10)] 
     [SerializeField] private float dumping;
     
+    [Header("--- STOMP PARAMETERS ---")] 
+    [Space(10)] 
+    [SerializeField] private BoxCollider stompCollider;
+    
     [Header("--- ROOM WAYPOINTS ---")]
     [Space(10)]
     [SerializeField] private List<Transform> roomWaypoints;
     [SerializeField] private int indexRoomWaypoints;
     [SerializeField] private bool searchingInRoom;
+
+    [Header("--- FLAGS ---")] 
+    [Space(10)] 
+    [SerializeField] private bool canStomp;
+
+    public override void Start()
+    {
+        base.Start();
+        canStomp = true;
+    }
 
     public override void Update()
     {
@@ -26,7 +40,7 @@ public class Soldier_IA : Enemy_IA
         
         //Si el player no ha sido detectado nunca hará la lógica restante;
         if (!isPlayerDetected) return;
-        
+
         //Se comprueba si se puede chasear al Player;
         if (_enemyScriptStorage.FieldOfView.canSeePlayer)
         {
@@ -50,7 +64,7 @@ public class Soldier_IA : Enemy_IA
     private void ChasePlayer()
     {
         Debug.Log("<color=orange>Chasing Player...</color>");
-
+        
         //Si el componente "NavMeshAgent" está activo...;
         if (_navMeshAgent.enabled)
         {
@@ -60,13 +74,17 @@ public class Soldier_IA : Enemy_IA
         }
 
         //Depende de la distancia entre el NPC y el Player el NPC disparará o Pateará;
-        if (Vector3.Distance(transform.position, playerRef.position) < 0.8f)
+        if (Vector3.Distance(transform.position, playerRef.position) < 1f)
         {
-            Kick();
+            if (canStomp)
+            {
+                Kick();
+                canStomp = false;
+            }
         }
         else
         {
-            Shoot(); 
+            Shoot();
         }
     }
 
@@ -90,6 +108,22 @@ public class Soldier_IA : Enemy_IA
     private void Kick()
     {
         Debug.Log("<color=purple>Kicking...</color>");
+        _animator.SetTrigger("Stomp");
+    }
+
+    public void CanStompTrue()
+    {
+        canStomp = true;
+    }
+
+    public void EnableStompCollider()
+    {
+        stompCollider.enabled = true;
+    }
+
+    public void DisableStompCollider()
+    {
+        stompCollider.enabled = false;
     }
 
     #endregion

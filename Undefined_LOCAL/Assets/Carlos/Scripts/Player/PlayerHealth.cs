@@ -56,4 +56,12 @@ public class PlayerHealth : MonoBehaviour
 
         _playerScriptStorage.PlayerHealth.enabled = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("StompCollider"))
+        {
+            TakeDamage(10);
+        }
+    }
 }

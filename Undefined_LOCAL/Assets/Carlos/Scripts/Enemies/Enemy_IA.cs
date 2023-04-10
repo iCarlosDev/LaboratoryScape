@@ -31,6 +31,7 @@ public class Enemy_IA : MonoBehaviour
     [Header("--- ANIMATOR ---")]
     [Space(10)]
     [SerializeField] protected Animator _animator;
+    [SerializeField] protected float timeToSetWeight;
 
     private Coroutine detectPlayerByShot;
 
@@ -79,6 +80,7 @@ public class Enemy_IA : MonoBehaviour
     public virtual void Update()
     {
         Debug.DrawLine(transform.position, _navMeshAgent.destination, Color.red, 0.1f);
+        _animator.SetFloat("CharacterVelocity", _navMeshAgent.velocity.magnitude);
         CheckPlayerDetectedStatus();
     }
 
@@ -103,6 +105,8 @@ public class Enemy_IA : MonoBehaviour
         else
         {
             _navMeshAgent.stoppingDistance = 0.1f;
+            _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0f, timeToSetWeight * Time.deltaTime));
+            _animator.SetLayerWeight(2, Mathf.Lerp(_animator.GetLayerWeight(2), 1f, timeToSetWeight * Time.deltaTime));
         }
     }
 

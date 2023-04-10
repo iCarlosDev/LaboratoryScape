@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class EnemyPossess : MonoBehaviour
 {
+    [SerializeField] private PlayerScriptStorage _playerScriptStorage;
+    
     [Header("--- ENEMY POSSESS ---")]
     [Space(10)]
     [SerializeField] private Enemy_IA closestEnemy;
@@ -18,6 +20,7 @@ public class EnemyPossess : MonoBehaviour
 
     private void Awake()
     {
+        _playerScriptStorage = GetComponentInParent<PlayerScriptStorage>();
         enemyFP = FindObjectOfType<SoldierFP_Controller>().gameObject;
     }
 
@@ -47,7 +50,7 @@ public class EnemyPossess : MonoBehaviour
         enemyFP.transform.position = closestEnemy.transform.position;
         enemyFP.transform.rotation = closestEnemy.transform.rotation;
         enemyFP.SetActive(true);
-        enemyFP.GetComponent<EnemyDespossess>()?.StartUp(closestEnemy, gameObject);
+        enemyFP.GetComponentInParent<EnemyDespossess>()?.StartUp(closestEnemy, transform.parent.gameObject);
         closestEnemy.EnemyScriptStorage.Outlinable.enabled = false;
         closestEnemy.EnemyScriptStorage.EnemyIa.enabled = false;
         closestEnemy.gameObject.SetActive(false);
@@ -63,7 +66,7 @@ public class EnemyPossess : MonoBehaviour
             enemy.PlayerRef = enemyFP.transform;
         }
 
-        gameObject.SetActive(false);
+        transform.parent.gameObject.SetActive(false);
     }
     
     #region - CLOSEST ENEMY DETECTION -
@@ -118,7 +121,7 @@ public class EnemyPossess : MonoBehaviour
             potentialTarget.EnemyScriptStorage.Outlinable.enabled = false;
         }
 
-        if (closestEnemy != null)
+        if (closestEnemy != null && _playerScriptStorage.PlayerHealth.CurrentHealth > 0)
         {
             closestEnemy.EnemyScriptStorage.Outlinable.enabled = true;
         }

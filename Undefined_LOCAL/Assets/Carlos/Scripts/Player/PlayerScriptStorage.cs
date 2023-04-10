@@ -24,7 +24,7 @@ public class PlayerScriptStorage : MonoBehaviour
     private void Awake()
     {
         _playerMovement = GetComponent<PlayerMovement>();
-        _enemyPossess = GetComponent<EnemyPossess>();
+        _enemyPossess = GetComponentInChildren<EnemyPossess>();
         _playerHealth = GetComponent<PlayerHealth>();
         _animator = GetComponent<Animator>();
     }
