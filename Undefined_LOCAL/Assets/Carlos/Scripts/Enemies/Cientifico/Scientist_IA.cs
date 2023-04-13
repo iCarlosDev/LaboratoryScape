@@ -20,10 +20,10 @@ public class Scientist_IA : Enemy_IA
         base.Update();
         
         //Si el player no ha sido detectado nunca hará la lógica restante;
-        if (!isPlayerDetected) return;
+        if (!IsPlayerDetected) return;
         
         //Se comprueba si tiene que huir del Player;
-        if (isPlayerDetected)
+        if (IsPlayerDetected)
         {
             RunOfPlayer();
         }

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuLevelManager : MonoBehaviour
@@ -214,6 +215,11 @@ public class MainMenuLevelManager : MonoBehaviour
     }
     
     #region - MAIN MENU -
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
 
     //Método para ir al Menú Background;
     private void OpenBackground()

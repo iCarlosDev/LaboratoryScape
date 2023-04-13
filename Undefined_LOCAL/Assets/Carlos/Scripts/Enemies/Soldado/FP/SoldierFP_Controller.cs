@@ -19,8 +19,10 @@ public class SoldierFP_Controller : EnemyController
     [Header("--- FIRE PARAMETERS ---")] 
     [Space(10)]
     [SerializeField] private Transform cameraPivot;
+    [SerializeField] private Transform shootPrefab;
     [SerializeField] private TextMeshProUGUI ammoTMP;
     [SerializeField] private LayerMask layerToDetect;
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int ammoCapacity;
     [SerializeField] private int maxAmmo;
     [SerializeField] private int currentAmmo;
@@ -129,6 +131,8 @@ public class SoldierFP_Controller : EnemyController
         //Aplicamos un shake a la cámara para dar efecto de disparo;
         EZCameraShake.CameraShaker.Instance.ShakeOnce(magnitude, roughnes, fadeIn, fadeOut);
         
+        CallNearSoldiers();
+        
         Debug.DrawRay(cameraPivot.position, cameraPivot.forward * 10, Color.red, 3f);
         
         RaycastHit hit = new RaycastHit();
@@ -137,6 +141,8 @@ public class SoldierFP_Controller : EnemyController
         //Cuando disparamos lanzamos un rayo que da información de con que ha impactado;
         if (Physics.Raycast(ray, out hit, 100f, layerToDetect, QueryTriggerInteraction.Ignore))
         {
+            Instantiate(shootPrefab, hit.point, hit.transform.rotation);
+
             //Si impacta con un collider del enemy...;
             if (hit.collider.CompareTag("EnemyCollider"))
             {
@@ -159,6 +165,25 @@ public class SoldierFP_Controller : EnemyController
         }
         
         #endregion
+    }
+    
+    private void CallNearSoldiers()
+    {
+        Collider[] colliderArray = Physics.OverlapSphere(transform.position, 3, enemyLayer);
+        
+        foreach (Collider collider in colliderArray)
+        {
+            if (collider.GetComponent<Soldier_IA>())
+            {
+                collider.GetComponent<Soldier_IA>().IsPlayerDetected = true;
+                collider.GetComponent<Soldier_IA>().StartCoroutine(collider.GetComponent<Soldier_IA>().DetectPlayer());
+            }
+            else
+            {
+                collider.GetComponent<Scientist_IA>().IsPlayerDetected = true;
+                collider.GetComponent<Scientist_IA>().StartCoroutine(collider.GetComponent<Scientist_IA>().DetectPlayer());
+            }
+        }
     }
 
     //Método que se llama al hacerse la animación de disparo;

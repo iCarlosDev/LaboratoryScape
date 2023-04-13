@@ -28,10 +28,19 @@ public class Soldier_IA : Enemy_IA
     [Space(10)] 
     [SerializeField] private bool canStomp;
 
+
+    [Header("--- ENEMY LOOK CONTROL ---")]
+    [Space(10)]
+    [SerializeField] private Transform shootPos;
+    [SerializeField] private Transform playerPos;
+    [SerializeField] private float aimSpeed;
+    [SerializeField] private bool canLookPlayer;
+
     public override void Start()
     {
         base.Start();
         canStomp = true;
+        playerPos = playerRef;
     }
 
     public override void Update()
@@ -39,7 +48,7 @@ public class Soldier_IA : Enemy_IA
         base.Update();
         
         //Si el player no ha sido detectado nunca hará la lógica restante;
-        if (!isPlayerDetected) return;
+        if (!IsPlayerDetected) return;
 
         //Se comprueba si se puede chasear al Player;
         if (_enemyScriptStorage.FieldOfView.canSeePlayer)
@@ -52,6 +61,20 @@ public class Soldier_IA : Enemy_IA
             FindPlayer();
         }
     }
+
+    /*private void LookPlayer()
+    {
+        if (playerPos.forward.y < shootPos.forward.y)
+        {
+            aimSpeed += Time.deltaTime * .5f;
+            _animator.SetFloat("Y", aimSpeed);
+        }
+        else
+        {
+            aimSpeed -= Time.deltaTime * .5f;
+            _animator.SetFloat("Y", aimSpeed);
+        }
+    }*/
 
     private void ChangePlayerRef(Transform playerRef)
     {
@@ -87,7 +110,7 @@ public class Soldier_IA : Enemy_IA
             Shoot();
         }
     }
-
+    
     //Método para rotar al NPC para que mire al player en el eje "Y";
     private void lookPlayer()
     {

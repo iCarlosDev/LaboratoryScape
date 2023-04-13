@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,7 +20,7 @@ public class Enemy_IA : MonoBehaviour
     [Header("--- DETECTION ---")]
     [Space(10)]
     [SerializeField] protected Transform playerRef;
-    [SerializeField] protected bool isPlayerDetected;
+    [SerializeField] private bool isPlayerDetected;
 
     [Header("--- HEALTH ---")]
     [Space(10)]
@@ -41,6 +40,11 @@ public class Enemy_IA : MonoBehaviour
         Soldier,
         Scientist
     }
+    
+    [Header("--- ENEMY STATUS ---")]
+    [Space(10)]
+    [SerializeField] private LayerMask layerToDetect;
+    [SerializeField] private bool playerDetectedFlag;
 
     [SerializeField] private bool canBePossessed;
     
@@ -50,6 +54,11 @@ public class Enemy_IA : MonoBehaviour
     {
         get => playerRef;
         set => playerRef = value;
+    }
+    public bool IsPlayerDetected
+    {
+        get => isPlayerDetected;
+        set => isPlayerDetected = value;
     }
     public EnemyScriptStorage EnemyScriptStorage => _enemyScriptStorage;
     
@@ -100,13 +109,55 @@ public class Enemy_IA : MonoBehaviour
             if (_enemyScriptStorage.FieldOfView.canSeePlayer)
             {
                 isPlayerDetected = true;
-            } 
+            }
         }
         else
         {
+            if (!playerDetectedFlag)
+            {
+                CallNearSoldiers();
+                playerDetectedFlag = true;
+            }
+            
             _navMeshAgent.stoppingDistance = 0.1f;
+
+            if (EnemyType == EnemyType_Enum.Soldier)
+            {
+                if (_enemyScriptStorage.FieldOfView.canSeePlayer)
+                {
+                    _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0f, timeToSetWeight * Time.deltaTime));
+                    _animator.SetLayerWeight(2, Mathf.Lerp(_animator.GetLayerWeight(2), 1f, timeToSetWeight * Time.deltaTime));
+                }
+                else
+                {
+                    _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 1f, timeToSetWeight * Time.deltaTime));
+                    _animator.SetLayerWeight(2, Mathf.Lerp(_animator.GetLayerWeight(2), 0f, timeToSetWeight * Time.deltaTime));
+                }
+                
+                return;
+            }
+            
             _animator.SetLayerWeight(1, Mathf.Lerp(_animator.GetLayerWeight(1), 0f, timeToSetWeight * Time.deltaTime));
             _animator.SetLayerWeight(2, Mathf.Lerp(_animator.GetLayerWeight(2), 1f, timeToSetWeight * Time.deltaTime));
+        }
+    }
+    
+    public void CallNearSoldiers()
+    {
+        Collider[] colliderArray = Physics.OverlapSphere(transform.position, 3, layerToDetect);
+        
+        foreach (Collider collider in colliderArray)
+        {
+            if (collider.GetComponent<Soldier_IA>())
+            {
+                collider.GetComponent<Soldier_IA>().isPlayerDetected = true;
+                collider.GetComponent<Soldier_IA>().StartCoroutine(collider.GetComponent<Soldier_IA>().DetectPlayer());
+            }
+            else
+            {
+                collider.GetComponent<Scientist_IA>().isPlayerDetected = true;
+                collider.GetComponent<Scientist_IA>().StartCoroutine(collider.GetComponent<Scientist_IA>().DetectPlayer());
+            }
         }
     }
 
@@ -210,7 +261,7 @@ public class Enemy_IA : MonoBehaviour
     }
 
     //Corrutina para dejar de detectar al player;
-    private IEnumerator DetectPlayer()
+    public IEnumerator DetectPlayer()
     {
         _enemyScriptStorage.FieldOfView.canSeePlayer = true;
         yield return new WaitForSeconds(3f);
