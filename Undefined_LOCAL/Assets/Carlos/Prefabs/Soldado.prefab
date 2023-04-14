@@ -2452,7 +2452,11 @@ MonoBehaviour:
   canStomp: 0
   shootPos: {fileID: 1566595528}
   playerPos: {fileID: 0}
-  aimSpeed: 1
+  pLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  fireRate: 1
+  fireRateTime: 0
 --- !u!114 &4559934169586597648
 MonoBehaviour:
   m_ObjectHideFlags: 0

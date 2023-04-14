@@ -36,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
     //Método para quitarle vida al player;
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);

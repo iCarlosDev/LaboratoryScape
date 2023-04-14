@@ -258,6 +258,8 @@ public class Enemy_IA : MonoBehaviour
         {
             rb.isKinematic = false;
         }
+
+        enabled = false;
     }
 
     //Corrutina para dejar de detectar al player;
