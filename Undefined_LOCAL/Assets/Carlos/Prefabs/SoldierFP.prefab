@@ -3508,9 +3508,10 @@ GameObject:
   - component: {fileID: 8711910863609340249}
   - component: {fileID: 8711910863609340244}
   - component: {fileID: 1086703862}
+  - component: {fileID: 4796163926597892810}
   m_Layer: 7
   m_Name: SoldierFP
-  m_TagString: Untagged
+  m_TagString: PlayerRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3605,7 +3606,7 @@ MonoBehaviour:
   ammoTMP: {fileID: 8711910863614660034}
   layerToDetect:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 577
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -3638,6 +3639,19 @@ MonoBehaviour:
   player: {fileID: 0}
   enemy: {fileID: 0}
   possessionTime: 30
+--- !u!114 &4796163926597892810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711910863609340251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebef905ebbd6184586bb0ef1f376102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorCardEnum: 3
 --- !u!1 &8711910863614660036
 GameObject:
   m_ObjectHideFlags: 0

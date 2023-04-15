@@ -329,8 +329,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.79, y: 1, z: 1.52}
-  m_Center: {x: -0.17, y: 1, z: 0}
+  m_Size: {x: 1.79, y: 1, z: 2.22}
+  m_Center: {x: -0.17, y: 0.5, z: 0}
 --- !u!95 &4057930066201841353
 Animator:
   serializedVersion: 4
@@ -363,6 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a078b1cc7a4c2f459709f4b6d7611af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  timeLeftCloseDoor: 3
 --- !u!1 &7278655232175274477
 GameObject:
   m_ObjectHideFlags: 0

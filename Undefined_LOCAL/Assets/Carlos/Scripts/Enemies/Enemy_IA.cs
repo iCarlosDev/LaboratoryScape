@@ -68,13 +68,20 @@ public class Enemy_IA : MonoBehaviour
     {
         _enemyScriptStorage = GetComponent<EnemyScriptStorage>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        _enemyScriptStorage.FieldOfView.playerRef = GameObject.FindWithTag("Player");
+        playerRef = _enemyScriptStorage.FieldOfView.playerRef.transform;
+
+        if (transform.parent == null)
+        {
+            return;
+        }
+        
         waypointStorage = transform.parent.GetChild(1);
         
         waypointsList.AddRange(waypointStorage.GetComponentsInChildren<Transform>());
         waypointsList.Remove(waypointsList[0]);
         waypointsListIndex = 0;
-
-        playerRef = _enemyScriptStorage.FieldOfView.playerRef.transform;
     }
 
     public virtual void Start()
@@ -151,7 +158,7 @@ public class Enemy_IA : MonoBehaviour
             if (collider.GetComponent<Soldier_IA>())
             {
                 collider.GetComponent<Soldier_IA>().isPlayerDetected = true;
-                collider.GetComponent<Soldier_IA>().StartCoroutine(collider.GetComponent<Soldier_IA>().DetectPlayer());
+                collider.GetComponent<Soldier_IA>().FindPlayer();
             }
             else
             {
@@ -203,9 +210,14 @@ public class Enemy_IA : MonoBehaviour
         if (Vector3.Distance(transform.position, Level1Manager.instance.AlarmWaypoint.position) < 0.1f)
         {
             Level1Manager.instance.AlarmActivated = true;
-            
+
+            foreach (EnemiesSpawn enemiesSpawn in Level1Manager.instance.EnemiesSpawnsList)
+            {
+                enemiesSpawn.SpawnEnemies();
+            }
+
             //Una vez activada la alarma todos los NPCs estarán alerta;
-            foreach (Enemy_IA enemy in FindObjectsOfType<Enemy_IA>())
+            foreach (Enemy_IA enemy in Level1Manager.instance.EnemiesList)
             {
                 enemy.isPlayerDetected = true;
             }

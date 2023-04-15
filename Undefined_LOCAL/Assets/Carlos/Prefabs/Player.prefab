@@ -2046,6 +2046,7 @@ GameObject:
   - component: {fileID: 5866666021744163005}
   - component: {fileID: 1188293756994674391}
   - component: {fileID: 5065910511306313487}
+  - component: {fileID: 691043567927759554}
   m_Layer: 7
   m_Name: Player
   m_TagString: PlayerRoot
@@ -2190,6 +2191,20 @@ MonoBehaviour:
   _playerMovement: {fileID: 0}
   _enemyPossess: {fileID: 0}
   _playerHealth: {fileID: 0}
+  _doorCard: {fileID: 0}
+--- !u!114 &691043567927759554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371900542231721853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebef905ebbd6184586bb0ef1f376102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorCardEnum: 3
 --- !u!1 &5549983503895562013
 GameObject:
   m_ObjectHideFlags: 0

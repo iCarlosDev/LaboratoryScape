@@ -13,11 +13,19 @@ public class Level1Manager : MonoBehaviour
     [Header("--- ALL ENEMIES ---")] 
     [Space(10)] 
     [SerializeField] private List<Enemy_IA> enemiesList;
+    
+    [Header("--- ALL ENEMIES SPAWNS ---")]
+    [Space(10)]
+    [SerializeField] private List<EnemiesSpawn> enemiesSpawnsList;
 
     [Header("--- SAFE ROOM ---")]
     [Space(10)]
     [SerializeField] private List<Transform> safeRoomWaypointsList; 
     
+    [Header("--- ALL DOORS ---")]
+    [Space(10)]
+    [SerializeField] private List<DoorControl> doorsList;
+
     [Header("--- ALARM PARAMETERS ---")]
     [Space(10)]
     [SerializeField] private Transform alarmWaypoint;
@@ -33,6 +41,8 @@ public class Level1Manager : MonoBehaviour
     public List<Enemy_IA> EnemiesList => enemiesList;
     public List<Transform> SafeRoomWaypointsList => safeRoomWaypointsList;
     public Transform AlarmWaypoint => alarmWaypoint;
+    public List<DoorControl> DoorsList => doorsList;
+    public List<EnemiesSpawn> EnemiesSpawnsList => enemiesSpawnsList;
 
     ///////////////////////
     
@@ -50,8 +60,12 @@ public class Level1Manager : MonoBehaviour
         roomsList.Add(GameObject.FindWithTag("SafeRoomCollider"));
         
         enemiesList.AddRange(FindObjectsOfType<Enemy_IA>());
+        
+        enemiesSpawnsList.AddRange(FindObjectsOfType<EnemiesSpawn>());
 
         safeRoomWaypointsList.AddRange(GameObject.FindWithTag("SafeRoomCollider").GetComponentsInChildren<Transform>());
         safeRoomWaypointsList.Remove(safeRoomWaypointsList[0]);
+        
+        doorsList.AddRange(FindObjectsOfType<DoorControl>());
     }
 }

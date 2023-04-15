@@ -8,7 +8,21 @@ public class DoorControl : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private float timeLeftCloseDoor;
 
+    [SerializeField] private DoorCardStatus doorCardStatusEnum;
+    private enum DoorCardStatus
+    {
+        PurpleCard,
+        YellowCard,
+        RedCard,
+        NoCard
+    }
+    
     private Coroutine closeDoor;
+    
+    //GETTERS && SETTERS//
+    public Animator Animator => _animator;
+    
+    /////////////////////////////////////////////
 
     private void Awake()
     {
@@ -17,6 +31,21 @@ public class DoorControl : MonoBehaviour
 
     private void OpenDoor()
     {
+        // Nombre del estado que estamos buscando
+        string stateName = "DoorOpen";
+        // Obtener la información del estado actual del Animator
+        AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+        // Obtener el nombre del estado actual
+        string currentStateName = stateInfo.shortNameHash.ToString();
+
+        // Verificar si el estado que estamos buscando es el estado actual
+        if (currentStateName.Equals(Animator.StringToHash(stateName).ToString()) && stateInfo.normalizedTime > 0)
+        {
+            // El estado que estamos buscando se está ejecutando
+            CloseDoor();
+            return;
+        }
+        
         _animator.SetTrigger("DoorOpen");
     }
     
@@ -39,9 +68,17 @@ public class DoorControl : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("PlayerRoot"))
+        if (other.CompareTag("Enemy") || other.CompareTag("PlayerRoot") || other.CompareTag("PlayerRootFP"))
         {
-            OpenDoor();
+            if (doorCardStatusEnum == DoorCardStatus.NoCard)
+            {
+                OpenDoor(); 
+            }
+
+            if ((int)other.GetComponent<DoorCard>().DoorCardEnum == (int)doorCardStatusEnum)
+            {
+                OpenDoor();
+            }
         }
     }
 }

@@ -12,12 +12,14 @@ public class PlayerScriptStorage : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private EnemyPossess _enemyPossess;
     [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private DoorCard _doorCard;
     
     //GETTERS && SETTERS//
     public PlayerMovement PlayerMovement => _playerMovement;
     public EnemyPossess EnemyPossess => _enemyPossess;
     public PlayerHealth PlayerHealth => _playerHealth;
     public Animator Animator => _animator;
+    public DoorCard DoorCard => _doorCard;
 
     ///////////////////////////////
     
@@ -27,5 +29,6 @@ public class PlayerScriptStorage : MonoBehaviour
         _enemyPossess = GetComponentInChildren<EnemyPossess>();
         _playerHealth = GetComponent<PlayerHealth>();
         _animator = GetComponent<Animator>();
+        _doorCard = GetComponent<DoorCard>();
     }
 }

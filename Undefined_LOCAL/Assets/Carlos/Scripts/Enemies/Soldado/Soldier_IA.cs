@@ -174,7 +174,7 @@ public class Soldier_IA : Enemy_IA
 
     #region - FINDING PLAYER -
 
-    private void FindPlayer()
+    public void FindPlayer()
     {
         Debug.Log("<color=blue>Checking Last Player Position</color>");
         _navMeshAgent.SetDestination(_navMeshAgent.destination);
