@@ -27,6 +27,7 @@ public class Soldier_IA : Enemy_IA
     [Header("--- FLAGS ---")] 
     [Space(10)] 
     [SerializeField] private bool canStomp;
+    [SerializeField] private bool playerFinded;
 
     [Header("--- ENEMY SHOOT CONTROL ---")]
     [Space(10)]
@@ -89,6 +90,8 @@ public class Soldier_IA : Enemy_IA
     private void ChasePlayer()
     {
         Debug.Log("<color=orange>Chasing Player...</color>");
+        playerFinded = true;
+        _navMeshAgent.speed = 1.5f;
         
         //Si el componente "NavMeshAgent" está activo...;
         if (_navMeshAgent.enabled)
@@ -179,11 +182,21 @@ public class Soldier_IA : Enemy_IA
         Debug.Log("<color=blue>Checking Last Player Position</color>");
         _navMeshAgent.SetDestination(_navMeshAgent.destination);
         _navMeshAgent.stoppingDistance = 0f;
-        
+
+        if (Level1Manager.instance.AlarmActivated)
+        {
+            _navMeshAgent.speed = playerFinded ? 3f : 0.9f;
+        }
+        else
+        {
+            _navMeshAgent.speed = 3f;
+        }
+
         //Comprobamos que el NPC ha llegado a la última posición donde ha visto al Player;
         if (Vector3.Distance(transform.position, _navMeshAgent.destination) < 0.3f)
         {
             Debug.Log("<color=blue>Finding Player...</color>");
+            playerFinded = false;
             
             //Comprobamos si hay waypoints en la lista y si está buscando en una sala;
             if (roomWaypoints.Count != 0 && searchingInRoom)
@@ -203,7 +216,7 @@ public class Soldier_IA : Enemy_IA
             //Ejecutamos la corrutina "FindPlayerCooldown" y reseteamos el Path;
             if (findPlayerCooldown == null)
             {
-                _navMeshAgent.ResetPath();
+                _navMeshAgent.ResetPath(); 
                 //findPlayerCooldown = StartCoroutine(FindPlayerCooldown_Coroutine());   
             }
 
@@ -271,7 +284,7 @@ public class Soldier_IA : Enemy_IA
         int randomRoom = Random.Range(1, Level1Manager.instance.RoomsList.Count);
         roomWaypoints.AddRange(Level1Manager.instance.RoomsList[randomRoom].GetComponentsInChildren<Transform>());
         roomWaypoints.Remove(roomWaypoints[0]);
-        _navMeshAgent.speed = 1f;
+        _navMeshAgent.speed = 0.9f;
         searchingInRoom = true;
     }
 

@@ -136,7 +136,7 @@ public class SoldierFP_Controller : EnemyController
         //Aplicamos un shake a la cámara para dar efecto de disparo;
         EZCameraShake.CameraShaker.Instance.ShakeOnce(magnitude, roughnes, fadeIn, fadeOut);
         
-        CallNearSoldiers();
+        CallNearSoldiers(10);
         
         Debug.DrawRay(cameraPivot.position, cameraPivot.forward * 10, Color.red, 3f);
         
@@ -172,9 +172,9 @@ public class SoldierFP_Controller : EnemyController
         #endregion
     }
     
-    private void CallNearSoldiers()
+    private void CallNearSoldiers(float sphereRadius)
     {
-        Collider[] colliderArray = Physics.OverlapSphere(transform.position, 3, enemyLayer);
+        Collider[] colliderArray = Physics.OverlapSphere(transform.position, sphereRadius, enemyLayer);
         
         foreach (Collider collider in colliderArray)
         {
