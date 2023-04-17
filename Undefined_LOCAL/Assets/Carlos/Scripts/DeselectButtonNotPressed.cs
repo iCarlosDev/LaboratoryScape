@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DeselectButtonNotPressed : MonoBehaviour, IMoveHandler
@@ -38,7 +39,14 @@ public class DeselectButtonNotPressed : MonoBehaviour, IMoveHandler
     //Método para seleccionar el boton que tenga este script;
     public void SelectButton()
     {
-        MainMenuLevelManager.instance.EventSystem.SetSelectedGameObject(gameObject);
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            MainMenuLevelManager.instance.EventSystem.SetSelectedGameObject(gameObject);
+        }
+        else
+        {
+            PauseMenuManager.instance.EventSystem.SetSelectedGameObject(gameObject);
+        }
     }
 
     //Método para hacer interactuable o no el botón que tiene este script;

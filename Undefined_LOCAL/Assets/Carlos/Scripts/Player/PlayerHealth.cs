@@ -27,14 +27,6 @@ public class PlayerHealth : MonoBehaviour
         _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TakeDamage(50);
-        }
-    }
-
     //Método para quitarle vida al player;
     public void TakeDamage(int damage)
     {

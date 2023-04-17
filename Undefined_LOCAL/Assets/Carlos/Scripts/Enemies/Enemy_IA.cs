@@ -26,6 +26,7 @@ public class Enemy_IA : MonoBehaviour
     [Space(10)]
     [SerializeField] protected int maxHealth;
     [SerializeField] protected int currentHealth;
+    [SerializeField] protected bool isDead;
     
     [Header("--- ANIMATOR ---")]
     [Space(10)]
@@ -260,6 +261,7 @@ public class Enemy_IA : MonoBehaviour
     //Método para decidir que hacer cuando el NPC muere;
     public void Die()
     {
+        isDead = true;
         _navMeshAgent.ResetPath();
         _navMeshAgent.enabled = false;
         _animator.enabled = false;

@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,6 +8,10 @@ public class PlayerMovement : MonoBehaviour
     //Variables
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private PlayerScriptStorage _playerScriptStorage;
+
+    [Header("--- CAMERA SETTINGS ---")] 
+    [Space(10)] 
+    [SerializeField] private CinemachineFreeLook _cinemachineFreeLook;
     
     [Header("--- MOVEMENT ---")]
     [Space(10)]
@@ -45,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _playerScriptStorage = GetComponent<PlayerScriptStorage>();
+        _cinemachineFreeLook = GetComponentInChildren<CinemachineFreeLook>();
         _animator = GetComponent<Animator>();
         playerCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().transform;
         groundCheck = transform.GetChild(2);
@@ -55,8 +61,18 @@ public class PlayerMovement : MonoBehaviour
         speed = 2f;
     }
 
+    public void SetSensitivityOptions()
+    {
+        _cinemachineFreeLook.m_YAxis.m_MaxSpeed = OptionsManager.instance.MouseSensitivity * 10f;
+        _cinemachineFreeLook.m_YAxis.m_InvertInput = OptionsManager.instance.InvertVertical;
+        _cinemachineFreeLook.m_XAxis.m_MaxSpeed = OptionsManager.instance.MouseSensitivity * 1000f;
+        _cinemachineFreeLook.m_XAxis.m_InvertInput = OptionsManager.instance.InvertHorizontal;
+    }
+
     private void Update()
     {
+        if (PauseMenuManager.instance.IsPaused) return;
+        
         CalculateGravity();
 
         //Si el player tiene vida se hará la lógica restante;

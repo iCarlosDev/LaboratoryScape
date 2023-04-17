@@ -46,6 +46,11 @@ public class SoldierFP_Controller : EnemyController
     [SerializeField] private float roughnes;
     [SerializeField] private float fadeIn;
     [SerializeField] private float fadeOut;
+    
+    //GETTER && SETTERS//
+    public Transform CameraPivot => cameraPivot;
+
+    ///////////////////////////////
 
     private void Start()
     {

@@ -50,7 +50,7 @@ public class Soldier_IA : Enemy_IA
         base.Update();
         
         //Si el player no ha sido detectado nunca hará la lógica restante;
-        if (!IsPlayerDetected) return;
+        if (!IsPlayerDetected || isDead) return;
 
         //Se comprueba si se puede chasear al Player;
         if (_enemyScriptStorage.FieldOfView.canSeePlayer)
@@ -181,7 +181,7 @@ public class Soldier_IA : Enemy_IA
         _navMeshAgent.stoppingDistance = 0f;
         
         //Comprobamos que el NPC ha llegado a la última posición donde ha visto al Player;
-        if (Vector3.Distance(transform.position, _navMeshAgent.destination) < 0.1f)
+        if (Vector3.Distance(transform.position, _navMeshAgent.destination) < 0.3f)
         {
             Debug.Log("<color=blue>Finding Player...</color>");
             
@@ -286,7 +286,7 @@ public class Soldier_IA : Enemy_IA
     //Método para actualizar el waypoint al que tiene que ir el NPC;
     private void UpdateRoomWaypoint()
     {
-        if (Vector3.Distance(transform.position, _navMeshAgent.destination) < 0.3f)
+        if (Vector3.Distance(transform.position, _navMeshAgent.destination) < 0.5f)
         {
             indexRoomWaypoints = (indexRoomWaypoints + 1) % roomWaypoints.Count;
             _navMeshAgent.SetDestination(roomWaypoints[indexRoomWaypoints].position);

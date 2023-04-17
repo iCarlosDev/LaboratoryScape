@@ -53,6 +53,8 @@ public class Level1Manager : MonoBehaviour
 
     private void Start()
     {
+        PauseMenuManager.instance.PauseMenu.SetActive(false);
+        Time.timeScale = 1f;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         

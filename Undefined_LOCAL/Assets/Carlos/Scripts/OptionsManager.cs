@@ -160,6 +160,8 @@ public class OptionsManager : MonoBehaviour
         SetBright();
         SetAntialiasing();
         SetShadowQuality();
+        FindObjectOfType<PlayerMovement>()?.SetSensitivityOptions();
+        FindObjectOfType<SoldierFP_Controller>()?.CameraPivot.GetComponent<EnemyMouseLook>().SetSensitivityOptions();
     }
     
     #region - OPTIONS SET -

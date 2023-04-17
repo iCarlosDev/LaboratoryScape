@@ -6,24 +6,27 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuLevelManager : MonoBehaviour
+public class PauseMenuManager : MonoBehaviour
 {
-    public static MainMenuLevelManager instance;
+    public static PauseMenuManager instance;
     
     [Header("--- EVENT SYSTEM STUFF ---")]
     [Space(10)]
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private ReselectLastSelectedOnInput reselectLastSelectedOnInput;
 
+    [Header("--- PAUSE MENU PARAMETERS ---")] 
+    [Space(10)] 
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private bool isPaused;
+    
     [Header("--- ENUMS ---")]
     [Space(10)]
     [SerializeField] private MenuType _menuTypeEnum;
     private enum MenuType
     {
-        Background,
-        MainMenu,
+        PauseMenu,
         Options,
-        Credits
     }
 
     [SerializeField] private OptionsBTN _optionsBtnEnum;
@@ -42,18 +45,15 @@ public class MainMenuLevelManager : MonoBehaviour
     [Header("--- ALL CANVAS ---")] 
     [Space(10)] 
     [SerializeField] private Animator _animator;
-    [SerializeField] private GameObject background_Canvas;
-    [SerializeField] private GameObject mainMenu_Canvas;
+    [SerializeField] private GameObject pauseMenu_Canvas;
     [SerializeField] private GameObject options_Canvas;
     [SerializeField] private GameObject graphics_Canvas;
     [SerializeField] private GameObject controls_Canvas;
     [SerializeField] private GameObject audio_Canvas;
-    [SerializeField] private GameObject credits_Canvas;
 
     [Header("--- CANVAS BTNS ---")] 
     [Space(10)] 
     [SerializeField] private bool canNavigate;
-    [SerializeField] private GameObject pressAnyButtonBTN;
     [SerializeField] private GameObject startBTN;
     [SerializeField] private Animator graphicsBTN_Animator;
     [SerializeField] private GameObject firstGraphicsBTN;
@@ -86,7 +86,8 @@ public class MainMenuLevelManager : MonoBehaviour
 
     //GETTERS && SETTERS//
     public EventSystem EventSystem => eventSystem;
-
+    public GameObject PauseMenu => pauseMenu;
+    public bool IsPaused => isPaused;
     ////////////////////////////////////////////////
     
     private void Awake()
@@ -96,46 +97,41 @@ public class MainMenuLevelManager : MonoBehaviour
         eventSystem = FindObjectOfType<EventSystem>();
         reselectLastSelectedOnInput = eventSystem.GetComponent<ReselectLastSelectedOnInput>();
         _animator = GetComponent<Animator>();
+        pauseMenu = transform.GetChild(0).gameObject;
     }
 
     private void Start()
     {
-        Time.timeScale = 1f;
-        
         SetOptions();
-        GoBackGround();
         _animator.ResetTrigger("RemoveBlur");
         canNavigate = true;
     }
 
     private void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseMenuControl();
+        }
+        
+        if (!isPaused) return;
+
         //Comprobamos si hemos pulsado cualquier boton del mouse;
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
         {
             ReselectLastButton();
-        }
-        
-        //Comprobamos si pulsamos cualquier tecla y estamos en el Menú Background;
-        if (Input.anyKeyDown && _menuTypeEnum == MenuType.Background)
-        {
-            GoMenu();
-            _animator.SetTrigger("AddBlur");
         }
 
         //Comprobamos que le hemos dado al "Escape";
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             //Comprobamos que estamos en cualquier menu que no sea el principal;
-            if (_menuTypeEnum != MenuType.MainMenu)
+            if (_menuTypeEnum != MenuType.PauseMenu)
             {
                 GoMenu();
                 OptionsManager.instance.SaveOptions();
                 OptionsManager.instance.SetAllOptions();
-            }
-            else
-            {
-                GoBackGround();
             }
         }
 
@@ -215,40 +211,57 @@ public class MainMenuLevelManager : MonoBehaviour
         musicVolumeSlider.value = OptionsManager.instance.MusicVolume;
         effectVolumeSlider.value = OptionsManager.instance.EffectsVolume;
     }
-    
-    #region - MAIN MENU -
 
-    public void StartGame()
+    #region - PAUSE MENU -
+
+    private void PauseMenuControl()
     {
-        SceneManager.LoadScene(1);
+        if (_menuTypeEnum != MenuType.PauseMenu) return;
+
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            OpenPauseMenu();
+        }
+        else
+        {
+            ClosePauseMenu();
+        }
     }
 
-    //Método para ir al Menú Background;
-    private void OpenBackground()
+    private void OpenPauseMenu()
     {
-        eventSystem.SetSelectedGameObject(pressAnyButtonBTN);
-        reselectLastSelectedOnInput.LastSelectedObject = pressAnyButtonBTN;
-        
-        _menuTypeEnum = MenuType.Background;
-        
-        background_Canvas.SetActive(true);
-        mainMenu_Canvas.SetActive(false);
-        options_Canvas.SetActive(false);
-        credits_Canvas.SetActive(false);
+        pauseMenu.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0f;
+    }
+
+    private void ClosePauseMenu()
+    {
+        isPaused = false;
+        pauseMenu.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
     }
     
+    public void ResumeGame()
+    {
+       ClosePauseMenu();
+    }
+
     //Método para abrir el Menú Principal;
     private void OpenMainMenu()
     {
         eventSystem.SetSelectedGameObject(startBTN);
         reselectLastSelectedOnInput.LastSelectedObject = startBTN;
         
-        _menuTypeEnum = MenuType.MainMenu;
+        _menuTypeEnum = MenuType.PauseMenu;
         
-        background_Canvas.SetActive(false);
-        mainMenu_Canvas.SetActive(true);
+        pauseMenu_Canvas.SetActive(true);
         options_Canvas.SetActive(false);
-        credits_Canvas.SetActive(false);
     }
     
     //Método para abrir las Opciones;
@@ -258,27 +271,16 @@ public class MainMenuLevelManager : MonoBehaviour
         
         _menuTypeEnum = MenuType.Options;
         
-        mainMenu_Canvas.SetActive(false);
+        pauseMenu_Canvas.SetActive(false);
         options_Canvas.SetActive(true);
-        credits_Canvas.SetActive(false);
-        
+
         SelectGraphicsBTN();
-    }
-    
-    //Método para abrir los Creditos;
-    private void OpenCredits()
-    {
-        _menuTypeEnum = MenuType.Credits;
-        
-        mainMenu_Canvas.SetActive(false);
-        options_Canvas.SetActive(false);
-        credits_Canvas.SetActive(true);
     }
 
     //Método para salir del juego;
-    public void Quit()
+    public void GoMainMenu()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
     
     #endregion
@@ -377,32 +379,13 @@ public class MainMenuLevelManager : MonoBehaviour
 
     #region - ANIMATIONS CONTROL -
 
-    private void GoBackGround()
-    {
-        _animator.SetTrigger("RemoveBlur");
-        _animator.SetTrigger("RemoveMenu");
-        _animator.SetTrigger("GoBackground");
-    }
-    
     private void GoMenu()
     {
         _animator.SetTrigger("GoMenu");
-        
-        if (_menuTypeEnum == MenuType.Background)
-        {
-            _animator.SetTrigger("RemoveBackground");
-            return;
-        }
 
         if (_menuTypeEnum == MenuType.Options)
         {
             _animator.SetTrigger("RemoveOptions");
-            return;
-        }
-        
-        if (_menuTypeEnum == MenuType.Credits)
-        {
-            _animator.SetTrigger("RemoveCredits");
         }
     }
 
@@ -410,12 +393,6 @@ public class MainMenuLevelManager : MonoBehaviour
     {
         _animator.SetTrigger("RemoveMenu");
         _animator.SetTrigger("GoOptions");
-    }
-
-    public void GoCredits()
-    {
-        _animator.SetTrigger("RemoveMenu");
-        _animator.SetTrigger("GoCredits");
     }
 
     public void GoGraphics()

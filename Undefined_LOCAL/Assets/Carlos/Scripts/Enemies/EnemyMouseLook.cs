@@ -23,7 +23,7 @@ public class EnemyMouseLook : MonoBehaviour
     {
         CameraRotation();
     }
-
+    
     private void CameraRotation()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
@@ -34,5 +34,10 @@ public class EnemyMouseLook : MonoBehaviour
         
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         enemyFPBody.Rotate(Vector3.up * mouseX);
+    }
+
+    public void SetSensitivityOptions()
+    {
+        mouseSensitivity = OptionsManager.instance.MouseSensitivity * 1000f;
     }
 }
