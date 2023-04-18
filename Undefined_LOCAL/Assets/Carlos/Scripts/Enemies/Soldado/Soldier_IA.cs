@@ -180,8 +180,12 @@ public class Soldier_IA : Enemy_IA
     public void FindPlayer()
     {
         Debug.Log("<color=blue>Checking Last Player Position</color>");
-        _navMeshAgent.SetDestination(_navMeshAgent.destination);
-        _navMeshAgent.stoppingDistance = 0f;
+        
+        if (_navMeshAgent != null)
+        {
+            _navMeshAgent.SetDestination(_navMeshAgent.destination);
+            _navMeshAgent.stoppingDistance = 0f;
+        }
 
         if (Level1Manager.instance.AlarmActivated)
         {

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     [SerializeField] private int requiredHealth;
 
+    [SerializeField] private Slider healthSlider;
+    
     //GETTERS && SETTERS//
     public int CurrentHealth => currentHealth;
     public int RequiredHealth => requiredHealth;
@@ -18,12 +21,19 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         _playerScriptStorage = GetComponent<PlayerScriptStorage>();
+        healthSlider = GetComponentInChildren<Slider>();
     }
 
     void Start()
     {
         maxHealth = 100;
         currentHealth = maxHealth;
+        healthSlider.value = currentHealth;
+        _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
+    }
+
+    private void OnEnable()
+    {
         _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
     }
 
@@ -31,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthSlider.value = currentHealth;
         _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
         
         //Si la vida de el player llega a 0...;
