@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -56,6 +57,23 @@ public class SoldierFP_Controller : EnemyController
     {
         canShoot = true;
         ammoTMP.text = $"{currentAmmo}/{maxAmmo}";
+    }
+
+    private void OnEnable()
+    {
+        CheckAmmo();
+        crosshair.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        isReloading = false;
+        cancelReload = false;
+
+        if (currentAmmo != 0)
+        {
+            canShoot = true;
+        }
     }
 
     public override void Update()
@@ -161,6 +179,13 @@ public class SoldierFP_Controller : EnemyController
         #region - CHECK AMMO -
         
         currentAmmo--;
+        CheckAmmo();
+        
+        #endregion
+    }
+
+    private void CheckAmmo()
+    {
         ammoTMP.text = $"{currentAmmo}/{maxAmmo}";
 
         //Si disparamos y tenemos munición de reserva podrémos recargar;
@@ -168,8 +193,6 @@ public class SoldierFP_Controller : EnemyController
         {
             canReload = true;
         }
-        
-        #endregion
     }
     
     private void CallNearSoldiers(float sphereRadius)

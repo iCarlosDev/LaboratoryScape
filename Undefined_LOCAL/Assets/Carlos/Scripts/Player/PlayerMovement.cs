@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,10 +17,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("--- MOVEMENT ---")]
     [Space(10)]
     [SerializeField] private Transform playerCamera;
+    [SerializeField] private bool canMove;
     [SerializeField] private float horizontal;
     [SerializeField] private float vertical;
     [SerializeField] private float speed;
     [SerializeField] private float turnSmoothTime;
+    [SerializeField] private Transform baseSkeleton;
+    
+    [SerializeField] private Vector3 refBaseSkeleton;
     
     private float turnSmoothVelocity;
 
@@ -40,9 +45,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("--- ANIMATOR ---")] 
     [Space(10)] 
     [SerializeField] private Animator _animator;
-    
+
     //GETTERS & SETTERS//
     public Animator Animator => _animator;
+    public bool CanMove
+    {
+        get => canMove;
+        set => canMove = value;
+    }
 
     /////////////////////////////////////////
 
@@ -59,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         speed = 2f;
+        canMove = true;
     }
 
     public void SetSensitivityOptions()
@@ -69,9 +80,30 @@ public class PlayerMovement : MonoBehaviour
         _cinemachineFreeLook.m_XAxis.m_InvertInput = OptionsManager.instance.InvertHorizontal;
     }
 
+    public void SaveTransform()
+    {
+        refBaseSkeleton = baseSkeleton.position;
+        StartCoroutine(mdpadmpa());
+    }
+
+    private IEnumerator mdpadmpa()
+    {
+        yield return new WaitForSeconds(3f);
+        _animator.SetBool("ShouldApplyTransform", true);
+    }
+
+    public void LoadTransform()
+    {
+        if (refBaseSkeleton != Vector3.zero)
+        {
+            transform.position = refBaseSkeleton;
+            refBaseSkeleton = Vector3.zero;
+        }
+    }
+
     private void Update()
     {
-        if (PauseMenuManager.instance.IsPaused) return;
+        if (PauseMenuManager.instance.IsPaused || !canMove) return;
         
         CalculateGravity();
 
