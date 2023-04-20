@@ -41,18 +41,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("--- IDLE_2 PARAMETERS ---")] 
     [Space(10)] 
     [SerializeField] private float timeInIdle;
-    
-    [Header("--- ANIMATOR ---")] 
-    [Space(10)] 
-    [SerializeField] private Animator _animator;
 
     //GETTERS & SETTERS//
-    public Animator Animator => _animator;
     public bool CanMove
     {
         get => canMove;
         set => canMove = value;
     }
+    public PlayerScriptStorage PlayerScriptStorage => _playerScriptStorage;
 
     /////////////////////////////////////////
 
@@ -61,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _playerScriptStorage = GetComponent<PlayerScriptStorage>();
         _cinemachineFreeLook = GetComponentInChildren<CinemachineFreeLook>();
-        _animator = GetComponent<Animator>();
         playerCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().transform;
         groundCheck = transform.GetChild(2);
     }
@@ -80,25 +75,9 @@ public class PlayerMovement : MonoBehaviour
         _cinemachineFreeLook.m_XAxis.m_InvertInput = OptionsManager.instance.InvertHorizontal;
     }
 
-    public void SaveTransform()
+    public void EnablePlayerMovement()
     {
-        refBaseSkeleton = baseSkeleton.position;
-        StartCoroutine(mdpadmpa());
-    }
-
-    private IEnumerator mdpadmpa()
-    {
-        yield return new WaitForSeconds(3f);
-        _animator.SetBool("ShouldApplyTransform", true);
-    }
-
-    public void LoadTransform()
-    {
-        if (refBaseSkeleton != Vector3.zero)
-        {
-            transform.position = refBaseSkeleton;
-            refBaseSkeleton = Vector3.zero;
-        }
+        canMove = true;
     }
 
     private void Update()
@@ -128,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 speed = 2f;
-                _animator.SetFloat("SpeedAnimation", 2.25f);
+                _playerScriptStorage.Animator.SetFloat("SpeedAnimation", 2.25f);
             }
 
             //Comprobamos que la vida de el player sea mayor a la vida requerida;
@@ -163,13 +142,13 @@ public class PlayerMovement : MonoBehaviour
             //Movemos el player hacia el frente;
             _characterController.Move(moveDir.normalized * speed * Time.deltaTime);
             
-            _animator.SetBool("IsWalking", true);
+            _playerScriptStorage.Animator.SetBool("IsWalking", true);
             timeInIdle = 0f;
         }
         else
         {
             MakeIdle2();
-            _animator.SetBool("IsWalking", false);
+            _playerScriptStorage.Animator.SetBool("IsWalking", false);
         }
     }
     
@@ -187,13 +166,13 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 4f;
-            _animator.SetFloat("SpeedAnimation", 3f);
+            _playerScriptStorage.Animator.SetFloat("SpeedAnimation", 3f);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 2f;
-            _animator.SetFloat("SpeedAnimation", 2.25f);
+            _playerScriptStorage.Animator.SetFloat("SpeedAnimation", 2.25f);
         }
     }
 
@@ -201,7 +180,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Seteamos el bool con una esfera invisible triggered;
         isGrounded = Physics.CheckSphere(groundCheck.position, sphereRadius, groundMask);
-        _animator.SetBool("IsGrounded", isGrounded);
+        _playerScriptStorage.Animator.SetBool("IsGrounded", isGrounded);
         
         //si estamos en el suelo y no estamos cayendo el eje "Y" será "-2";
         if (isGrounded && velocity.y < 0)
@@ -214,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //igualamos nuestro eje "Y" a los valores de la raíz cuadrada (el resultado debería ser valor positivo);
             velocity.y = Mathf.Sqrt(jumpForce * -2 * gravity);
-            _animator.SetTrigger("Jump");
+            _playerScriptStorage.Animator.SetTrigger("Jump");
         }
     }
 
@@ -228,11 +207,27 @@ public class PlayerMovement : MonoBehaviour
             //Si sale un número mayor de 0.7...;
             if (Random.value > 0.7f)
             {
-                _animator.SetTrigger("Idle2");
+                _playerScriptStorage.Animator.SetTrigger("Idle2");
             }
             
             //reseteamos el tiempo en idle;
             timeInIdle = 0f;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ConductCollider"))
+        {
+            _playerScriptStorage.VirtualCamera.Priority = 11;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("ConductCollider"))
+        {
+            _playerScriptStorage.VirtualCamera.Priority = 9;
         }
     }
 }

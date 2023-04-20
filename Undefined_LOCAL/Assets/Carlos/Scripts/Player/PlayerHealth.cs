@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
     //Método para que el player muera;
     private void Die()
     {
-        _playerScriptStorage.PlayerMovement.Animator.SetTrigger("Die");
+        _playerScriptStorage.Animator.SetTrigger("Die");
         _playerScriptStorage.EnemyPossess.enabled = false;
 
         _playerScriptStorage.PlayerHealth.enabled = false;

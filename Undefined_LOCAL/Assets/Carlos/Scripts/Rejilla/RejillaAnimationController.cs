@@ -40,18 +40,12 @@ public class RejillaAnimationController : MonoBehaviour
             playerMovement.CanMove = false;
             Debug.Log($"{Vector3.Distance(AnimPosition0.position, playerMovement.transform.position)}");
         }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            playerMovement.transform.position = AnimPosition0.position;
-        }
     }
 
     private IEnumerator GoAnimationPosition_Coroutine(Transform animPos, float playerSide)
     {
-        while (Vector3.Distance(animPos.position, playerMovement.transform.position) > 0.1f)
+        while (Vector3.Distance(animPos.position, playerMovement.transform.position) > 0.01f)
         {
-            Debug.Log("OLAAAA");
             playerMovement.gameObject.transform.position = Vector3.Lerp(playerMovement.gameObject.transform.position, animPos.position, timeToGoAnimPos);
             playerMovement.transform.rotation = Quaternion.Lerp(playerMovement.transform.rotation, animPos.rotation, timeToGoAnimPos);
             yield return null;
@@ -66,16 +60,27 @@ public class RejillaAnimationController : MonoBehaviour
 
         if ((playerSide) > 0)
         {
-            playerMovement.Animator.SetTrigger("ArrancarRejilla");
+            playerMovement.PlayerScriptStorage.Animator.SetTrigger("ArrancarRejilla");
             _animator.SetTrigger("ArrancarRejilla");
         }
         else
         {
-            playerMovement.Animator.SetTrigger("EmpujarRejilla");
+            playerMovement.PlayerScriptStorage.Animator.SetTrigger("EmpujarRejilla");
             _animator.SetTrigger("EmpujarRejilla");
         }
 
         canInteract = false;
+    }
+
+    public void CalculatePhysics()
+    {
+        _animator.enabled = false;
+        
+        Rigidbody rigidbody = GetComponentInChildren<Rigidbody>();
+        rigidbody.transform.parent = null;
+        rigidbody.isKinematic = false;
+        
+        rigidbody.AddForce(rigidbody.velocity * 10f, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)

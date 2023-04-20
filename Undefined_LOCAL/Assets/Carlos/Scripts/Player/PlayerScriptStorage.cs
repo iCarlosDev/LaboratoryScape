@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerScriptStorage : MonoBehaviour
@@ -6,6 +7,8 @@ public class PlayerScriptStorage : MonoBehaviour
     [Header("--- COMPONENTS ---")] 
     [Space(10)] 
     [SerializeField] private Animator _animator;
+    [SerializeField] private CinemachineFreeLook freeLookCamera;
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
     
     [Header("--- SCRIPTS ---")]
     [Space(10)]
@@ -19,6 +22,8 @@ public class PlayerScriptStorage : MonoBehaviour
     public EnemyPossess EnemyPossess => _enemyPossess;
     public PlayerHealth PlayerHealth => _playerHealth;
     public Animator Animator => _animator;
+    public CinemachineFreeLook FreeLookCamera => freeLookCamera;
+    public CinemachineVirtualCamera VirtualCamera => virtualCamera;
     public DoorCard DoorCard => _doorCard;
 
     ///////////////////////////////
@@ -29,6 +34,8 @@ public class PlayerScriptStorage : MonoBehaviour
         _enemyPossess = GetComponentInChildren<EnemyPossess>();
         _playerHealth = GetComponent<PlayerHealth>();
         _animator = GetComponent<Animator>();
+        freeLookCamera = GetComponentInChildren<CinemachineFreeLook>();
+        virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         _doorCard = GetComponent<DoorCard>();
     }
 }
