@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyPossess : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class EnemyPossess : MonoBehaviour
     [Header("--- POSSESS PARAMETERS ---")] 
     [Space(10)] 
     [SerializeField] private GameObject enemyFP;
+    [SerializeField] private float cooldownTime;
     [SerializeField] private bool haveCooldown;
     [SerializeField] private bool canPossess = true;
 
@@ -23,17 +25,51 @@ public class EnemyPossess : MonoBehaviour
         _playerScriptStorage = GetComponentInParent<PlayerScriptStorage>();
         enemyFP = FindObjectOfType<SoldierFP_Controller>().gameObject;
     }
+    
+    private void OnEnable()
+    {
+        if (haveCooldown)
+        {
+            StartCoroutine(CooldownCoroutine());
+        }
+        
+        StartCoroutine(GetClosestEnemyRoutine());
+        PossessIndicator();
+    }
+
+    private void OnDisable()
+    {
+        haveCooldown = true;
+    }
 
     void Start()
     {
         enemyFP.SetActive(false);
         
         StartCoroutine(GetClosestEnemyRoutine());
+        PossessIndicator();
     }
 
-    private void OnEnable()
+    private void PossessIndicator()
     {
-        StartCoroutine(GetClosestEnemyRoutine());
+        if (_playerScriptStorage.Animator != null)
+        {
+            if (!haveCooldown)
+            {
+                _playerScriptStorage.Animator.SetTrigger("PossessIndicatorEnabled");
+            }
+            else
+            {
+                _playerScriptStorage.Animator.SetTrigger("PossessIndicatorDisabled");
+            } 
+        }
+    }
+    
+    private IEnumerator CooldownCoroutine()
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        haveCooldown = false;
+        PossessIndicator();
     }
 
     private void Update()
