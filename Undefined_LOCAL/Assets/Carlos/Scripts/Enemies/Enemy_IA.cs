@@ -210,18 +210,23 @@ public class Enemy_IA : MonoBehaviour
         //Si la distancia del NPC con la Alarma es menor a 0.1m se activará;
         if (Vector3.Distance(transform.position, Level1Manager.instance.AlarmWaypoint.position) < 0.1f)
         {
-            Level1Manager.instance.AlarmActivated = true;
+            AlarmActivated();
+        }
+    }
 
-            foreach (EnemiesSpawn enemiesSpawn in Level1Manager.instance.EnemiesSpawnsList)
-            {
-                enemiesSpawn.SpawnEnemies();
-            }
+    public void AlarmActivated()
+    {
+        Level1Manager.instance.AlarmActivated = true;
 
-            //Una vez activada la alarma todos los NPCs estarán alerta;
-            foreach (Enemy_IA enemy in Level1Manager.instance.EnemiesList)
-            {
-                enemy.isPlayerDetected = true;
-            }
+        foreach (EnemiesSpawn enemiesSpawn in Level1Manager.instance.EnemiesSpawnsList)
+        {
+            enemiesSpawn.SpawnEnemies();
+        }
+
+        //Una vez activada la alarma todos los NPCs estarán alerta;
+        foreach (Enemy_IA enemy in Level1Manager.instance.EnemiesList)
+        {
+            enemy.isPlayerDetected = true;
         }
     }
     

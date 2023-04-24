@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [Space(10)]
     [SerializeField] private Transform playerCamera;
     [SerializeField] private bool canMove;
+    [SerializeField] private bool isInConduct;
     [SerializeField] private float horizontal;
     [SerializeField] private float vertical;
     [SerializeField] private float speed;
@@ -48,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         get => canMove;
         set => canMove = value;
     }
+    public bool IsInConduct => isInConduct;
     public PlayerScriptStorage PlayerScriptStorage => _playerScriptStorage;
 
     /////////////////////////////////////////
@@ -215,11 +217,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void ActivarAlarmaPorFusibles()
+    {
+        FindObjectOfType<Enemy_IA>().AlarmActivated();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("ConductCollider"))
         {
             _playerScriptStorage.VirtualCamera.Priority = 11;
+            isInConduct = true;
         }
     }
 
@@ -228,6 +236,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("ConductCollider"))
         {
             _playerScriptStorage.VirtualCamera.Priority = 9;
+            isInConduct = false;
         }
     }
 }

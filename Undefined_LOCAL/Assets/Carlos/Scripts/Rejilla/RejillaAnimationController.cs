@@ -27,14 +27,13 @@ public class RejillaAnimationController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && canInteract && goAnimationPosition == null)
         {
-            float playerSide = transform.position.z - playerMovement.transform.position.z;
-            if ((playerSide) > 0)
+            if (!playerMovement.IsInConduct)
             { 
-                goAnimationPosition = StartCoroutine(GoAnimationPosition_Coroutine(AnimPosition0 ,playerSide));
+                goAnimationPosition = StartCoroutine(GoAnimationPosition_Coroutine(AnimPosition0,false));
             }
             else
             {
-                goAnimationPosition = StartCoroutine(GoAnimationPosition_Coroutine(AnimPosition1 ,playerSide));   
+                goAnimationPosition = StartCoroutine(GoAnimationPosition_Coroutine(AnimPosition1,true));   
             }
 
             playerMovement.CanMove = false;
@@ -42,7 +41,7 @@ public class RejillaAnimationController : MonoBehaviour
         }
     }
 
-    private IEnumerator GoAnimationPosition_Coroutine(Transform animPos, float playerSide)
+    private IEnumerator GoAnimationPosition_Coroutine(Transform animPos, bool isInside)
     {
         while (Vector3.Distance(animPos.position, playerMovement.transform.position) > 0.01f)
         {
@@ -51,14 +50,14 @@ public class RejillaAnimationController : MonoBehaviour
             yield return null;
         }
         
-        DoAnimation(playerSide);
+        DoAnimation(isInside);
     }
 
-    private void DoAnimation( float playerSide)
+    private void DoAnimation(bool isInside)
     {
         _sphereCollider.enabled = false;
 
-        if ((playerSide) > 0)
+        if (!isInside)
         {
             playerMovement.PlayerScriptStorage.Animator.SetTrigger("ArrancarRejilla");
             _animator.SetTrigger("ArrancarRejilla");
