@@ -83,6 +83,8 @@ public class EnemyPossess : MonoBehaviour
     //Método para poseer a un enemigo;
     private void PossessEnemy()
     {
+        if (closestEnemy == null) return;
+      
         enemyFP.transform.position = closestEnemy.transform.position;
         enemyFP.transform.rotation = closestEnemy.transform.rotation;
         enemyFP.SetActive(true);
