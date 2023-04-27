@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] protected CharacterController _characterController;
+    [SerializeField] protected EnemyDespossess _enemyDespossess;
 
     [Header("--- MOVEMENT PARAMETERS ---")] 
     [Space(10)] 
@@ -23,6 +25,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private bool isGrounded;
 
     private Vector3 velocity;
+
+    private void Awake()
+    {
+        _enemyDespossess = GetComponent<EnemyDespossess>();
+    }
 
     public virtual void Update()
     {

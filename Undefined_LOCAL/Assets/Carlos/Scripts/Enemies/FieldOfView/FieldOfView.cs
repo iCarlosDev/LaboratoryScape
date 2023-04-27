@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    [SerializeField] private EnemyScriptStorage _enemyScriptStorage;
+    
     public float radius;
     [Range(0,360)]
     public float angle;
@@ -15,6 +17,11 @@ public class FieldOfView : MonoBehaviour
     public LayerMask obstructionMask;
 
     public bool canSeePlayer;
+
+    private void Awake()
+    {
+        _enemyScriptStorage = GetComponentInParent<EnemyScriptStorage>();
+    }
 
     private void Start()
     {
@@ -34,8 +41,9 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
-
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask, QueryTriggerInteraction.Collide);
+        Debug.Log(rangeChecks.Length);
+        
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
@@ -46,9 +54,21 @@ public class FieldOfView : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
-                    canSeePlayer = true;
+                {
+                    if (target.gameObject.layer == 12)
+                    {
+                        _enemyScriptStorage.EnemyIa.IsPlayerDetected = true;
+                        target.gameObject.layer = 0;
+                    }
+                    else
+                    {
+                        canSeePlayer = true; 
+                    }
+                }
                 else
+                {
                     canSeePlayer = false;
+                }
             }
             else
                 canSeePlayer = false;

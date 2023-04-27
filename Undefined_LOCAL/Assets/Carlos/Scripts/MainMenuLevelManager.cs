@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -84,6 +87,20 @@ public class MainMenuLevelManager : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider effectVolumeSlider;
 
+    [Header("--- VOLUME PARAMS ---")] 
+    [Space(10)] 
+    [SerializeField] private float timeBetweenColors;
+    [SerializeField] private Volume _volume;
+    [SerializeField] private Fog fog;
+    [SerializeField] private Color purpleColor;
+    [SerializeField] private Color redColor;
+    [SerializeField] private Color yellowColor;
+    [SerializeField] private Color greenColor;
+    [SerializeField] private Color blueColor;
+    [SerializeField] private Color whiteColor;
+
+    private Coroutine changeMenuColor;
+
     //GETTERS && SETTERS//
     public EventSystem EventSystem => eventSystem;
 
@@ -96,12 +113,14 @@ public class MainMenuLevelManager : MonoBehaviour
         eventSystem = FindObjectOfType<EventSystem>();
         reselectLastSelectedOnInput = eventSystem.GetComponent<ReselectLastSelectedOnInput>();
         _animator = GetComponent<Animator>();
+        _volume = GetComponentInChildren<Volume>();
     }
 
     private void Start()
     {
         Time.timeScale = 1f;
         
+        SetVolumeColors();
         SetOptions();
         GoBackGround();
         _animator.ResetTrigger("RemoveBlur");
@@ -268,6 +287,7 @@ public class MainMenuLevelManager : MonoBehaviour
     //Método para abrir los Creditos;
     private void OpenCredits()
     {
+        GetVolumeParameters(whiteColor);
         _menuTypeEnum = MenuType.Credits;
         
         mainMenu_Canvas.SetActive(false);
@@ -330,6 +350,7 @@ public class MainMenuLevelManager : MonoBehaviour
     //Método para abrir las Opciones de Graficos;
     private void OpenGraphicsMenu()
     {
+        GetVolumeParameters(greenColor);
         SelectGraphicsBTN();
         
         eventSystem.SetSelectedGameObject(firstGraphicsBTN);
@@ -346,6 +367,7 @@ public class MainMenuLevelManager : MonoBehaviour
     //Método para abrir las Opciones de Controles;
     private void OpenControlsMenu()
     {
+        GetVolumeParameters(yellowColor);
         SelectControlsBTN();
         
         eventSystem.SetSelectedGameObject(firstControlsBTN);
@@ -361,6 +383,7 @@ public class MainMenuLevelManager : MonoBehaviour
     //Método para abrir las Opciones de Audio;
     private void OpenAudioMenu()
     {
+        GetVolumeParameters(redColor);
         SelectAudioBTN();
         
         eventSystem.SetSelectedGameObject(firstAudioBTN);
@@ -379,6 +402,7 @@ public class MainMenuLevelManager : MonoBehaviour
 
     private void GoBackGround()
     {
+        GetVolumeParameters(purpleColor);
         _animator.SetTrigger("RemoveBlur");
         _animator.SetTrigger("RemoveMenu");
         _animator.SetTrigger("GoBackground");
@@ -387,6 +411,7 @@ public class MainMenuLevelManager : MonoBehaviour
     private void GoMenu()
     {
         _animator.SetTrigger("GoMenu");
+        GetVolumeParameters(blueColor);
         
         if (_menuTypeEnum == MenuType.Background)
         {
@@ -681,6 +706,42 @@ public class MainMenuLevelManager : MonoBehaviour
     }
 
     #endregion
+
+    #endregion
+
+    #region - VOLUME PARAMETERS -
+
+    private void SetVolumeColors()
+    {
+        purpleColor = new Color(0.89f, 0.55f, 1f, 1f);
+        redColor = new Color(1f, 0.28f, 0.17f, 1f);
+        yellowColor = new Color(1f, 0.73f, 0.17f,1f);
+        greenColor = new Color(0.3f, 1f, 0.3f, 1f);
+        blueColor = new Color(0.3f, 0.53f, 1f, 1f);
+        whiteColor = new Color(1f, 1f, 1f, 1f);
+    }
+    
+    private void GetVolumeParameters(Color color)
+    {
+        _volume.profile.TryGet(out fog);
+
+        if (changeMenuColor != null)
+        {
+            StopCoroutine(changeMenuColor);
+            changeMenuColor = null;
+        }
+        
+        changeMenuColor = StartCoroutine(ChangeMenuColor_Coroutine(color));
+    }
+
+    private IEnumerator ChangeMenuColor_Coroutine(Color color)
+    {
+        while (fog.albedo.value != color)
+        {
+            fog.albedo.value = Color.Lerp(fog.albedo.value, color, timeBetweenColors);
+            yield return null;
+        }
+    }
 
     #endregion
     

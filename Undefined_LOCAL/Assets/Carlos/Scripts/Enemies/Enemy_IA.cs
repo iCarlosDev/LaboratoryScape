@@ -35,8 +35,8 @@ public class Enemy_IA : MonoBehaviour
 
     private Coroutine detectPlayerByShot;
 
-    [SerializeField] private EnemyType_Enum EnemyType;
-    private enum EnemyType_Enum
+    [SerializeField] private EnemyType_Enum enemyType;
+    public enum EnemyType_Enum
     {
         Soldier,
         Scientist
@@ -61,6 +61,7 @@ public class Enemy_IA : MonoBehaviour
         get => isPlayerDetected;
         set => isPlayerDetected = value;
     }
+    public EnemyType_Enum EnemyType => enemyType;
     public EnemyScriptStorage EnemyScriptStorage => _enemyScriptStorage;
     
     //////////////////////////////////////////////////////////////////// 
@@ -129,7 +130,7 @@ public class Enemy_IA : MonoBehaviour
             
             _navMeshAgent.stoppingDistance = 0.1f;
 
-            if (EnemyType == EnemyType_Enum.Soldier)
+            if (enemyType == EnemyType_Enum.Soldier)
             {
                 if (_enemyScriptStorage.FieldOfView.canSeePlayer)
                 {
@@ -241,7 +242,7 @@ public class Enemy_IA : MonoBehaviour
             currentHealth -= damage;
             isPlayerDetected = true;
 
-            if (EnemyType == EnemyType_Enum.Soldier && !_enemyScriptStorage.FieldOfView.canSeePlayer)
+            if (enemyType == EnemyType_Enum.Soldier && !_enemyScriptStorage.FieldOfView.canSeePlayer)
             {
                 if (detectPlayerByShot != null)
                 {
@@ -271,12 +272,17 @@ public class Enemy_IA : MonoBehaviour
         _navMeshAgent.enabled = false;
         _animator.enabled = false;
         _enemyScriptStorage.FieldOfView.gameObject.SetActive(false);
+        GetComponent<CapsuleCollider>().isTrigger = true;
         canBePossessed = false;
 
         foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
         {
             rb.isKinematic = false;
         }
+        
+        GetComponent<Rigidbody>().isKinematic = true;
+        transform.position = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
+        gameObject.layer = 12;
 
         enabled = false;
     }

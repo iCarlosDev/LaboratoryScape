@@ -12,6 +12,8 @@ public class EnemyDespossess : MonoBehaviour
     [SerializeField] private float possessionTime;
     private Coroutine possessionCooldown;
 
+    public Enemy_IA Enemy => enemy;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))

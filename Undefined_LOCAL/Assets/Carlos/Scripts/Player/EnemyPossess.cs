@@ -87,9 +87,9 @@ public class EnemyPossess : MonoBehaviour
       
         enemyFP.transform.position = closestEnemy.transform.position;
         enemyFP.transform.rotation = closestEnemy.transform.rotation;
-        enemyFP.SetActive(true);
         enemyFP.GetComponentInParent<EnemyDespossess>()?.StartUp(closestEnemy, transform.parent.gameObject);
         enemyFP.GetComponent<DoorCard>().DoorCardEnum = closestEnemy.EnemyScriptStorage.DoorCard.DoorCardEnum;
+        enemyFP.SetActive(true);
         closestEnemy.EnemyScriptStorage.Outlinable.enabled = false;
         closestEnemy.EnemyScriptStorage.EnemyIa.enabled = false;
         closestEnemy.gameObject.SetActive(false);

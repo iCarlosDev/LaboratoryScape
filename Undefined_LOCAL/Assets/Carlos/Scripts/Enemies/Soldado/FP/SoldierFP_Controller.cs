@@ -61,6 +61,8 @@ public class SoldierFP_Controller : EnemyController
 
     private void OnEnable()
     {
+        arms.gameObject.SetActive(_enemyDespossess.Enemy.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
+        
         CheckAmmo();
         crosshair.SetActive(true);
     }
@@ -79,7 +81,9 @@ public class SoldierFP_Controller : EnemyController
     public override void Update()
     {
         base.Update();
-        
+
+        if (_enemyDespossess.Enemy.EnemyType == Enemy_IA.EnemyType_Enum.Scientist) return;
+
         MovementAnimationControll();
         
         //Si apretamos el click Izquierdo y podemos disparar llamaremos al método "Fire";
