@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 8819008064316498992}
   - component: {fileID: 1262748753317825673}
   - component: {fileID: 8225113900950395041}
-  m_Layer: 0
+  - component: {fileID: 4449833324938466308}
+  m_Layer: 6
   m_Name: Hierros
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +117,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4449833324938466308
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5776357919104580340}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7086171593878717069, guid: 9f3d4a9b31b847e4fad0b85a5290b35a, type: 3}
 --- !u!1 &7515117738157433626
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +143,7 @@ GameObject:
   - component: {fileID: 18558660642726927}
   - component: {fileID: 6195266114062958714}
   - component: {fileID: 8529578761052103737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Radiador_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

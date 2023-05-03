@@ -11,7 +11,13 @@ GameObject:
   - component: {fileID: 361114076519287760}
   - component: {fileID: 9141453397556312711}
   - component: {fileID: 7558958100837818169}
-  m_Layer: 0
+  - component: {fileID: 1335708532168729570}
+  - component: {fileID: 1388685844766429419}
+  - component: {fileID: 2902941195445787051}
+  - component: {fileID: 4112956548101392442}
+  - component: {fileID: 7379705907173034814}
+  - component: {fileID: 8708751296653017920}
+  m_Layer: 6
   m_Name: Oficina_ZonaSegura_Lavabos_cafeteria
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +89,85 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1335708532168729570
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499955914365157105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.590593, y: 0.008968524, z: 22.515142}
+  m_Center: {x: -1.6967115, y: -0.003760682, z: 2.041771}
+--- !u!65 &1388685844766429419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499955914365157105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.882586, y: 0.013585091, z: 4.1052456}
+  m_Center: {x: -13.946704, y: 3.5922203, z: 1.3817859}
+--- !u!65 &2902941195445787051
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499955914365157105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.884069, y: 0.012682661, z: 6.8467236}
+  m_Center: {x: 10.719184, y: -0.013724431, z: -5.7924376}
+--- !u!65 &4112956548101392442
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499955914365157105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.758364, y: 0.010088921, z: 4.123846}
+  m_Center: {x: -13.884732, y: 3.5943723, z: -4.346093}
+--- !u!64 &7379705907173034814
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499955914365157105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5530464313526484170, guid: d658fe2208a16f042bbc9e5e7989c5ec, type: 3}
+--- !u!65 &8708751296653017920
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499955914365157105}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.55792, y: 0.0102062225, z: 7.1965256}
+  m_Center: {x: -14.282821, y: 3.592679, z: 8.687794}
 --- !u!1 &3579732985631488160
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +179,8 @@ GameObject:
   - component: {fileID: 5675105499337977934}
   - component: {fileID: 7408921930321672566}
   - component: {fileID: 2516428143750036888}
-  m_Layer: 0
+  - component: {fileID: 140591293512156713}
+  m_Layer: 6
   m_Name: Conducto_Zona_Segura_lavabo_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +252,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &140591293512156713
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579732985631488160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8955682601843641431, guid: d658fe2208a16f042bbc9e5e7989c5ec, type: 3}
 --- !u!1 &3811863344538514008
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +277,9 @@ GameObject:
   - component: {fileID: 6533384676665685841}
   - component: {fileID: 11711166871262248}
   - component: {fileID: 4251848322108418465}
-  m_Layer: 0
+  - component: {fileID: 5233047401098598836}
+  - component: {fileID: 9114258555131630856}
+  m_Layer: 6
   m_Name: SalaJefe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,6 +351,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5233047401098598836
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811863344538514008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1553739948641461388, guid: d658fe2208a16f042bbc9e5e7989c5ec, type: 3}
+--- !u!65 &9114258555131630856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3811863344538514008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.278823, y: 0.008574963, z: 4.4902515}
+  m_Center: {x: 0.28659678, y: -0.0023887157, z: -0.026367188}
 --- !u!1 &4054985032751687037
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +389,10 @@ GameObject:
   - component: {fileID: 6244646042851915095}
   - component: {fileID: 3121839100187461838}
   - component: {fileID: 1773390527280069281}
-  m_Layer: 0
+  - component: {fileID: 3017294032649658455}
+  - component: {fileID: 4306758668629974271}
+  - component: {fileID: 5573092358100398389}
+  m_Layer: 6
   m_Name: Pasillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,6 +464,46 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3017294032649658455
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4054985032751687037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.758603, y: 3.6005282, z: 22.515142}
+  m_Center: {x: -8.112707, y: 1.8004925, z: 2.041771}
+--- !u!65 &4306758668629974271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4054985032751687037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.831882, y: 3.6005282, z: 3.4005547}
+  m_Center: {x: -0.31735587, y: 1.8004925, z: 11.599064}
+--- !u!64 &5573092358100398389
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4054985032751687037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3065087254759496983, guid: d658fe2208a16f042bbc9e5e7989c5ec, type: 3}
 --- !u!1 &4438992201345018582
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +515,8 @@ GameObject:
   - component: {fileID: 4491125342235774819}
   - component: {fileID: 524997728529967285}
   - component: {fileID: 4760110171447229161}
-  m_Layer: 0
+  - component: {fileID: 8567242167621027203}
+  m_Layer: 6
   m_Name: Conducto_Cafeteria_lavabo_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,6 +588,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8567242167621027203
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438992201345018582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 345896721696818581, guid: d658fe2208a16f042bbc9e5e7989c5ec, type: 3}
 --- !u!1 &6070987205698555528
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +613,8 @@ GameObject:
   - component: {fileID: 4659519195534290987}
   - component: {fileID: 649256466684402330}
   - component: {fileID: 4903587803167579768}
-  m_Layer: 0
+  - component: {fileID: 2054999495802628701}
+  m_Layer: 6
   m_Name: Conducto_oficina_ZonaSegura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,6 +686,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2054999495802628701
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070987205698555528}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8396664076235163353, guid: d658fe2208a16f042bbc9e5e7989c5ec, type: 3}
 --- !u!1 &7153689326580873641
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +711,8 @@ GameObject:
   - component: {fileID: 786620313622980885}
   - component: {fileID: 3367043421264915418}
   - component: {fileID: 3990609787180968074}
-  m_Layer: 0
+  - component: {fileID: 7262112269118832180}
+  m_Layer: 6
   m_Name: Conducto_Cafeteria_Lavabo_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,6 +784,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7262112269118832180
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153689326580873641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -207758415351077513, guid: d658fe2208a16f042bbc9e5e7989c5ec, type: 3}
 --- !u!1 &7665073759119811181
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +821,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7665073759119811181}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.505297, y: -11.274572, z: -18.867987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
