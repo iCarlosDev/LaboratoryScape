@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 3719526707977398360}
   - component: {fileID: 7363589978760346559}
   - component: {fileID: 8321689762791121912}
-  m_Layer: 0
+  - component: {fileID: 8975958932044800256}
+  m_Layer: 6
   m_Name: Puerta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,6 +118,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8975958932044800256
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5135649876203555030}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2268895336617432729, guid: b049b3854681c1744ad6273ffdc34454, type: 3}
 --- !u!1 &5493499058513408173
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +143,8 @@ GameObject:
   - component: {fileID: 3378065519797450475}
   - component: {fileID: 9030523945355355000}
   - component: {fileID: 5808070873020045893}
-  m_Layer: 0
+  - component: {fileID: 7356587899475729126}
+  m_Layer: 6
   m_Name: Panel_Separador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,6 +216,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7356587899475729126
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5493499058513408173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1584395003948997360, guid: b049b3854681c1744ad6273ffdc34454, type: 3}
 --- !u!1001 &129025822696059549
 PrefabInstance:
   m_ObjectHideFlags: 0
