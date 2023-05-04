@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4187410560870259040}
   - component: {fileID: 4679822619490394409}
   - component: {fileID: 7038854313086974733}
+  - component: {fileID: 6829005576942224709}
   m_Layer: 0
   m_Name: Globo_1
   m_TagString: Untagged
@@ -116,6 +117,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6829005576942224709
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2172677632366362116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2337553377502450237, guid: 11c02a3d2c0d1494180a2a911d82b6c5, type: 3}
 --- !u!1 &2359468882487154375
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +142,7 @@ GameObject:
   - component: {fileID: 5225993639167144529}
   - component: {fileID: 2658024843125915641}
   - component: {fileID: 2375532333547895039}
+  - component: {fileID: 7822181447033505707}
   m_Layer: 0
   m_Name: Soporte_1
   m_TagString: Untagged
@@ -199,3 +215,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7822181447033505707
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359468882487154375}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5127253206709605485, guid: 11c02a3d2c0d1494180a2a911d82b6c5, type: 3}
