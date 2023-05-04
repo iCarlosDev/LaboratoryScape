@@ -56,6 +56,7 @@ public class Enemy_IA : MonoBehaviour
         get => playerRef;
         set => playerRef = value;
     }
+    public int CurrentHealth => currentHealth;
     public bool IsPlayerDetected
     {
         get => isPlayerDetected;

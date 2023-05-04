@@ -2505,7 +2505,7 @@ MonoBehaviour:
   isDead: 0
   _animator: {fileID: 4559934169586597651}
   timeToSetWeight: 10
-  EnemyType: 0
+  enemyType: 0
   layerToDetect:
     serializedVersion: 2
     m_Bits: 256
@@ -2519,10 +2519,9 @@ MonoBehaviour:
   canStomp: 0
   playerFinded: 0
   shootPos: {fileID: 1566595528}
-  playerPos: {fileID: 0}
-  pLayerMask:
+  playerMask:
     serializedVersion: 2
-    m_Bits: 705
+    m_Bits: 2753
   fireRate: 1
   fireRateTime: 0
 --- !u!114 &4559934169586597648
@@ -4046,6 +4045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978acc321b19f2441888cd51c60ce505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyScriptStorage: {fileID: 0}
   radius: 12
   angle: 140
   playerRef: {fileID: 0}

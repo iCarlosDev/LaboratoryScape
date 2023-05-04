@@ -3660,6 +3660,8 @@ GameObject:
   - component: {fileID: 8711910863609340248}
   - component: {fileID: 8711910863609340247}
   - component: {fileID: 8711910863609340249}
+  - component: {fileID: 2043541836}
+  - component: {fileID: 516762437517352414}
   - component: {fileID: 8711910863609340244}
   - component: {fileID: 1086703862}
   - component: {fileID: 4796163926597892810}
@@ -3727,6 +3729,36 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!136 &2043541836
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711910863609340251}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!54 &516762437517352414
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711910863609340251}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &8711910863609340244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3740,11 +3772,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 8711910863609340249}
+  _enemyDespossess: {fileID: 0}
   currentSpeed: 0
   walkSpeed: 1
   sprintSpeed: 2.5
   gravity: -9.81
   jumpHeight: 1.5
+  maxHealth: 100
+  currentHealth: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -3754,6 +3789,7 @@ MonoBehaviour:
   arms: {fileID: 8711910862380701568}
   _animator: {fileID: 8711910863609340247}
   crosshair: {fileID: 8711910863195917578}
+  weaponHud: {fileID: 0}
   cameraPivot: {fileID: 8711910863800058313}
   shootPrefab: {fileID: 7592736012860411873, guid: fd7f749d293a4b7458ca7945ac98568b,
     type: 3}

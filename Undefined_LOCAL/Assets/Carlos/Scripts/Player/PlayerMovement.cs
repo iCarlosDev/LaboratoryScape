@@ -10,10 +10,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private PlayerScriptStorage _playerScriptStorage;
 
-    [Header("--- CAMERA SETTINGS ---")] 
-    [Space(10)] 
-    [SerializeField] private CinemachineFreeLook _cinemachineFreeLook;
-    
     [Header("--- MOVEMENT ---")]
     [Space(10)]
     [SerializeField] private Transform playerCamera;
@@ -23,10 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float vertical;
     [SerializeField] private float speed;
     [SerializeField] private float turnSmoothTime;
-    [SerializeField] private Transform baseSkeleton;
-    
-    [SerializeField] private Vector3 refBaseSkeleton;
-    
+
     private float turnSmoothVelocity;
 
     [Header("--- JUMP ---")] 
@@ -58,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _playerScriptStorage = GetComponent<PlayerScriptStorage>();
-        _cinemachineFreeLook = GetComponentInChildren<CinemachineFreeLook>();
         playerCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().transform;
         groundCheck = transform.GetChild(2);
     }
@@ -71,10 +63,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetSensitivityOptions()
     {
-        _cinemachineFreeLook.m_YAxis.m_MaxSpeed = OptionsManager.instance.MouseSensitivity * 10f;
-        _cinemachineFreeLook.m_YAxis.m_InvertInput = OptionsManager.instance.InvertVertical;
-        _cinemachineFreeLook.m_XAxis.m_MaxSpeed = OptionsManager.instance.MouseSensitivity * 1000f;
-        _cinemachineFreeLook.m_XAxis.m_InvertInput = OptionsManager.instance.InvertHorizontal;
+        _playerScriptStorage.FreeLookCamera.m_YAxis.m_MaxSpeed = OptionsManager.instance.MouseSensitivity * 10f;
+        _playerScriptStorage.FreeLookCamera.m_YAxis.m_InvertInput = OptionsManager.instance.InvertVertical;
+        _playerScriptStorage.FreeLookCamera.m_XAxis.m_MaxSpeed = OptionsManager.instance.MouseSensitivity * 1000f;
+        _playerScriptStorage.FreeLookCamera.m_XAxis.m_InvertInput = OptionsManager.instance.InvertHorizontal;
     }
 
     public void EnablePlayerMovement()
@@ -222,8 +214,10 @@ public class PlayerMovement : MonoBehaviour
         FindObjectOfType<Enemy_IA>().AlarmActivated();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+        if (isInConduct)return;
+        
         if (other.CompareTag("ConductCollider"))
         {
             _playerScriptStorage.VirtualCamera.Priority = 11;

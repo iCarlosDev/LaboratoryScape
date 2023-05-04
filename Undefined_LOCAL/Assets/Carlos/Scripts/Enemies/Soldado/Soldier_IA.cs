@@ -32,8 +32,7 @@ public class Soldier_IA : Enemy_IA
     [Header("--- ENEMY SHOOT CONTROL ---")]
     [Space(10)]
     [SerializeField] private Transform shootPos;
-    [SerializeField] private Transform playerPos;
-    [SerializeField] private LayerMask pLayerMask;
+    [SerializeField] private LayerMask playerMask;
     [SerializeField] private float fireRate;
     [SerializeField] private float fireRateTime;
     //[SerializeField] private bool canShoot;
@@ -43,7 +42,6 @@ public class Soldier_IA : Enemy_IA
         base.Start();
         canStomp = true;
         //canShoot = true;
-        playerPos = playerRef;
     }
 
     public override void Update()
@@ -134,17 +132,22 @@ public class Soldier_IA : Enemy_IA
         {
             Debug.Log("<color=purple>Shooting...</color>");
             
-            Vector3 direction = playerPos.position - shootPos.position;
+            Vector3 direction = playerRef.position - shootPos.position;
             Debug.DrawRay(shootPos.position, direction, Color.red, 1f);
             
             Ray ray = new Ray(shootPos.position, direction);
             RaycastHit hit;
             
-            if (Physics.Raycast(ray, out hit, 100f, pLayerMask, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(ray, out hit, 100f, playerMask, QueryTriggerInteraction.Ignore))
             {
                 if (hit.collider.CompareTag("PlayerRoot"))
                 {
                     hit.transform.GetComponent<PlayerHealth>().TakeDamage(10);
+                }
+
+                if (hit.collider.CompareTag("PlayerRootFP"))
+                {
+                    hit.transform.GetComponent<EnemyController>().TakeDamage(30);
                 }
             }
 

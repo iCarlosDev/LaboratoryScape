@@ -17,6 +17,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float gravity;
     [SerializeField] private float jumpHeight;
 
+    [Header("--- HEALTH PARAMETERS ---")] 
+    [Space(10)] 
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
+
     [Header("--- GROUND CHECK ---")] 
     [Space(10)]
     [SerializeField] private LayerMask groundMask;
@@ -26,9 +31,20 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 velocity;
 
-    private void Awake()
+    public virtual void Awake()
     {
         _enemyDespossess = GetComponent<EnemyDespossess>();
+        
+        maxHealth = 100;
+        currentHealth = maxHealth;
+    }
+
+    public virtual void OnEnable()
+    {
+        if (_enemyDespossess.Enemy != null)
+        {
+            currentHealth = _enemyDespossess.Enemy.CurrentHealth;
+        }
     }
 
     public virtual void Update()
@@ -88,5 +104,19 @@ public class EnemyController : MonoBehaviour
         }
         
     }
-    
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        _enemyDespossess.Despossess();
+    }
 }

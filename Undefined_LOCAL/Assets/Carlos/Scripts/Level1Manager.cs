@@ -25,12 +25,16 @@ public class Level1Manager : MonoBehaviour
     [Header("--- ALL DOORS ---")]
     [Space(10)]
     [SerializeField] private List<DoorControl> doorsList;
+    
+    [Header("--- ALL BUTTONS ---")]
+    [Space(10)]
+    [SerializeField] private List<ButtonUnlockElevator> buttonUnlockElevatorList;
 
     [Header("--- ALARM PARAMETERS ---")]
     [Space(10)]
     [SerializeField] private Transform alarmWaypoint;
     [SerializeField] private bool alarmActivated;
-    
+
     //GETTERS && SETTERS//
     public bool AlarmActivated
     {
@@ -42,6 +46,7 @@ public class Level1Manager : MonoBehaviour
     public List<Transform> SafeRoomWaypointsList => safeRoomWaypointsList;
     public Transform AlarmWaypoint => alarmWaypoint;
     public List<DoorControl> DoorsList => doorsList;
+    public List<ButtonUnlockElevator> ButtonUnlockElevatorList => buttonUnlockElevatorList;
     public List<EnemiesSpawn> EnemiesSpawnsList => enemiesSpawnsList;
 
     ///////////////////////
@@ -69,5 +74,7 @@ public class Level1Manager : MonoBehaviour
         safeRoomWaypointsList.Remove(safeRoomWaypointsList[0]);
         
         doorsList.AddRange(FindObjectsOfType<DoorControl>());
+        
+        buttonUnlockElevatorList.AddRange(FindObjectsOfType<ButtonUnlockElevator>());
     }
 }

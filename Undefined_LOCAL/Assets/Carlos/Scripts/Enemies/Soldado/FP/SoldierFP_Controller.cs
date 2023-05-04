@@ -16,6 +16,7 @@ public class SoldierFP_Controller : EnemyController
     [Header("--- UI PARAMETERS ---")] 
     [Space(10)] 
     [SerializeField] private GameObject crosshair;
+    [SerializeField] private GameObject weaponHud;
 
     [Header("--- FIRE PARAMETERS ---")] 
     [Space(10)]
@@ -53,18 +54,27 @@ public class SoldierFP_Controller : EnemyController
 
     ///////////////////////////////
 
+    public override void Awake()
+    {
+        base.Awake();
+        weaponHud = transform.GetChild(1).gameObject;
+    }
+
     private void Start()
     {
         canShoot = true;
         ammoTMP.text = $"{currentAmmo}/{maxAmmo}";
     }
 
-    private void OnEnable()
+    public override void OnEnable()
     {
-        arms.gameObject.SetActive(_enemyDespossess.Enemy.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
+        base.OnEnable();
+        
+        arms.gameObject.SetActive(_enemyDespossess.Enemy?.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
         
         CheckAmmo();
-        crosshair.SetActive(true);
+        crosshair.SetActive(_enemyDespossess.Enemy?.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
+        weaponHud.SetActive(_enemyDespossess.Enemy?.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
     }
 
     private void OnDisable()
@@ -82,7 +92,7 @@ public class SoldierFP_Controller : EnemyController
     {
         base.Update();
 
-        if (_enemyDespossess.Enemy.EnemyType == Enemy_IA.EnemyType_Enum.Scientist) return;
+        if (_enemyDespossess.Enemy?.EnemyType == Enemy_IA.EnemyType_Enum.Scientist) return;
 
         MovementAnimationControll();
         

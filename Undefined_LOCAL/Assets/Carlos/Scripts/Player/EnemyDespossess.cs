@@ -33,7 +33,7 @@ public class EnemyDespossess : MonoBehaviour
             StopCoroutine(possessionCooldown);
             possessionCooldown = null;
         }
-        
+
         possessionCooldown = StartCoroutine(PossessionCooldown_Coroutine());
     }
 
@@ -45,7 +45,7 @@ public class EnemyDespossess : MonoBehaviour
     }
     
     //Método para desposeer al NPC;
-    private void Despossess()
+    public void Despossess()
     {
         //Hacemos que el player y el enemigo q hemos poseido aparezcan en la posición y rotación en la q estemos;
         player.transform.position = transform.position;
