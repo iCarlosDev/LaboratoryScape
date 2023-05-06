@@ -211,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void ActivarAlarmaPorFusibles()
     {
-        FindObjectOfType<Enemy_IA>().AlarmActivated();
+        FindObjectOfType<Enemy_IA>()?.AlarmActivated();
     }
 
     private void OnTriggerStay(Collider other)

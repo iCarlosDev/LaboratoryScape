@@ -23,7 +23,7 @@ public class EnemyPossess : MonoBehaviour
     private void Awake()
     {
         _playerScriptStorage = GetComponentInParent<PlayerScriptStorage>();
-        enemyFP = FindObjectOfType<SoldierFP_Controller>().gameObject;
+        enemyFP = FindObjectOfType<SoldierFP_Controller>()?.gameObject;
     }
     
     private void OnEnable()
@@ -44,7 +44,7 @@ public class EnemyPossess : MonoBehaviour
 
     void Start()
     {
-        enemyFP.SetActive(false);
+        enemyFP?.SetActive(false);
         
         StartCoroutine(GetClosestEnemyRoutine());
         PossessIndicator();

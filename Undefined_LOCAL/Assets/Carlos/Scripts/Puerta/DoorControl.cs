@@ -6,14 +6,19 @@ using UnityEngine;
 public class DoorControl : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private MeshRenderer emissiveMesh;
+    [SerializeField] private Material blueCardMaterial;
+    [SerializeField] private Material redCardMaterial;
+    [SerializeField] private Material greenCardMaterial;
+    [SerializeField] private Material defaultMaterial;
     [SerializeField] private float timeLeftCloseDoor;
 
     [SerializeField] private DoorCardStatus doorCardStatusEnum;
     private enum DoorCardStatus
     {
-        PurpleCard,
-        YellowCard,
+        BlueCard,
         RedCard,
+        GreenCard,
         NoCard
     }
     
@@ -27,6 +32,30 @@ public class DoorControl : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        SetMaterialColorDoor();
+    }
+
+    private void SetMaterialColorDoor()
+    {
+        switch (doorCardStatusEnum)
+        {
+            case DoorCardStatus.BlueCard:
+                emissiveMesh.material = blueCardMaterial;
+                break;
+            case DoorCardStatus.RedCard:
+                emissiveMesh.material = redCardMaterial;
+                break;
+            case DoorCardStatus.GreenCard:
+                emissiveMesh.material = greenCardMaterial;
+                break;
+            default:
+                emissiveMesh.material = defaultMaterial;
+                break;
+        }
     }
 
     private void OpenDoor()
@@ -73,6 +102,7 @@ public class DoorControl : MonoBehaviour
             if (doorCardStatusEnum == DoorCardStatus.NoCard)
             {
                 OpenDoor(); 
+                return;
             }
 
             if ((int)other.GetComponent<DoorCard>().DoorCardEnum == (int)doorCardStatusEnum)

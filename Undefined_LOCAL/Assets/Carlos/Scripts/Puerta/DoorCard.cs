@@ -5,9 +5,9 @@ public class DoorCard : MonoBehaviour
     [SerializeField] private DoorCardStatus doorCardEnum;
     public enum DoorCardStatus
     {
-        PurpleCard,
-        YellowCard,
+        BlueCard,
         RedCard,
+        GreenCard,
         NoCard
     }
     

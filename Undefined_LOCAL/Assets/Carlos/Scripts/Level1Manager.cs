@@ -70,9 +70,12 @@ public class Level1Manager : MonoBehaviour
         
         enemiesSpawnsList.AddRange(FindObjectsOfType<EnemiesSpawn>());
 
-        safeRoomWaypointsList.AddRange(GameObject.FindWithTag("SafeRoomCollider").GetComponentsInChildren<Transform>());
-        safeRoomWaypointsList.Remove(safeRoomWaypointsList[0]);
-        
+        if (GameObject.FindWithTag("SafeRoomCollider") != null)
+        {
+            safeRoomWaypointsList.AddRange(GameObject.FindWithTag("SafeRoomCollider").GetComponentsInChildren<Transform>());
+            safeRoomWaypointsList.Remove(safeRoomWaypointsList[0]);
+        }
+
         doorsList.AddRange(FindObjectsOfType<DoorControl>());
         
         buttonUnlockElevatorList.AddRange(FindObjectsOfType<ButtonUnlockElevator>());

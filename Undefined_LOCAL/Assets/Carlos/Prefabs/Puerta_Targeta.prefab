@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5620448424328823722}
   - component: {fileID: 1736195891379796479}
   - component: {fileID: 1100132397099120028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Marco_Puerta_Targeta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,6 +160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: e2189baba7fd4e0408facd11ee241f7d, type: 2}
   - {fileID: 2100000, guid: fcd144c2b0309b642ad02104ea856918, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -210,7 +211,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6280425587312026666
 Transform:
@@ -409,6 +410,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
+  emissiveMesh: {fileID: 4983372578831643128}
+  blueCardMaterial: {fileID: 2100000, guid: c4741c7301c1b544aa0ad3889ddf1b47, type: 2}
+  redCardMaterial: {fileID: 2100000, guid: 8085e2b8ad262f542a3ef65685a9142d, type: 2}
+  greenCardMaterial: {fileID: 2100000, guid: eb93a9cbc5c38214eac121d782412550, type: 2}
+  defaultMaterial: {fileID: 2100000, guid: e2189baba7fd4e0408facd11ee241f7d, type: 2}
   timeLeftCloseDoor: 3
   doorCardStatusEnum: 3
 --- !u!1 &7278655232175274477
