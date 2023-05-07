@@ -21,6 +21,7 @@ public class MainMenuLevelManager : MonoBehaviour
     [Header("--- ENUMS ---")]
     [Space(10)]
     [SerializeField] private MenuType _menuTypeEnum;
+    
     private enum MenuType
     {
         Background,
@@ -99,6 +100,10 @@ public class MainMenuLevelManager : MonoBehaviour
     [SerializeField] private Color blueColor;
     [SerializeField] private Color whiteColor;
 
+    
+    [Header("--- Credits anim ---")]
+    [SerializeField] private Animation credits;
+    
     private Coroutine changeMenuColor;
 
     //GETTERS && SETTERS//
@@ -293,6 +298,7 @@ public class MainMenuLevelManager : MonoBehaviour
         mainMenu_Canvas.SetActive(false);
         options_Canvas.SetActive(false);
         credits_Canvas.SetActive(true);
+        credits.Play();
     }
 
     //Método para salir del juego;
