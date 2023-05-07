@@ -72,9 +72,6 @@ public class Enemy_IA : MonoBehaviour
         _enemyScriptStorage = GetComponent<EnemyScriptStorage>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
-        _enemyScriptStorage.FieldOfView.playerRef = GameObject.FindWithTag("Player");
-        playerRef = _enemyScriptStorage.FieldOfView.playerRef.transform;
-
         if (transform.parent == null)
         {
             return;
@@ -89,6 +86,9 @@ public class Enemy_IA : MonoBehaviour
 
     public virtual void Start()
     {
+        _enemyScriptStorage.FieldOfView.playerRef = GameObject.FindWithTag("Player");
+        playerRef = _enemyScriptStorage.FieldOfView.playerRef.transform;
+        
         //Si hay waypoints en la lista se setea el destino en el primero de esta;
         if (waypointsList.Count != 0)
         {

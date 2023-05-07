@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
@@ -58,6 +60,14 @@ public class PlayerHealth : MonoBehaviour
         _playerScriptStorage.EnemyPossess.enabled = false;
 
         _playerScriptStorage.PlayerHealth.enabled = false;
+        
+        StartCoroutine(RestartGame_Coroutine());
+    }
+
+    private IEnumerator RestartGame_Coroutine()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(1);
     }
 
     private void OnTriggerEnter(Collider other)
