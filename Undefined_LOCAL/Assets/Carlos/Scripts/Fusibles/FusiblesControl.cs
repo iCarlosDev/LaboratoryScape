@@ -26,6 +26,7 @@ public class FusiblesControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canInteract)
         {
             StartCoroutine(GoAnimationPosition_Coroutine());
+            playerScriptStorage.PlayerMovement.CanMove = false;
         }
     }
 
@@ -55,6 +56,12 @@ public class FusiblesControl : MonoBehaviour
     private void DestroyFusibles()
     {
         playerScriptStorage.Animator.SetTrigger("RomperFusibles");
+
+        foreach (DoorControl door in Level1Manager.instance.DoorsList)
+        {
+            door.BoxCollider.enabled = false;
+            door.OpenDoor();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

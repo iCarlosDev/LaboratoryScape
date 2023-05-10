@@ -6,10 +6,12 @@ using UnityEngine;
 public class DoorControl : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private MeshRenderer emissiveMesh;
     [SerializeField] private Material blueCardMaterial;
     [SerializeField] private Material redCardMaterial;
     [SerializeField] private Material greenCardMaterial;
+    [SerializeField] private Material tutorialCardMaterial;
     [SerializeField] private Material defaultMaterial;
     [SerializeField] private float timeLeftCloseDoor;
 
@@ -19,6 +21,7 @@ public class DoorControl : MonoBehaviour
         BlueCard,
         RedCard,
         GreenCard,
+        TutorialCard,
         NoCard
     }
     
@@ -26,12 +29,18 @@ public class DoorControl : MonoBehaviour
     
     //GETTERS && SETTERS//
     public Animator Animator => _animator;
-    
+    public BoxCollider BoxCollider
+    {
+        get => boxCollider;
+        set => boxCollider = value;
+    }
+
     /////////////////////////////////////////////
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -52,13 +61,16 @@ public class DoorControl : MonoBehaviour
             case DoorCardStatus.GreenCard:
                 emissiveMesh.material = greenCardMaterial;
                 break;
+            case DoorCardStatus.TutorialCard:
+                emissiveMesh.material = tutorialCardMaterial;
+                break;
             default:
                 emissiveMesh.material = defaultMaterial;
                 break;
         }
     }
 
-    private void OpenDoor()
+    public void OpenDoor()
     {
         // Nombre del estado que estamos buscando
         string stateName = "DoorOpen";
@@ -80,6 +92,8 @@ public class DoorControl : MonoBehaviour
     
     private void CloseDoor()
     {
+        if (!boxCollider.enabled) return;
+
         if (closeDoor != null)
         {
             StopCoroutine(closeDoor);

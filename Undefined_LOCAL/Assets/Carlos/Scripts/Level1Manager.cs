@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Level1Manager : MonoBehaviour
 {
     public static Level1Manager instance;
+    [SerializeField] private Transform player;
 
     [Header("--- ALL ROOMS ---")]
     [Space(10)]
@@ -35,6 +37,16 @@ public class Level1Manager : MonoBehaviour
     [SerializeField] private Transform alarmWaypoint;
     [SerializeField] private bool alarmActivated;
 
+    [Header("--- ALL UI ---")] 
+    [Space(10)] 
+    [SerializeField] private GameObject interactCanvas;
+    
+    [Header("--- TUTORIAL PARAMETERS ---")] 
+    [Space(10)] 
+    [SerializeField] private Transform playerStartPosTutorial;
+    [SerializeField] private Transform playerStartPosLobby;
+    [SerializeField] private bool tutorialCompleted;
+
     //GETTERS && SETTERS//
     public bool AlarmActivated
     {
@@ -48,12 +60,14 @@ public class Level1Manager : MonoBehaviour
     public List<DoorControl> DoorsList => doorsList;
     public List<ButtonUnlockElevator> ButtonUnlockElevatorList => buttonUnlockElevatorList;
     public List<EnemiesSpawn> EnemiesSpawnsList => enemiesSpawnsList;
+    public GameObject InteractCanvas => interactCanvas;
 
     ///////////////////////
     
     private void Awake()
     {
         instance = this;
+        player = FindObjectOfType<PlayerMovement>().transform;
     }
 
     private void Start()
@@ -79,5 +93,33 @@ public class Level1Manager : MonoBehaviour
         doorsList.AddRange(FindObjectsOfType<DoorControl>());
         
         buttonUnlockElevatorList.AddRange(FindObjectsOfType<ButtonUnlockElevator>());
+        
+        interactCanvas.gameObject.SetActive(false);
+        
+        SetPlayerPosition();
+    }
+
+    private void SetPlayerPosition()
+    {
+        Transform player = this.player;
+        
+        if (tutorialCompleted)
+        {
+            player.position = playerStartPosLobby.position;
+            player.rotation = playerStartPosLobby.rotation;
+        }
+        else
+        {
+            player.position = playerStartPosTutorial.position;
+            player.rotation = playerStartPosTutorial.rotation;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PlayerRoot"))
+        {
+            tutorialCompleted = true;
+        }
     }
 }

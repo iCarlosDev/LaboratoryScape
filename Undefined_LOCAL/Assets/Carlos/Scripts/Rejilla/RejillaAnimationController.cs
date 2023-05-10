@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EPOOutline;
+using TMPro;
 using UnityEngine;
 
-public class RejillaAnimationController : MonoBehaviour
+public class RejillaAnimationController : MonoBehaviour, I_Interact
 {
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Animator _animator;
@@ -14,9 +16,13 @@ public class RejillaAnimationController : MonoBehaviour
     [SerializeField] private bool canInteract;
 
     private Coroutine goAnimationPosition;
+    
+    ///INTERACT INTERFACE///
+    public Outlinable outliner { get; set; }
 
     private void Awake()
     {
+        outliner = GetComponent<Outlinable>();
         _animator = GetComponent<Animator>();
         _sphereCollider = GetComponent<SphereCollider>();
         AnimPosition0 = transform.GetChild(0);
@@ -36,6 +42,8 @@ public class RejillaAnimationController : MonoBehaviour
                 goAnimationPosition = StartCoroutine(GoAnimationPosition_Coroutine(AnimPosition1,true));   
             }
 
+            SetOultine(false);
+            SetTextInteract(false);
             playerMovement.CanMove = false;
             Debug.Log($"{Vector3.Distance(AnimPosition0.position, playerMovement.transform.position)}");
         }
@@ -82,11 +90,28 @@ public class RejillaAnimationController : MonoBehaviour
         rigidbody.AddForce(rigidbody.velocity * 10f, ForceMode.Impulse);
     }
 
+    #region - INTERACT INTERFACE -
+    
+    public void SetOultine(bool shouldActivate)
+    {
+        outliner.enabled = shouldActivate;
+    }
+
+    public void SetTextInteract(bool shouldShow)
+    {
+        Level1Manager.instance.InteractCanvas.gameObject.SetActive(shouldShow);
+        Level1Manager.instance.InteractCanvas.GetComponentInChildren<TextMeshProUGUI>().text = $"Press E to Interact";
+    }
+    
+    #endregion
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerRoot"))
         {
             canInteract = true;
+            SetOultine(true);
+            SetTextInteract(true);
 
             if (playerMovement == null)
             {
@@ -99,6 +124,8 @@ public class RejillaAnimationController : MonoBehaviour
     {
         if (other.CompareTag("PlayerRoot"))
         {
+            SetOultine(false);
+            SetTextInteract(false);
             canInteract = false;
         }
     }

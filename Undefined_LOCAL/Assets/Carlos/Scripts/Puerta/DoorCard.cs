@@ -8,6 +8,7 @@ public class DoorCard : MonoBehaviour
         BlueCard,
         RedCard,
         GreenCard,
+        TutorialCard,
         NoCard
     }
     

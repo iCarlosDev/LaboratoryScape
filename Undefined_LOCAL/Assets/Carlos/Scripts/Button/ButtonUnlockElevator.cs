@@ -1,15 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EPOOutline;
+using TMPro;
 using UnityEngine;
 
-public class ButtonUnlockElevator : MonoBehaviour
+public class ButtonUnlockElevator : MonoBehaviour, I_Interact
 {
     [SerializeField] private ElevatorManager elevatorManager;
     
     [SerializeField] private Animator _animator;
     [SerializeField] private bool isActivated;
     [SerializeField] private bool canPress;
+    
+    ////INTERACT INTERFACE////
+    public Outlinable outliner { get; set; }
 
     public bool IsActivated => isActivated;
 
@@ -17,6 +22,7 @@ public class ButtonUnlockElevator : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         elevatorManager = FindObjectOfType<ElevatorManager>();
+        outliner = GetComponent<Outlinable>();
     }
 
     private void Update()
@@ -34,21 +40,38 @@ public class ButtonUnlockElevator : MonoBehaviour
         isActivated = true;
         _animator.SetTrigger("PressButton");
         elevatorManager.CheckElevatorUnlocked();
+        SetOultine(false);
+        SetTextInteract(false);
+    }
+    
+    public void SetOultine(bool shouldActivate)
+    {
+        outliner.enabled = shouldActivate;
+    }
+
+    public void SetTextInteract(bool shouldShow)
+    {
+        Level1Manager.instance.InteractCanvas.SetActive(shouldShow);
+        Level1Manager.instance.InteractCanvas.GetComponentInChildren<TextMeshProUGUI>().text = $"Press E to Interact";
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PlayerRoot") || other.CompareTag("PlayerRootFP"))
+        if ((other.CompareTag("PlayerRoot") || other.CompareTag("PlayerRootFP")) && !isActivated)
         {
             canPress = true;
+            SetOultine(true);
+            SetTextInteract(true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PlayerRoot") || other.CompareTag("PlayerRootFP"))
+        if ((other.CompareTag("PlayerRoot") || other.CompareTag("PlayerRootFP")) && !isActivated)
         {
             canPress = false;
+            SetOultine(false);
+            SetTextInteract(false);
         }
     }
 }

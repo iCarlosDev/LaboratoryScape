@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using EPOOutline;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyPossess : MonoBehaviour
+public class EnemyPossess : MonoBehaviour, I_Interact
 {
     [SerializeField] private PlayerScriptStorage _playerScriptStorage;
     
@@ -19,6 +21,9 @@ public class EnemyPossess : MonoBehaviour
     [SerializeField] private float cooldownTime;
     [SerializeField] private bool haveCooldown;
     [SerializeField] private bool canPossess = true;
+    
+    ////NO SE PUEDE IMPLEMENTAR PORQ SOY RETRASAO////
+    public Outlinable outliner { get; set; }
 
     private void Awake()
     {
@@ -74,7 +79,7 @@ public class EnemyPossess : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && canPossess && !haveCooldown)
+        if (Input.GetKeyDown(KeyCode.F) && canPossess && !haveCooldown && !_playerScriptStorage.PlayerMovement.IsInConduct)
         {
             PossessEnemy();
         }
@@ -85,6 +90,7 @@ public class EnemyPossess : MonoBehaviour
     {
         if (closestEnemy == null) return;
       
+        SetTextInteract(false);
         enemyFP.transform.position = closestEnemy.transform.position;
         enemyFP.transform.rotation = closestEnemy.transform.rotation;
         enemyFP.SetActive(true);
@@ -193,6 +199,8 @@ public class EnemyPossess : MonoBehaviour
             
             enemiesInRangeList.Add(other.GetComponent<Enemy_IA>());
             canPossess = true;
+            
+            SetTextInteract(true);
         }
     }
 
@@ -211,8 +219,22 @@ public class EnemyPossess : MonoBehaviour
                 canPossess = false;
                 closestEnemy = null;
             }
+            
+            SetTextInteract(false);
         }
     }
     
     #endregion
+
+    
+    public void SetOultine(bool shouldActivate)
+    {
+        //no se puede implementar porq soy retrasao
+    }
+
+    public void SetTextInteract(bool shouldShow)
+    {
+        Level1Manager.instance.InteractCanvas.SetActive(shouldShow);
+        Level1Manager.instance.InteractCanvas.GetComponentInChildren<TextMeshProUGUI>().text = $"Press F to Possess";
+    }
 }
