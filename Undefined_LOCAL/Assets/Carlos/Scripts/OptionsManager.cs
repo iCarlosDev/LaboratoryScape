@@ -162,6 +162,7 @@ public class OptionsManager : MonoBehaviour
         SetShadowQuality();
         FindObjectOfType<PlayerMovement>()?.SetSensitivityOptions();
         FindObjectOfType<SoldierFP_Controller>()?.CameraPivot.GetComponent<EnemyMouseLook>().SetSensitivityOptions();
+        FindObjectOfType<PlayerFPLook>()?.SetSensitivityOptions();
     }
     
     #region - OPTIONS SET -

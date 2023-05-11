@@ -119,9 +119,14 @@ public class DoorControl : MonoBehaviour
                 return;
             }
 
-            if ((int)other.GetComponent<DoorCard>().DoorCardEnum == (int)doorCardStatusEnum)
+            DoorCard doorCard = other.GetComponent<DoorCard>();
+            
+            foreach (DoorCardStatus doorCardStatus in doorCard.DoorCardEnumList)
             {
-                OpenDoor();
+                if ((int)doorCardStatus == (int)doorCardStatusEnum)
+                {
+                    OpenDoor();
+                } 
             }
         }
     }

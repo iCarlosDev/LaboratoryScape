@@ -1,21 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorCard : MonoBehaviour
 {
-    [SerializeField] private DoorCardStatus doorCardEnum;
+    [SerializeField] private List<DoorCardStatus> doorCardEnumList;
     public enum DoorCardStatus
     {
         BlueCard,
         RedCard,
         GreenCard,
-        TutorialCard,
-        NoCard
+        TutorialCard
     }
     
     //GETTERS && SETTERS//
-    public DoorCardStatus DoorCardEnum
+    public List<DoorCardStatus> DoorCardEnumList
     {
-        get => doorCardEnum;
-        set => doorCardEnum = value;
+        get => doorCardEnumList;
+        set => doorCardEnumList = value;
     }
 }

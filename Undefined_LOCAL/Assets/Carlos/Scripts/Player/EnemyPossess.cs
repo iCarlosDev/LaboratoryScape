@@ -75,6 +75,11 @@ public class EnemyPossess : MonoBehaviour, I_Interact
         yield return new WaitForSeconds(cooldownTime);
         haveCooldown = false;
         PossessIndicator();
+
+        if (enemiesInRangeList.Count != 0)
+        {
+            SetTextInteract(true);
+        }
     }
 
     private void Update()
@@ -91,11 +96,11 @@ public class EnemyPossess : MonoBehaviour, I_Interact
         if (closestEnemy == null) return;
       
         SetTextInteract(false);
+        AddEnemyCards();
         enemyFP.transform.position = closestEnemy.transform.position;
         enemyFP.transform.rotation = closestEnemy.transform.rotation;
         enemyFP.SetActive(true);
-        enemyFP.GetComponentInParent<EnemyDespossess>()?.StartUp(closestEnemy, transform.parent.gameObject);
-        enemyFP.GetComponent<DoorCard>().DoorCardEnum = closestEnemy.EnemyScriptStorage.DoorCard.DoorCardEnum;
+        enemyFP.GetComponent<EnemyDespossess>().StartUp(closestEnemy, transform.parent.gameObject);
         enemyFP.SendMessage("OnEnable");
         closestEnemy.EnemyScriptStorage.Outlinable.enabled = false;
         closestEnemy.EnemyScriptStorage.EnemyIa.enabled = false;
@@ -113,6 +118,26 @@ public class EnemyPossess : MonoBehaviour, I_Interact
         }
 
         transform.parent.gameObject.SetActive(false);
+    }
+
+    private void AddEnemyCards()
+    {
+        if (_playerScriptStorage.DoorCard.DoorCardEnumList.Count == 4) return;
+
+        DoorCard enemyFP_DoorCard = enemyFP.GetComponent<DoorCard>();
+
+        foreach (DoorCard.DoorCardStatus EnemydoorCardStatus in closestEnemy.EnemyScriptStorage.DoorCard.DoorCardEnumList)
+        {
+            if (!_playerScriptStorage.DoorCard.DoorCardEnumList.Contains(EnemydoorCardStatus))
+            {
+                _playerScriptStorage.DoorCard.DoorCardEnumList.Add(EnemydoorCardStatus);
+            }
+
+            if (!enemyFP_DoorCard.DoorCardEnumList.Contains(EnemydoorCardStatus))
+            {
+                enemyFP_DoorCard.DoorCardEnumList.Add(EnemydoorCardStatus);
+            }
+        }
     }
     
     #region - CLOSEST ENEMY DETECTION -
@@ -199,8 +224,11 @@ public class EnemyPossess : MonoBehaviour, I_Interact
             
             enemiesInRangeList.Add(other.GetComponent<Enemy_IA>());
             canPossess = true;
-            
-            SetTextInteract(true);
+
+            if (!haveCooldown)
+            {
+                SetTextInteract(true);
+            }
         }
     }
 

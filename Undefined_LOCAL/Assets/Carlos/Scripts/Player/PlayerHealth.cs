@@ -15,7 +15,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Slider healthSlider;
     
     //GETTERS && SETTERS//
-    public int CurrentHealth => currentHealth;
+    public int CurrentHealth
+    {
+        get => currentHealth;
+        set => currentHealth = value;
+    }
     public int RequiredHealth => requiredHealth;
 
     ////////////////////////////////
@@ -51,6 +55,14 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void AddHealth(int healthToRecovery)
+    {
+        currentHealth += healthToRecovery;
+        currentHealth = Mathf.Clamp(currentHealth, 0, 100);
+        healthSlider.value = currentHealth;
+        _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
     }
 
     //Método para que el player muera;

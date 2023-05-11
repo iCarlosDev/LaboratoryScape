@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyDespossess : MonoBehaviour
 {
     [SerializeField] private GameObject player;
+    [SerializeField] private PlayerScriptStorage _playerScriptStorage;
     [SerializeField] private Enemy_IA enemy;
 
     [Header("--- POSSESSION COOLDOWN ---")]
@@ -27,6 +28,11 @@ public class EnemyDespossess : MonoBehaviour
     {
         this.enemy = enemy;
         this.player = player;
+
+        if (_playerScriptStorage == null)
+        {
+            _playerScriptStorage = this.player.GetComponent<PlayerScriptStorage>();
+        }
 
         if (possessionCooldown != null)
         {
@@ -63,6 +69,7 @@ public class EnemyDespossess : MonoBehaviour
         
         //Activamos al player;
         player.SetActive(true);
+        _playerScriptStorage.PlayerHealth.AddHealth(30);
 
         //Recorremos todos los enemigos en escena y cambiamos el player de referencia que tienen;
         foreach (Enemy_IA enemy in Level1Manager.instance.EnemiesList)
