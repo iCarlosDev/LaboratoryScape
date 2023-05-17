@@ -59,13 +59,13 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
 
-        ShowDamageScreen = StartCoroutine(ShowDamageScreen_Coroutine());
+        //ShowDamageScreen = StartCoroutine(ShowDamageScreen_Coroutine());
     }
 
-    private IEnumerator ShowDamageScreen_Coroutine()
+    /*private IEnumerator ShowDamageScreen_Coroutine()
     {
         
-    }
+    }*/
 
     public void AddHealth(int healthToRecovery)
     {
