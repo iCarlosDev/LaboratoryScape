@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2158.2969, g: 2260.543, b: 3278.4258, a: 1}
+  m_IndirectSpecularColor: {r: 2158.291, g: 2260.5547, b: 3278.4102, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2530,6 +2530,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -2.336
       objectReference: {fileID: 0}
+    - target: {fileID: 1301031743329297651, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904495600350407579, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488813176648677795, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.702
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488813176648677795, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545139569541074228, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545139569541074228, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3542509974077958267, guid: 2c2124be09adc294cb8f51f1605f1ca2,
         type: 3}
       propertyPath: m_RootOrder
@@ -2585,6 +2615,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4147575291859133726, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.617
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147575291859133726, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147575291859133726, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.719
+      objectReference: {fileID: 0}
     - target: {fileID: 5468405828813657297, guid: 2c2124be09adc294cb8f51f1605f1ca2,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2615,8 +2660,43 @@ PrefabInstance:
       propertyPath: m_Name
       value: ==== Generadores ====
       objectReference: {fileID: 0}
+    - target: {fileID: 8514312338750996560, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8523859870927642088, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ae56324fccbbe4d4f83acaf46e45779e, type: 2}
+    - target: {fileID: 9110604403774629409, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c2124be09adc294cb8f51f1605f1ca2, type: 3}
+--- !u!1 &305725064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9110604403774629409, guid: 2c2124be09adc294cb8f51f1605f1ca2,
+    type: 3}
+  m_PrefabInstance: {fileID: 305725063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &305725065
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305725064}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6167134068740675779, guid: 69f6b6b25eb1d7d4d93b45a382caa734, type: 3}
 --- !u!1 &307950890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3022,7 +3102,6 @@ MonoBehaviour:
   interactCanvas: {fileID: 0}
   playerStartPosTutorial: {fileID: 0}
   playerStartPosLobby: {fileID: 0}
-  tutorialCompleted: 0
 --- !u!1 &338852898
 GameObject:
   m_ObjectHideFlags: 0
