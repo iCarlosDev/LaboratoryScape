@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int requiredHealth;
 
     [SerializeField] private Slider healthSlider;
+
+    private Coroutine ShowDamageScreen;
     
     //GETTERS && SETTERS//
     public int CurrentHealth
@@ -54,8 +56,16 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            return;
         }
+
+        //ShowDamageScreen = StartCoroutine(ShowDamageScreen_Coroutine());
     }
+
+    /*private IEnumerator ShowDamageScreen_Coroutine()
+    {
+        
+    }*/
 
     public void AddHealth(int healthToRecovery)
     {
