@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using IE.RichFX;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,14 +17,17 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private Slider healthSlider;
 
-    private Coroutine ShowDamageScreen;
+    [Header("--- HEALTH FEEDBACK ---")] 
+    [Space(10)] 
+    [SerializeField] private Volume _playerHealthVolume;
+    [SerializeField] private float _lerpTimeVolume;
+    [SerializeField] private float _intensityIncrement;
+
+    private Coroutine _showDamageScreen;
+    private Coroutine _hideDamageScreen;
     
     //GETTERS && SETTERS//
-    public int CurrentHealth
-    {
-        get => currentHealth;
-        set => currentHealth = value;
-    }
+    public int CurrentHealth => currentHealth;
     public int RequiredHealth => requiredHealth;
 
     ////////////////////////////////
@@ -30,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
     {
         _playerScriptStorage = GetComponent<PlayerScriptStorage>();
         healthSlider = GetComponentInChildren<Slider>();
+        _playerHealthVolume = GameObject.FindWithTag("PlayerHealthVolume").GetComponent<Volume>();
     }
 
     void Start()
@@ -43,6 +50,14 @@ public class PlayerHealth : MonoBehaviour
     private void OnEnable()
     {
         _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            TakeDamage(10);
+        }
     }
 
     //Método para quitarle vida al player;
@@ -59,13 +74,63 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
 
-        //ShowDamageScreen = StartCoroutine(ShowDamageScreen_Coroutine());
+        if (_showDamageScreen != null)
+        {
+            StopCoroutine(_showDamageScreen);
+            _showDamageScreen = null;
+        }
+        
+        if (_hideDamageScreen != null)
+        { 
+            StopCoroutine(_hideDamageScreen); 
+            _hideDamageScreen = null;
+        }
+        
+        _showDamageScreen = StartCoroutine(ShowDamageScreen_Coroutine(_intensityIncrement));
+        _intensityIncrement += 0.1f;
+    }
+    
+    private IEnumerator ShowDamageScreen_Coroutine(float intensityIncrement)
+    {
+        float time = 0f;
+        DirectionalBlur db;
+        Vignette vignette;
+        _playerHealthVolume.profile.TryGet(out db);
+        _playerHealthVolume.profile.TryGet(out vignette);
+        
+        while (db.intensity.value < 7.9f)
+        {
+            db.intensity.value = Mathf.Lerp(db.intensity.value, 8f, time);
+            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.5f + intensityIncrement, time);
+            Debug.Log("Showing Damage Screen");
+
+            time += _lerpTimeVolume * Time.deltaTime;
+            yield return null;
+        }
+
+        _hideDamageScreen = StartCoroutine(HideDamageScreen_Coroutine(db, vignette));
     }
 
-    /*private IEnumerator ShowDamageScreen_Coroutine()
+    private IEnumerator HideDamageScreen_Coroutine(DirectionalBlur db, Vignette vignette)
     {
-        
-    }*/
+        float time = 0f;
+        yield return new WaitForSeconds(3f);
+        while (db.intensity.value > 0.1f)
+        {
+            db.intensity.value = Mathf.Lerp(db.intensity.value, 0, time);
+            
+            
+            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0f, time);
+
+            time += _lerpTimeVolume * Time.deltaTime;
+            
+            
+            yield return null;
+        }
+
+        Debug.Log("STOP SHOWING DAMAGE SCREEN");
+        _intensityIncrement = 0f;
+    }
 
     public void AddHealth(int healthToRecovery)
     {

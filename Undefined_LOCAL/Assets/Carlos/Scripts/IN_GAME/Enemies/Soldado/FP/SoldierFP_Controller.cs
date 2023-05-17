@@ -75,6 +75,9 @@ public class SoldierFP_Controller : EnemyController
         CheckAmmo();
         crosshair.SetActive(_enemyDespossess.Enemy?.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
         weaponHud.SetActive(_enemyDespossess.Enemy?.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
+
+        maxAmmo = 30;
+        currentAmmo = maxAmmo;
     }
 
     private void OnDisable()
