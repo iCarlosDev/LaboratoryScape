@@ -239,7 +239,7 @@ public class OptionsManager : MonoBehaviour
         antialiasingIndex = antialiasingList.Count - 1;
         shadowQualityIndex = shadowsQualityList.Count - 1;
 
-        mouseSensitivity = 1f;
+        mouseSensitivity = 0.5f;
         invertVertical = false;
         invertHorizontal = false;
 

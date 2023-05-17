@@ -45,7 +45,6 @@ public class Level1Manager : MonoBehaviour
     [Space(10)] 
     [SerializeField] private Transform playerStartPosTutorial;
     [SerializeField] private Transform playerStartPosLobby;
-    [SerializeField] private bool tutorialCompleted;
 
     //GETTERS && SETTERS//
     public bool AlarmActivated
@@ -77,6 +76,8 @@ public class Level1Manager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         
+        OptionsManager.instance.SetAllOptions();
+
         roomsList.AddRange(GameObject.FindGameObjectsWithTag("RoomCollider"));
         roomsList.Add(GameObject.FindWithTag("SafeRoomCollider"));
         
@@ -103,7 +104,7 @@ public class Level1Manager : MonoBehaviour
     {
         Transform player = this.player;
         
-        if (tutorialCompleted)
+        if (CheckpointsManager.instance.TutorialCompleted)
         {
             player.position = playerStartPosLobby.position;
             player.rotation = playerStartPosLobby.rotation;
@@ -119,7 +120,8 @@ public class Level1Manager : MonoBehaviour
     {
         if (other.CompareTag("PlayerRoot"))
         {
-            tutorialCompleted = true;
+            CheckpointsManager.instance.TutorialCompleted = true;
+            CheckpointsManager.instance.SaveCheckpoint();
         }
     }
 }
