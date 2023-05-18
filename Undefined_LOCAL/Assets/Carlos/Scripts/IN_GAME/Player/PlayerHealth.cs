@@ -86,11 +86,11 @@ public class PlayerHealth : MonoBehaviour
             _hideDamageScreen = null;
         }
         
-        _showDamageScreen = StartCoroutine(ShowDamageScreen_Coroutine(_intensityIncrement));
+        _showDamageScreen = StartCoroutine(ShowDamageScreen_Coroutine());
         _intensityIncrement += 0.1f;
     }
     
-    private IEnumerator ShowDamageScreen_Coroutine(float intensityIncrement)
+    private IEnumerator ShowDamageScreen_Coroutine()
     {
         float time = 0f;
         DirectionalBlur db;
@@ -98,10 +98,10 @@ public class PlayerHealth : MonoBehaviour
         _playerHealthVolume.profile.TryGet(out db);
         _playerHealthVolume.profile.TryGet(out vignette);
         
-        while (db.intensity.value < 7.9f)
+        while (vignette.intensity.value < 0.5f + _intensityIncrement)
         {
             db.intensity.value = Mathf.Lerp(db.intensity.value, 8f, time);
-            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.5f + intensityIncrement, time);
+            vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0.5f + _intensityIncrement, time);
             Debug.Log("Showing Damage Screen");
 
             time += _lerpTimeVolume * Time.deltaTime;
