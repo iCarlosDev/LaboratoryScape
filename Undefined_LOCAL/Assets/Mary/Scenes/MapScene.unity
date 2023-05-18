@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2158.336, g: 2260.5625, b: 3278.4688, a: 1}
+  m_IndirectSpecularColor: {r: 2160.043, g: 2263.8008, b: 3286.5703, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2916,6 +2916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32121cb63609c74bb7d495607d71e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   roomsList: []
   enemiesList: []
   enemiesSpawnsList: []
@@ -2924,6 +2925,9 @@ MonoBehaviour:
   buttonUnlockElevatorList: []
   alarmWaypoint: {fileID: 663463516}
   alarmActivated: 0
+  interactCanvas: {fileID: 0}
+  playerStartPosTutorial: {fileID: 0}
+  playerStartPosLobby: {fileID: 0}
 --- !u!1 &338852898
 GameObject:
   m_ObjectHideFlags: 0
