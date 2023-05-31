@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6235023629363062094
+--- !u!1 &4266696881599106527
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6758935849631121396}
-  - component: {fileID: 7666054334805012561}
-  - component: {fileID: 5586641141739390107}
-  - component: {fileID: 3629051506984836177}
+  - component: {fileID: 3494101278551381861}
+  - component: {fileID: 563602019303299264}
+  - component: {fileID: 2321225473261366282}
   m_Layer: 0
-  m_Name: MaquinaExpendedora
+  m_Name: NuevaMaquinaCafe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6758935849631121396
+--- !u!4 &3494101278551381861
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6235023629363062094}
-  m_LocalRotation: {x: -0.024375562, y: 0.70668656, z: 0.70668656, w: 0.024375562}
-  m_LocalPosition: {x: -31.39, y: 0.038999975, z: 14.78}
-  m_LocalScale: {x: 58.03866, y: 66.22333, z: 92.83189}
+  m_GameObject: {fileID: 4266696881599106527}
+  m_LocalRotation: {x: -0.2654818, y: 0.6553773, z: 0.6553773, w: 0.2654818}
+  m_LocalPosition: {x: 7.972, y: -14.485556, z: -3.181}
+  m_LocalScale: {x: 48.806442, y: 56.43058, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 176.049}
---- !u!33 &7666054334805012561
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 135.896}
+--- !u!33 &563602019303299264
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6235023629363062094}
-  m_Mesh: {fileID: 7759816480379830712, guid: c5abe30940570dd4da8c75eb7508257d, type: 3}
---- !u!23 &5586641141739390107
+  m_GameObject: {fileID: 4266696881599106527}
+  m_Mesh: {fileID: -1547087757743629361, guid: ca365aaed6220c745847083ddd1b19b1, type: 3}
+--- !u!23 &2321225473261366282
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6235023629363062094}
+  m_GameObject: {fileID: 4266696881599106527}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27cb11ff208a2ae458e718c03db8d1be, type: 2}
+  - {fileID: 2100000, guid: e6b3d6baea89ed04f9686618de0bc16a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,17 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3629051506984836177
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6235023629363062094}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7759816480379830712, guid: c5abe30940570dd4da8c75eb7508257d, type: 3}
