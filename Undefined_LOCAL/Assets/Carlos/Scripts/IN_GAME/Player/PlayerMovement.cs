@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using Cinemachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

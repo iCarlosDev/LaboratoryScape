@@ -103,11 +103,10 @@ public class Soldier_IA : Enemy_IA
         //Depende de la distancia entre el NPC y el Player el NPC disparará o Pateará;
         if (Vector3.Distance(transform.position, playerRef.position) < 1f)
         {
-            if (canStomp)
-            {
-                Kick();
-                canStomp = false;
-            }
+            if (!canStomp || !playerRef.CompareTag("PlayerRoot")) return;
+            
+            Kick();
+            canStomp = false;
         }
         else
         {

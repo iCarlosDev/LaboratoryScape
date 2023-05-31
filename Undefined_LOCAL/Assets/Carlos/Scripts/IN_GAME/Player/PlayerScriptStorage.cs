@@ -10,6 +10,7 @@ public class PlayerScriptStorage : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private CinemachineFreeLook freeLookCamera;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private GameObject _canvas;
     
     [Header("--- SCRIPTS ---")]
     [Space(10)]
@@ -38,5 +39,19 @@ public class PlayerScriptStorage : MonoBehaviour
         freeLookCamera = GetComponentInChildren<CinemachineFreeLook>();
         virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         _doorCard = GetComponent<DoorCard>();
+    }
+
+    private void Update()
+    {
+        if (PauseMenuManager.instance.IsPaused)
+        {
+            if (!_canvas.activeSelf) return;
+            _canvas.SetActive(false);
+        }
+        else
+        {
+            if (_canvas.activeSelf) return;
+            _canvas.SetActive(true);
+        }
     }
 }

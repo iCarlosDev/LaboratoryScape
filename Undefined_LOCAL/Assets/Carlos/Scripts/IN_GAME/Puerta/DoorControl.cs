@@ -100,12 +100,15 @@ public class DoorControl : MonoBehaviour
             closeDoor = null;
         }
         
+        if (!boxCollider.enabled) return;
         closeDoor = StartCoroutine(CloseDoor_Coroutine());
     }
 
     private IEnumerator CloseDoor_Coroutine()
     {
         yield return new WaitForSeconds(timeLeftCloseDoor);
+        if (!boxCollider.enabled) yield break;
+        
         _animator.SetTrigger("DoorClose");
     }
     

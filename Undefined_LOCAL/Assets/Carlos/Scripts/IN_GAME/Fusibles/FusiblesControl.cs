@@ -6,6 +6,7 @@ using UnityEngine;
 public class FusiblesControl : MonoBehaviour
 {
     [SerializeField] private PlayerScriptStorage playerScriptStorage;
+    [SerializeField] private ParticleSystem _sparksParticles;
     [SerializeField] private Transform animPos;
     [SerializeField] private float timeToGoAnimPos;
     [SerializeField] private bool canInteract;
@@ -13,11 +14,13 @@ public class FusiblesControl : MonoBehaviour
     private void Awake()
     {
         playerScriptStorage = FindObjectOfType<PlayerScriptStorage>();
+        _sparksParticles = GetComponentInChildren<ParticleSystem>();
         animPos = transform.GetChild(1);
     }
 
     private void Start()
     { 
+        _sparksParticles.gameObject.SetActive(false);
         PutAnimPosOnFloor();   
     }
 
@@ -56,12 +59,19 @@ public class FusiblesControl : MonoBehaviour
     private void DestroyFusibles()
     {
         playerScriptStorage.Animator.SetTrigger("RomperFusibles");
-
+        Invoke(nameof(ActivateParticles), 2.3f);
+        
         foreach (DoorControl door in Level1Manager.instance.DoorsList)
         {
             door.BoxCollider.enabled = false;
             door.OpenDoor();
         }
+    }
+
+    public void ActivateParticles()
+    {
+        _sparksParticles.gameObject.SetActive(true);
+        _sparksParticles.Play();
     }
 
     private void OnTriggerEnter(Collider other)

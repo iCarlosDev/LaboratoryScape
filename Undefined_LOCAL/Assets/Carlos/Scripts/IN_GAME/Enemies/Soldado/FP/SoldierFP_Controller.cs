@@ -98,7 +98,7 @@ public class SoldierFP_Controller : EnemyController
     {
         base.Update();
 
-        if (_enemyDespossess.Enemy?.EnemyType == Enemy_IA.EnemyType_Enum.Scientist) return;
+        if (_enemyDespossess.Enemy is { EnemyType: Enemy_IA.EnemyType_Enum.Scientist } || PauseMenuManager.instance.IsPaused) return;
 
         MovementAnimationControll();
         

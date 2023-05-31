@@ -83,8 +83,12 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthSlider.value = currentHealth;
-        _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
-        
+
+        if (currentHealth <= 50)
+        {
+            _playerScriptStorage.Animator.SetFloat("Health", 0f);
+        }
+
         //Si la vida de el player llega a 0...;
         if (currentHealth <= 0 && !_isDead)
         {
@@ -153,7 +157,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth += healthToRecovery;
         currentHealth = Mathf.Clamp(currentHealth, 0, 100);
         healthSlider.value = currentHealth;
-        _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
+
+        if (currentHealth > 50)
+        {
+            _playerScriptStorage.Animator.SetFloat("Health", 1f);   
+        }
     }
 
     //Método para que el player muera;

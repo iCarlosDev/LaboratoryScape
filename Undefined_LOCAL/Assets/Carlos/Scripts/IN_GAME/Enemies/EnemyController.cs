@@ -5,6 +5,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] protected CharacterController _characterController;
     [SerializeField] protected EnemyDespossess _enemyDespossess;
+    [SerializeField] protected GameObject _canvas;
 
     [Header("--- MOVEMENT PARAMETERS ---")] 
     [Space(10)] 
@@ -49,6 +50,8 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Update()
     {
+        CanvasControl();
+        
         Movement();
         Jump();
         Sprint();
@@ -118,5 +121,19 @@ public class EnemyController : MonoBehaviour
     private void Die()
     {
         _enemyDespossess.Despossess();
+    }
+    
+    private void CanvasControl()
+    {
+        if (PauseMenuManager.instance.IsPaused)
+        {
+            if (!_canvas.activeSelf) return;
+            _canvas.SetActive(false);
+        }
+        else
+        {
+            if (_canvas.activeSelf) return;
+            _canvas.SetActive(true);
+        }
     }
 }
