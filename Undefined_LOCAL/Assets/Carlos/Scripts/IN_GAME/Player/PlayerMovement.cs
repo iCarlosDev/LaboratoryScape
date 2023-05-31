@@ -88,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
             //Comprobamos si el player está en el suelo y en movimiento;
             if (isGrounded && _characterController.velocity.magnitude >= 0.1f)
             {
+
                 //Comprobamos que la vida de el player sea mayor a la vida requerida;
                 if (_playerScriptStorage.PlayerHealth.CurrentHealth > _playerScriptStorage.PlayerHealth.RequiredHealth)
                 {

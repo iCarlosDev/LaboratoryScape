@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     [SerializeField] private int requiredHealth;
+    
+    [SerializeField] private bool _isDead;
 
     [SerializeField] private Slider healthSlider;
 
@@ -50,6 +52,22 @@ public class PlayerHealth : MonoBehaviour
     private void OnEnable()
     {
         _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
+        
+        DirectionalBlur db;
+        Vignette vignette;
+        _playerHealthVolume.profile.TryGet(out db);
+        _playerHealthVolume.profile.TryGet(out vignette);
+        db.intensity.value = 0f;
+        vignette.intensity.value = 0f;
+
+        _intensityIncrement = 0f;
+        _playerHealthVolume.weight = 1f;
+    }
+
+    private void OnDisable()
+    {
+        if (_isDead) return;
+        _playerHealthVolume.weight = 0f;
     }
 
     private void Update()
@@ -68,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
         _playerScriptStorage.Animator.SetFloat("Health", currentHealth/100f);
         
         //Si la vida de el player llega a 0...;
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !_isDead)
         {
             Die();
             return;
@@ -118,8 +136,6 @@ public class PlayerHealth : MonoBehaviour
         while (db.intensity.value > 0.1f)
         {
             db.intensity.value = Mathf.Lerp(db.intensity.value, 0, time);
-            
-            
             vignette.intensity.value = Mathf.Lerp(vignette.intensity.value, 0f, time);
 
             time += _lerpTimeVolume * Time.deltaTime;
@@ -143,17 +159,19 @@ public class PlayerHealth : MonoBehaviour
     //Método para que el player muera;
     private void Die()
     {
+        AudioManager.instance.Play("PlayerDie");
         _playerScriptStorage.Animator.SetTrigger("Die");
         _playerScriptStorage.EnemyPossess.enabled = false;
 
+        _isDead = true;
         _playerScriptStorage.PlayerHealth.enabled = false;
-        
+
         StartCoroutine(RestartGame_Coroutine());
     }
 
     private IEnumerator RestartGame_Coroutine()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(1);
     }
 

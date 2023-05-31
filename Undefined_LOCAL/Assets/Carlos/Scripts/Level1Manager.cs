@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class Level1Manager : MonoBehaviour
 
     [Header("--- ALL ROOMS ---")]
     [Space(10)]
-    [SerializeField] private List<GameObject> roomsList;
+    [SerializeField] private List<RoomControl> roomsList;
 
     [Header("--- ALL ENEMIES ---")] 
     [Space(10)] 
@@ -52,7 +53,7 @@ public class Level1Manager : MonoBehaviour
         get => alarmActivated;
         set => alarmActivated = value;
     }
-    public List<GameObject> RoomsList => roomsList;
+    public List<RoomControl> RoomsList => roomsList;
     public List<Enemy_IA> EnemiesList => enemiesList;
     public List<Transform> SafeRoomWaypointsList => safeRoomWaypointsList;
     public Transform AlarmWaypoint => alarmWaypoint;
@@ -78,8 +79,8 @@ public class Level1Manager : MonoBehaviour
         
         OptionsManager.instance.SetAllOptions();
 
-        roomsList.AddRange(GameObject.FindGameObjectsWithTag("RoomCollider"));
-        roomsList.Add(GameObject.FindWithTag("SafeRoomCollider"));
+        roomsList.AddRange(FindObjectsOfType<RoomControl>());
+        roomsList.Add(GameObject.FindWithTag("SafeRoomCollider").GetComponent<RoomControl>());
         
         enemiesList.AddRange(FindObjectsOfType<Enemy_IA>());
         
@@ -98,6 +99,13 @@ public class Level1Manager : MonoBehaviour
         interactCanvas.gameObject.SetActive(false);
         
         SetPlayerPosition();
+        SetLevelMusic();
+    }
+
+    private void SetLevelMusic()
+    {
+        AudioManager.instance.Stop("MainTheme");
+        AudioManager.instance.Play("DarkTension");
     }
 
     private void SetPlayerPosition()

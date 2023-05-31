@@ -22,6 +22,7 @@ public class Soldier_IA : Enemy_IA
     [Space(10)]
     [SerializeField] private List<Transform> roomWaypoints;
     [SerializeField] private int indexRoomWaypoints;
+    [SerializeField] private int _randomRoomIndex;
     [SerializeField] private bool searchingInRoom;
 
     [Header("--- FLAGS ---")] 
@@ -140,6 +141,11 @@ public class Soldier_IA : Enemy_IA
             
             if (Physics.Raycast(ray, out hit, 100f, playerMask, QueryTriggerInteraction.Ignore))
             {
+                if (Vector3.Distance(transform.position, hit.transform.position) > 2f && Random.Range(0f, 1f) > 0.30f)
+                {
+                    return;
+                }
+
                 if (hit.collider.CompareTag("PlayerRoot"))
                 {
                     hit.transform.GetComponent<PlayerHealth>().TakeDamage(10);
@@ -288,9 +294,17 @@ public class Soldier_IA : Enemy_IA
     //El NPC una vez la alarma esté activada se pondrá a buscar al player en las salas;
     private void SearchInRooms()
     {
-        int randomRoom = Random.Range(1, Level1Manager.instance.RoomsList.Count);
-        roomWaypoints.AddRange(Level1Manager.instance.RoomsList[randomRoom].GetComponentsInChildren<Transform>());
+        for (int i = 0; i < Level1Manager.instance.RoomsList.Count; i++)
+        {
+            if (!Level1Manager.instance.RoomsList[i].IsBeingSearched)
+            {
+                _randomRoomIndex = i;
+                break;
+            }
+        }
+        roomWaypoints.AddRange(Level1Manager.instance.RoomsList[_randomRoomIndex].GetComponentsInChildren<Transform>());
         roomWaypoints.Remove(roomWaypoints[0]);
+        Level1Manager.instance.RoomsList[_randomRoomIndex].IsBeingSearched = true;
         _navMeshAgent.speed = 0.9f;
         searchingInRoom = true;
     }
