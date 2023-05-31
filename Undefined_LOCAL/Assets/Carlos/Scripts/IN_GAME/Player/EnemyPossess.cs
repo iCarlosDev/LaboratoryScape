@@ -95,6 +95,7 @@ public class EnemyPossess : MonoBehaviour, I_Interact
     {
         if (closestEnemy == null) return;
       
+        AudioManager.instance.Play("PlayerPossess");
         SetTextInteract(false);
         AddEnemyCards();
         enemyFP.transform.position = closestEnemy.transform.position;

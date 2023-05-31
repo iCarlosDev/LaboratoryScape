@@ -75,7 +75,7 @@ public class EnemyDespossess : MonoBehaviour
         foreach (Enemy_IA enemy in Level1Manager.instance.EnemiesList)
         {
             //Igualamos el player de referencia al EnemyFP;
-            enemy.PlayerRef = player.transform.GetChild(4);
+            enemy.PlayerRef = player.transform.GetChild(3);
         }
 
         //Desactivamos el EnemyFP;

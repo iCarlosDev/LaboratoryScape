@@ -33,6 +33,7 @@ public class ButtonUnlockElevator : MonoBehaviour, I_Interact
         }
     }
 
+    [ContextMenu("Press Elevator Button")]
     private void PressButton()
     {
         if (isActivated) return;

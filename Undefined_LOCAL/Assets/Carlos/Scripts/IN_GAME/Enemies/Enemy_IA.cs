@@ -197,7 +197,11 @@ public class Enemy_IA : MonoBehaviour
     public void GoActivateAlarm()
     {
         //Si la alarma ya ha sido activada no realizara la lógica restante;
-        if (Level1Manager.instance.AlarmActivated) return;
+        if (Level1Manager.instance.AlarmActivated || _navMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
+        {
+            _navMeshAgent.enabled = false;
+            return;
+        }
         
         Debug.Log("<color=red>Going Activate Alarm</color>");
         Debug.Log(Vector3.Distance(transform.position, Level1Manager.instance.AlarmWaypoint.position));

@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoldierFP_Controller : EnemyController
 {
@@ -28,6 +29,8 @@ public class SoldierFP_Controller : EnemyController
     [SerializeField] private int ammoCapacity;
     [SerializeField] private int maxAmmo;
     [SerializeField] private int currentAmmo;
+    [SerializeField] private int numRays;
+    [SerializeField] private int spreadAngle;
     [SerializeField] private bool canShoot;
     [SerializeField] private bool isShotgun;
     
@@ -77,7 +80,7 @@ public class SoldierFP_Controller : EnemyController
         weaponHud.SetActive(_enemyDespossess.Enemy?.EnemyType != Enemy_IA.EnemyType_Enum.Scientist);
 
         maxAmmo = 30;
-        currentAmmo = maxAmmo;
+        currentAmmo = ammoCapacity;
     }
 
     private void OnDisable()
@@ -172,24 +175,31 @@ public class SoldierFP_Controller : EnemyController
         EZCameraShake.CameraShaker.Instance.ShakeOnce(magnitude, roughnes, fadeIn, fadeOut);
         
         CallNearSoldiers(10);
-        
-        Debug.DrawRay(cameraPivot.position, cameraPivot.forward * 10, Color.red, 3f);
-        
-        RaycastHit hit = new RaycastHit();
-        Ray ray = new Ray(cameraPivot.position, cameraPivot.forward);
 
-        //Cuando disparamos lanzamos un rayo que da información de con que ha impactado;
-        if (Physics.Raycast(ray, out hit, 100f, layerToDetect, QueryTriggerInteraction.Ignore))
+        for (int i = 0; i < numRays; i++)
         {
-            Instantiate(shootPrefab, hit.point, hit.transform.rotation);
+            // Calcular la dirección del rayo con dispersión
+            Quaternion spreadRotation = Quaternion.Euler(Random.Range(-spreadAngle, spreadAngle), Random.Range(-spreadAngle, spreadAngle), 0f);
+            Vector3 rayDirection = spreadRotation * cameraPivot.forward;
 
-            //Si impacta con un collider del enemy...;
-            if (hit.collider.CompareTag("EnemyCollider"))
+            Debug.DrawRay(cameraPivot.position, rayDirection * 10, Color.red, 3f);
+
+            RaycastHit hit;
+            Ray ray = new Ray(cameraPivot.position, rayDirection);
+
+            //Cuando disparamos lanzamos un rayo que da información de con que ha impactado;
+            if (Physics.Raycast(ray, out hit, 25f, layerToDetect, QueryTriggerInteraction.Ignore))
             {
-                Debug.Log(hit.collider.name);
+                Instantiate(shootPrefab, hit.point, hit.transform.rotation);
                 
-                //Llamamos al método que tendrá el collider con el que impactamos;
-                hit.collider.SendMessage("OnDamage", hit);
+                //Si impacta con un collider del enemy...;
+                if (hit.collider.CompareTag("EnemyCollider"))
+                {
+                    Debug.Log(hit.collider.name);
+                    
+                    //Llamamos al método que tendrá el collider con el que impactamos;
+                    hit.collider.SendMessage("OnDamage", hit);
+                }
             }
         }
 

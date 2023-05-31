@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Scientist_IA : Enemy_IA
 {
@@ -53,7 +54,8 @@ public class Scientist_IA : Enemy_IA
 
         if (!went1stSafeRoom)
         {
-            _navMeshAgent.SetDestination(Level1Manager.instance.SafeRoomWaypointsList[randomSafeRoomWaypoint].position);
+            //_navMeshAgent.SetDestination(Level1Manager.instance.SafeRoomWaypointsList[randomSafeRoomWaypoint].position);
+            _navMeshAgent.SetDestination(Level1Manager.instance.RoomsList[room].transform.GetChild(waypoint).position);
             went1stSafeRoom = true;
         }
 
@@ -71,9 +73,24 @@ public class Scientist_IA : Enemy_IA
 
     private void SearchSafeRoom()
     {
-        int RandomRoom = Random.Range(1, Level1Manager.instance.RoomsList.Count);
-        int RandomRoomWaypoint = Random.Range(1, Level1Manager.instance.RoomsList[RandomRoom].transform.childCount);
+        if (_navMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
+        {
+            _navMeshAgent.enabled = false;
+            return;
+        }
         
-        GoSafeRoom(RandomRoom, RandomRoomWaypoint);
+        int RandomRoom = Random.Range(1, Level1Manager.instance.RoomsList.Count);
+
+        for (int i = 0; i < Level1Manager.instance.RoomsList[RandomRoom].transform.childCount; i++)
+        {
+            if (!Level1Manager.instance.RoomsList[RandomRoom].transform.GetChild(i).GetComponent<WaypointControl>().IsOcuped)
+            {
+                randomSafeRoomWaypoint = i;
+                Level1Manager.instance.RoomsList[RandomRoom].transform.GetChild(i).GetComponent<WaypointControl>().IsOcuped = true;
+                break;
+            }
+        }
+        
+        GoSafeRoom(RandomRoom, randomSafeRoomWaypoint);
     }
 }
