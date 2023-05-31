@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
@@ -26,6 +24,7 @@ public class MainMenuLevelManager : MonoBehaviour
     {
         Background,
         MainMenu,
+        RepeatTutorial,
         Options,
         Credits
     }
@@ -37,7 +36,7 @@ public class MainMenuLevelManager : MonoBehaviour
         Controls,
         Audio
     }
-    
+
     [Header("--- MOUSE CONTROL ---")]
     [Space(10)]
     [SerializeField] private Vector3 lastMousePos;
@@ -48,6 +47,7 @@ public class MainMenuLevelManager : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject background_Canvas;
     [SerializeField] private GameObject mainMenu_Canvas;
+    [SerializeField] private GameObject repeatTutorial_Canvas;
     [SerializeField] private GameObject options_Canvas;
     [SerializeField] private GameObject graphics_Canvas;
     [SerializeField] private GameObject controls_Canvas;
@@ -59,6 +59,8 @@ public class MainMenuLevelManager : MonoBehaviour
     [SerializeField] private bool canNavigate;
     [SerializeField] private GameObject pressAnyButtonBTN;
     [SerializeField] private GameObject startBTN;
+    [SerializeField] private Animator repeatTutorialBTN_Animator;
+    [SerializeField] private GameObject firstRepeatTutorialBTN;
     [SerializeField] private Animator graphicsBTN_Animator;
     [SerializeField] private GameObject firstGraphicsBTN;
     [SerializeField] private Animator controlsBTN_Animator;
@@ -99,7 +101,6 @@ public class MainMenuLevelManager : MonoBehaviour
     [SerializeField] private Color greenColor;
     [SerializeField] private Color blueColor;
     [SerializeField] private Color whiteColor;
-
     
     [Header("--- Credits anim ---")]
     [SerializeField] private Animation credits;
@@ -244,7 +245,18 @@ public class MainMenuLevelManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        eventSystem.SetSelectedGameObject(firstRepeatTutorialBTN);
+        reselectLastSelectedOnInput.LastSelectedObject = firstRepeatTutorialBTN;
+
+        _menuTypeEnum = MenuType.RepeatTutorial;
+        
+        background_Canvas.SetActive(false);
+        mainMenu_Canvas.SetActive(false);
+        repeatTutorial_Canvas.SetActive(true);
+        options_Canvas.SetActive(false);
+        credits_Canvas.SetActive(false);
+        
+        //SceneManager.LoadScene(1);
     }
 
     //Método para ir al Menú Background;
@@ -257,6 +269,7 @@ public class MainMenuLevelManager : MonoBehaviour
         
         background_Canvas.SetActive(true);
         mainMenu_Canvas.SetActive(false);
+        repeatTutorial_Canvas.SetActive(false);
         options_Canvas.SetActive(false);
         credits_Canvas.SetActive(false);
     }
@@ -271,6 +284,7 @@ public class MainMenuLevelManager : MonoBehaviour
         
         background_Canvas.SetActive(false);
         mainMenu_Canvas.SetActive(true);
+        repeatTutorial_Canvas.SetActive(false);
         options_Canvas.SetActive(false);
         credits_Canvas.SetActive(false);
     }
@@ -283,6 +297,7 @@ public class MainMenuLevelManager : MonoBehaviour
         _menuTypeEnum = MenuType.Options;
         
         mainMenu_Canvas.SetActive(false);
+        repeatTutorial_Canvas.SetActive(false);
         options_Canvas.SetActive(true);
         credits_Canvas.SetActive(false);
         
@@ -296,6 +311,7 @@ public class MainMenuLevelManager : MonoBehaviour
         _menuTypeEnum = MenuType.Credits;
         
         mainMenu_Canvas.SetActive(false);
+        repeatTutorial_Canvas.SetActive(false);
         options_Canvas.SetActive(false);
         credits_Canvas.SetActive(true);
         credits.Play();
