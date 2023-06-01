@@ -56,6 +56,7 @@ public class FusiblesControl : MonoBehaviour
         DestroyFusibles();
     }
 
+    [ContextMenu("Destroy Fusibles")]
     private void DestroyFusibles()
     {
         playerScriptStorage.Animator.SetTrigger("RomperFusibles");

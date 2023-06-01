@@ -319,7 +319,7 @@ public class Soldier_IA : Enemy_IA
     //Método para actualizar el waypoint al que tiene que ir el NPC;
     private void UpdateRoomWaypoint()
     {
-        if (Vector3.Distance(transform.position, _navMeshAgent.destination) < 0.5f)
+        if (Vector3.Distance(transform.position, _navMeshAgent.destination) < 1f)
         {
             indexRoomWaypoints = (indexRoomWaypoints + 1) % roomWaypoints.Count;
             _navMeshAgent.SetDestination(roomWaypoints[indexRoomWaypoints].position);

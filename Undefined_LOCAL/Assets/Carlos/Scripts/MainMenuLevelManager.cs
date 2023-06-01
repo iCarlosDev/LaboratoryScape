@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -59,7 +60,6 @@ public class MainMenuLevelManager : MonoBehaviour
     [SerializeField] private bool canNavigate;
     [SerializeField] private GameObject pressAnyButtonBTN;
     [SerializeField] private GameObject startBTN;
-    [SerializeField] private Animator repeatTutorialBTN_Animator;
     [SerializeField] private GameObject firstRepeatTutorialBTN;
     [SerializeField] private Animator graphicsBTN_Animator;
     [SerializeField] private GameObject firstGraphicsBTN;
@@ -245,18 +245,13 @@ public class MainMenuLevelManager : MonoBehaviour
 
     public void StartGame()
     {
-        eventSystem.SetSelectedGameObject(firstRepeatTutorialBTN);
-        reselectLastSelectedOnInput.LastSelectedObject = firstRepeatTutorialBTN;
-
-        _menuTypeEnum = MenuType.RepeatTutorial;
+        if (!CheckpointsManager.instance.TutorialCompleted)
+        {
+            SceneManager.LoadScene(1);
+            return;
+        }
         
-        background_Canvas.SetActive(false);
-        mainMenu_Canvas.SetActive(false);
-        repeatTutorial_Canvas.SetActive(true);
-        options_Canvas.SetActive(false);
-        credits_Canvas.SetActive(false);
-        
-        //SceneManager.LoadScene(1);
+        GoRepeatTutorial();
     }
 
     //Método para ir al Menú Background;
@@ -323,6 +318,36 @@ public class MainMenuLevelManager : MonoBehaviour
         Application.Quit();
     }
     
+    #endregion
+
+    #region - REPEAT TUTORIAL -
+
+    public void OpenRepeatTutorial()
+    {
+        eventSystem.SetSelectedGameObject(firstRepeatTutorialBTN);
+        reselectLastSelectedOnInput.LastSelectedObject = firstRepeatTutorialBTN;
+
+        _menuTypeEnum = MenuType.RepeatTutorial;
+        
+        background_Canvas.SetActive(false);
+        mainMenu_Canvas.SetActive(false);
+        repeatTutorial_Canvas.SetActive(true);
+        options_Canvas.SetActive(false);
+        credits_Canvas.SetActive(false);
+    }
+    
+    public void RepeatTutorial()
+    {
+        CheckpointsManager.instance.TutorialCompleted = false;
+        CheckpointsManager.instance.SaveCheckpoint();
+        SceneManager.LoadScene(1);
+    }
+
+    public void NoRepeatTutorial()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     #endregion
 
     #region - OPTIONS -
@@ -430,27 +455,36 @@ public class MainMenuLevelManager : MonoBehaviour
         _animator.SetTrigger("GoBackground");
     }
     
-    private void GoMenu()
+    public void GoMenu()
     {
         _animator.SetTrigger("GoMenu");
         GetVolumeParameters(blueColor);
         
-        if (_menuTypeEnum == MenuType.Background)
+        switch (_menuTypeEnum)
         {
-            _animator.SetTrigger("RemoveBackground");
-            return;
+            case MenuType.Background:
+                _animator.SetTrigger("RemoveBackground");
+                return;
+            case MenuType.RepeatTutorial:
+                _animator.SetTrigger("RemoveRepeatTutorial");
+                break;
+            case MenuType.Options:
+                _animator.SetTrigger("RemoveOptions");
+                return;
+            case MenuType.Credits:
+                _animator.SetTrigger("RemoveCredits");
+                break;
+            case MenuType.MainMenu:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
+    }
 
-        if (_menuTypeEnum == MenuType.Options)
-        {
-            _animator.SetTrigger("RemoveOptions");
-            return;
-        }
-        
-        if (_menuTypeEnum == MenuType.Credits)
-        {
-            _animator.SetTrigger("RemoveCredits");
-        }
+    public void GoRepeatTutorial()
+    {
+        _animator.SetTrigger("RemoveMenu");
+        _animator.SetTrigger("GoRepeatTutorial");
     }
 
     public void GoOptions()

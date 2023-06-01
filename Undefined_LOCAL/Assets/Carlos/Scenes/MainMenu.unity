@@ -1108,7 +1108,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   background_Canvas: {fileID: 1223265192}
   mainMenu_Canvas: {fileID: 9675479}
-  repeatTutorial_Canvas: {fileID: 0}
+  repeatTutorial_Canvas: {fileID: 986082570}
   options_Canvas: {fileID: 1592749190}
   graphics_Canvas: {fileID: 1424360093}
   controls_Canvas: {fileID: 171238679}
@@ -1117,8 +1117,7 @@ MonoBehaviour:
   canNavigate: 0
   pressAnyButtonBTN: {fileID: 314338983}
   startBTN: {fileID: 615461844}
-  repeatTutorialBTN_Animator: {fileID: 0}
-  firstRepeatTutorialBTN: {fileID: 0}
+  firstRepeatTutorialBTN: {fileID: 1693983497}
   graphicsBTN_Animator: {fileID: 2142795822}
   firstGraphicsBTN: {fileID: 918738291}
   controlsBTN_Animator: {fileID: 1429606032}
@@ -1686,6 +1685,8 @@ GameObject:
   - component: {fileID: 162153577}
   - component: {fileID: 162153576}
   - component: {fileID: 162153575}
+  - component: {fileID: 162153578}
+  - component: {fileID: 162153579}
   m_Layer: 0
   m_Name: No_BTN
   m_TagString: Untagged
@@ -1727,13 +1728,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+    m_SelectOnLeft: {fileID: 1693983499}
+    m_SelectOnRight: {fileID: 1693983499}
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -1757,7 +1758,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 162153576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 87685647}
+        m_TargetAssemblyTypeName: MainMenuLevelManager, Assembly-CSharp
+        m_MethodName: NoRepeatTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &162153576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1771,7 +1784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1796,6 +1809,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162153573}
   m_CullTransparentMesh: 1
+--- !u!95 &162153578
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162153573}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6a49df0ed6e9a4e40a479da99e20cbb9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &162153579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162153573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d570b5defc5c0e4bab52e66fdc08d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 0}
+  slider: {fileID: 0}
+  leftBTN: {fileID: 0}
+  rightBTN: {fileID: 0}
 --- !u!1 &169017999
 GameObject:
   m_ObjectHideFlags: 0
@@ -9804,7 +9853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &986082571
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10168,8 +10217,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286611584
+  m_fontColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16764,6 +16813,8 @@ GameObject:
   - component: {fileID: 1693983501}
   - component: {fileID: 1693983500}
   - component: {fileID: 1693983499}
+  - component: {fileID: 1693983502}
+  - component: {fileID: 1693983503}
   m_Layer: 0
   m_Name: Yes_BTN
   m_TagString: Untagged
@@ -16805,13 +16856,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+    m_SelectOnLeft: {fileID: 162153575}
+    m_SelectOnRight: {fileID: 162153575}
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -16835,7 +16886,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1693983500}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 87685647}
+        m_TargetAssemblyTypeName: MainMenuLevelManager, Assembly-CSharp
+        m_MethodName: RepeatTutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1693983500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16849,7 +16912,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16874,6 +16937,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693983497}
   m_CullTransparentMesh: 1
+--- !u!95 &1693983502
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693983497}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b819302f5a59f584a8fc92df0784b3ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1693983503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693983497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d570b5defc5c0e4bab52e66fdc08d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 0}
+  slider: {fileID: 0}
+  leftBTN: {fileID: 0}
+  rightBTN: {fileID: 0}
 --- !u!1001 &1700216315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16986,7 +17085,7 @@ GameObject:
   - component: {fileID: 1714263520}
   - component: {fileID: 1714263519}
   m_Layer: 0
-  m_Name: No_BTN
+  m_Name: No_TMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17042,8 +17141,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4286611584
+  m_fontColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
