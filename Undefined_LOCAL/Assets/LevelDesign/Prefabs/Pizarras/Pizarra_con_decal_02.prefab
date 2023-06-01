@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 4602196922605591126}
   - component: {fileID: 7691562659143211807}
   - component: {fileID: 5462041463892759098}
+  - component: {fileID: 7713308409895659176}
   m_Layer: 0
   m_Name: Soporte_
   m_TagString: Untagged
@@ -174,6 +175,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7713308409895659176
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934790199686213115}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6820772939612344788, guid: 66b11f77e26eba04e9cd27bbd2954d03, type: 3}
 --- !u!1 &2978473983028548847
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,6 +266,7 @@ GameObject:
   - component: {fileID: 4870942850684026179}
   - component: {fileID: 2320353094045059548}
   - component: {fileID: 5219616866697464691}
+  - component: {fileID: 1693139795831585301}
   m_Layer: 0
   m_Name: Rueda_
   m_TagString: Untagged
@@ -323,6 +339,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1693139795831585301
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786811809743223643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6422503450883564190, guid: 66b11f77e26eba04e9cd27bbd2954d03, type: 3}
 --- !u!1 &8753885432225296709
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +364,7 @@ GameObject:
   - component: {fileID: 6721024078534981435}
   - component: {fileID: 691942843215047244}
   - component: {fileID: 6488688155322838352}
+  - component: {fileID: 388414487774486031}
   m_Layer: 0
   m_Name: Pizarra_pared
   m_TagString: Untagged
@@ -406,3 +437,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &388414487774486031
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753885432225296709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3015161877168995361, guid: 66b11f77e26eba04e9cd27bbd2954d03, type: 3}
