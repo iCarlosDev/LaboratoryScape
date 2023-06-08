@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8106379326960813382}
   - component: {fileID: 2120602990373904478}
   - component: {fileID: 6747325537541774897}
+  - component: {fileID: 1458106822509792420}
   m_Layer: 0
   m_Name: Camara_
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1458106822509792420
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699158873527944378}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5581234636565850295, guid: ea0b03db52b4b37499113b36221a29c1, type: 3}
 --- !u!1 &2713862396140851233
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +145,7 @@ GameObject:
   - component: {fileID: 5681000465484736485}
   - component: {fileID: 1318124466171125216}
   - component: {fileID: 3391370697632971354}
+  - component: {fileID: 2465664901973655073}
   m_Layer: 0
   m_Name: Soporte_Base_
   m_TagString: Untagged
@@ -202,6 +218,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2465664901973655073
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3156471562474836072}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3308229194991166864, guid: ea0b03db52b4b37499113b36221a29c1, type: 3}
 --- !u!1 &3761995248321528329
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +243,7 @@ GameObject:
   - component: {fileID: 7916326563936509489}
   - component: {fileID: 330208796313257921}
   - component: {fileID: 769658734736591566}
+  - component: {fileID: 245501023235704119}
   m_Layer: 0
   m_Name: Palo_2
   m_TagString: Untagged
@@ -285,6 +316,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &245501023235704119
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761995248321528329}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7641118494805235558, guid: ea0b03db52b4b37499113b36221a29c1, type: 3}
 --- !u!1 &5774089513863398422
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,6 +341,7 @@ GameObject:
   - component: {fileID: 6223608321843628589}
   - component: {fileID: 6287542274788546196}
   - component: {fileID: 2803398676975324140}
+  - component: {fileID: 2094676558244604880}
   m_Layer: 0
   m_Name: Eje_camara
   m_TagString: Untagged
@@ -368,6 +414,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2094676558244604880
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774089513863398422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4101353073444945657, guid: ea0b03db52b4b37499113b36221a29c1, type: 3}
 --- !u!1 &7714237016828798800
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +439,7 @@ GameObject:
   - component: {fileID: 2321520746313631843}
   - component: {fileID: 1330389574674236070}
   - component: {fileID: 8816753860233288273}
+  - component: {fileID: 4083482017849895647}
   m_Layer: 0
   m_Name: Palo
   m_TagString: Untagged
@@ -451,3 +512,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4083482017849895647
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7714237016828798800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7474416907732798467, guid: ea0b03db52b4b37499113b36221a29c1, type: 3}

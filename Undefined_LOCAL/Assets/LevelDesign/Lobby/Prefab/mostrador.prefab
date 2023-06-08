@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 1060456155828619091}
   - component: {fileID: 2275722329095475253}
   - component: {fileID: 3421951319315339473}
+  - component: {fileID: 8533008886004379553}
   m_Layer: 0
   m_Name: MarcoMostrador_LuzMostrador
   m_TagString: Untagged
@@ -116,6 +117,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8533008886004379553
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7596759332798710860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7730367435848789152, guid: aceaa65993303fc4c9112d348dc11c59, type: 3}
 --- !u!1 &9114286856086481635
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +142,7 @@ GameObject:
   - component: {fileID: 5391109606146913434}
   - component: {fileID: 3751608771651413149}
   - component: {fileID: 4619801909137679455}
+  - component: {fileID: 4249018524715773014}
   m_Layer: 0
   m_Name: Mostrador
   m_TagString: Untagged
@@ -199,3 +215,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4249018524715773014
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9114286856086481635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1506752464880098379, guid: aceaa65993303fc4c9112d348dc11c59, type: 3}

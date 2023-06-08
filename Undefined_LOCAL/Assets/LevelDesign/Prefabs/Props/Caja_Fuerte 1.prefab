@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1637459690387713946}
   - component: {fileID: 2384294799929483327}
   - component: {fileID: 500533105095562485}
+  - component: {fileID: 5365885312145131690}
   m_Layer: 0
   m_Name: Caja_Fuerte 1
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5365885312145131690
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157994176827159840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6107813530110058931, guid: 92f274016edbfdd4a812e7e2e930f8f6, type: 3}
 --- !u!1 &7600392048680624356
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +110,7 @@ GameObject:
   - component: {fileID: 6360149745109605691}
   - component: {fileID: 7622894154079379528}
   - component: {fileID: 2669839863134675789}
+  - component: {fileID: 133075543544914896}
   m_Layer: 0
   m_Name: Manecilla_1
   m_TagString: Untagged
@@ -167,3 +183,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &133075543544914896
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7600392048680624356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3564115249080297311, guid: 92f274016edbfdd4a812e7e2e930f8f6, type: 3}
