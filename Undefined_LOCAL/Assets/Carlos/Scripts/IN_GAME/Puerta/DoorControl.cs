@@ -6,6 +6,7 @@ using UnityEngine;
 public class DoorControl : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private BoxCollider boxCollider;
     [SerializeField] private MeshRenderer emissiveMesh;
     [SerializeField] private Material blueCardMaterial;
@@ -40,6 +41,7 @@ public class DoorControl : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider>();
     }
 
@@ -87,6 +89,7 @@ public class DoorControl : MonoBehaviour
             return;
         }
         
+        _audioSource.PlayOneShot(_audioSource.clip);
         _animator.SetTrigger("DoorOpen");
     }
     
@@ -110,6 +113,7 @@ public class DoorControl : MonoBehaviour
         if (!boxCollider.enabled) yield break;
         
         _animator.SetTrigger("DoorClose");
+        _audioSource.PlayOneShot(_audioSource.clip);
     }
     
     private void OnTriggerEnter(Collider other)
