@@ -18,7 +18,7 @@ public class StartGame : MonoBehaviour
             op.allowSceneActivation = false;
             while ( !op.isDone )
             {
-                if (op.progress >= 0.9f)
+                if (op.progress >= 0.99f)
                 {
                     op.allowSceneActivation = true;   
                 }
