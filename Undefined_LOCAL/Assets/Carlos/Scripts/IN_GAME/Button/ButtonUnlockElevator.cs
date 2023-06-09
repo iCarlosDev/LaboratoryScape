@@ -56,23 +56,23 @@ public class ButtonUnlockElevator : MonoBehaviour, I_Interact
         Level1Manager.instance.InteractCanvas.GetComponentInChildren<TextMeshProUGUI>().text = $"Press E to Interact";
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if ((other.CompareTag("PlayerRoot") || other.CompareTag("PlayerRootFP")) && !isActivated)
-        {
-            canPress = true;
-            SetOultine(true);
-            SetTextInteract(true);
-        }
+        if ((!other.CompareTag("PlayerRoot") && !other.CompareTag("PlayerRootFP")) || isActivated) return;
+
+        if (Vector3.Distance(other.transform.position, transform.position) > 1f) return;
+
+        canPress = true;
+        SetOultine(true);
+        SetTextInteract(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if ((other.CompareTag("PlayerRoot") || other.CompareTag("PlayerRootFP")) && !isActivated)
-        {
-            canPress = false;
-            SetOultine(false);
-            SetTextInteract(false);
-        }
+        if ((!other.CompareTag("PlayerRoot") && !other.CompareTag("PlayerRootFP")) || isActivated) return;
+        
+        canPress = false;
+        SetOultine(false);
+        SetTextInteract(false);
     }
 }
