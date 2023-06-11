@@ -2884,7 +2884,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 4559934169586597653}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.00001
   m_Speed: 0.9
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2931,6 +2931,7 @@ MonoBehaviour:
   stompCollider: {fileID: 817909391}
   roomWaypoints: []
   indexRoomWaypoints: 0
+  _randomRoomIndex: 0
   searchingInRoom: 0
   canStomp: 0
   playerFinded: 0
@@ -2967,9 +2968,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.34
-  m_Height: 1.83
+  m_Height: 1.8912568
   m_Direction: 1
-  m_Center: {x: 0, y: 0.93, z: 0}
+  m_Center: {x: -0, y: 0.8993695, z: 0}
 --- !u!114 &3713580896163671626
 MonoBehaviour:
   m_ObjectHideFlags: 0
