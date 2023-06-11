@@ -245,6 +245,7 @@ public class MainMenuLevelManager : MonoBehaviour
 
     public void StartGame()
     {
+        AudioManager.instance.Stop("MainTheme");
         if (!CheckpointsManager.instance.TutorialCompleted)
         {
             SceneManager.LoadScene(1);
