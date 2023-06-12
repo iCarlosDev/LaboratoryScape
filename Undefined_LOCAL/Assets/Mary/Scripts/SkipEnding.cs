@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SkipIntro : MonoBehaviour
+public class SkipEnding : MonoBehaviour
 {
     [SerializeField] private GameObject enableButtonUI;
     private bool skipIntro = false;
@@ -23,7 +23,7 @@ public class SkipIntro : MonoBehaviour
         }
         if (Input.anyKey && skipIntro)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(0);
         }
     }
     IEnumerator SkipIntroCoroutine()
