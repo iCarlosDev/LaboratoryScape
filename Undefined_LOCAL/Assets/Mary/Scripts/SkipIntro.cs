@@ -29,7 +29,7 @@ public class SkipIntro : MonoBehaviour
     IEnumerator SkipIntroCoroutine()
     {
         // suspend execution for 5 seconds
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         skipIntro = true;
     }
 }
