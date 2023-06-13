@@ -23,6 +23,7 @@ public class SoldierFP_Controller : EnemyController
     [Space(10)]
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private Transform shootPrefab;
+    [SerializeField] private Transform _shotgunCanon;
     [SerializeField] private TextMeshProUGUI ammoTMP;
     [SerializeField] private LayerMask layerToDetect;
     [SerializeField] private LayerMask enemyLayer;
@@ -51,6 +52,8 @@ public class SoldierFP_Controller : EnemyController
     [SerializeField] private float roughnes;
     [SerializeField] private float fadeIn;
     [SerializeField] private float fadeOut;
+    
+    [SerializeField] private GameObject _bulletPrefab;
     
     //GETTER && SETTERS//
     public Transform CameraPivot => cameraPivot;
@@ -170,7 +173,7 @@ public class SoldierFP_Controller : EnemyController
 
         //Aplicamos un shake a la cámara para dar efecto de disparo;
         EZCameraShake.CameraShaker.Instance.ShakeOnce(magnitude, roughnes, fadeIn, fadeOut);
-
+        
         CallNearSoldiers(10);
 
         for (int i = 0; i < numRays; i++)
@@ -180,6 +183,8 @@ public class SoldierFP_Controller : EnemyController
             Vector3 rayDirection = spreadRotation * cameraPivot.forward;
 
             Debug.DrawRay(cameraPivot.position, rayDirection * 10, Color.red, 3f);
+            GameObject bullet = Instantiate(_bulletPrefab, _shotgunCanon.position, _shotgunCanon.rotation);
+            bullet.GetComponent<Rigidbody>().AddForce(rayDirection * 100, ForceMode.Impulse);
 
             RaycastHit hit;
             Ray ray = new Ray(cameraPivot.position, rayDirection);

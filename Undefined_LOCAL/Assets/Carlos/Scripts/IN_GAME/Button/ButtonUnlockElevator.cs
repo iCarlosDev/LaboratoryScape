@@ -31,6 +31,11 @@ public class ButtonUnlockElevator : MonoBehaviour, I_Interact
         {
             PressButton();
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            PressButton();
+        }
     }
 
     [ContextMenu("Press Elevator Button")]

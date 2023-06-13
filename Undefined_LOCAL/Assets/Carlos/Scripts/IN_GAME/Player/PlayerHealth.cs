@@ -76,6 +76,11 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            currentHealth = 999999;
+        }
     }
 
     //Método para quitarle vida al player;

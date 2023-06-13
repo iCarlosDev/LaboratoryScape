@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &343447399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 343447400}
+  m_Layer: 0
+  m_Name: Canon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &343447400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343447399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.0743, z: 0.6754}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8711910862639131634}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &743566616
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,6 +3822,7 @@ Transform:
   - {fileID: 5283846163952111131}
   - {fileID: 5972195211249946194}
   - {fileID: 1911471167524752130}
+  - {fileID: 343447400}
   m_Father: {fileID: 2864161520143117326}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -82.654, y: -83.902, z: 172.96}
@@ -4044,6 +4076,7 @@ MonoBehaviour:
   crosshair: {fileID: 8711910863195917578}
   weaponHud: {fileID: 8711910862291948135}
   cameraPivot: {fileID: 8711910863800058313}
+  _shotgunCanon: {fileID: 343447400}
   shootPrefab: {fileID: 7592736012860411873, guid: fd7f749d293a4b7458ca7945ac98568b,
     type: 3}
   ammoTMP: {fileID: 8711910863614660034}
@@ -4069,6 +4102,8 @@ MonoBehaviour:
   roughnes: 3
   fadeIn: 0.1
   fadeOut: 1
+  _bulletPrefab: {fileID: 4311244427397036151, guid: 909dd3231589f754a9261440fbe92adf,
+    type: 3}
 --- !u!114 &1086703862
 MonoBehaviour:
   m_ObjectHideFlags: 0
