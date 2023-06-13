@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class Soldier_IA : Enemy_IA
 {
+    [SerializeField] private AudioSource _audioSource;
+    
     private Coroutine findPlayerCooldown;
     private Coroutine findInRoomCooldown;
 
@@ -41,6 +43,8 @@ public class Soldier_IA : Enemy_IA
     public override void Start()
     {
         base.Start();
+        _audioSource = GetComponent<AudioSource>();
+        
         canStomp = true;
         //canShoot = true;
     }
@@ -134,7 +138,7 @@ public class Soldier_IA : Enemy_IA
             
             Vector3 direction = playerRef.position - shootPos.position;
             Debug.DrawRay(shootPos.position, direction, Color.red, 1f);
-            
+
             Ray ray = new Ray(shootPos.position, direction);
             RaycastHit hit;
             
@@ -156,6 +160,7 @@ public class Soldier_IA : Enemy_IA
                 }
             }
 
+            _audioSource.PlayOneShot(_audioSource.clip);
             fireRateTime = Time.time + fireRate;
         }
     }

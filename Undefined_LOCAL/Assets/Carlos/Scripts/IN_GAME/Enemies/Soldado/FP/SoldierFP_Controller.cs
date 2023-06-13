@@ -57,12 +57,6 @@ public class SoldierFP_Controller : EnemyController
 
     ///////////////////////////////
 
-    public override void Awake()
-    {
-        base.Awake();
-        weaponHud = transform.GetChild(1).gameObject;
-    }
-
     private void Start()
     {
         canShoot = true;
@@ -106,7 +100,9 @@ public class SoldierFP_Controller : EnemyController
         //Si apretamos el click Izquierdo y podemos disparar llamaremos al método "Fire";
         if (Input.GetButtonDown("Fire1") && canShoot && currentAmmo != 0)
         {
-            Fire(); 
+            Fire();
+            AudioManager.instance.Play("EnemyShoot");
+            Debug.LogWarning("SHOOOOT");
         }
         //Si nos quedamos sin balas en el cargador y disparamos recargará automaticamente;
         else if (Input.GetButtonDown("Fire1") && canShoot && canReload)
@@ -174,7 +170,7 @@ public class SoldierFP_Controller : EnemyController
 
         //Aplicamos un shake a la cámara para dar efecto de disparo;
         EZCameraShake.CameraShaker.Instance.ShakeOnce(magnitude, roughnes, fadeIn, fadeOut);
-        
+
         CallNearSoldiers(10);
 
         for (int i = 0; i < numRays; i++)

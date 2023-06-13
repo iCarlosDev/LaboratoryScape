@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float turnSmoothTime;
 
     private float turnSmoothVelocity;
+    public int movementSoundIndex;
+    [SerializeField] private List<AudioClip> _audioClipsList;
+    [SerializeField] private AudioSource _audioSource;
 
     [Header("--- JUMP ---")] 
     [Space(10)] 
@@ -47,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _characterController = GetComponent<CharacterController>();
         _playerScriptStorage = GetComponent<PlayerScriptStorage>();
         playerCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>().transform;
@@ -233,6 +238,20 @@ public class PlayerMovement : MonoBehaviour
     public void ActivarAlarmaPorFusibles()
     {
         FindObjectOfType<Enemy_IA>()?.AlarmActivated();
+    }
+
+    public void PlayMovementSound()
+    {
+        //movementSoundIndex = Random.Range(0, _audioClipsList.Count-1);
+        
+        _audioSource.PlayOneShot(_audioClipsList[movementSoundIndex]);
+        
+        movementSoundIndex++;
+
+        if (movementSoundIndex == 5)
+        {
+            movementSoundIndex = 0;
+        }
     }
 
     private void OnTriggerStay(Collider other)

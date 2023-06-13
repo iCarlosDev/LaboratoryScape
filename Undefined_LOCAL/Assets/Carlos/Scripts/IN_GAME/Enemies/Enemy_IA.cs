@@ -22,8 +22,9 @@ public class Enemy_IA : MonoBehaviour
     [SerializeField] protected Transform playerRef;
     [SerializeField] private bool isPlayerDetected;
 
-    [Header("--- HEALTH ---")]
-    [Space(10)]
+    [Header("--- HEALTH ---")] 
+    [Space(10)] 
+    [SerializeField] private ParticleSystem _bloodParticle;
     [SerializeField] protected int maxHealth;
     [SerializeField] protected int currentHealth;
     [SerializeField] protected bool isDead;
@@ -185,6 +186,8 @@ public class Enemy_IA : MonoBehaviour
     //Método para actualizar el waypoint al que tiene que ir el NPC;
     private void UpdateWaypoint()
     {
+        if (_navMeshAgent == null) return;
+        
         waypointsListIndex = (waypointsListIndex + 1) % waypointsList.Count;
         _navMeshAgent.SetDestination(waypointsList[waypointsListIndex].position);
     }
@@ -246,6 +249,8 @@ public class Enemy_IA : MonoBehaviour
         {
             currentHealth -= damage;
             isPlayerDetected = true;
+            
+            _bloodParticle.Play();
 
             if (enemyType == EnemyType_Enum.Soldier && !_enemyScriptStorage.FieldOfView.canSeePlayer)
             {
@@ -273,7 +278,6 @@ public class Enemy_IA : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        _navMeshAgent.ResetPath();
         _navMeshAgent.enabled = false;
         _animator.enabled = false;
         _enemyScriptStorage.FieldOfView.gameObject.SetActive(false);
