@@ -6,7 +6,7 @@ public class PlayerScriptStorage : MonoBehaviour
 {
 
     [Header("--- COMPONENTS ---")] 
-    [Space(10)] 
+    [Space(10)] [SerializeField] private GameObject _mainCamera;
     [SerializeField] private Animator _animator;
     [SerializeField] private CinemachineFreeLook freeLookCamera;
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
@@ -20,6 +20,7 @@ public class PlayerScriptStorage : MonoBehaviour
     [SerializeField] private DoorCard _doorCard;
     
     //GETTERS && SETTERS//
+    public GameObject MainCamera => _mainCamera;
     public PlayerMovement PlayerMovement => _playerMovement;
     public EnemyPossess EnemyPossess => _enemyPossess;
     public PlayerHealth PlayerHealth => _playerHealth;
@@ -32,6 +33,7 @@ public class PlayerScriptStorage : MonoBehaviour
     
     private void Awake()
     {
+        _mainCamera = FindObjectOfType<CinemachineBrain>().gameObject;
         _playerMovement = GetComponent<PlayerMovement>();
         _enemyPossess = GetComponentInChildren<EnemyPossess>();
         _playerHealth = GetComponent<PlayerHealth>();

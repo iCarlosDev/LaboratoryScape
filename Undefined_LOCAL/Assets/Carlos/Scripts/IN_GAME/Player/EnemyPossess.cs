@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using EPOOutline;
 using TMPro;
 using UnityEngine;
@@ -45,6 +46,7 @@ public class EnemyPossess : MonoBehaviour, I_Interact
     private void OnDisable()
     {
         haveCooldown = true;
+        _playerScriptStorage.MainCamera.SetActive(false);
     }
 
     void Start()

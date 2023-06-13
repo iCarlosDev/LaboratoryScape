@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Cinemachine;
 using UnityEngine;
 
 public class EnemyDespossess : MonoBehaviour
@@ -68,6 +69,7 @@ public class EnemyDespossess : MonoBehaviour
         enemy.Die();
         
         //Activamos al player;
+        _playerScriptStorage.MainCamera.SetActive(true);
         player.SetActive(true);
         _playerScriptStorage.PlayerHealth.AddHealth(30);
 

@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &107299492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107299493}
+  - component: {fileID: 107299496}
+  - component: {fileID: 107299495}
+  - component: {fileID: 107299494}
+  m_Layer: 6
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107299493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107299492}
+  m_LocalRotation: {x: 0.31435505, y: -0, z: -0, w: 0.9493055}
+  m_LocalPosition: {x: 0, y: -0.05594, z: -0.0153}
+  m_LocalScale: {x: -0.018696846, y: -0.00063597667, z: -0.0009441155}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 358930396070177978}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 36.644, y: 0, z: 0}
+--- !u!33 &107299496
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107299492}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &107299495
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107299492}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &107299494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107299492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &359754856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,16 +1304,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 4224094529887105124}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -1252,11 +1369,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1e-45
+      value: 1.472692e-39
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.3e-44
+      value: 1.471688e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.471924e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.472484e-39
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -1418,16 +1543,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -1463,15 +1608,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: -5.422707e+19
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: -5.6993194e+19
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 5.55e-43
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -2384,16 +2533,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 4224094529887105124}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -2429,7 +2598,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 3.4e-44
+      value: 6.2e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 5.9e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6e-44
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -3291,16 +3472,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -3336,7 +3537,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1e-45
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.6e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 6.7e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -3508,16 +3721,36 @@ PrefabInstance:
       value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -3553,11 +3786,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 4.3371973e+18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: 1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -3798,16 +4035,36 @@ PrefabInstance:
       value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -3843,7 +4100,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 3.4e-44
+      value: 6.75e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.71e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 6.73e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.74e-43
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -4192,7 +4461,7 @@ PrefabInstance:
     - target: {fileID: 358930397485121444, guid: ebb1c4167882a6b448785354dfed9353,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1618143
+      value: 1.198665
       objectReference: {fileID: 0}
     - target: {fileID: 358930397485121444, guid: ebb1c4167882a6b448785354dfed9353,
         type: 3}
@@ -4336,6 +4605,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebb1c4167882a6b448785354dfed9353, type: 3}
+--- !u!4 &358930396070177978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 358930397485121444, guid: ebb1c4167882a6b448785354dfed9353,
+    type: 3}
+  m_PrefabInstance: {fileID: 1575670558}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &543450652166567157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ebb1c4167882a6b448785354dfed9353,
@@ -4396,16 +4671,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -4441,11 +4736,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: NaN
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: NaN
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -4698,16 +4997,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -4743,11 +5062,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: -9.000023
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: NaN
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -11085,6 +11412,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entrada_Sala_Generadores_Fix
       objectReference: {fileID: 0}
+    - target: {fileID: 4205958519014603411, guid: 89f18926488177e40932e2c225efbd4d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89f18926488177e40932e2c225efbd4d, type: 3}
 --- !u!4 &2485648192847006202 stripped
@@ -15191,6 +15523,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 480b610beebbe934d9d3be3bd1028a81, type: 2}
+    - target: {fileID: -100142611571727383, guid: 20e93bafccbdd0f47a97d09680b9ee72,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 409520342861909223, guid: 20e93bafccbdd0f47a97d09680b9ee72,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15200,6 +15537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SERVER_TUNEL
+      objectReference: {fileID: 0}
+    - target: {fileID: 1814913351719446211, guid: 20e93bafccbdd0f47a97d09680b9ee72,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6477627732956082162, guid: 20e93bafccbdd0f47a97d09680b9ee72,
         type: 3}
@@ -27833,16 +28175,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 6069418797712223351}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Override
@@ -27871,6 +28233,22 @@ PrefabInstance:
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_Lightmapping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0.006048829
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -29403,16 +29781,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -29448,11 +29846,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1e-45
+      value: -1.469441e-39
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: 1.472658e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.472686e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -36341,16 +36747,36 @@ PrefabInstance:
       value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Override
@@ -36379,6 +36805,22 @@ PrefabInstance:
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_Lightmapping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.46966e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.46953e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.469536e-39
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -46339,16 +46781,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -46384,15 +46846,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 4.3371778e+18
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 3.4e-44
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -48770,6 +49236,26 @@ PrefabInstance:
       propertyPath: m_Lightmapping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1082458028675660847, guid: 53dcfda6c4e7d884fb851d7f8424d096,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082458028675660847, guid: 53dcfda6c4e7d884fb851d7f8424d096,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.75e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082458028675660847, guid: 53dcfda6c4e7d884fb851d7f8424d096,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.8e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082458028675660847, guid: 53dcfda6c4e7d884fb851d7f8424d096,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1621692834782615366, guid: 53dcfda6c4e7d884fb851d7f8424d096,
         type: 3}
       propertyPath: m_FadeDistance
@@ -48783,7 +49269,7 @@ PrefabInstance:
     - target: {fileID: 1621692834782615366, guid: 53dcfda6c4e7d884fb851d7f8424d096,
         type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1621692834782615366, guid: 53dcfda6c4e7d884fb851d7f8424d096,
         type: 3}
@@ -59161,16 +59647,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 6069418797712223351}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Override
@@ -59198,6 +59704,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
@@ -62391,16 +62905,36 @@ PrefabInstance:
       value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Override
@@ -66692,16 +67226,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 4224094529887105124}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -66737,11 +67291,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.3563156e-19
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 4.5905e-41
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -68781,16 +69343,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 4224094529887105124}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -68826,11 +69408,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 4.3371973e+18
+      value: 7.27e-43
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: 7.22e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.23e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.26e-43
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -72430,16 +73020,36 @@ PrefabInstance:
       value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Override
@@ -72468,6 +73078,22 @@ PrefabInstance:
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_Lightmapping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 5.24e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.65e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.68e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 5.21e-43
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -73808,16 +74434,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 4224094529887105124}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -73853,11 +74499,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 4.3371973e+18
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -75887,16 +76541,36 @@ PrefabInstance:
       value: 3.68
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Override
@@ -75925,6 +76599,14 @@ PrefabInstance:
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_Lightmapping
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -2.0000021
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -82261,16 +82943,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -82306,19 +83008,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 6.345983e+16
+      value: 5.42e-43
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 6.7094695e+22
+      value: 5.38e-43
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: NaN
+      value: 5.4e-43
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 9.464415e+21
+      value: 5.41e-43
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -84681,16 +85383,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 2724034596716323811}
     m_Modifications:
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_SlopeBias
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_FadeDistance
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_MinFilterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_FilterSampleCount
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BlockerSampleCount
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowFadeDistance
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_VolumetricFadeDistance
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_ShadowResolution.m_Level
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132738216, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_UseContactShadow.m_Level
@@ -84726,11 +85448,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 4.3371973e+18
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.406e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 132738217, guid: 55b5f47e50e67404d9c5cee7e1decc2a, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 676256459537820837, guid: 55b5f47e50e67404d9c5cee7e1decc2a,
         type: 3}
@@ -97259,6 +97989,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.12731579
       objectReference: {fileID: 0}
+    - target: {fileID: -6584449388898224017, guid: b5484c8a521501c4795daf9990a2df4c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -5321622380015920595, guid: b5484c8a521501c4795daf9990a2df4c,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -102036,6 +102771,11 @@ PrefabInstance:
       value: -0.656
       objectReference: {fileID: 0}
     - target: {fileID: 6569645738948327872, guid: a9962a4065aa4e64cb853830b04306d8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752022030075358530, guid: a9962a4065aa4e64cb853830b04306d8,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647

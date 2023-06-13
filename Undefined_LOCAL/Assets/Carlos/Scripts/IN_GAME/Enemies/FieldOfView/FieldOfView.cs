@@ -36,14 +36,15 @@ public class FieldOfView : MonoBehaviour
         {
             yield return wait;
             FieldOfViewCheck();
+            
+            yield return null;
         }
     }
 
     private void FieldOfViewCheck()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask, QueryTriggerInteraction.Collide);
-        Debug.Log(rangeChecks.Length);
-        
+
         if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;

@@ -85,6 +85,7 @@ public class SoldierFP_Controller : EnemyController
 
     private void OnDisable()
     {
+        canReload = false;
         isReloading = false;
         cancelReload = false;
 

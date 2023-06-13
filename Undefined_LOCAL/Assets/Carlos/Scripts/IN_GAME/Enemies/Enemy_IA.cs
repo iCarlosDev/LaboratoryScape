@@ -289,7 +289,16 @@ public class Enemy_IA : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y + 0.3f, transform.position.z);
         gameObject.layer = 12;
 
+        Invoke(nameof(DisablePhysics), 3f);
         enabled = false;
+    }
+
+    private void DisablePhysics()
+    {
+        foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
+        {
+            rb.isKinematic = true;
+        }
     }
 
     //Corrutina para dejar de detectar al player;

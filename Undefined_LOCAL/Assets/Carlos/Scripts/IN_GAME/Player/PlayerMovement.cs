@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     //Variables
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private PlayerScriptStorage _playerScriptStorage;
+    [SerializeField] private Transform _fpCameraParent;
 
     [Header("--- MOVEMENT ---")]
     [Space(10)]
@@ -73,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(transform.eulerAngles.y);
+        
         if (PauseMenuManager.instance.IsPaused || !canMove) return;
         
         CalculateGravity();
@@ -248,6 +251,8 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("ConductCollider"))
         {
             _playerScriptStorage.VirtualCamera.Priority = 9;
+            _fpCameraParent.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            _playerScriptStorage.FreeLookCamera.m_XAxis.Value = transform.eulerAngles.y;
             isInConduct = false;
         }
     }
